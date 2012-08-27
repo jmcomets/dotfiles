@@ -1,0 +1,42 @@
+############### SECURITY ###############
+alias free='free -m'
+alias df='df -h'
+alias rm='rm -vi'
+#alias cp='rsync --progress'
+alias cp='cp -vi'
+alias mv='mv -vi'
+alias glxgears='glxgears -printfps'
+alias mkdir='mkdir -p'
+
+############### APT-GET ###############
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias autoremove='sudo apt-get autoremove'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade --show-upgraded'
+alias clean='sudo apt-get clean'
+
+############### SHORCUTS ###############
+alias h='history'
+alias j='jobs -l'
+alias quit='exit'
+alias g='gvim --remote-silent'
+alias susu='sudo bash'
+alias uua='update -y && upgrade -y && autoremove -y'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+############### DISPLAY ###############
+alias grep='grep --color=auto'
+alias tree='tree -Csu'
+alias ls='ls -X --color=auto'
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
+
+############### CUSTOM ###############
+alias fw='echo "Token = iXps2w2w5tyom96kw4y7" && sudo openvpn /etc/openvpn/FrozenWay.conf'
+
+#vim:set ft=sh
