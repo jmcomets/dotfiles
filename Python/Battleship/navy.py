@@ -34,3 +34,5 @@ class Navy:
       if not s.sunk:
         self.wrecked = False
         break
+    if self.wrecked:
+      self.user.lose()

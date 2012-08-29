@@ -15,5 +15,21 @@ class Cell:
 
 class Grid:
   """Battleship grid definition"""
-  def __init__(self):
-    print "Constructing a Grid"
+  def __init__(self, rows, cols):
+    #print "Constructing a Grid"
+    self.rows = rows
+    self.cols = cols
+    self.grid = []
+    for i in range(rows):
+      row = []
+      for j in range(cols):
+        row.append(Cell())
+      self.grid.append(row)
+  def __str__(self):
+    s = "Grid:\n"
+    for i in range(self.rows):
+      s += "| "
+      for j in range(self.cols):
+        s += str(int(self.grid[i][j].shot)) + " |"
+      s += "\n"
+    return s
