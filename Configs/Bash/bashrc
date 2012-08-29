@@ -33,14 +33,24 @@ fi
 
 # Source a bash script (file) if it exists
 # Usage: call f1 f2 ... fn
-call()
+#
+# TODO: add wildcard support
+function call()
 {
     for ((j = 1 ; j <= $# ; ++j))
     do
         if [ -f "${!j}" ]; then
-            source ${!j} 
+            source ${!j};
         fi
     done
+}
+
+# Do an `mkdir` immediately followed by a `cd`
+# Usage: same as `mkdir`
+function mkcd()
+{
+    dir="$*";
+    mkdir -p "$dir" && cd "$dir";
 }
 
 # Environment variables
@@ -50,6 +60,6 @@ export BASHRTP=~/.bash
 call /etc/bashrc /etc/bash_completion
 
 # Custom scripts
-call $BASHRTP/bash_profile $BASHRTP/bash_colors $BASHRTP/bash_aliases $BASHRTP/bash_functions
+call $BASHRTP/bash_profile $BASHRTP/bash_colors $BASHRTP/bash_aliases
 
 #vim:set ft=sh

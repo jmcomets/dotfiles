@@ -1,9 +1,0 @@
-# View passed command with `less`.
-#   @author Jean-Marie Comets
-#   @date 14/08/2012
-lesswrap()
-{
-    eval $(printf "%q " "$@") |& less
-}
-
-#vim:set ft=sh
