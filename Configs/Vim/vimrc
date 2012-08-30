@@ -171,7 +171,6 @@ syntax enable
 
 " Colorschemes
 "colorscheme solarized
-"colorscheme wombat
 colorscheme mustang
 
 " Dark backgrounds are better
@@ -285,7 +284,8 @@ map 0 ^
 
 " TODO
 " Exchange "`" and "'"
-"
+nnoremap ' `
+nnoremap ` '
 
 " Map ";" to ":" (avoid typos)
 nnoremap ; :
