@@ -17,6 +17,8 @@ alias upgrade="sudo apt-get upgrade --show-upgraded"
 alias clean="sudo apt-get clean"
 
 ############### SHORCUTS ###############
+alias ..="cd ../"
+alias ...="cd ../../"
 alias h="history"
 alias p="cd ~/Projects/"
 alias j="jobs -l"
