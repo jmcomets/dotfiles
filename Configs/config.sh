@@ -22,4 +22,6 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 # Setup Bash file links
 ln -s ~/Configs/Bash ~/.bash
-ln -fs ~/.bash/bashrc ~/.bashrc
+ln -s ~/.bash/bashrc ~/.bashrc
+ln -s ~/.bash/inputrc ~/.inputrc
+ln -s ~/.bash/dircolors ~/.dircolors

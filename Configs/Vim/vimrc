@@ -95,7 +95,7 @@ set magic
 set showmatch
 
 " Fold settings
-set foldmethod=indent
+set fdm=syntax
 
 " Max number of fold levels
 set foldnestmax=10
