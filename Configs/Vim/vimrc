@@ -367,7 +367,7 @@ if has("autocmd")
     au FileType make setl noexpandtab
 
     " Python
-    au FileType python setl sw=2 sts=2
+    au FileType python nmap <F5> :!python %<cr>
     au BufWrite *.py :call DeleteTrailingWS()
 
     " CoffeeScript
