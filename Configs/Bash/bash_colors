@@ -1,9 +1,11 @@
-# Custom ls color file : ~/.dircolors
+# Global `ls` color file /etc/DIR_COLORS
 if [ -f "/etc/DIR_COLORS" ]; then
     eval $(dircolors -b /etc/DIR_COLORS)
-    if [ -f "~/.dircolors" ]; then
-        eval $(dircolors -b ~/.dircolors)
-    fi
+fi
+
+# Custom `ls` color file : ~/.dircolors
+if [ -f "$HOME/.dircolors" ]; then
+    eval $(dircolors -b ~/.dircolors)
 fi
 
 ############### COLOR DEFINITIONS ###############

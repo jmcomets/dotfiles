@@ -54,7 +54,7 @@ function mkcd()
 }
 
 # Environment variables
-export BASHRTP=~/.bash
+export BASHRTP=$HOME/.bash
 
 # Global scripts
 call /etc/bashrc /etc/bash_completion
