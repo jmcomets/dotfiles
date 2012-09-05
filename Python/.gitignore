@@ -1,9 +1,0 @@
-# Ignore all of the Python compiled files
-# in this directory (eg: `pyc` files)
-#
-*.pyc
-
-# Ignore all test files
-# named following convention.
-#
-test.py
