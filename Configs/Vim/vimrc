@@ -41,8 +41,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
-"imap <c-s> <c-o>:w!<cr>
+nnoremap <leader>w :w!<cr>
+imap <C-s> <c-o><leader>w<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -145,12 +145,12 @@ set et
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set sw=4
+set ts=4
 
 " Linebreak on 500 characters
 set lbr
-set tw=500
+set tw=80
 
 " Virtual edit (awesome)
 set ve=all
@@ -215,8 +215,8 @@ nnoremap j gj
 nnoremap k gk
 
 " map J / K as faster j / k
-noremap J 5j
-noremap K 5k
+map J 5j
+map K 5k
 
 " Map <Spaceto / (search) and Ctrl-<Spaceto ? (backwards search)
 map <space> /
@@ -225,22 +225,14 @@ map <c-space> ?
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
+
+" Switch tabs quickly
+map <C-S-tab> :tabprevious<cr>
+map <C-tab> :tabnext<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -256,8 +248,11 @@ try
 catch
 endtry
 
-" Return to last edit position when opening files (You want this!)
-if has("autocmd")
+if has("au")
+    " Delete trailing white-space on save
+    au BufWritePre * :%s/\s\+$//e
+
+    " Return to last edit position when opening files
     au BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
@@ -266,12 +261,6 @@ endif
 
 " Remember info about open buffers on close
 "set viminfo^=%
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -310,16 +299,16 @@ nnoremap ; :
 " Map "²" to "~" (quicker), and don't go forward one character
 nmap ² ~h
 
-" Solve inconsistency between Y (yanks line) and D (deletes til eol)
-"nnoremap D dd
-nnoremap Y y$
+" Solve inconsistency between "Y" (yanks line) and "D" (deletes til end of line)
+"nmap D dd
+nmap Y y$
 
 " Visual block indenting: keep selection after indenting
 vmap > >gv
 vmap < <gv
 
 " Quick macro: record = qq, play = Q
-nnoremap Q @q
+nmap Q @q
 
 " Disable arrow keys (comment out when better at Vim ^^)
 nnoremap <up> <nop>
@@ -352,51 +341,104 @@ map <F8> :make<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
+" Delete buffer while keeping window layout (don't close buffer's windows).
+" Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
+if v:version < 700 || exists('loaded_bclose') || &cp
+    finish
+endif
+let loaded_bclose = 1
+if !exists('bclose_multiple')
+    let bclose_multiple = 1
+endif
 
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
+" Display an error message.
+function! s:Warn(msg)
+    echohl ErrorMsg
+    echomsg a:msg
+    echohl NONE
 endfunction
 
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
+" Command ':Bclose' executes ':bd' to delete buffer in current window.
+" The window will show the alternate buffer (Ctrl-^) if it exists,
+" or the previous buffer (:bp), or a blank buffer if no previous.
+" Command ':Bclose!' is the same, but executes ':bd!' (discard changes).
+" An optional argument can specify which buffer to close (name or number).
+function! s:Bclose(bang, buffer)
+    if empty(a:buffer)
+        let btarget = bufnr('%')
+    elseif a:buffer =~ '^\d\+$'
+        let btarget = bufnr(str2nr(a:buffer))
+    else
+        let btarget = bufnr(a:buffer)
+    endif
+    if btarget < 0
+        call s:Warn('No matching buffer for '.a:buffer)
+        return
+    endif
+    if empty(a:bang) && getbufvar(btarget, '&modified')
+        call s:Warn('No write since last change for buffer '.btarget.' (use :Bclose!)')
+        return
+    endif
+    " Numbers of windows that view target buffer which we will delete.
+    let wnums = filter(range(1, winnr('$')), 'winbufnr(v:val) == btarget')
+    if !g:bclose_multiple && len(wnums) > 1
+        call s:Warn('Buffer is in multiple windows (use ":let bclose_multiple=1")')
+        return
+    endif
+    let wcurrent = winnr()
+    for w in wnums
+        execute w.'wincmd w'
+        let prevbuf = bufnr('#')
+        if prevbuf > 0 && buflisted(prevbuf) && prevbuf != w
+            buffer #
+        else
+            bprevious
+        endif
+        if btarget == bufnr('%')
+            " Numbers of listed buffers which are not the target to be deleted.
+            let blisted = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val != btarget')
+            " Listed, not target, and not displayed.
+            let bhidden = filter(copy(blisted), 'bufwinnr(v:val) < 0')
+            " Take the first buffer, if any (could be more intelligent).
+            let bjump = (bhidden + blisted + [-1])[0]
+            if bjump > 0
+                execute 'buffer '.bjump
+            else
+                execute 'enew'.a:bang
+            endif
+        endif
+    endfor
+    execute 'bdelete'.a:bang.' '.btarget
+    execute wcurrent.'wincmd w'
+endfunction
+command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
+nnoremap <silent> <Leader>bd :Bclose<CR>
+
+" Add highlighting on functions and classes for C++
+function! EnhanceCppSyntax()
+    syn match cCustomParen "?=(" contains=cParen,cCppParen
+    syn match cCustomFunc "\w\+\s*(\@=" contains=cCustomParen
+    syn match cCustomScope "::"
+    syn match cCustomClass "\w\+\s*::" contains=cCustomScope
+    hi def link cCustomFunc Function
+    hi def link cCustomClass Function
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("autocmd")
+if has("au")
     " Makefile
-    au FileType make setl noexpandtab
+    au FileType make setl noet
 
     " C / C++
     au FileType c,cpp setl fdm=syntax
     au BufNewFile,BufRead,BufEnter *.h,*.c*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
+    au Syntax cpp call EnhanceCppSyntax()
 
     " XML
     let g:xml_syntax_folding=1
     au FileType xml setl fdm=syntax
-
-    " Python
-    au BufWrite *.py :call DeleteTrailingWS()
 
     " JSON / JavaScript
     au BufNewFile,BufRead *.json set ft=javascript
@@ -418,19 +460,20 @@ nmap <F4> :TlistToggle<cr>
 imap <F4> <C-o>:TlistToggle<cr>
 
 " Powerline
+set laststatus=2
 set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
 
 " NerdTree
-map <F3> :NERDTreeToggle<cr>
-imap <F3> <C-o>:NERDTreeToggle<cr>
+"map <F3> :NERDTreeToggle<cr>
+"imap <F3> <C-o>:NERDTreeToggle<cr>
 
 " Fugitive
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gw :Gwrite<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gw :Gwrite<CR>
 
 " Fswitch
 nmap <silent> <Leader>of :FSHere<cr>
@@ -443,15 +486,13 @@ nmap <silent> <Leader>oK :FSSplitAbove<cr>
 nmap <silent> <Leader>oj :FSBelow<cr>
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
-" Ctags
-
-" Tag locations
+" Ctag locations
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/gl
 set tags+=~/.vim/tags/sdl
 set tags+=~/.vim/tags/qt4
 
-" Build tags with Ctrl-F12
+" Build Ctags with Ctrl-F12
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " OmniCppComplete
@@ -467,3 +508,12 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
+
+" MiniBufExplorer
+nmap <Leader>b :MiniBufExplorer<cr>
+nmap <Leader>c :CMiniBufExplorer<cr>
+nmap <Leader>u :UMiniBufExplorer<cr>
+
+" Gundo
+nnoremap <F3> :GundoToggle<CR>
+imap <F3> <C-O><F3>
