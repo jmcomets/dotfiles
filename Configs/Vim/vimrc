@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Author: 
 "       Jean-Marie Comets
 "
@@ -412,7 +412,7 @@ function! s:Bclose(bang, buffer)
     execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-nnoremap <silent> <Leader>bd :Bclose<CR>
+nnoremap <silent> <Leader>bd :Bclose!<CR>
 
 " Add highlighting on functions and classes for C++
 function! EnhanceCppSyntax()
@@ -437,7 +437,7 @@ if has("au")
     au Syntax cpp call EnhanceCppSyntax()
 
     " XML
-    let g:xml_syntax_folding=1
+    let xml_syntax_folding=1
     au FileType xml setl fdm=syntax
 
     " JSON / JavaScript
@@ -451,11 +451,11 @@ endif
 " => Plugin customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TagList
-let g:Tlist_Enable_Fold_Column = 0
-let g:Tlist_Compact_Format = 1
-let g:Tlist_File_Fold_Auto_Close = 0
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let g:Tlist_Use_Right_Window = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Compact_Format = 1
+let Tlist_File_Fold_Auto_Close = 0
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Use_Right_Window = 1
 nmap <F4> :TlistToggle<cr>
 imap <F4> <C-o>:TlistToggle<cr>
 
@@ -517,3 +517,48 @@ nmap <Leader>u :UMiniBufExplorer<cr>
 " Gundo
 nnoremap <F3> :GundoToggle<CR>
 imap <F3> <C-O><F3>
+
+" FuzzyFinder
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+nnoremap <silent> sj :FufBuffer<CR>
+nnoremap <silent> sk :FufFileWithCurrentBufferDir<CR>
+nnoremap <silent> sK :FufFileWithFullCwd<CR>
+nnoremap <silent> s<C-k> :FufFile<CR>
+nnoremap <silent> sl :FufCoverageFileChange<CR>
+nnoremap <silent> sL :FufCoverageFileChange<CR>
+nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
+nnoremap <silent> sd :FufDirWithCurrentBufferDir<CR>
+nnoremap <silent> sD :FufDirWithFullCwd<CR>
+nnoremap <silent> s<C-d> :FufDir<CR>
+nnoremap <silent> sn :FufMruFile<CR>
+nnoremap <silent> sN :FufMruFileInCwd<CR>
+nnoremap <silent> sm :FufMruCmd<CR>
+nnoremap <silent> su :FufBookmarkFile<CR>
+nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
+noremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
+nnoremap <silent> si :FufBookmarkDir<CR>
+nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
+nnoremap <silent> st :FufTag<CR>
+nnoremap <silent> sT :FufTag!<CR>
+nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
+nnoremap <silent> s, :FufBufferTag<CR>
+nnoremap <silent> s< :FufBufferTag!<CR>
+vnoremap <silent> s, :FufBufferTagWithSelectedText!<CR>
+vnoremap <silent> s< :FufBufferTagWithSelectedText<CR>
+nnoremap <silent> s} :FufBufferTagWithCursorWord!<CR>
+nnoremap <silent> s. :FufBufferTagAll<CR>
+nnoremap <silent> s> :FufBufferTagAll!<CR>
+vnoremap <silent> s. :FufBufferTagAllWithSelectedText!<CR>
+vnoremap <silent> s> :FufBufferTagAllWithSelectedText<CR>
+nnoremap <silent> s] :FufBufferTagAllWithCursorWord!<CR>
+nnoremap <silent> sg :FufTaggedFile<CR>
+nnoremap <silent> sG :FufTaggedFile!<CR>
+nnoremap <silent> so :FufJumpList<CR>
+nnoremap <silent> sp :FufChangeList<CR>
+nnoremap <silent> sq :FufQuickfix<CR>
+nnoremap <silent> sy :FufLine<CR>
+nnoremap <silent> sh :FufHelp<CR>
+nnoremap <silent> se :FufEditDataFile<CR>
+nnoremap <silent> sr :FufRenewCache<CR>
