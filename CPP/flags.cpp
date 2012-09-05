@@ -1,9 +1,15 @@
+// for `size_t`
+#include <cstddef>
+
 namespace utilities
 {
     // functions library for bit flag handling
     template<class T> class bitset
     {
         public:
+            // C++ byte type
+            typedef unsigned char byte_t;
+
             // default constructor
             bitset(T bs = 0):
                 m_bitset(bs)
@@ -16,18 +22,9 @@ namespace utilities
             {
             }
 
-            // assignment operator
-            bitset & operator =(const bitset & bs)
-            {
-                if (&bs != this)
-                {
-                    m_bitset = bs.m_bitset;
-                }
-                return *this;
-            }
-
             ~bitset()
             {
+                // nothing to do here...
             }
 
             // explicitely check a flag
@@ -42,18 +39,58 @@ namespace utilities
                 m_bitset ^= flag;
             }
 
+            // access directly a bit
+            inline T bit_at(const size_t & index) const
+            {
+                return (m_bitset >> index) & 1;
+            }
+
             // make sure that a flag is set, conserving other flag
             inline void set_flag(const T & flag)
             {
                 if (!has_flag(flag))
+                {
                     toggle_flag(flag);
+                }
             }
 
             // make sure that a flag is set, conserving other flag
             inline void unset_flag(const T & flag)
             {
                 if (has_flag(flag))
+                {
                     toggle_flag(flag);
+                }
+            }
+            
+            // assignment operator for deep copy
+            inline bitset & operator =(const bitset & bs)
+            {
+                if (&bs != this)
+                {
+                    m_bitset = bs.m_bitset;
+                }
+                return *this;
+            }
+
+            // assignment operator for direct set
+            inline bitset & operator =(const T & byte)
+            {
+                bitset<T> temp(byte);
+                *this = temp;
+
+                return *this;
+            }
+
+            // access directly a bit using array-access
+            inline T & operator [](const size_t & index) const
+            {
+                return bit_at(index);
+            }
+
+            inline bool operator ==(const bitset & bs) const
+            {
+                return (m_bitset == bs.m_bitset);
             }
         private:
             T m_bitset;
@@ -156,9 +193,9 @@ class Car
             return is_startable();
         }
 
-    //private:
-        //Car(const Car &);
-        //Car & operator =(const Car &);
+    private:
+        Car(const Car &);
+        Car & operator =(const Car &);
         int m_state;
         utilities::bitset<int> m_bitset;
 };
@@ -167,8 +204,10 @@ class Car
 #include <stdexcept>
 using namespace std;
 
-int main(int argc, char ** argcv)
+// testing function using Car class
+void car_test()
 {
+    cout << "Testing with `Car` class" << endl;
     Car car;
     car.start();
     if (!car.is_started())
@@ -189,8 +228,35 @@ int main(int argc, char ** argcv)
     {
         throw runtime_error("Either crash() didn't work, or is_startable() didn't detect the crash");
     }
+}
 
-    return 0;
+// direct testing for utilities::bitset
+void direct_test()
+{
+    cout << "Testing directly with `bitset`" << endl;
+    utilities::bitset<int> bs = 7;
+}
+
+// just some constants for better reading tests
+enum { tests_passed = 0, tests_failed = 1 };
+
+// main testing program
+int main(int argc, char ** argcv)
+{
+    cout << "Starting tests..." << endl;
+    try
+    {
+        //car_test();
+        //direct_test();
+    }
+    catch (runtime_error e)
+    {
+        cout << "Tests finished, an error was reported: " << e.what() << endl;
+        return tests_failed;
+    }
+
+    cout << "Tests finished, no error reported" << endl;
+    return tests_passed;
 }
 
 #endif

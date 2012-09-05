@@ -8,13 +8,14 @@ alias mv="mv -vi"
 alias glxgears="glxgears -printfps"
 alias mkdir="mkdir -p"
 
-############### APT-GET ###############
+############### APT-GET / DPKG ###############
 alias install="sudo apt-get install"
 alias remove="sudo apt-get remove"
 alias autoremove="sudo apt-get autoremove"
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get upgrade --show-upgraded"
 alias clean="sudo apt-get clean"
+alias search="sudo dpkg -l"
 
 ############### SHORCUTS ###############
 alias ..="cd ../"

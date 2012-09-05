@@ -74,7 +74,11 @@ EXEC 01;32
 .deb 01;31
 
 # image formats
-.png 01;3K
+.png 01;35
+.gif 01;35
+.jpg 01;35
+.jpeg 01;35
+.ico 01;35
 .png 01;35
 .bmp 01;35
 .ppm 01;35
@@ -96,3 +100,7 @@ EXEC 01;32
 .vim 00;36
 .json 00;31
 .js 00;31
+.php 00;36
+.css 00;32
+.xml 00;35
+.xsl 00;35

@@ -1,9 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Author: 
 "       Jean-Marie Comets
 "
 " Version: 
-"       1.1 - 27/08/2012 17:29
+"       1.2 - 05/09/2012, 08:54
 "
 " Sections:
 "    -General
@@ -24,7 +24,6 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,13 +33,16 @@ set history=700
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Remove Vim's startup message (sorry...)
+set shortmess+=I
+
 " Set mapleader (shortcut key) to ","
 let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-imap <c-s> <c-o>:w!<cr>
+"imap <c-s> <c-o>:w!<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -49,13 +51,16 @@ imap <c-s> <c-o>:w!<cr>
 set so=7
 
 " Turn on the WiLd menu
-set wildmenu
+set wmnu
+
+" Behave shell-like when completing shell
+set wildmode=longest,list
 
 " Ignore compiled files and backups
 set wildignore=*.o,*~,*.pyc,*.gch
 
 " Compatible options
-set cpoptions+=$
+set cpo+=$
 
 " Show line numbers
 set number
@@ -85,6 +90,10 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
+" Center screen at cursor when searching
+nnoremap n nzz
+nnoremap } }zz
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
@@ -95,7 +104,7 @@ set magic
 set showmatch
 
 " Fold settings
-set fdm=syntax
+set fdm=indent
 
 " Max number of fold levels
 set foldnestmax=10
@@ -122,7 +131,6 @@ set tm=500
 set nobackup
 set nowb
 set noswapfile
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -170,21 +178,24 @@ call pathogen#helptags()
 syntax enable
 
 " Colorschemes
-"colorscheme solarized
-colorscheme mustang
+"colorscheme mustang
+colorscheme wombat
 
 " Dark backgrounds are better
 set background=dark
 
 " Editing font
-set gfn=Consolas\ 12
+"set gfn=Consolas\ 12
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
+    set go-=r
+    set go-=l
+    set go-=m
+    set go-=T
+    set go+=e
     set t_Co=256
-    set guitablabel=%M\ %t
+    set gtl=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -200,6 +211,10 @@ set ffs=unix,dos,mac
 nnoremap j gj
 nnoremap k gk
 
+" map J / K as faster j / k
+noremap J 5j
+noremap K 5k
+
 " Map <Spaceto / (search) and Ctrl-<Spaceto ? (backwards search)
 map <space> /
 map <c-space> ?
@@ -207,11 +222,11 @@ map <c-space> ?
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows (could be removed)
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" Smart way to move between windows
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -247,7 +262,7 @@ if has("autocmd")
 endif
 
 " Remember info about open buffers on close
-set viminfo^=%
+"set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
@@ -282,7 +297,6 @@ map <leader>s? z=
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" TODO
 " Exchange "`" and "'"
 nnoremap ' `
 nnoremap ` '
@@ -292,6 +306,10 @@ nnoremap ; :
 
 " Map "²" to "~" (quicker), and don't go forward one character
 nmap ² ~h
+
+" Solve inconsistency between Y (yanks line) and D (deletes til eol)
+"nnoremap D dd
+nnoremap Y y$
 
 " Visual block indenting: keep selection after indenting
 vmap > >gv
@@ -309,21 +327,21 @@ nnoremap <right> <nop>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Debug messages
-"set debug=
-
 " Remove the Windows ^M - when the encodings get messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+nmap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Close current file
-map <leader>q :q<cr>
+nmap <leader>q :q<cr>
+
+" Run "ls" in CWD
+nmap <leader>ls :!ls<cr>
 
 " Edit / Source configuration
-map <leader>co :e $MYVIMRC<cr>
-map <leader>so :so $MYVIMRC<cr>
+nmap <leader>co :e $MYVIMRC<cr>
+nmap <leader>so :so $MYVIMRC<cr>
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+nmap <leader>pp :setlocal paste!<cr>
 
 " Quick make command
 map <F8> :make<cr>
@@ -352,9 +370,6 @@ function! <SID>BufcloseCloseIt()
     endif
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => FileType settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete trailing white space on save
 func! DeleteTrailingWS()
     exe "normal mz"
@@ -362,58 +377,67 @@ func! DeleteTrailingWS()
     exe "normal `z"
 endfunc
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => FileType settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
     " Makefile
     au FileType make setl noexpandtab
 
+    " C / C++
+    au FileType c,cpp setl fdm=syntax
+    au BufNewFile,BufRead,BufEnter *.cpp,*.hpp setl omnifunc=omni#cpp#complete#Main
+
+    " XML
+    let g:xml_syntax_folding=1
+    au FileType xml setl fdm=syntax
+
     " Python
-    au FileType python nmap <F5> :!python %<cr>
     au BufWrite *.py :call DeleteTrailingWS()
 
-    " CoffeeScript
-    au BufWrite *.coffee :call DeleteTrailingWS()
-
     " JSON / JavaScript
-    " Set unless you have json.vim syntax plugin.
-    "au BufNewFile,BufRead *.json set ft=javascript
-    au BufNewFile,BufRead *.json set ft=json
+    au BufNewFile,BufRead *.json set ft=javascript
 
     " Pascal
     au BufNewFile,BufRead *.pas,*.PAS setl ft=pascal
-
-    " Delphi project file
-    au BufNewFile,BufRead *.dpr,*.DPR setl ft=delphi
-
-    " Delphi form file
-    au BufNewFile,BufRead *.dfm,*.DFM setl ft=delphi
-    au BufNewFile,BufRead *.xfm,*.XFM setl ft=delphi
-
-    " Delphi package file
-    au BufNewFile,BufRead *.dpk,*.DPK setl ft=delphi
-
-    " Delphi .DOF file = INI file for MSDOS
-    au BufNewFile,BufRead *.dof,*.DOF setl ft=dosini
-    au BufNewFile,BufRead *.kof,*.KOF setl ft=dosini
-    au BufNewFile,BufRead *.dsk,*.DSK setl ft=dosini
-    au BufNewFile,BufRead *.desk,*.DESK setl ft=dosini
-    au BufNewFile,BufRead *.dti,*.DTI setl ft=dosini
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NerdComment
-nmap <leader>cc V:call NERDComment(0, "toggle")<cr>
-
 " TagList
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Compact_Format = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Use_Right_Window = 1
+let g:Tlist_Enable_Fold_Column = 0
+let g:Tlist_Compact_Format = 1
+let g:Tlist_File_Fold_Auto_Close = 0
+let g:Tlist_GainFocus_On_ToggleOpen = 1
+let g:Tlist_Use_Right_Window = 1
 nmap <F4> :TlistToggle<cr>
 imap <F4> <C-o>:TlistToggle<cr>
+
+" Powerline
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+let g:Powerline_symbols = 'fancy'
 
 " NerdTree
 map <F3> :NERDTreeToggle<cr>
 imap <F3> <C-o>:NERDTreeToggle<cr>
+
+" Fugitive
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gw :Gwrite<CR>
+
+" Fswitch
+nmap <silent> <Leader>of :FSHere<cr>
+nmap <silent> <Leader>ol :FSRight<cr>
+nmap <silent> <Leader>oL :FSSplitRight<cr>
+nmap <silent> <Leader>oh :FSLeft<cr>
+nmap <silent> <Leader>oH :FSSplitLeft<cr>
+nmap <silent> <Leader>ok :FSAbove<cr>
+nmap <silent> <Leader>oK :FSSplitAbove<cr>
+nmap <silent> <Leader>oj :FSBelow<cr>
+nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+
+" OmniCppComplete
