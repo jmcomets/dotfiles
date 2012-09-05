@@ -106,6 +106,9 @@ set showmatch
 " Fold settings
 set fdm=indent
 
+" Default completing function
+set ofu=syntaxcomplete#Complete
+
 " Max number of fold levels
 set foldnestmax=10
 
@@ -386,7 +389,7 @@ if has("autocmd")
 
     " C / C++
     au FileType c,cpp setl fdm=syntax
-    au BufNewFile,BufRead,BufEnter *.cpp,*.hpp setl omnifunc=omni#cpp#complete#Main
+    au BufNewFile,BufRead,BufEnter *.h,*.c*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
 
     " XML
     let g:xml_syntax_folding=1
@@ -440,4 +443,27 @@ nmap <silent> <Leader>oK :FSSplitAbove<cr>
 nmap <silent> <Leader>oj :FSBelow<cr>
 nmap <silent> <Leader>oJ :FSSplitBelow<cr>
 
+" Ctags
+
+" Tag locations
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/gl
+set tags+=~/.vim/tags/sdl
+set tags+=~/.vim/tags/qt4
+
+" Build tags with Ctrl-F12
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 " OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+" Automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
