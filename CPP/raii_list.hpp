@@ -1,5 +1,5 @@
-#ifndef LIST_H_INCLUDED_
-#define LIST_H_INCLUDED_
+#ifndef RAII_LIST_H_INCLUDED_
+#define RAII_LIST_H_INCLUDED_
 
 namespace utilities
 {

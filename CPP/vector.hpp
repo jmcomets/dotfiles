@@ -35,23 +35,27 @@
  *   "-" = not implemented
  *
  * Constructors :
- * 	- vector({ array initializer list }) : parameter constructor
- * 	- vector(const vector &) : copy constructor
+ *  + vector(std::initializer_list<T>)
+ *  + vector(const vector &)
+ *
+ * Virtual destructor (does nothing).
  * 
  * Methods :
- * 	+ T coord(int) const : getter
- * 	+ void setCoord(int, T) : setter
- * 	+ void copy(const vector &) : copy from vector
- * 	+ void add(const vector &) : adds with vector
- * 	+ void substract(const vector &) : substracts with vector
- * 	+ void multiply(T) : multiplication
- * 	+ void divide(T) : division
- * 	+ bool equals(const vector &) const : equal
- * 	+ T norm() const : get norm of vector
- * 	+ T dot(const vector &) const : dot-product
- * 	+ T angle(const vector &) const : argument
- * 	+ vector & unit() const : get corresponding unit vector (new one)
- * 
+ *  + T coord(unsigned int) const
+ *  + void setCoord(unsigned int, T)
+ *  + void copy(std::initializer_list<T>)
+ *  + void copy(const vector &)
+ *  + bool equals(const vector &) const
+ *  + void add(const vector &)
+ *  + void substract(const vector &)
+ *  + void multiply(T)
+ *  + void divide(T)
+ *  + T dot(const vector &) const
+ *  + T norm() const
+ *  + T angle(const vector &) const
+ *  + vector & unit() const
+ *  + void dump(const vector<T, N> &)
+ *
  * Operators :
  * 	+ "+" : add
  * 	+ "-" : substract
@@ -72,14 +76,14 @@
 #ifndef VECTOR_H_INCLUDED_
 #define VECTOR_H_INCLUDED_
 
-#include <cmath>
-#include <memory>
-#include <algorithm>
-#include <stdexcept>
-#include <iostream>
-#include <initializer_list>
+#include <initializer_list> // for constructor from `{}`
+#include <algorithm> // for copy
+#include <stdexcept> // for exceptions
+#include <memory> // for auto_ptr
+#include <cmath> // for calculus
+#include <iostream> // for dump
 
-namespace utility
+namespace utilities
 {
 
 /**
@@ -477,6 +481,6 @@ template<class T, unsigned int N> inline void dump(const vector<T, N> & v)
     cout << ")" << endl;
 }
 
-} // namespace utility
+} // namespace utilities
 
 #endif // VECTOR_H_INCLUDED_

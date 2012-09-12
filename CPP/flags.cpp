@@ -1,6 +1,4 @@
-// for `size_t`
-#include <cstddef>
-
+#include <cstddef> // for `size_t`
 namespace utilities
 {
     // functions library for bit flag handling
@@ -97,6 +95,7 @@ namespace utilities
     }; // end class bitset
 } // end namespace utilities
 
+// Debugging bundle
 #ifdef DEBUG
 
 // This class tests bitflags library.

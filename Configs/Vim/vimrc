@@ -3,24 +3,23 @@
 "       Jean-Marie Comets
 "
 " Version: 
-"       1.2 - 05/09/2012, 08:54
+"       1.5 - 09/09/2012 (21:33)
 "
 " Sections:
-"    -General
-"    -VIM user interface
-"    -Files and backups
-"    -Text, tab and indent related
-"    -Plugin settings
-"    -Colors and Fonts
-"    -Moving around, tabs and buffers
-"    -Status line
-"    -Editing mappings
-"    -Spell checking
-"    -Various key remaps
-"    -Misc
-"    -Helper functions
-"    -Filetype settings
-"    -Plugin customization
+"   - General
+"   - VIM user interface
+"   - Files and backups
+"   - Text, tab and indent related
+"   - Plugin settings
+"   - Colors and Fonts
+"   - Moving around, tabs and buffers
+"   - Editing mappings
+"   - Spell checking
+"   - Various key remaps
+"   - Misc
+"   - Helper functions
+"   - Filetype settings
+"   - Plugin customization
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -42,7 +41,7 @@ let g:mapleader = ","
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
-imap <C-s> <c-o><leader>w<cr>
+"imap <C-s> <c-o><leader>w<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -104,7 +103,7 @@ set magic
 set showmatch
 
 " Fold settings
-set fdm=indent
+set fdm=syntax
 
 " Default completing function
 set ofu=syntaxcomplete#Complete
@@ -148,9 +147,9 @@ set smarttab
 set sw=4
 set ts=4
 
-" Linebreak on 500 characters
+" Linebreak on 100 characters
 set lbr
-set tw=80
+set tw=100
 
 " Virtual edit (awesome)
 set ve=all
@@ -271,6 +270,9 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
+" Quick search-replace
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -294,7 +296,7 @@ nnoremap ' `
 nnoremap ` '
 
 " Map ";" to ":" (avoid typos)
-nnoremap ; :
+noremap ; :
 
 " Map "²" to "~" (quicker), and don't go forward one character
 nmap ² ~h
@@ -307,9 +309,6 @@ nmap Y y$
 vmap > >gv
 vmap < <gv
 
-" Quick macro: record = qq, play = Q
-nmap Q @q
-
 " Disable arrow keys (comment out when better at Vim ^^)
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -319,8 +318,8 @@ nnoremap <right> <nop>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings get messed up
-nmap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" Remove the Windows "^M"
+nmap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Close current file
 nmap <leader>q :q<cr>
@@ -412,7 +411,7 @@ function! s:Bclose(bang, buffer)
     execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-nnoremap <silent> <Leader>bd :Bclose!<CR>
+nnoremap <silent> <leader>bd :Bclose!<cr>
 
 " Add highlighting on functions and classes for C++
 function! EnhanceCppSyntax()
@@ -432,19 +431,17 @@ if has("au")
     au FileType make setl noet
 
     " C / C++
-    au FileType c,cpp setl fdm=syntax
-    au BufNewFile,BufRead,BufEnter *.h,*.c*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
+    au BufNewFile,BufRead,BufEnter *.h,*.c,*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
     au Syntax cpp call EnhanceCppSyntax()
 
     " XML
     let xml_syntax_folding=1
-    au FileType xml setl fdm=syntax
 
     " JSON / JavaScript
     au BufNewFile,BufRead *.json set ft=javascript
 
     " Pascal
-    au BufNewFile,BufRead *.pas,*.PAS setl ft=pascal
+    au BufNewFile,BufRead *.pas,*.PAS set ft=pascal
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -469,11 +466,11 @@ let g:Powerline_symbols = 'fancy'
 "imap <F3> <C-o>:NERDTreeToggle<cr>
 
 " Fugitive
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gl :Glog<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gw :Gwrite<CR>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gw :Gwrite<cr>
 
 " Fswitch
 nmap <silent> <Leader>of :FSHere<cr>
@@ -493,7 +490,7 @@ set tags+=~/.vim/tags/sdl
 set tags+=~/.vim/tags/qt4
 
 " Build Ctags with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -509,56 +506,9 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
-" MiniBufExplorer
-nmap <Leader>b :MiniBufExplorer<cr>
-nmap <Leader>c :CMiniBufExplorer<cr>
-nmap <Leader>u :UMiniBufExplorer<cr>
-
 " Gundo
-nnoremap <F3> :GundoToggle<CR>
-imap <F3> <C-O><F3>
+nmap <F3> :GundoToggle<cr>
+"imap <F3> <C-O><F3>
 
-" FuzzyFinder
-let g:fuf_modesDisable = []
-let g:fuf_mrufile_maxItem = 400
-let g:fuf_mrucmd_maxItem = 400
-nnoremap <silent> sj :FufBuffer<CR>
-nnoremap <silent> sk :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> sK :FufFileWithFullCwd<CR>
-nnoremap <silent> s<C-k> :FufFile<CR>
-nnoremap <silent> sl :FufCoverageFileChange<CR>
-nnoremap <silent> sL :FufCoverageFileChange<CR>
-nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
-nnoremap <silent> sd :FufDirWithCurrentBufferDir<CR>
-nnoremap <silent> sD :FufDirWithFullCwd<CR>
-nnoremap <silent> s<C-d> :FufDir<CR>
-nnoremap <silent> sn :FufMruFile<CR>
-nnoremap <silent> sN :FufMruFileInCwd<CR>
-nnoremap <silent> sm :FufMruCmd<CR>
-nnoremap <silent> su :FufBookmarkFile<CR>
-nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
-noremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
-nnoremap <silent> si :FufBookmarkDir<CR>
-nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
-nnoremap <silent> st :FufTag<CR>
-nnoremap <silent> sT :FufTag!<CR>
-nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
-nnoremap <silent> s, :FufBufferTag<CR>
-nnoremap <silent> s< :FufBufferTag!<CR>
-vnoremap <silent> s, :FufBufferTagWithSelectedText!<CR>
-vnoremap <silent> s< :FufBufferTagWithSelectedText<CR>
-nnoremap <silent> s} :FufBufferTagWithCursorWord!<CR>
-nnoremap <silent> s. :FufBufferTagAll<CR>
-nnoremap <silent> s> :FufBufferTagAll!<CR>
-vnoremap <silent> s. :FufBufferTagAllWithSelectedText!<CR>
-vnoremap <silent> s> :FufBufferTagAllWithSelectedText<CR>
-nnoremap <silent> s] :FufBufferTagAllWithCursorWord!<CR>
-nnoremap <silent> sg :FufTaggedFile<CR>
-nnoremap <silent> sG :FufTaggedFile!<CR>
-nnoremap <silent> so :FufJumpList<CR>
-nnoremap <silent> sp :FufChangeList<CR>
-nnoremap <silent> sq :FufQuickfix<CR>
-nnoremap <silent> sy :FufLine<CR>
-nnoremap <silent> sh :FufHelp<CR>
-nnoremap <silent> se :FufEditDataFile<CR>
-nnoremap <silent> sr :FufRenewCache<CR>
+" ZoomWin
+nmap <leader><leader> :ZoomWin<cr>
