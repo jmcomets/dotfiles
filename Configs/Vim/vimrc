@@ -180,8 +180,11 @@ call pathogen#helptags()
 syntax enable
 
 " Colorschemes
-"colorscheme mustang
-colorscheme wombat
+if (has("gui_running"))
+    colorscheme wombat
+else
+    colorscheme mustang
+endif
 
 " Dark backgrounds are better
 set background=dark
@@ -198,6 +201,33 @@ if has("gui_running")
     set go+=e
     set t_Co=256
     set gtl=%M\ %t
+endif
+
+" Configure for terminal
+if &term =~ "xterm"
+    if has("terminfo")
+        let g:CommandTCancelMap=['<ESC>','<C-c>']
+        set t_Co=256
+        set t_Sf=<Esc>[3%p1%dm
+        set t_Sb=<Esc>[4%p1%dm
+    else
+        set t_Co=8
+        set t_Sf=<Esc>[3%dm
+        set t_Sb=<Esc>[4%dm
+    endif
+endif
+
+" IMPORTANT: Uncomment one of the following lines to force
+" using 256 colors (or 88 colors) if your terminal supports it,
+" but does not automatically use 256 colors by default.
+"set t_Co=256
+"set t_Co=88
+if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
+  \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
+  " Use the guicolorscheme plugin to makes 256-color or 88-color
+  " terminal use GUI colors rather than cterm colors.
+  runtime! plugin/guicolorscheme.vim
+  GuiColorScheme wombat
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -265,10 +295,12 @@ endif
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move a line of text using ALT+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <M-j> :m .+1<cr>==
+nnoremap <M-k> :m .-2<cr>==
+inoremap <M-j> <Esc>:m .+1<cr>==gi
+inoremap <M-k> <Esc>:m .-2<cr>==gi
+vnoremap <M-j> :m '>+1<cr>gv=gv
+vnoremap <M-k> :m '<-2<cr>gv=gv
 
 " Quick search-replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -432,7 +464,6 @@ if has("au")
 
     " C / C++
     au BufNewFile,BufRead,BufEnter *.h,*.c,*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
-    au Syntax cpp call EnhanceCppSyntax()
 
     " XML
     let xml_syntax_folding=1
@@ -462,8 +493,8 @@ set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
 
 " NerdTree
-"map <F3> :NERDTreeToggle<cr>
-"imap <F3> <C-o>:NERDTreeToggle<cr>
+map <silent> <F3> :NERDTreeToggle<cr>
+imap <silent> <F3> <C-o><F3><cr>
 
 " Fugitive
 nmap <leader>gs :Gstatus<cr>
@@ -505,10 +536,6 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " Automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
-
-" Gundo
-nmap <F3> :GundoToggle<cr>
-"imap <F3> <C-O><F3>
 
 " ZoomWin
 nmap <leader><leader> :ZoomWin<cr>

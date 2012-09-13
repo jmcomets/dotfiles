@@ -1,3 +1,4 @@
+# vim: set ft=sh
 # Global `ls` color file /etc/DIR_COLORS
 if [ -f "/etc/DIR_COLORS" ]; then
     eval $(dircolors -b /etc/DIR_COLORS)
@@ -23,10 +24,10 @@ C_WHITE="\[\e[1;37m\]"
 ############### DISPLAY FORMAT ###############
 
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="${C_YELLOW}[${C_DEF}${C_PURPLE}\D{%H:%M:%S}${C_DEF}${C_YELLOW}]${C_DEF}${C_BLUE}\u${C_DEF}${C_YELLOW}@${C_DEF}${C_RED}\h${C_DEF}${C_YELLOW}${C_DEF}${C_YELLOW} {${C_DEF}${C_CYAN}\!${C_DEF}${C_YELLOW}}${C_DEF} ${C_GREEN}\w${C_DEF}${C_BLUE}\$ ${C_DEF}"
-    PS2="${C_BLUE}>${C_DEF} "
-    ;;
-*)
-    ;;
+    xterm*|rxvt*)
+        PS1="${C_YELLOW}[${C_DEF}${C_PURPLE}\D{%H:%M:%S}${C_DEF}${C_YELLOW}]${C_DEF}${C_BLUE}\u${C_DEF}${C_YELLOW}@${C_DEF}${C_RED}\h${C_DEF}${C_YELLOW}${C_DEF}${C_YELLOW} {${C_DEF}${C_CYAN}\!${C_DEF}${C_YELLOW}}${C_DEF} ${C_GREEN}\w${C_DEF}${C_BLUE}\$ ${C_DEF}"
+        PS2="${C_BLUE}>${C_DEF} "
+        ;;
+    *)
+        ;;
 esac
