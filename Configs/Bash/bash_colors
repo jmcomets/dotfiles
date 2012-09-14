@@ -1,4 +1,9 @@
+#!/bin/bash
+#
+# Configuration for shell colors
+#
 # vim: set ft=sh
+
 # Global `ls` color file /etc/DIR_COLORS
 if [ -f "/etc/DIR_COLORS" ]; then
     eval $(dircolors -b /etc/DIR_COLORS)

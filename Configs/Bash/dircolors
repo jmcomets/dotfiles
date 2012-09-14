@@ -1,4 +1,9 @@
-# dircolors fils defining colors for terminal `ls` command
+#!/bin/bash
+#
+# Configuration for dircolors, defining
+# colors for terminal `ls` command.
+#
+# vim: set ft=sh
 
 # Below, there should be one TERM entry for each termtype that is colorizable
 TERM linux

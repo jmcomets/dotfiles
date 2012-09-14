@@ -1,3 +1,9 @@
+#!/bin/bash
+#
+# Main configuration for shell
+#
+# vim: set ft=sh
+
 # If not running interactively, don't do anything
 if [ -z "$PS1" ]; then
   return
@@ -62,4 +68,3 @@ call /etc/bashrc /etc/bash_completion
 # Custom scripts
 call $BASHRTP/bash_profile $BASHRTP/bash_colors $BASHRTP/bash_aliases
 
-#vim:set ft=sh
