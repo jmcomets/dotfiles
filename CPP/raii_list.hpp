@@ -3,11 +3,9 @@
 
 namespace utilities
 {
-    template<class T>
-    class raii_list
+    template <class data_t> class raii_list
     {
         public:
-            typedef T data_t;
             explicit raii_list(data_t * data):
                 m_next(0), m_data(data)
             {

@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Author: 
+" Author:
 "       Jean-Marie Comets
 "
-" Version: 
+" Version:
 "       1.5 - 09/09/2012 (21:33)
 "
 " Sections:
@@ -80,7 +80,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -157,7 +157,7 @@ set ve=all
 " Auto indent
 set ai
 
-" Smart indent 
+" Smart indent
 set si
 
 " Wrap lines
@@ -179,15 +179,15 @@ call pathogen#helptags()
 " Enable syntax highlighting
 syntax enable
 
+" Dark backgrounds are better
+set background=dark
+
 " Colorschemes
 if (has("gui_running"))
     colorscheme wombat
 else
     colorscheme mustang
 endif
-
-" Dark backgrounds are better
-set background=dark
 
 " Editing font
 "set gfn=Consolas\ 12
@@ -217,19 +217,6 @@ if &term =~ "xterm"
     endif
 endif
 
-" IMPORTANT: Uncomment one of the following lines to force
-" using 256 colors (or 88 colors) if your terminal supports it,
-" but does not automatically use 256 colors by default.
-"set t_Co=256
-"set t_Co=88
-if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
-  \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
-  " Use the guicolorscheme plugin to makes 256-color or 88-color
-  " terminal use GUI colors rather than cterm colors.
-  runtime! plugin/guicolorscheme.vim
-  GuiColorScheme wombat
-endif
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -242,10 +229,6 @@ set ffs=unix,dos,mac
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
-
-" map J / K as faster j / k
-map J 5j
-map K 5k
 
 " Map <Spaceto / (search) and Ctrl-<Spaceto ? (backwards search)
 map <space> /
@@ -270,19 +253,19 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
     set switchbuf=useopen,usetab,newtab
     set stal=2
 catch
 endtry
 
-if has("au")
+if has("autocmd")
     " Delete trailing white-space on save
-    au BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :%s/\s\+$//e
 
     " Return to last edit position when opening files
-    au BufReadPost *
+    autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
                 \ endif
@@ -445,34 +428,24 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 nnoremap <silent> <leader>bd :Bclose!<cr>
 
-" Add highlighting on functions and classes for C++
-function! EnhanceCppSyntax()
-    syn match cCustomParen "?=(" contains=cParen,cCppParen
-    syn match cCustomFunc "\w\+\s*(\@=" contains=cCustomParen
-    syn match cCustomScope "::"
-    syn match cCustomClass "\w\+\s*::" contains=cCustomScope
-    hi def link cCustomFunc Function
-    hi def link cCustomClass Function
-endfunction
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("au")
+if has("autocmd")
     " Makefile
-    au FileType make setl noet
+    autocmd FileType make setl noet
 
     " C / C++
-    au BufNewFile,BufRead,BufEnter *.h,*.c,*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
+    autocmd BufNewFile,BufRead,BufEnter *.h,*.c,*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
 
     " XML
     let xml_syntax_folding=1
 
     " JSON / JavaScript
-    au BufNewFile,BufRead *.json set ft=javascript
+    autocmd BufNewFile,BufRead *.json set ft=javascript
 
     " Pascal
-    au BufNewFile,BufRead *.pas,*.PAS set ft=pascal
+    autocmd BufNewFile,BufRead *.pas,*.PAS set ft=pascal
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -504,15 +477,15 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>gw :Gwrite<cr>
 
 " Fswitch
-nmap <silent> <Leader>of :FSHere<cr>
-nmap <silent> <Leader>ol :FSRight<cr>
-nmap <silent> <Leader>oL :FSSplitRight<cr>
-nmap <silent> <Leader>oh :FSLeft<cr>
-nmap <silent> <Leader>oH :FSSplitLeft<cr>
-nmap <silent> <Leader>ok :FSAbove<cr>
-nmap <silent> <Leader>oK :FSSplitAbove<cr>
-nmap <silent> <Leader>oj :FSBelow<cr>
-nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+nmap <silent> <leader>of :FSHere<cr>
+nmap <silent> <leader>ol :FSRight<cr>
+nmap <silent> <leader>oL :FSSplitRight<cr>
+nmap <silent> <leader>oh :FSLeft<cr>
+nmap <silent> <leader>oH :FSSplitLeft<cr>
+nmap <silent> <leader>ok :FSAbove<cr>
+nmap <silent> <leader>oK :FSSplitAbove<cr>
+nmap <silent> <leader>oj :FSBelow<cr>
+nmap <silent> <leader>oJ :FSSplitBelow<cr>
 
 " Ctag locations
 set tags+=~/.vim/tags/cpp
@@ -534,7 +507,7 @@ let OmniCpp_MayCompleteScope = 1
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " Automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
 " ZoomWin
