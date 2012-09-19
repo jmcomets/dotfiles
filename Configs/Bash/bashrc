@@ -41,7 +41,7 @@ fi
 # Usage: call f1 f2 ... fn
 #
 # TODO: add wildcard support
-function call()
+call()
 {
     for ((j = 1 ; j <= $# ; ++j))
     do
@@ -51,12 +51,34 @@ function call()
     done
 }
 
-# Do an `mkdir` immediately followed by a `cd`
-# Usage: same as `mkdir`
-function mkcd()
+# Author: Ole J
+# Date: 23.03.2008
+# License: Whatever
+#
+# Wraps a completion function.
+# make-completion-wrapper <actual completion function> <name of new func.>
+#                         <command name> <list supplied arguments>
+# Commands:
+# 	alias agi='apt-get install'
+# 	make-completion-wrapper _apt_get _apt_get_install apt-get install
+#
+# This defines a function called _apt_get_install (that's $2) that will complete
+# the 'agi' alias. (complete -F _apt_get_install agi)
+#
+make-completion-wrapper ()
 {
-    dir="$*";
-    mkdir -p "$dir" && cd "$dir";
+	local function_name="$2"
+	local arg_count=$(($#-3))
+	local comp_function_name="$1"
+	shift 2
+	local function="
+function $function_name {
+	((COMP_CWORD+=$arg_count))
+	COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
+	"$comp_function_name"
+	return 0
+}"
+	eval "$function"
 }
 
 # Environment variables
@@ -68,3 +90,10 @@ call /etc/bashrc /etc/bash_completion
 # Custom scripts
 call $BASHRTP/bash_profile $BASHRTP/bash_colors $BASHRTP/bash_aliases
 
+# Do an `mkdir` immediately followed by a `cd`
+# Usage: same as `mkdir`
+mkcd()
+{
+    dir="$*";
+    mkdir -p "$dir" && cd "$dir";
+}
