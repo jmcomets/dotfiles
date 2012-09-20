@@ -33,10 +33,11 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias h="cd ~"
 alias d="cd ~/Desktop"
-alias p="cd ~/Projects/"
+alias p="cd ~/Projects"
 alias dw="cd ~/Downloads"
 
 # Custom commands
+alias v="vim"
 alias g="gvim -f --remote-silent"
 alias mkdir="mkdir -p"
 alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
