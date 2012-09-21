@@ -31,6 +31,26 @@ class Surface
         //   - takes source for copy
         void copy(const Surface &);
 
+        // Explicit surface freeing
+        //   - frees and resets m_surface to 0
+        void free();
+
+        // Quick getter for SDL_Surface
+        inline SDL_Surface * to_sdl()
+            { return m_surface; }
+
+        // Best way of duplicating surface
+        SDL_Surface * duplicate();
+
+        // Quick swapping
+        SDL_Surface * swap(SDL_Surface *);
+
+        // Drawing methods
+
+        // Main blitting method
+        void blit_to(const Surface &, Rect * dstrect = 0,
+                Rect * srcrect = 0);
+
         // Getters / Setters:
         //   - w    => get width
         //   - h    => get height
@@ -62,11 +82,12 @@ class Surface
         // Constants
 
         // Surface creation (format) flags
-        static const Uint32 Flags;
+        static Uint32 Flags;
 
         // Display's Bits Per Pixels
-        static const Uint8 Bpp;
-    private:
+        static Uint8 Bpp;
+
+    protected:
         SDL_Surface * m_surface;
 };
 

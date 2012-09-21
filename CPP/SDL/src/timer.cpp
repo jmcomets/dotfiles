@@ -35,6 +35,8 @@ Timer & Timer::operator =(const Timer & timer)
     m_paused = timer.m_paused;
     m_start_ticks = timer.m_start_ticks;
     m_pause_ticks = timer.m_pause_ticks;
+
+    return *this;
 }
 
 // start the Timer:

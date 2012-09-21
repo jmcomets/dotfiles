@@ -1,8 +1,11 @@
 #include <color.h>
 
-Color::Color(Uint32 red, Uint32 green, Uint32 blue, Uint32 alpha):
-    r(red), g(green), b(blue), a(alpha)
+Color::Color(Uint8 r, Uint8 g, Uint8 b, Uint8 a):
+    m_alpha(a)
 {
+    m_color.r = r;
+    m_color.g = g;
+    m_color.b = b;
 }
 
 Color::~Color()

@@ -19,10 +19,10 @@
 // SDL_PREALLOC    Use preallocated memory
 //
 // Initialization of surfaces' flags
-const Uint32 Surface::Flags = SDL_SWSURFACE | SDL_RESIZABLE;
+Uint32 Surface::Flags = SDL_SWSURFACE;
 
 // Initialization of surfaces' default Bits Per Pixel
-const Uint8 Surface::Bpp = 32;
+Uint8 Surface::Bpp = 32;
 
 Surface::Surface(SDL_Surface * surface):
 	m_surface(surface)
@@ -33,7 +33,7 @@ Surface::Surface(int w, int h, const Color & mask):
 	m_surface(0)
 {
     m_surface = SDL_CreateRGBSurface(Surface::Flags, w, h,
-            Surface::Bpp, mask.r, mask.g, mask.b, mask.a);
+            Surface::Bpp, mask.r(), mask.g(), mask.b(), mask.a());
 }
 
 Surface::Surface(const Surface & s)
@@ -50,6 +50,42 @@ void Surface::copy(const Surface & s)
 {
     m_surface = SDL_ConvertSurface(s.m_surface, s.m_surface->format,
             Surface::Flags);
+}
+
+void Surface::free()
+{
+    if (m_surface != 0)
+    {
+        while (m_surface->refcount > 0)
+        {
+            SDL_FreeSurface(m_surface);
+        }
+        m_surface = 0;
+    }
+}
+
+SDL_Surface * Surface::duplicate()
+{
+    if (m_surface != 0)
+    {
+        m_surface->refcount++;
+    }
+    return m_surface;
+}
+
+SDL_Surface * Surface::swap(SDL_Surface * surface)
+{
+    SDL_Surface * tmp = m_surface;
+    m_surface = surface;
+    return tmp;
+}
+
+void Surface::blit_to(const Surface & dst, Rect * dstrect,
+        Rect * srcrect)
+{
+    SDL_Rect * dest = (dstrect != 0) ? dstrect->to_sdl() : 0;
+    SDL_Rect * crop = (srcrect != 0) ? srcrect->to_sdl() : 0;
+    SDL_BlitSurface(m_surface, crop, dst.m_surface, dest);
 }
 
 Surface & Surface::operator=(const Surface & s)

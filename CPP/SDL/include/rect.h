@@ -23,6 +23,8 @@ class Rect
             { return m_rect.w; }
         inline Uint16 h() const
             { return m_rect.h; }
+        inline SDL_Rect * to_sdl()
+            { return &m_rect; }
 
         // setters
         inline void setX(Sint16 x)
