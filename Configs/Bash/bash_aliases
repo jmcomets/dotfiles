@@ -35,12 +35,15 @@ alias h="cd ~"
 alias d="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias dw="cd ~/Downloads"
+alias doc="cd ~/Documents"
+alias img="cd ~/Images"
 
 # Custom commands
 alias v="vim"
 alias g="gvim -f --remote-silent"
 alias mkdir="mkdir -p"
 alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
+alias susu="sudo -s"
 
 # Quick display
 alias grep="grep --color=auto"

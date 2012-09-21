@@ -64,6 +64,11 @@ void Surface::free()
     }
 }
 
+void Surface::update()
+{
+    SDL_Flip(m_surface);
+}
+
 SDL_Surface * Surface::duplicate()
 {
     if (m_surface != 0)

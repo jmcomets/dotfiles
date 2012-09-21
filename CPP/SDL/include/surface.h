@@ -35,6 +35,9 @@ class Surface
         //   - frees and resets m_surface to 0
         void free();
 
+        // Update the surface's representation
+        void update();
+
         // Quick getter for SDL_Surface
         inline SDL_Surface * to_sdl()
             { return m_surface; }

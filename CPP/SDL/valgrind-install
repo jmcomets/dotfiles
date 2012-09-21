@@ -1,0 +1,17 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc6-dbg
+Suggested packages:
+  kcachegrind alleyoop valkyrie
+The following NEW packages will be installed:
+  libc6-dbg valgrind
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 31.7 MB of archives.
+After this operation, 118 MB of additional disk space will be used.
+Get:1 http://fr.archive.ubuntu.com/ubuntu/ precise/main libc6-dbg amd64 2.15-0ubuntu10 [2,876 kB]
+Get:2 http://fr.archive.ubuntu.com/ubuntu/ precise/main valgrind amd64 1:3.7.0-0ubuntu3 [28.8 MB]
+Fetched 29.0 MB in 1min 34s (309 kB/s)
+Selecting previously unselected package libc6-dbg.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%
