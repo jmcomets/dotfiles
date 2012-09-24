@@ -437,6 +437,8 @@ if has("autocmd")
 
     " C / C++
     autocmd BufNewFile,BufRead,BufEnter *.h,*.c,*.cpp,*.hpp setl ofu=omni#cpp#complete#Main
+    autocmd BufNewFile,BufRead,BufEnter *.h,*.cpp,*.hpp setl ft=cpp
+    autocmd BufNewFile,BufRead,BufEnter *.c setl ft=c
 
     " XML
     let xml_syntax_folding=1
