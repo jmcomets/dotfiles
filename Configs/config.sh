@@ -16,7 +16,7 @@
 ln -fs ~/Projects/Configs ~/Configs
 
 # Setup Vim file links
-ln -fs ~/Configs/Vim/ ~/.vim
+ln -fs ~/Configs/Vim ~/.vim
 ln -fs ~/.vim/vimrc ~/.vimrc
 
 # Setup Bash file links
