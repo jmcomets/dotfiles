@@ -36,7 +36,7 @@ alias d="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias dw="cd ~/Downloads"
 alias doc="cd ~/Documents"
-alias img="cd ~/Images"
+alias img="cd ~/Pictures"
 
 # Custom commands
 alias v="vim"
