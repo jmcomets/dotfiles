@@ -11,6 +11,8 @@ int main(int argc, char * argv[])
         Surface * screen = Window::create(200, 200,
                 Window::Resizable, 32);
         Timer timer;
+        ImageManager im("images");
+        Image * tree = im.load("tree.png");
         bool quit = false;
         while (!quit)
         {
@@ -22,6 +24,7 @@ int main(int argc, char * argv[])
                     quit = true;
                 }
             }
+            tree->blit_to(*screen);
             screen->update();
             timer.fps_delay();
         }

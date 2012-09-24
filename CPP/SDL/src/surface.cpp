@@ -1,4 +1,6 @@
 #include <surface.h>
+#include <iostream>
+using namespace std;
 
 // Flags available for surface format:
 //
@@ -56,10 +58,7 @@ void Surface::free()
 {
     if (m_surface != 0)
     {
-        while (m_surface->refcount > 0)
-        {
-            SDL_FreeSurface(m_surface);
-        }
+        SDL_FreeSurface(m_surface);
         m_surface = 0;
     }
 }
