@@ -1,6 +1,6 @@
 /**
  * @file vector.hpp
- * Contains utility::vector.
+ * Contains utilities::vector.
  *
  * @details
  * This generic vector (size and type) allows both flexibility and
@@ -9,23 +9,23 @@
  *
  * @author Jean-Marie Comets
  * @version 0.9
- * 
+ *
  * @section LICENSE
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @todo overload array-assignment operator (ex: v[2] = 5)
- * 
+ *
  */
 
 //-------------------- Personal quick reference --------------------//
@@ -39,7 +39,7 @@
  *  + vector(const vector &)
  *
  * Virtual destructor (does nothing).
- * 
+ *
  * Methods :
  *  + T coord(unsigned int) const
  *  + void setCoord(unsigned int, T)
@@ -68,7 +68,7 @@
  * 	+ "!=" : difference
  *
  * Extra dump() method implemented as well
- * 
+ *
  */
 
 //--------------------- Vector implementation ---------------------//
@@ -191,7 +191,7 @@ class vector
          *
          * @param v
          *
-         * @return 
+         * @return
          */
         inline bool equals(const vector & v) const
         {
@@ -250,7 +250,7 @@ class vector
          * @param c
          */
         inline void divide(T c)
-        {	
+        {
             if (c == 0)
             {
                 throw std::overflow_error("Cannot divide by zero");
@@ -469,7 +469,7 @@ template<class T, unsigned int N> inline void dump(const vector<T, N> & v)
 {
     using std::cout;
     using std::endl;
-    cout << "utility::vector at " << &v << " (";
+    cout << "utilities::vector at " << &v << " (";
     for (unsigned int i = 0; i < N; ++i)
     {
         cout << v[i];
