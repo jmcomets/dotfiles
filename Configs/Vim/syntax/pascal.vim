@@ -128,7 +128,7 @@ if !exists("pascal_no_functions")
 
   if exists("pascal_traditional")
     " These functions do not seem to be defined in Turbo Pascal
-    syn keyword pascalFunction	Get Page Put 
+    syn keyword pascalFunction	Get Page Put
   endif
 
   " ordinal functions
@@ -144,9 +144,9 @@ if !exists("pascal_traditional")
   syn keyword pascalStatement	constructor destructor implementation inherited
   syn keyword pascalStatement	interface unit uses
   syn keyword pascalModifier	absolute assembler external far forward inline
-  syn keyword pascalModifier	interrupt near virtual 
+  syn keyword pascalModifier	interrupt near virtual
   syn keyword pascalAcces	private public protected
-  syn keyword pascalStruct	object 
+  syn keyword pascalStruct	object
   syn keyword pascalOperator	shl shr xor
 
   syn region pascalPreProc	start="(\*\$"  end="\*)" contains=pascalTodo
@@ -191,7 +191,7 @@ if !exists("pascal_traditional")
     syn keyword pascalStruct	class dispinterface
     syn keyword pascalException	try except raise at on finally
     syn keyword pascalStatement	out
-    syn keyword pascalStatement	library package 
+    syn keyword pascalStatement	library package
     syn keyword pascalStatement	initialization finalization uses exports
     syn keyword pascalStatement	property out resourcestring threadvar
     syn keyword pascalModifier	contains
@@ -263,7 +263,7 @@ if !exists("pascal_traditional")
     syn keyword pascalConstant LightCyan LightRed LightMagenta Yellow White
     syn keyword pascalConstant Blink ScreenWidth ScreenHeight bw40
     syn keyword pascalConstant co40 bw80 co80 mono
-    syn keyword pascalPredefined TextChar 
+    syn keyword pascalPredefined TextChar
 
     " DOS unit
     syn keyword pascalFunction	AddDisk DiskFree DiskSize DosExitCode DosVersion
@@ -330,39 +330,38 @@ if version >= 508 || !exists("did_pascal_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink pascalAcces		pascalStatement
-  HiLink pascalBoolean		Boolean
-  HiLink pascalComment		Comment
-  HiLink pascalConditional	Conditional
-  HiLink pascalConstant		Constant
-  HiLink pascalDelimiter	Identifier
-  HiLink pascalDirective	pascalStatement
-  HiLink pascalException	Exception
-  HiLink pascalFloat		Float
-  HiLink pascalFunction		Function
-  HiLink pascalLabel		Label
+  HiLink pascalAcces		    pascalStatement
+  HiLink pascalBoolean		    Boolean
+  HiLink pascalComment		    Comment
+  HiLink pascalConditional	    Conditional
+  HiLink pascalConstant		    Constant
+  HiLink pascalDelimiter	    Identifier
+  HiLink pascalDirective	    pascalStatement
+  HiLink pascalException	    Exception
+  HiLink pascalFloat		    Float
+  HiLink pascalFunction		    Function
+  HiLink pascalLabel		    Label
   HiLink pascalMatrixDelimiter	Identifier
-  HiLink pascalModifier		Type
-  HiLink pascalNumber		Number
-  HiLink pascalOperator		Operator
-  HiLink pascalPredefined	pascalStatement
-  HiLink pascalPreProc		PreProc
-  HiLink pascalRepeat		Repeat
-  HiLink pascalSpaceError	Error
-  HiLink pascalStatement	Statement
-  HiLink pascalString		String
-  HiLink pascalStringEscape	Special
+  HiLink pascalModifier		    Type
+  HiLink pascalNumber		    Number
+  HiLink pascalOperator		    Operator
+  HiLink pascalPredefined	    pascalStatement
+  HiLink pascalPreProc		    PreProc
+  HiLink pascalRepeat		    Repeat
+  HiLink pascalSpaceError	    Error
+  HiLink pascalStatement	    Statement
+  HiLink pascalString		    String
+  HiLink pascalStringEscape	    Special
   HiLink pascalStringEscapeGPC	Special
-  HiLink pascalStringError	Error
-  HiLink pascalStruct		pascalStatement
+  HiLink pascalStringError	    Error
+  HiLink pascalStruct		    pascalStatement
   HiLink pascalSymbolOperator	pascalOperator
-  HiLink pascalTodo		Todo
-  HiLink pascalType		Type
-  HiLink pascalUnclassified	pascalStatement
-  "  HiLink pascalAsm		Assembler
-  HiLink pascalError		Error
-  HiLink pascalAsmKey		pascalStatement
-  HiLink pascalShowTab		Error
+  HiLink pascalTodo		        Todo
+  HiLink pascalType		        Type
+  HiLink pascalUnclassified	    pascalStatement
+  HiLink pascalError		    Error
+  HiLink pascalAsmKey		    pascalStatement
+  HiLink pascalShowTab		    Error
 
   delcommand HiLink
 endif

@@ -6,7 +6,7 @@ CXX=g++
 SRC=.
 INC=../include
 BIN=../bin
-CXXFLAGS=-c -O1 -pedantic -W -Wall -I$(INC)
+CXXFLAGS=-c -O1 -pedantic -W -Wall -I$(INC) -g
 CPP_FILES=$(wildcard *.cpp)
 OBJ_FILES=$(CPP_FILES:.cpp=.o)
 
