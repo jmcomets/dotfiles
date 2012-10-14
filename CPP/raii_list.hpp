@@ -20,7 +20,7 @@ namespace utilities
                 delete m_data;
             }
 
-            inline void add(data_t * data)
+            void add(data_t * data)
             {
                 if (m_data == data)
                 {
@@ -43,6 +43,7 @@ namespace utilities
             {
                 return m_next != 0;
             }
+
         private:
             raii_list * m_next;
             data_t * m_data;

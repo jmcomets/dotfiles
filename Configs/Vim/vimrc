@@ -428,6 +428,18 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 nnoremap <silent> <leader>bd :Bclose!<cr>
 
+" Folding for JavaScript
+" source: http://amix.dk/blog/post/19132
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -445,6 +457,7 @@ if has("autocmd")
 
     " JSON / JavaScript
     autocmd BufNewFile,BufRead *.json set ft=javascript
+    autocmd FileType javascript call JavaScriptFold()
 
     " Pascal
     autocmd BufNewFile,BufRead *.pas,*.PAS set ft=pascal
@@ -493,7 +506,7 @@ nmap <silent> <leader>oJ :FSSplitBelow<cr>
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/gl
 set tags+=~/.vim/tags/sdl
-set tags+=~/.vim/tags/qt4
+set tags+=~/.vim/tags/sfml
 
 " Build Ctags with Ctrl-F12
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>

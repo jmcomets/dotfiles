@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='ftp://dev-jmc-consultant@store.olympe.in/'
 let g:netrw_dirhist_2='/home/jmcomets/Projects/Configs/Bash'
+let g:netrw_dirhist_3='/usr/local/include/SFML/Window'
+let g:netrw_dirhist_4='/home/jmcomets'

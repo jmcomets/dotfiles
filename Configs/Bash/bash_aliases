@@ -21,26 +21,14 @@ alias upgrade="sudo apt-get upgrade --show-upgraded"
 alias clean="sudo apt-get clean"
 alias search="sudo dpkg -l"
 
-# Setup completion for aliases
-#
-# install -> apt-get install
-make-completion-wrapper _apt_get _install apt-get install
-complete -o filenames -F _install install
-
 # Navigation
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
-alias h="cd ~"
-alias d="cd ~/Desktop"
-alias p="cd ~/Projects"
 alias dw="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias img="cd ~/Images"
-
-# Custom commands
-alias v="vim"
-alias g="gvim -f --remote-silent"
+alias mk="make"
 alias mkdir="mkdir -p"
 alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
 alias susu="sudo -s"
@@ -52,10 +40,30 @@ alias ls="ls -X --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
-alias l="ls"
 
 # Git aliases
 alias gc="git clone"
 alias gr="git reset"
 alias ga="git add"
 alias gaa="git add ."
+
+# One-key commands
+alias h="cd ~"
+alias d="cd ~/Desktop"
+alias p="cd ~/Projects"
+alias e="cd ~/Eclipse"
+alias c="clear"
+alias v="vim"
+alias g="gvim -f --remote-silent"
+alias l="ls"
+alias t="tree"
+
+# Setup completion for aliases
+#
+# install -> apt-get install
+make-completion-wrapper _apt_get _install apt-get install
+complete -o filenames -F _install install
+
+# mk -> make
+make-completion-wrapper _make _mk make
+complete -o filenames -F _mk mk
