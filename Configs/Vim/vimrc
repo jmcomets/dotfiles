@@ -183,11 +183,14 @@ syntax enable
 set background=dark
 
 " Colorschemes
-if (has("gui_running"))
-    colorscheme wombat
-else
-    colorscheme mustang
-endif
+colorscheme jellybeans
+"if (has("gui_running"))
+    "colorscheme wombat
+    ""colorscheme jellybeans
+"else
+    "colorscheme mustang
+    ""colorscheme ir_black
+"endif
 
 " Editing font
 "set gfn=Consolas\ 12
@@ -216,6 +219,7 @@ if &term =~ "xterm"
         set t_Sb=<Esc>[4%dm
     endif
 endif
+
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -477,7 +481,7 @@ imap <F4> <C-o>:TlistToggle<cr>
 
 " Powerline
 set laststatus=2
-set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+set gfn=Deja\ Vu\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
 
 " NerdTree
