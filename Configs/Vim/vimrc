@@ -184,7 +184,7 @@ set background=dark
 
 " Colorschemes
 colorscheme jellybeans
-"if (has("gui_running"))
+"if has("gui_running")
     "colorscheme wombat
     ""colorscheme jellybeans
 "else
@@ -193,12 +193,14 @@ colorscheme jellybeans
 "endif
 
 " Editing font
-"set gfn=Consolas\ 12
+set gfn=Droid\ Sans\ Mono\ 11
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set go-=r
+    set go-=R
     set go-=l
+    set go-=L
     set go-=m
     set go-=T
     set go+=e
@@ -241,14 +243,23 @@ map <c-space> ?
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
+try
+    " Specify the behavior when switching between buffers
+    set switchbuf=useopen,usetab,newtab
+
+    " Tab display
+    set stal=0
+catch
+endtry
 
 " Switch tabs quickly
 map <C-S-tab> :tabprevious<cr>
 map <C-tab> :tabnext<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -256,13 +267,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-    set switchbuf=useopen,usetab,newtab
-    set stal=2
-catch
-endtry
 
 if has("autocmd")
     " Delete trailing white-space on save
@@ -476,12 +480,11 @@ let Tlist_Compact_Format = 1
 let Tlist_File_Fold_Auto_Close = 0
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Use_Right_Window = 1
-nmap <F4> :TlistToggle<cr>
-imap <F4> <C-o>:TlistToggle<cr>
+nmap <F4> :Tlist<cr>
+imap <F4> <C-o><F4>
 
 " Powerline
 set laststatus=2
-set gfn=Deja\ Vu\ Sans\ Mono\ for\ Powerline\ 11
 let g:Powerline_symbols = 'fancy'
 
 " NerdTree

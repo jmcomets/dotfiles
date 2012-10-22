@@ -28,7 +28,6 @@ alias ....="cd ../../../"
 alias dw="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias img="cd ~/Images"
-alias mk="make"
 alias mkdir="mkdir -p"
 alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
 alias susu="sudo -s"
@@ -63,7 +62,3 @@ alias t="tree"
 # install -> apt-get install
 make-completion-wrapper _apt_get _install apt-get install
 complete -o filenames -F _install install
-
-# mk -> make
-make-completion-wrapper _make _mk make
-complete -o filenames -F _mk mk
