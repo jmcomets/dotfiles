@@ -12,16 +12,16 @@
 # UNIX timestamp concatenated with nanoseconds
 T="$(date +%s%N)"
 
+# Display help:
+if [[ $* = *-h* ]]; then
+    echo -e "Ubuntu apps installation script.\nArguments:\n-h : display this help\n-i : confirm before each operation\n-s : shutdown after installing apps\n\nThis script must be run as root!"
+    exit 0
+fi
+
 # Check for root user:
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!" 1>&2
    exit 1
-fi
-
-# Display help:
-if [[ $* = *-h* ]]; then
-    echo -e "Ubuntu apps installation script.\nArguments:\n-h : display this help\n-i : confirm befor each operation\n-s : shutdown after installing apps"
-    exit 0
 fi
 
 # Shutdown flag:
@@ -42,22 +42,22 @@ fi
 echo "Beginning repository updating..."
 
 # For indicator-sysmonitor
-add-apt-repository $confirm ppa:alexeftimie/ppa 
+add-apt-repository $confirm ppa:alexeftimie/ppa
 
 # For gnome-shell-extensions
-add-apt-repository $confirm ppa:ferramroberto/gnome3 
+add-apt-repository $confirm ppa:ferramroberto/gnome3
 
 # For gimp
-add-apt-repository $confirm ppa:otto-kesselgulasch/gimp 
+add-apt-repository $confirm ppa:otto-kesselgulasch/gimp
 
-# Update repositories and upgrade 
+# Update repositories and upgrade
 apt-get $confirm update
 apt-get $confirm upgrade
 
 # Install apps, currently:
-#   - ubuntu-restricted-extras 
-#   - build-essential 
-#   - cmake 
+#   - ubuntu-restricted-extras
+#   - build-essential
+#   - cmake
 #   - gnome-tweak-tool
 #   - vlc
 #   - compizconfig-settings-manager

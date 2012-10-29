@@ -18,13 +18,13 @@ namespace utilities
             struct invalid_key: public exception {};
             struct empty_tree: public exception {};
 
-            rb_tree(): m_root(0)
+            rb_tree(): _root(0)
             {
             }
 
             virtual ~rb_tree()
             {
-                delete m_root;
+                delete _root;
             }
 
             struct node
@@ -52,22 +52,22 @@ namespace utilities
 
             inline const value_t & get(const key_t & key) const
             {
-                return get(key, m_root);
+                return get(key, _root);
             }
 
             inline const value_t & max() const
             {
-                return max(m_root);
+                return max(_root);
             }
 
             inline const value_t & min() const
             {
-                return min(m_root);
+                return min(_root);
             }
 
             inline const key_t & min_sup(const key_t & key) const
             {
-                const key_t * k = min_sup(key, m_root);
+                const key_t * k = min_sup(key, _root);
                 if (!k)
                 {
                     throw invalid_key();
@@ -77,32 +77,32 @@ namespace utilities
 
             inline void insert(const key_t & key, const value_t & val)
             {
-                insert(key, val, m_root);
+                insert(key, val, _root);
             }
 
             inline bool empty() const
             {
-                return !m_root;
+                return !_root;
             }
 
             inline void preorder_map(void (*f)(const key_t &, const value_t &))
             {
-                preorder_map(f, m_root);
+                preorder_map(f, _root);
             }
 
             inline void inorder_map(void (*f)(const key_t &, const value_t &))
             {
-                inorder_map(f, m_root);
+                inorder_map(f, _root);
             }
 
             inline void postorder_map(void (*f)(const key_t &, const value_t &))
             {
-                postorder_map(f, m_root);
+                postorder_map(f, _root);
             }
 
             inline const value_t & operator[](const key_t & key) const
             {
-                return get(key, m_root);
+                return get(key, _root);
             }
 
         protected:
@@ -134,7 +134,7 @@ namespace utilities
                 right->parent = root->parent;
                 if (!root->parent)
                 {
-                    m_root = right;
+                    _root = right;
                 }
                 else if (root == root->parent->left)
                 {
@@ -159,7 +159,7 @@ namespace utilities
                 left->parent = root->parent;
                 if (!root->parent)
                 {
-                    m_root = left;
+                    _root = left;
                 }
                 else if (root == root->parent->right)
                 {
@@ -342,7 +342,7 @@ namespace utilities
                 }
             }
 
-            node * m_root;
+            node * _root;
 
     }; // class rb_tree
 

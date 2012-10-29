@@ -13,6 +13,7 @@
 "   - Plugin settings
 "   - Colors and Fonts
 "   - Moving around, tabs and buffers
+"   - Searching
 "   - Editing mappings
 "   - Spell checking
 "   - Various key remaps
@@ -76,22 +77,6 @@ set hid
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Center screen at cursor when searching
-nnoremap n nzz
-nnoremap } }zz
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -182,15 +167,16 @@ syntax enable
 " Dark backgrounds are better
 set background=dark
 
-" Colorschemes
+" Colorschemes:
+"  - jellybeans
+"  - obsidian
+"  - adrian
+"  - wombat
+"  - jellybeans
+"  - mustang
+"  - ir_black
+"  - tesla
 colorscheme jellybeans
-"if has("gui_running")
-    "colorscheme wombat
-    ""colorscheme jellybeans
-"else
-    "colorscheme mustang
-    ""colorscheme ir_black
-"endif
 
 " Editing font
 set gfn=Droid\ Sans\ Mono\ 11
@@ -236,12 +222,15 @@ set ffs=unix,dos,mac
 nnoremap j gj
 nnoremap k gk
 
-" Map <Spaceto / (search) and Ctrl-<Spaceto ? (backwards search)
-map <space> /
-map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" Show numbering (absolute / relative)
+function! ToggleRelNumbering()
+    if &number
+        set relativenumber
+    else
+        set number
+    endif
+endfunction
+nmap <leader>n :call ToggleRelNumbering()<cr>
 
 try
     " Specify the behavior when switching between buffers
@@ -283,6 +272,39 @@ endif
 "set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Searching
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ignore case
+set ignorecase
+
+" Try to be smart about cases
+set smartcase
+
+" Highlight results
+set hlsearch
+
+" Makes search act like in modern browsers
+set incsearch
+
+" Center screen at cursor
+nnoremap n nzz
+nnoremap } }zz
+
+" Map Space to "/" and Ctrl-Space to "?"
+nmap <space> /
+nmap <c-space> ?
+
+" Disable highlight when <leader><cr> is pressed
+nmap <silent> <leader><cr> :noh<cr>
+
+" Find current word in new window
+nmap <leader>sw :let @/=expand("<cword>")<bar>split<bar>normal n<cr>
+nmap <leader>sW :let @/='\<'.expand("<cword>").'\>'<bar>split<bar>normal n<cr>
+
+" Quick search-replace
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move a line of text using ALT+[jk]
@@ -292,9 +314,6 @@ inoremap <M-j> <Esc>:m .+1<cr>==gi
 inoremap <M-k> <Esc>:m .-2<cr>==gi
 vnoremap <M-j> :m '>+1<cr>gv=gv
 vnoremap <M-k> :m '<-2<cr>gv=gv
-
-" Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -484,8 +503,8 @@ nmap <F4> :Tlist<cr>
 imap <F4> <C-o><F4>
 
 " Powerline
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
+"set laststatus=2
+"let g:Powerline_symbols = 'fancy'
 
 " NerdTree
 map <silent> <F3> :NERDTreeToggle<cr>

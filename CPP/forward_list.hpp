@@ -32,13 +32,13 @@ template<class T> class forward_list
         class iterator
         {
             public:
-                iterator(node * n = 0): item(n)
+                iterator(node * n = 0): _item(n)
                 {
                 }
 
                 iterator(const iterator & it)
                 {
-                    item = it.item;
+                    _item = it._item;
                 }
 
                 ~iterator()
@@ -49,34 +49,34 @@ template<class T> class forward_list
                 {
                     if (&it != this)
                     {
-                        item = it.item;
+                        _item = it._item;
                     }
                     return *this;
                 }
 
                 bool operator==(const iterator & it) const
                 {
-                    return item == it.item;
+                    return _item == it._item;
                 }
 
                 bool operator!=(const iterator & it) const
                 {
-                    return item != it.item;
+                    return _item != it._item;
                 }
 
                 T & operator*() const
                 {
-                    return item->value;
+                    return _item->value;
                 }
 
                 iterator & operator++()
                 {
-                    item = item->next;
+                    _item = _item->next;
                     return *this;
                 }
 
             private:
-                node * item;
+                node * _item;
         };
 
         void append(const T & val)
@@ -88,9 +88,9 @@ template<class T> class forward_list
             }
             if (!m_head)
             {
-                m_head = tail;
+               _head = tail;
             }
-            m_tail = tail;
+            _tail = tail;
         }
 
         void prepend(const T & val)
@@ -102,9 +102,9 @@ template<class T> class forward_list
             }
             if (!m_tail)
             {
-                m_tail = head;
+                _tail = head;
             }
-            m_head = head;
+            _head = head;
         }
 
         iterator begin() const
