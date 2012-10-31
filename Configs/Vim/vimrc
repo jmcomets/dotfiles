@@ -3,20 +3,17 @@
 "       Jean-Marie Comets
 "
 " Version:
-"       1.8 - 29/10/2012 (22:25)
+"       1.8 - 29/10/2012 (22:49)
 "
 " Sections:
 "   - General
 "   - Vim user interface
 "   - Status line
-"   - Files and backups
 "   - Text, tab and indent related
 "   - Plugin settings
 "   - Colors and Fonts
 "   - Moving around, tabs and buffers
 "   - Searching
-"   - Editing mappings
-"   - Spell checking
 "   - Various key remaps
 "   - Misc
 "   - Helper functions
@@ -44,6 +41,11 @@ let g:mapleader = ","
 " Fast saving
 nnoremap <leader>w :w!<cr>
 
+" Turn backup off, since most stuff is in svn / git anyway...
+set nobackup
+set nowb
+set noswapfile
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,7 +62,7 @@ set wildmode=longest,list
 set wildignore=*.o,*~,*.pyc,*.gch
 
 " Compatible options
-set cpo+=$
+set cpoptions+=$
 
 " Show line numbers
 set number
@@ -111,46 +113,15 @@ set novisualbell
 set t_vb=
 set tm=500
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Reset everything
-set statusline=
+" Hide the mouse pointer while typing
+set mousehide
 
-" Buffer number
-set statusline+=%1*\ %n\ %*
+" Always put a status line in, even if there is only one window
+set laststatus=2
 
-" File format
-set statusline+=%5*%{&ff}%*
-
-" File type
-set statusline+=%3*%y%*
-
-" Full path
-set statusline+=%4*\ %<%F%*
-
-" Modified flag
-set statusline+=%2*%m%*
-
-" Current line
-set statusline+=%1*%=%5l%*
-
-" Total lines
-set statusline+=%2*/%L%*
-
-" Virtual column number
-set statusline+=%1*%4v\ %*
-
-" Character under cursor
-set statusline+=%2*0x%04B\ %*
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+" Status line stolen from Derek Wyatt's configuration:
+"  - found here : "https://github.com/derekwyatt/vim-config/blob/master/vimrc"
+set statusline=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -166,19 +137,15 @@ set sw=4
 set ts=4
 
 " Linebreak on 100 characters
-set lbr
+set linebreak
 set tw=100
 
 " Virtual edit (awesome)
-set ve=all
+set virtualedit=all
 
-" Auto indent
-set ai
-
-" Smart indent
-set si
-
-" Wrap lines
+" Explicit FTW
+set autoindent
+set smartindent
 set wrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,18 +168,17 @@ syntax enable
 set background=dark
 
 " Colorschemes:
-"  - jellybeans
-"  - obsidian
-"  - adrian
-"  - wombat
-"  - jellybeans
-"  - mustang
-"  - ir_black
-"  - tesla
-colorscheme ir_black
+"  1 - jellybeans
+"  2 - obsidian
+"  3 - mustang
+"  4 - wombat
+"  5 - tesla
+"  6 - adrian
+"  7 - ir_black
+colorscheme obsidian
 
 " Editing font
-set gfn=Droid\ Sans\ Mono\ 11
+set guifont=Droid\ Sans\ Mono\ 11
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -254,6 +220,7 @@ set ffs=unix,dos,mac
 nnoremap j gj
 nnoremap k gk
 
+" Toggle between absolute / relative line numbering
 nmap <leader>n :call ToggleRelNumbering()<cr>
 
 try
@@ -295,8 +262,13 @@ if has("autocmd")
                 \ endif
 endif
 
-" Remember info about open buffers on close
-"set viminfo^=%
+" Move a line of text using ALT+[jk]
+nnoremap <M-j> :m .+1<cr>==
+nnoremap <M-k> :m .-2<cr>==
+inoremap <M-j> <Esc>:m .+1<cr>==gi
+inoremap <M-k> <Esc>:m .-2<cr>==gi
+vnoremap <M-j> :m '>+1<cr>gv=gv
+vnoremap <M-k> :m '<-2<cr>gv=gv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Searching
@@ -318,8 +290,8 @@ nnoremap n nzz
 nnoremap } }zz
 
 " Map Space to "/" and Ctrl-Space to "?"
-nmap <space> /
-nmap <c-space> ?
+"nmap <space> /
+"nmap <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 nmap <silent> <leader><cr> :noh<cr>
@@ -329,36 +301,13 @@ nmap <leader>sw :let @/=expand("<cword>")<bar>split<bar>normal n<cr>
 nmap <leader>sW :let @/='\<'.expand("<cword>").'\>'<bar>split<bar>normal n<cr>
 
 " Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Move a line of text using ALT+[jk]
-nnoremap <M-j> :m .+1<cr>==
-nnoremap <M-k> :m .-2<cr>==
-inoremap <M-j> <Esc>:m .+1<cr>==gi
-inoremap <M-k> <Esc>:m .-2<cr>==gi
-vnoremap <M-j> :m '>+1<cr>gv=gv
-vnoremap <M-k> :m '<-2<cr>gv=gv
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Various key remaps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap Vim 0 to first non-blank character
-map 0 ^
+nmap 0 ^
 
 " Exchange "`" and "'"
 nnoremap ' `
@@ -403,6 +352,9 @@ nmap <leader>so :so $MYVIMRC<cr>
 
 " Toggle paste mode on and off
 nmap <leader>pp :setlocal paste!<cr>
+
+" Toggle spell-checking
+nmap <leader>ss :setlocal spell!<cr>
 
 " Quick make command
 map <F8> :make<cr>
@@ -499,14 +451,17 @@ if has("autocmd")
     autocmd FileType make setl noet
 
     " C / C++
-    autocmd BufNewFile,BufRead,BufEnter *.c setl ft=c
-    autocmd BufNewFile,BufRead,BufEnter *.h,*.cpp,*.hpp setl ft=cpp
+    autocmd BufNewFile,BufRead,BufEnter *.c setl filetype=c
+    autocmd BufNewFile,BufRead,BufEnter *.h,*.cpp,*.hpp setl filetype=cpp
 
     " JSON / JavaScript
-    autocmd BufNewFile,BufRead *.json set ft=javascript
+    autocmd BufNewFile,BufRead *.json set filetype=javascript
 
     " Pascal
-    autocmd BufNewFile,BufRead *.pas,*.PAS set ft=pascal
+    autocmd BufNewFile,BufRead *.pas,*.PAS set filetype=pascal
+
+    " Markdown
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -531,3 +486,7 @@ nmap <leader>gd :Gdiff<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gw :Gwrite<cr>
+
+" Gist
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1

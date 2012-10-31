@@ -1,30 +1,32 @@
-#ifndef RB_TREE_H_INCLUDED_
-#define RB_TREE_H_INCLUDED_
+#ifndef MAP_H_INCLUDED_
+#define MAP_H_INCLUDED_
 
 namespace utilities
 {
 
-    template <class key_t> bool less(const key_t & k1, const key_t & k2)
+    template <class K>
+        bool less(const K & k1, const K & k2)
     {
         return k1 < k2;
     }
 
-    template <class key_t, class value_t, bool (*less)(const key_t &, const key_t &) = less<key_t> > class rb_tree
+    template <class K, class V, bool (*less)(const K &, const K &) = less<K> >
+        class map
     {
         public:
-            typedef key_t key_type;
-            typedef value_t value_type;
+            typedef K key_t;
+            typedef V value_t;
             struct exception {};
             struct invalid_key: public exception {};
             struct empty_tree: public exception {};
 
-            rb_tree(): _root(0)
+            map(): root_(nullptr)
             {
             }
 
-            virtual ~rb_tree()
+            virtual ~map()
             {
-                delete _root;
+                delete root_;
             }
 
             struct node
@@ -32,17 +34,17 @@ namespace utilities
                 node * parent;
                 node * left;
                 node * right;
-                key_t key;
-                value_t value;
+                K key;
+                V value;
                 bool red;
 
-                node(const key_t & k, const value_t & v, node * p = 0):
-                    parent(p), left(0), right(0),
+                node(const K & k, const V & v, node * p = nullptr):
+                    parent(p), left(nullptr), right(nullptr),
                     key(k), value(v), red(true)
                 {
                 }
 
-                ~node()
+                virtual ~node()
                 {
                     delete left;
                     delete right;
@@ -50,65 +52,65 @@ namespace utilities
 
             }; // struct node
 
-            inline const value_t & get(const key_t & key) const
+            inline const V & get(const K & key) const
             {
-                return get(key, _root);
+                return get(key, root_);
             }
 
-            inline const value_t & max() const
+            inline const V & max() const
             {
-                return max(_root);
+                return max(root_);
             }
 
-            inline const value_t & min() const
+            inline const V & min() const
             {
-                return min(_root);
+                return min(root_);
             }
 
-            inline const key_t & min_sup(const key_t & key) const
+            inline const K & min_sup(const K & key) const
             {
-                const key_t * k = min_sup(key, _root);
-                if (!k)
+                const K * k = min_sup(key, root_);
+                if (k == nullptr)
                 {
                     throw invalid_key();
                 }
                 return *k;
             }
 
-            inline void insert(const key_t & key, const value_t & val)
+            inline void insert(const K & key, const V & val)
             {
-                insert(key, val, _root);
+                insert(key, val, root_);
             }
 
             inline bool empty() const
             {
-                return !_root;
+                return root_ != nullptr;
             }
 
-            inline void preorder_map(void (*f)(const key_t &, const value_t &))
+            inline void preorder(void (*f)(const K &, const V &))
             {
-                preorder_map(f, _root);
+                preorder(f, root_);
             }
 
-            inline void inorder_map(void (*f)(const key_t &, const value_t &))
+            inline void inorder(void (*f)(const K &, const V &))
             {
-                inorder_map(f, _root);
+                inorder(f, root_);
             }
 
-            inline void postorder_map(void (*f)(const key_t &, const value_t &))
+            inline void postorder(void (*f)(const K &, const V &))
             {
-                postorder_map(f, _root);
+                postorder(f, root_);
             }
 
-            inline const value_t & operator[](const key_t & key) const
+            inline const V & operator[](const K & key) const
             {
-                return get(key, _root);
+                return get(key, root_);
             }
 
         protected:
             node * grandparent(node * root)
             {
-                return (root && root->parent) ? root->parent->parent : 0;
+                return (root && root->parent) ? root->parent->parent : nullptr;
             }
 
             node * uncle(node * root)
@@ -119,7 +121,7 @@ namespace utilities
                 }
                 else
                 {
-                    return 0;
+                    return nullptr;
                 }
             }
 
@@ -132,9 +134,9 @@ namespace utilities
                     right->left->parent = root;
                 }
                 right->parent = root->parent;
-                if (!root->parent)
+                if (root->parent == nullptr)
                 {
-                    _root = right;
+                    root_ = right;
                 }
                 else if (root == root->parent->left)
                 {
@@ -157,9 +159,9 @@ namespace utilities
                     left->right->parent = root;
                 }
                 left->parent = root->parent;
-                if (!root->parent)
+                if (root->parent == nullptr)
                 {
-                    _root = left;
+                    root_ = left;
                 }
                 else if (root == root->parent->right)
                 {
@@ -173,9 +175,9 @@ namespace utilities
                 root->parent = left;
             }
 
-            const value_t & get(const key_t & key, node * root) const
+            const V & get(const K & key, node * root) const
             {
-                if (!root)
+                if (root == nullptr)
                 {
                     throw invalid_key();
                 }
@@ -193,9 +195,9 @@ namespace utilities
                 }
             }
 
-            const value_t & min(node * root) const
+            const V & min(node * root) const
             {
-                if (!root)
+                if (root == nullptr)
                 {
                     throw empty_tree();
                 }
@@ -209,9 +211,9 @@ namespace utilities
                 }
             }
 
-            const value_t & max(node * root) const
+            const V & max(node * root) const
             {
-                if (!root)
+                if (root == nullptr)
                 {
                     throw empty_tree();
                 }
@@ -225,16 +227,16 @@ namespace utilities
                 }
             }
 
-            const key_t * min_sup(const key_t & key, node * root) const
+            const K * min_sup(const K & key, node * root) const
             {
-                if (!root)
+                if (root == nullptr)
                 {
-                    return 0;
+                    return nullptr;
                 }
                 if (less(key, root->key))
                 {
-                    const key_t * k = min_sup(key, root->left);
-                    return (!k || less(*k, key)) ? &root->key : k;
+                    const K * k = min_sup(key, root->left);
+                    return (k == nullptr || less(*k, key)) ? &root->key : k;
                 }
                 else if (less(root->key, key))
                 {
@@ -247,9 +249,9 @@ namespace utilities
             }
 
         private:
-            void insert(const key_t & key, const value_t & val, node *& root, node * parent = 0)
+            void insert(const K & key, const V & val, node *& root, node * parent = nullptr)
             {
-                if (!root)
+                if (root == nullptr)
                 {
                     root = new node(key, val, parent);
                     rebalance(root);
@@ -268,11 +270,11 @@ namespace utilities
             {
                 node * u = uncle(root);
                 node * g = grandparent(root);
-                if (!root->parent) // case 1
+                if (root->parent == nullptr) // case 1
                 {
                     root->red = false;
                 }
-                else if (!root->parent->red) // case 2
+                else if (root->parent->red == nullptr) // case 2
                 {
                     return;
                 }
@@ -312,7 +314,7 @@ namespace utilities
                 }
             }
 
-            void preorder_map(void (*f)(const key_t &, const value_t &), node * root)
+            void preorder_map(void (*f)(const K &, const V &), node * root)
             {
                 if (root)
                 {
@@ -322,7 +324,7 @@ namespace utilities
                 }
             }
 
-            void inorder_map(void (*f)(const key_t &, const value_t &), node * root)
+            void inorder_map(void (*f)(const K &, const V &), node * root)
             {
                 if (root)
                 {
@@ -332,20 +334,20 @@ namespace utilities
                 }
             }
 
-            void postorder_map(void (*f)(const key_t &, const value_t &), node * root)
+            void postorder(void (*f)(const K &, const V &), node * root)
             {
                 if (root)
                 {
-                    postorder_map(f, root->left);
-                    postorder_map(f, root->right);
+                    postorder(f, root->left);
+                    postorder(f, root->right);
                     (*f)(root->key, root->value);
                 }
             }
 
-            node * _root;
+            node * root_;
 
-    }; // class rb_tree
+    }; // class map
 
 } // namespace utilities
 
-#endif // RB_TREE_H_INCLUDED_
+#endif // MAP_H_INCLUDED_
