@@ -49,8 +49,8 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j / k
-set so=7
+" Set 5 lines to the cursor - when moving vertically using j / k
+set scrolloff=5
 
 " Turn on the WiLd menu
 set wmnu
@@ -90,7 +90,7 @@ set magic
 set showmatch
 
 " Fold settings
-set foldmethod=syntax
+set foldmethod=indent
 
 " Default completing function
 set omnifunc=syntaxcomplete#Complete
@@ -105,13 +105,17 @@ set nofoldenable
 set foldlevel=1
 
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set timeoutlen=500
+
+" Show tabs / spaces
+"set list listchars=tab:>-,trail:~,extends:>,precedes:<
+set nolist
 
 " Hide the mouse pointer while typing
 set mousehide
@@ -253,8 +257,6 @@ nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nmap <silent> <leader>bd :Bclose!<cr>
 
 if has("autocmd")
-    " Delete trailing white-space on save
-    autocmd BufWritePre * :%s/\s\+$//e
 
     " Return to last edit position when opening files
     autocmd BufReadPost *
@@ -371,21 +373,21 @@ endif
 let loaded_bclose = 1
 if !exists('bclose_multiple')
     let bclose_multiple = 1
-endif
+endif "}}}
 
 " Display an error message.
-function! s:Warn(msg)
+function! s:Warn(msg) "{{{
     echohl ErrorMsg
     echomsg a:msg
     echohl NONE
-endfunction
+endfunction "}}}
 
 " Command ':Bclose' executes ':bd' to delete buffer in current window.
 " The window will show the alternate buffer (Ctrl-^) if it exists,
 " or the previous buffer (:bp), or a blank buffer if no previous.
 " Command ':Bclose!' is the same, but executes ':bd!' (discard changes).
 " An optional argument can specify which buffer to close (name or number).
-function! s:Bclose(bang, buffer)
+function! s:Bclose(bang, buffer) "{{{
     if empty(a:buffer)
         let btarget = bufnr('%')
     elseif a:buffer =~ '^\d\+$'
@@ -432,24 +434,24 @@ function! s:Bclose(bang, buffer)
     endfor
     execute 'bdelete'.a:bang.' '.btarget
     execute wcurrent.'wincmd w'
-endfunction
+endfunction "}}}
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
 " Show numbering (absolute / relative)
-function! ToggleRelNumbering()
+function! ToggleRelNumbering() "{{{
     if &number
         set relativenumber
     else
         set number
     endif
-endfunction
+endfunction "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FileType settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
     " Makefile
-    autocmd FileType make setl noet
+    autocmd FileType make setl noexpandtab
 
     " C / C++
     autocmd BufNewFile,BufRead,BufEnter *.c setl filetype=c
@@ -463,6 +465,9 @@ if has("autocmd")
 
     " Markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+    " Python
+    autocmd BufWritePre *.py :%s/\s\+$//e
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
