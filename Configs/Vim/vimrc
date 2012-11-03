@@ -222,6 +222,7 @@ nnoremap k gk
 
 " Toggle between absolute / relative line numbering
 nmap <leader>n :call ToggleRelNumbering()<cr>
+vmap <leader>n :call ToggleRelNumbering()<cr>gv
 
 try
     " Specify the behavior when switching between buffers
@@ -319,8 +320,8 @@ noremap ; :
 " Map "²" to "~" (quicker), and don't go forward one character
 nmap ² ~h
 
-" Resolve inconsistency between "Y" (yanks line)
-" and "D" (deletes til end of line)
+" Resolve inconsistency between "Y" (line),
+"   and "D" (til end of line)
 "nmap D dd
 nmap Y y$
 
