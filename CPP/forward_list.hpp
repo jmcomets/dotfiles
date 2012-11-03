@@ -7,11 +7,11 @@ namespace utilities
 template<class T> class forward_list
 {
     public:
-        forward_list(): m_head(0), m_tail(0)
+        forward_list(): head_(nullptr), tail_(nullptr)
         {
         }
 
-        ~forward_list()
+        virtual ~forward_list()
         {
         }
 
@@ -20,7 +20,7 @@ template<class T> class forward_list
             node * next;
             T value;
 
-            node(const T & val): next(0), value(val)
+            node(const T & val): next(nullptr), value(val)
             {
             }
 
@@ -32,13 +32,13 @@ template<class T> class forward_list
         class iterator
         {
             public:
-                iterator(node * n = 0): _item(n)
+                iterator(node * n = nullptr): item_(n)
                 {
                 }
 
                 iterator(const iterator & it)
                 {
-                    _item = it._item;
+                    item_ = it.item_;
                 }
 
                 ~iterator()
@@ -49,44 +49,44 @@ template<class T> class forward_list
                 {
                     if (&it != this)
                     {
-                        _item = it._item;
+                        item_ = it.item_;
                     }
                     return *this;
                 }
 
                 bool operator==(const iterator & it) const
                 {
-                    return _item == it._item;
+                    return item_ == it.item_;
                 }
 
                 bool operator!=(const iterator & it) const
                 {
-                    return _item != it._item;
+                    return item_ != it.item_;
                 }
 
                 T & operator*() const
                 {
-                    return _item->value;
+                    return item_->value;
                 }
 
                 iterator & operator++()
                 {
-                    _item = _item->next;
+                    item_ = item_->next;
                     return *this;
                 }
 
             private:
-                node * _item;
+                node * item_;
         };
 
         void append(const T & val)
         {
             node * tail = new node(val);
-            if (m_tail)
+            if (tail_)
             {
-                m_tail->next = tail;
+                tail_->next = tail;
             }
-            if (!m_head)
+            if (!head_)
             {
                _head = tail;
             }
@@ -96,11 +96,11 @@ template<class T> class forward_list
         void prepend(const T & val)
         {
             node * head = new node(val);
-            if (m_head)
+            if (head_)
             {
-                head->next = m_head;
+                head->next = head_;
             }
-            if (!m_tail)
+            if (!tail_)
             {
                 _tail = head;
             }
@@ -109,17 +109,17 @@ template<class T> class forward_list
 
         iterator begin() const
         {
-            return iterator(m_head);
+            return iterator(head_);
         }
 
         iterator end() const
         {
-            return iterator((m_tail) ? m_tail->next : m_tail);
+            return iterator((tail_) ? tail_->next : tail_);
         }
 
     private:
-        node * m_head;
-        node * m_tail;
+        node * head_;
+        node * tail_;
 };
 
 } // namespace utilities
