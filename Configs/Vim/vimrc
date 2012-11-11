@@ -15,7 +15,6 @@
 "   - Moving around, tabs and buffers
 "   - Searching
 "   - Various key remaps
-"   - Misc
 "   - Helper functions
 "   - Filetype settings
 "   - Plugin customization
@@ -38,9 +37,6 @@ set shortmess+=I
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast saving
-nnoremap <leader>w :w!<cr>
-
 " Turn backup off, since most stuff is in svn / git anyway...
 set nobackup
 set nowb
@@ -53,7 +49,7 @@ set noswapfile
 set scrolloff=5
 
 " Turn on the WiLd menu
-set wmnu
+set wildmenu
 
 " Behave shell-like when completing shell
 set wildmode=longest,list
@@ -141,8 +137,8 @@ set sw=4
 set ts=4
 
 " Linebreak on 100 characters
-set linebreak
-set tw=100
+"set linebreak
+"set textwidth=100
 
 " Virtual edit (awesome)
 set virtualedit=all
@@ -226,35 +222,16 @@ nnoremap k gk
 
 " Toggle between absolute / relative line numbering
 nmap <leader>n :call ToggleRelNumbering()<cr>
-vmap <leader>n :call ToggleRelNumbering()<cr>gv
+vmap <leader>n <Esc><leader>ngv
 
 try
     " Specify the behavior when switching between buffers
     set switchbuf=useopen,usetab,newtab
 
     " Tab display
-    set stal=0
+    set showtabline=0
 catch
 endtry
-
-" Switch tabs quickly
-nmap <C-S-tab> :tabprevious<cr>
-nmap <C-tab> :tabnext<cr>
-
-" Useful mappings for managing tabs
-nmap <leader>tn :tabnew<cr>
-nmap <leader>to :tabonly<cr>
-nmap <leader>tc :tabclose<cr>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-nmap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Close buffer without closing window
-nmap <silent> <leader>bd :Bclose!<cr>
 
 if has("autocmd")
 
@@ -264,6 +241,22 @@ if has("autocmd")
                 \   exe "normal! g`\"" |
                 \ endif
 endif
+
+" Useful mappings for managing tabs
+nmap <leader>tn :tabnew<cr>
+nmap <leader>to :tabonly<cr>
+nmap <leader>tc :tabclose<cr>
+nmap <C-tab> :tabnext<cr>
+nmap <C-S-tab> :tabprevious<cr>
+
+" Switch CWD to the directory of the open buffer
+nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Close buffer without closing window
+nmap <silent> <leader>bd :Bclose!<cr>
+
+" Close all buffers
+nmap <silent> <leader>ba :1,1000bd!<cr>
 
 " Move a line of text using ALT+[jk]
 nnoremap <M-j> :m .+1<cr>==
@@ -292,10 +285,6 @@ set incsearch
 nnoremap n nzz
 nnoremap } }zz
 
-" Map Space to "/" and Ctrl-Space to "?"
-"nmap <space> /
-"nmap <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 nmap <silent> <leader><cr> :noh<cr>
 
@@ -320,7 +309,7 @@ nnoremap ` '
 noremap ; :
 
 " Map "²" to "~" (quicker), and don't go forward one character
-nmap ² ~h
+"nmap ² ~h
 
 " Resolve inconsistency between "Y" (line),
 "   and "D" (til end of line)
@@ -337,16 +326,13 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the ugly Windows "^M"
-nmap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" Fast saving
+nnoremap <leader>w :w!<cr>
 
 " Close current file
 nmap <leader>q :q<cr>
 
-" Run "ls" in CWD
+" Run "ls" in cwd Shell
 nmap <leader>ls :!ls<cr>
 
 " Edit / Source configuration
@@ -360,7 +346,7 @@ nmap <leader>pp :setlocal paste!<cr>
 nmap <leader>ss :setlocal spell!<cr>
 
 " Quick make command
-map <F8> :make<cr>
+map <leader>m :make<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -454,8 +440,8 @@ if has("autocmd")
     autocmd FileType make setl noexpandtab
 
     " C / C++
-    autocmd BufNewFile,BufRead,BufEnter *.c setl filetype=c
-    autocmd BufNewFile,BufRead,BufEnter *.h,*.cpp,*.hpp setl filetype=cpp
+    "autocmd BufNewFile,BufRead,BufEnter *.c setl filetype=c
+    "autocmd BufNewFile,BufRead,BufEnter *.h,*.cpp,*.hpp setl filetype=cpp
 
     " JSON / JavaScript
     autocmd BufNewFile,BufRead *.json set filetype=javascript

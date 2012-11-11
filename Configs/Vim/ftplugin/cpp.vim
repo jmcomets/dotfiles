@@ -25,14 +25,14 @@ set tags+=~/.vim/tags/sfml
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
 " OmniCppComplete
-let OmniCpp_NamespaceSearch=1
-let OmniCpp_GlobalScopeSearch=1
-let OmniCpp_ShowAccess=1
-let OmniCpp_ShowPrototypeInAbbr=1
-"let OmniCpp_MayCompleteDot=1
-"let OmniCpp_MayCompleteArrow=1
-let OmniCpp_MayCompleteScope=1
 let OmniCpp_DefaultNamespaces=["std", "sf"]
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_NamespaceSearch=1
+let OmniCpp_ShowPrototypeInAbbr=1
+let OmniCpp_ShowAccess=1
+let OmniCpp_MayCompleteArrow=0
+let OmniCpp_MayCompleteScope=0
+let OmniCpp_MayCompleteDot=0
 
 " Automatically open and close the popup menu / preview window
 autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
