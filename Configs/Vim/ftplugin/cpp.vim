@@ -1,6 +1,6 @@
 if has("autocmd")
     autocmd FileType cpp setl omnifunc=omni#cpp#complete#Main
-    autocmd FileType cpp setl foldmethod=syntax
+    autocmd FileType c,cpp setl foldmethod=syntax
 endif
 
 " Fswitch

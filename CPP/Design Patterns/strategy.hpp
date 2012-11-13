@@ -3,9 +3,7 @@
 
 struct Strategy
 {
-    virtual ~Strategy()
-    {
-    }
+    virtual ~Strategy() {}
 
     virtual void Apply() = 0;
 }; // struct Strategy

@@ -74,28 +74,25 @@ XPT tclass
 template <`templateParam^> class `className^
 {
     public:
-        `className^(`ctorParam^);
-        `className^(const `className^ &);
-        `className^ & operator=(const `className^ &);
-        ~`className^();
+        `className^(`ctorParam^)
+        {
+        }
+
+        `className^(const `className^ & cpy)
+        {
+        }
+
+        `className^ & operator=(const `className^ & cpy)
+        {
+        }
+
+        ~`className^()
+        {
+        }
+
     private:
         `cursor^
 }; // class `className^
-
-template <`templateParam^>
-`className^<`_^cleanTempl(R('templateParam'))^^>::`className^( `ctorParam^ )
-{
-}
-
-template <`templateParam^>
-`className^<`_^cleanTempl(R('templateParam'))^^>::~`className^()
-{
-}
-
-template <`templateParam^>
-`className^<`_^cleanTempl(R('templateParam'))^^>::`className^( const `className^ &cpy )
-{
-}
 ..XPT
 
 XPT try wrap=what

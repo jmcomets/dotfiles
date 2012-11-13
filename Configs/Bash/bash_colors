@@ -14,25 +14,17 @@ if [ -f "$HOME/.dircolors" ]; then
     eval $(dircolors -b ~/.dircolors)
 fi
 
-############### COLOR DEFINITIONS ###############
+# Colors
+NORMAL="\[\033[0m\]"
+BLACK="\[\e[1;30m\]"
+WHITE="\[\e[1;37m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+YELLOW="\[\e[1;33m\]"
+BLUE="\[\e[1;34m\]"
+PURPLE="\[\e[1;35m\]"
+CYAN="\[\e[1;36m\]"
 
-C_DEF="\[\033[0m\]"
-C_BLACK="\[\e[1;30m\]"
-C_RED="\[\e[1;31m\]"
-C_GREEN="\[\e[1;32m\]"
-C_YELLOW="\[\e[1;33m\]"
-C_BLUE="\[\e[1;34m\]"
-C_PURPLE="\[\e[1;35m\]"
-C_CYAN="\[\e[1;36m\]"
-C_WHITE="\[\e[1;37m\]"
-
-############### DISPLAY FORMAT ###############
-
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="${C_YELLOW}[${C_DEF}${C_PURPLE}\D{%H:%M:%S}${C_DEF}${C_YELLOW}]${C_DEF}${C_BLUE}\u${C_DEF}${C_YELLOW}@${C_DEF}${C_RED}\h${C_DEF}${C_YELLOW}${C_DEF}${C_YELLOW} {${C_DEF}${C_CYAN}\!${C_DEF}${C_YELLOW}}${C_DEF} ${C_GREEN}\w${C_DEF}${C_BLUE}\$ ${C_DEF}"
-        PS2="${C_BLUE}>${C_DEF} "
-        ;;
-    *)
-        ;;
-esac
+# Prompt format
+PS1=${BLUE}'\u'${NORMAL}${YELLOW}@${NORMAL}${RED}'\h'${NORMAL}${YELLOW}${NORMAL}${YELLOW}${NORMAL}${BLUE}:${NORMAL}${GREEN}'\w'${NORMAL}${PURPLE}'$(__git_ps1 "|%s")'"${NORMAL}${BLUE} "'\$'"${NORMAL} "
+PS2="${BLUE}>${NORMAL} "

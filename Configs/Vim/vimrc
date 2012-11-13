@@ -116,6 +116,9 @@ set nolist
 " Hide the mouse pointer while typing
 set mousehide
 
+" Deactivate mouse entirely
+set mouse=
+
 " Always put a status line in, even if there is only one window
 set laststatus=2
 
@@ -133,8 +136,9 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set sw=4
-set ts=4
+set shiftwidth=4
+"set tabstop=4
+set softtabstop=4
 
 " Linebreak on 100 characters
 "set linebreak
@@ -175,7 +179,7 @@ set background=dark
 "  5 - tesla
 "  6 - adrian
 "  7 - ir_black
-colorscheme obsidian
+colorscheme wombat
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
