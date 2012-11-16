@@ -1,0 +1,60 @@
+[submodule "Configs/Vim/bundle/OmniCppComplete."]
+	path = Configs/Vim/bundle/OmniCppComplete.
+	url = https://github.com/vim-scripts/OmniCppComplete.git
+[submodule "Configs/Vim/bundle/surround"]
+	path = Configs/Vim/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "Configs/Vim/bundle/webapi"]
+	path = Configs/Vim/bundle/webapi
+	url = https://github.com/mattn/webapi-vim.git
+[submodule "Configs/Vim/bundle/repeat"]
+	path = Configs/Vim/bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "Configs/Vim/bundle/speeddating"]
+	path = Configs/Vim/bundle/speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "Configs/Vim/bundle/addon-mw-utils"]
+	path = Configs/Vim/bundle/addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "Configs/Vim/bundle/colorschemes"]
+	path = Configs/Vim/bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "Configs/Vim/bundle/fswitch"]
+	path = Configs/Vim/bundle/fswitch
+	url = https://github.com/derekwyatt/vim-fswitch.git
+[submodule "Configs/Vim/bundle/fugitive"]
+	path = Configs/Vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "Configs/Vim/bundle/gist"]
+	path = Configs/Vim/bundle/gist
+	url = https://github.com/mattn/gist-vim.git
+[submodule "Configs/Vim/bundle/matchit"]
+	path = Configs/Vim/bundle/matchit
+	url = https://github.com/tsaleh/vim-matchit.git
+[submodule "Configs/Vim/bundle/taglist"]
+	path = Configs/Vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "Configs/Vim/bundle/nerdcommenter"]
+	path = Configs/Vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "Configs/Vim/bundle/nerdtree"]
+	path = Configs/Vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "Configs/Vim/bundle/OmniCppComplete"]
+	path = Configs/Vim/bundle/OmniCppComplete
+	url = https://github.com/vim-scripts/OmniCppComplete.git
+[submodule "Configs/Vim/bundle/supertab"]
+	path = Configs/Vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "Configs/Vim/bundle/tlib"]
+	path = Configs/Vim/bundle/tlib
+	url = https://github.com/vim-scripts/tlib.git
+[submodule "Configs/Vim/bundle/VisIncr"]
+	path = Configs/Vim/bundle/VisIncr
+	url = https://github.com/vim-scripts/VisIncr.git
+[submodule "Configs/Vim/bundle/xptemplate"]
+	path = Configs/Vim/bundle/xptemplate
+	url = https://github.com/drmingdrmer/xptemplate.git
+[submodule "Configs/Vim/bundle/Command-T"]
+	path = Configs/Vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T.git

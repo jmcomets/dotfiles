@@ -100,6 +100,9 @@ set nofoldenable
 " Again, folding parent levels
 set foldlevel=1
 
+" Toggle foldmethod
+nmap <silent> <leader>f :call ToggleFDM()<cr>
+
 " How many tenths of a second to blink when matching brackets
 set matchtime=2
 
@@ -179,7 +182,8 @@ set background=dark
 "  5 - tesla
 "  6 - adrian
 "  7 - ir_black
-colorscheme wombat
+"  8 - monokai
+colorscheme monokai
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
@@ -225,7 +229,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Toggle between absolute / relative line numbering
-nmap <leader>n :call ToggleRelNumbering()<cr>
+nmap <silent> <leader>n :call ToggleRelNumbering()<cr>
 vmap <leader>n <Esc><leader>ngv
 
 try
@@ -247,11 +251,11 @@ if has("autocmd")
 endif
 
 " Useful mappings for managing tabs
-nmap <leader>tn :tabnew<cr>
-nmap <leader>to :tabonly<cr>
-nmap <leader>tc :tabclose<cr>
-nmap <C-tab> :tabnext<cr>
-nmap <C-S-tab> :tabprevious<cr>
+nmap <silent> <leader>tn :tabnew<cr>
+nmap <silent> <leader>to :tabonly<cr>
+nmap <silent> <leader>tc :tabclose<cr>
+nmap <silent> <C-tab> :tabnext<cr>
+nmap <silent> <C-S-tab> :tabprevious<cr>
 
 " Switch CWD to the directory of the open buffer
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -263,12 +267,12 @@ nmap <silent> <leader>bd :Bclose!<cr>
 nmap <silent> <leader>ba :1,1000bd!<cr>
 
 " Move a line of text using ALT+[jk]
-nnoremap <M-j> :m .+1<cr>==
-nnoremap <M-k> :m .-2<cr>==
-inoremap <M-j> <Esc>:m .+1<cr>==gi
-inoremap <M-k> <Esc>:m .-2<cr>==gi
-vnoremap <M-j> :m '>+1<cr>gv=gv
-vnoremap <M-k> :m '<-2<cr>gv=gv
+nnoremap <silent> <M-j> :m .+1<cr>==
+nnoremap <silent> <M-k> :m .-2<cr>==
+inoremap <silent> <M-j> <Esc>:m .+1<cr>==gi
+inoremap <silent> <M-k> <Esc>:m .-2<cr>==gi
+vnoremap <silent> <M-j> :m '>+1<cr>gv=gv
+vnoremap <silent> <M-k> :m '<-2<cr>gv=gv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Searching
@@ -289,12 +293,12 @@ set incsearch
 nnoremap n nzz
 nnoremap } }zz
 
-" Disable highlight when <leader><cr> is pressed
-nmap <silent> <leader><cr> :noh<cr>
+" Toggle search highlighting
+nmap <silent> <leader><cr> :call ToggleHiSearch()<cr>
 
 " Find current word in new window
-nmap <leader>sw :let @/=expand("<cword>")<bar>split<bar>normal n<cr>
-nmap <leader>sW :let @/='\<'.expand("<cword>").'\>'<bar>split<bar>normal n<cr>
+nmap <silent> <leader>sw :let @/=expand("<cword>")<bar>split<bar>normal n<cr>
+nmap <silent> <leader>sW :let @/='\<'.expand("<cword>").'\>'<bar>split<bar>normal n<cr>
 
 " Quick search-replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left>
@@ -331,26 +335,26 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 " Fast saving
-nnoremap <leader>w :w!<cr>
+nnoremap <silent> <leader>w :w<cr>
 
 " Close current file
-nmap <leader>q :q<cr>
+nmap <silent> <leader>q :q<cr>
 
 " Run "ls" in cwd Shell
-nmap <leader>ls :!ls<cr>
+nmap <silent> <leader>ls :!ls<cr>
 
 " Edit / Source configuration
-nmap <leader>co :e $MYVIMRC<cr>
-nmap <leader>so :so $MYVIMRC<cr>
+nmap <silent> <leader>co :e $MYVIMRC<cr>
+nmap <silent> <leader>so :so $MYVIMRC<cr>
 
 " Toggle paste mode on and off
-nmap <leader>pp :setlocal paste!<cr>
+nmap <silent> <leader>pp :setlocal paste!<cr>
 
 " Toggle spell-checking
-nmap <leader>ss :setlocal spell!<cr>
+nmap <silent> <leader>ss :setlocal spell!<cr>
 
 " Quick make command
-map <leader>m :make<cr>
+map <silent> <leader>m :make<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -427,12 +431,30 @@ function! s:Bclose(bang, buffer) "{{{
 endfunction "}}}
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
-" Show numbering (absolute / relative)
+" Toggle search highlighting
+function! ToggleHiSearch() "{{{
+    if (&hls)
+        set nohls
+    else
+        set hls
+    endif
+endfunction "}}}
+
+" Toggle numbering (absolute / relative)
 function! ToggleRelNumbering() "{{{
-    if &number
+    if (&number)
         set relativenumber
     else
         set number
+    endif
+endfunction "}}}
+
+" Toggle foldmethod
+function! ToggleFDM() "{{{
+    if (&foldmethod == 'syntax')
+        set foldmethod=indent
+    else
+        set foldmethod=syntax
     endif
 endfunction "}}}
 
@@ -469,19 +491,19 @@ let Tlist_Compact_Format = 1
 let Tlist_File_Fold_Auto_Close = 0
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Use_Right_Window = 1
-nmap <F4> :Tlist<cr>
+nmap <silent> <F4> :Tlist<cr>
 imap <F4> <C-o><F4>
 
 " NerdTree
 map <silent> <F3> :NERDTreeToggle<cr>
-imap <silent> <F3> <C-o><F3><cr>
+imap <F3> <C-o><F3><cr>
 
 " Fugitive
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>gw :Gwrite<cr>
+nmap <silent> <leader>gs :Gstatus<cr>
+nmap <silent> <leader>gd :Gdiff<cr>
+nmap <silent> <leader>gl :Glog<cr>
+nmap <silent> <leader>gc :Gcommit<cr>
+nmap <silent> <leader>gw :Gwrite<cr>
 
 " Gist
 let g:gist_detect_filetype = 1

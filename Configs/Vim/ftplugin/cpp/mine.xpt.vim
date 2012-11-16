@@ -100,12 +100,14 @@ try
 {
     `what^
 }`$BRel^`Include:catch^
+..XPT
 
 XPT catch
 catch (`except^)
 {
     `cursor^
 }
+..XPT
 
 XPT hg wrap
 XSET HEADER=S(fileRoot(),'\.','_','g')
@@ -117,3 +119,17 @@ XSET HEADER|post=UpperCase(V())
 
 #endif `$CS^ `HEADER^_H_INCLUDED_
 ..XPT
+
+XPT for " for i++
+for (`int^ `i^ = 0; `i^ < `len^; `i^++)
+{
+    `cursor^
+}
+
+XPT fori 
+std::`container_type^<`type^`, ...^>::iterator `it^;
+for (`it^ = `container^.begin(); `it^ != `container^.end(); `it^++)
+{
+    `cursor^
+}
+
