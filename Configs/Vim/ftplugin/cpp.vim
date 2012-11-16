@@ -1,8 +1,5 @@
-if has("autocmd")
-    autocmd FileType cpp setl omnifunc=omni#cpp#complete#Main
-    autocmd FileType c setl foldmethod=syntax
-    autocmd FileType cpp setl foldmethod=syntax
-endif
+setl omnifunc=omni#cpp#complete#Main
+setl foldmethod=syntax
 
 " Fswitch
 nmap <silent> <leader>of :FSHere<cr>
@@ -20,7 +17,8 @@ set tags+=~/.vim/tags/cpp
 "set tags+=~/.vim/tags/boost
 "set tags+=~/.vim/tags/gl
 "set tags+=~/.vim/tags/sdl
-set tags+=~/.vim/tags/sfml
+"set tags+=~/.vim/tags/sfml
+"set tags+=~/.vim/tags/box2d
 
 " Build Ctags with Ctrl-F12
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>

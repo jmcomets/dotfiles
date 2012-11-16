@@ -183,7 +183,7 @@ set background=dark
 "  6 - adrian
 "  7 - ir_black
 "  8 - monokai
-colorscheme monokai
+colorscheme obsidian
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
