@@ -1,1 +1,0 @@
-/home/jmcomets/Projects/Scripts/vim-plugin.sh
