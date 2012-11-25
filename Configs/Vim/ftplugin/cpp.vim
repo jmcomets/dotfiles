@@ -1,3 +1,4 @@
+" Setup correct display
 setl omnifunc=omni#cpp#complete#Main
 setl foldmethod=syntax
 

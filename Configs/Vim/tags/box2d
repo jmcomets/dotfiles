@@ -33,52 +33,6 @@ ApplyLinearImpulse	Dynamics/b2Body.h	/^	void ApplyLinearImpulse(const b2Vec2& im
 ApplyLinearImpulse	Dynamics/b2Body.h	/^inline void b2Body::ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point)$/;"	f	class:b2Body	signature:(const b2Vec2& impulse, const b2Vec2& point)
 ApplyTorque	Dynamics/b2Body.h	/^	void ApplyTorque(float32 torque);$/;"	p	class:b2Body	access:public	signature:(float32 torque)
 ApplyTorque	Dynamics/b2Body.h	/^inline void b2Body::ApplyTorque(float32 torque)$/;"	f	class:b2Body	signature:(float32 torque)
-B2_BLOCK_ALLOCATOR_H	Common/b2BlockAllocator.h	20;"	d
-B2_BODY_H	Dynamics/b2Body.h	20;"	d
-B2_BROAD_PHASE_H	Collision/b2BroadPhase.h	20;"	d
-B2_CHAIN_AND_CIRCLE_CONTACT_H	Dynamics/Contacts/b2ChainAndCircleContact.h	20;"	d
-B2_CHAIN_AND_POLYGON_CONTACT_H	Dynamics/Contacts/b2ChainAndPolygonContact.h	20;"	d
-B2_CHAIN_SHAPE_H	Collision/Shapes/b2ChainShape.h	20;"	d
-B2_CIRCLE_CONTACT_H	Dynamics/Contacts/b2CircleContact.h	20;"	d
-B2_CIRCLE_SHAPE_H	Collision/Shapes/b2CircleShape.h	20;"	d
-B2_COLLISION_H	Collision/b2Collision.h	20;"	d
-B2_CONTACT_H	Dynamics/Contacts/b2Contact.h	20;"	d
-B2_CONTACT_MANAGER_H	Dynamics/b2ContactManager.h	20;"	d
-B2_CONTACT_SOLVER_H	Dynamics/Contacts/b2ContactSolver.h	20;"	d
-B2_DEBUG_SOLVER	Dynamics/Contacts/b2ContactSolver.cpp	27;"	d	file:
-B2_DISTANCE_H	Collision/b2Distance.h	21;"	d
-B2_DISTANCE_JOINT_H	Dynamics/Joints/b2DistanceJoint.h	20;"	d
-B2_DYNAMIC_TREE_H	Collision/b2DynamicTree.h	20;"	d
-B2_EDGE_AND_CIRCLE_CONTACT_H	Dynamics/Contacts/b2EdgeAndCircleContact.h	20;"	d
-B2_EDGE_AND_POLYGON_CONTACT_H	Dynamics/Contacts/b2EdgeAndPolygonContact.h	20;"	d
-B2_EDGE_SHAPE_H	Collision/Shapes/b2EdgeShape.h	20;"	d
-B2_FIXTURE_H	Dynamics/b2Fixture.h	20;"	d
-B2_FRICTION_JOINT_H	Dynamics/Joints/b2FrictionJoint.h	20;"	d
-B2_GEAR_JOINT_H	Dynamics/Joints/b2GearJoint.h	20;"	d
-B2_GROWABLE_STACK_H	Common/b2GrowableStack.h	20;"	d
-B2_ISLAND_H	Dynamics/b2Island.h	20;"	d
-B2_JOINT_H	Dynamics/Joints/b2Joint.h	20;"	d
-B2_MATH_H	Common/b2Math.h	20;"	d
-B2_MOUSE_JOINT_H	Dynamics/Joints/b2MouseJoint.h	20;"	d
-B2_NOT_USED	Common/b2Settings.h	25;"	d
-B2_POLYGON_AND_CIRCLE_CONTACT_H	Dynamics/Contacts/b2PolygonAndCircleContact.h	20;"	d
-B2_POLYGON_CONTACT_H	Dynamics/Contacts/b2PolygonContact.h	20;"	d
-B2_POLYGON_SHAPE_H	Collision/Shapes/b2PolygonShape.h	20;"	d
-B2_PRISMATIC_JOINT_H	Dynamics/Joints/b2PrismaticJoint.h	20;"	d
-B2_PULLEY_JOINT_H	Dynamics/Joints/b2PulleyJoint.h	20;"	d
-B2_REVOLUTE_JOINT_H	Dynamics/Joints/b2RevoluteJoint.h	20;"	d
-B2_ROPE_H	Rope/b2Rope.h	20;"	d
-B2_ROPE_JOINT_H	Dynamics/Joints/b2RopeJoint.h	20;"	d
-B2_SETTINGS_H	Common/b2Settings.h	20;"	d
-B2_SHAPE_H	Collision/Shapes/b2Shape.h	20;"	d
-B2_STACK_ALLOCATOR_H	Common/b2StackAllocator.h	20;"	d
-B2_TIME_OF_IMPACT_H	Collision/b2TimeOfImpact.h	20;"	d
-B2_TIME_STEP_H	Dynamics/b2TimeStep.h	20;"	d
-B2_WELD_JOINT_H	Dynamics/Joints/b2WeldJoint.h	20;"	d
-B2_WHEEL_JOINT_H	Dynamics/Joints/b2WheelJoint.h	20;"	d
-B2_WORLD_CALLBACKS_H	Dynamics/b2WorldCallbacks.h	20;"	d
-B2_WORLD_H	Dynamics/b2World.h	20;"	d
-BOX2D_H	Box2D.h	20;"	d
 Balance	Collision/b2DynamicTree.cpp	/^int32 b2DynamicTree::Balance(int32 iA)$/;"	f	class:b2DynamicTree	signature:(int32 iA)
 Balance	Collision/b2DynamicTree.h	/^	int32 Balance(int32 index);$/;"	p	class:b2DynamicTree	access:private	signature:(int32 index)
 BeginContact	Dynamics/b2WorldCallbacks.h	/^	virtual void BeginContact(b2Contact* contact) { B2_NOT_USED(contact); }$/;"	f	class:b2ContactListener	access:public	signature:(b2Contact* contact)
@@ -1140,6 +1094,7 @@ angularVelocity	Dynamics/b2Body.h	/^	float32 angularVelocity;$/;"	m	struct:b2Bod
 awake	Dynamics/b2Body.h	/^	bool awake;$/;"	m	struct:b2BodyDef	access:public
 b	Common/b2Draw.h	/^	float32 r, g, b;$/;"	m	struct:b2Color	access:public
 b2AABB	Collision/b2Collision.h	/^struct b2AABB$/;"	s
+b2AABB	Dynamics/b2World.h	/^struct b2AABB;$/;"	x
 b2AABB::Combine	Collision/b2Collision.h	/^	void Combine(const b2AABB& aabb)$/;"	f	struct:b2AABB	access:public	signature:(const b2AABB& aabb)
 b2AABB::Combine	Collision/b2Collision.h	/^	void Combine(const b2AABB& aabb1, const b2AABB& aabb2)$/;"	f	struct:b2AABB	access:public	signature:(const b2AABB& aabb1, const b2AABB& aabb2)
 b2AABB::Contains	Collision/b2Collision.h	/^	bool Contains(const b2AABB& aabb) const$/;"	f	struct:b2AABB	access:public	signature:(const b2AABB& aabb) const
@@ -1157,13 +1112,23 @@ b2Abs	Common/b2Math.h	/^inline b2Mat22 b2Abs(const b2Mat22& A)$/;"	f	signature:(
 b2Abs	Common/b2Math.h	/^inline b2Vec2 b2Abs(const b2Vec2& a)$/;"	f	signature:(const b2Vec2& a)
 b2Alloc	Common/b2Settings.cpp	/^void* b2Alloc(int32 size)$/;"	f	signature:(int32 size)
 b2Alloc	Common/b2Settings.h	/^void* b2Alloc(int32 size);$/;"	p	signature:(int32 size)
-b2Assert	Common/b2Settings.h	26;"	d
-b2Atan2	Common/b2Math.h	61;"	d
 b2Block	Common/b2BlockAllocator.cpp	/^struct b2Block$/;"	s	file:
+b2Block	Common/b2BlockAllocator.h	/^struct b2Block;$/;"	x
 b2Block::next	Common/b2BlockAllocator.cpp	/^	b2Block* next;$/;"	m	struct:b2Block	file:	access:public
 b2BlockAllocator	Common/b2BlockAllocator.cpp	/^b2BlockAllocator::b2BlockAllocator()$/;"	f	class:b2BlockAllocator	signature:()
 b2BlockAllocator	Common/b2BlockAllocator.h	/^	b2BlockAllocator();$/;"	p	class:b2BlockAllocator	access:public	signature:()
 b2BlockAllocator	Common/b2BlockAllocator.h	/^class b2BlockAllocator$/;"	c
+b2BlockAllocator	Dynamics/Contacts/b2ChainAndCircleContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2ChainAndPolygonContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2CircleContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2Contact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2EdgeAndCircleContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2EdgeAndPolygonContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2PolygonAndCircleContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Contacts/b2PolygonContact.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/Joints/b2Joint.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/b2ContactManager.h	/^class b2BlockAllocator;$/;"	x
+b2BlockAllocator	Dynamics/b2Fixture.h	/^class b2BlockAllocator;$/;"	x
 b2BlockAllocator::Allocate	Common/b2BlockAllocator.cpp	/^void* b2BlockAllocator::Allocate(int32 size)$/;"	f	class:b2BlockAllocator	signature:(int32 size)
 b2BlockAllocator::Allocate	Common/b2BlockAllocator.h	/^	void* Allocate(int32 size);$/;"	p	class:b2BlockAllocator	access:public	signature:(int32 size)
 b2BlockAllocator::Clear	Common/b2BlockAllocator.cpp	/^void b2BlockAllocator::Clear()$/;"	f	class:b2BlockAllocator	signature:()
@@ -1183,9 +1148,19 @@ b2BlockAllocator::s_blockSizeLookupInitialized	Common/b2BlockAllocator.h	/^	stat
 b2BlockAllocator::s_blockSizes	Common/b2BlockAllocator.h	/^	static int32 s_blockSizes[b2_blockSizes];$/;"	m	class:b2BlockAllocator	access:private
 b2BlockAllocator::~b2BlockAllocator	Common/b2BlockAllocator.cpp	/^b2BlockAllocator::~b2BlockAllocator()$/;"	f	class:b2BlockAllocator	signature:()
 b2BlockAllocator::~b2BlockAllocator	Common/b2BlockAllocator.h	/^	~b2BlockAllocator();$/;"	p	class:b2BlockAllocator	access:public	signature:()
+b2Body	Dynamics/Contacts/b2Contact.h	/^	friend class b2Body;$/;"	x
+b2Body	Dynamics/Contacts/b2Contact.h	/^class b2Body;$/;"	x
+b2Body	Dynamics/Contacts/b2ContactSolver.h	/^class b2Body;$/;"	x
+b2Body	Dynamics/Joints/b2Joint.h	/^	friend class b2Body;$/;"	x
+b2Body	Dynamics/Joints/b2Joint.h	/^class b2Body;$/;"	x
 b2Body	Dynamics/b2Body.cpp	/^b2Body::b2Body(const b2BodyDef* bd, b2World* world)$/;"	f	class:b2Body	signature:(const b2BodyDef* bd, b2World* world)
 b2Body	Dynamics/b2Body.h	/^	b2Body(const b2BodyDef* bd, b2World* world);$/;"	p	class:b2Body	access:private	signature:(const b2BodyDef* bd, b2World* world)
 b2Body	Dynamics/b2Body.h	/^class b2Body$/;"	c
+b2Body	Dynamics/b2Fixture.h	/^	friend class b2Body;$/;"	x
+b2Body	Dynamics/b2Fixture.h	/^class b2Body;$/;"	x
+b2Body	Dynamics/b2World.h	/^	friend class b2Body;$/;"	x
+b2Body	Dynamics/b2World.h	/^class b2Body;$/;"	x
+b2Body	Dynamics/b2WorldCallbacks.h	/^class b2Body;$/;"	x
 b2Body::Advance	Dynamics/b2Body.h	/^	void Advance(float32 t);$/;"	p	class:b2Body	access:private	signature:(float32 t)
 b2Body::Advance	Dynamics/b2Body.h	/^inline void b2Body::Advance(float32 alpha)$/;"	f	class:b2Body	signature:(float32 alpha)
 b2Body::ApplyAngularImpulse	Dynamics/b2Body.h	/^	void ApplyAngularImpulse(float32 impulse);$/;"	p	class:b2Body	access:public	signature:(float32 impulse)
@@ -1316,6 +1291,21 @@ b2Body::SynchronizeTransform	Dynamics/b2Body.h	/^	void SynchronizeTransform();$/
 b2Body::SynchronizeTransform	Dynamics/b2Body.h	/^inline void b2Body::SynchronizeTransform()$/;"	f	class:b2Body	signature:()
 b2Body::b2Body	Dynamics/b2Body.cpp	/^b2Body::b2Body(const b2BodyDef* bd, b2World* world)$/;"	f	class:b2Body	signature:(const b2BodyDef* bd, b2World* world)
 b2Body::b2Body	Dynamics/b2Body.h	/^	b2Body(const b2BodyDef* bd, b2World* world);$/;"	p	class:b2Body	access:private	signature:(const b2BodyDef* bd, b2World* world)
+b2Body::b2Contact	Dynamics/b2Body.h	/^	friend class b2Contact;$/;"	x
+b2Body::b2ContactManager	Dynamics/b2Body.h	/^	friend class b2ContactManager;$/;"	x
+b2Body::b2ContactSolver	Dynamics/b2Body.h	/^	friend class b2ContactSolver;$/;"	x
+b2Body::b2DistanceJoint	Dynamics/b2Body.h	/^	friend class b2DistanceJoint;$/;"	x
+b2Body::b2FrictionJoint	Dynamics/b2Body.h	/^	friend class b2FrictionJoint;$/;"	x
+b2Body::b2GearJoint	Dynamics/b2Body.h	/^	friend class b2GearJoint;$/;"	x
+b2Body::b2Island	Dynamics/b2Body.h	/^	friend class b2Island;$/;"	x
+b2Body::b2MouseJoint	Dynamics/b2Body.h	/^	friend class b2MouseJoint;$/;"	x
+b2Body::b2PrismaticJoint	Dynamics/b2Body.h	/^	friend class b2PrismaticJoint;$/;"	x
+b2Body::b2PulleyJoint	Dynamics/b2Body.h	/^	friend class b2PulleyJoint;$/;"	x
+b2Body::b2RevoluteJoint	Dynamics/b2Body.h	/^	friend class b2RevoluteJoint;$/;"	x
+b2Body::b2RopeJoint	Dynamics/b2Body.h	/^	friend class b2RopeJoint;$/;"	x
+b2Body::b2WeldJoint	Dynamics/b2Body.h	/^	friend class b2WeldJoint;$/;"	x
+b2Body::b2WheelJoint	Dynamics/b2Body.h	/^	friend class b2WheelJoint;$/;"	x
+b2Body::b2World	Dynamics/b2Body.h	/^	friend class b2World;$/;"	x
 b2Body::e_activeFlag	Dynamics/b2Body.h	/^		e_activeFlag		= 0x0020,$/;"	e	enum:b2Body::__anon6
 b2Body::e_autoSleepFlag	Dynamics/b2Body.h	/^		e_autoSleepFlag		= 0x0004,$/;"	e	enum:b2Body::__anon6
 b2Body::e_awakeFlag	Dynamics/b2Body.h	/^		e_awakeFlag			= 0x0002,$/;"	e	enum:b2Body::__anon6
@@ -1352,6 +1342,7 @@ b2Body::~b2Body	Dynamics/b2Body.cpp	/^b2Body::~b2Body()$/;"	f	class:b2Body	signa
 b2Body::~b2Body	Dynamics/b2Body.h	/^	~b2Body();$/;"	p	class:b2Body	access:private	signature:()
 b2BodyDef	Dynamics/b2Body.h	/^	b2BodyDef()$/;"	f	struct:b2BodyDef	access:public	signature:()
 b2BodyDef	Dynamics/b2Body.h	/^struct b2BodyDef$/;"	s
+b2BodyDef	Dynamics/b2World.h	/^struct b2BodyDef;$/;"	x
 b2BodyDef::active	Dynamics/b2Body.h	/^	bool active;$/;"	m	struct:b2BodyDef	access:public
 b2BodyDef::allowSleep	Dynamics/b2Body.h	/^	bool allowSleep;$/;"	m	struct:b2BodyDef	access:public
 b2BodyDef::angle	Dynamics/b2Body.h	/^	float32 angle;$/;"	m	struct:b2BodyDef	access:public
@@ -1371,6 +1362,7 @@ b2BodyType	Dynamics/b2Body.h	/^enum b2BodyType$/;"	g
 b2BroadPhase	Collision/b2BroadPhase.cpp	/^b2BroadPhase::b2BroadPhase()$/;"	f	class:b2BroadPhase	signature:()
 b2BroadPhase	Collision/b2BroadPhase.h	/^	b2BroadPhase();$/;"	p	class:b2BroadPhase	access:public	signature:()
 b2BroadPhase	Collision/b2BroadPhase.h	/^class b2BroadPhase$/;"	c
+b2BroadPhase	Dynamics/b2Fixture.h	/^class b2BroadPhase;$/;"	x
 b2BroadPhase::BufferMove	Collision/b2BroadPhase.cpp	/^void b2BroadPhase::BufferMove(int32 proxyId)$/;"	f	class:b2BroadPhase	signature:(int32 proxyId)
 b2BroadPhase::BufferMove	Collision/b2BroadPhase.h	/^	void BufferMove(int32 proxyId);$/;"	p	class:b2BroadPhase	access:private	signature:(int32 proxyId)
 b2BroadPhase::CreateProxy	Collision/b2BroadPhase.cpp	/^int32 b2BroadPhase::CreateProxy(const b2AABB& aabb, void* userData)$/;"	f	class:b2BroadPhase	signature:(const b2AABB& aabb, void* userData)
@@ -1407,6 +1399,7 @@ b2BroadPhase::UpdatePairs	Collision/b2BroadPhase.h	/^	void UpdatePairs(T* callba
 b2BroadPhase::UpdatePairs	Collision/b2BroadPhase.h	/^void b2BroadPhase::UpdatePairs(T* callback)$/;"	f	class:b2BroadPhase	signature:(T* callback)
 b2BroadPhase::b2BroadPhase	Collision/b2BroadPhase.cpp	/^b2BroadPhase::b2BroadPhase()$/;"	f	class:b2BroadPhase	signature:()
 b2BroadPhase::b2BroadPhase	Collision/b2BroadPhase.h	/^	b2BroadPhase();$/;"	p	class:b2BroadPhase	access:public	signature:()
+b2BroadPhase::b2DynamicTree	Collision/b2BroadPhase.h	/^	friend class b2DynamicTree;$/;"	x
 b2BroadPhase::e_nullProxy	Collision/b2BroadPhase.h	/^		e_nullProxy = -1$/;"	e	enum:b2BroadPhase::__anon1
 b2BroadPhase::m_moveBuffer	Collision/b2BroadPhase.h	/^	int32* m_moveBuffer;$/;"	m	class:b2BroadPhase	access:private
 b2BroadPhase::m_moveCapacity	Collision/b2BroadPhase.h	/^	int32 m_moveCapacity;$/;"	m	class:b2BroadPhase	access:private
@@ -1479,6 +1472,7 @@ b2ChainShape::m_vertices	Collision/Shapes/b2ChainShape.h	/^	b2Vec2* m_vertices;$
 b2ChainShape::~b2ChainShape	Collision/Shapes/b2ChainShape.cpp	/^b2ChainShape::~b2ChainShape()$/;"	f	class:b2ChainShape	signature:()
 b2ChainShape::~b2ChainShape	Collision/Shapes/b2ChainShape.h	/^	~b2ChainShape();$/;"	p	class:b2ChainShape	access:public	signature:()
 b2Chunk	Common/b2BlockAllocator.cpp	/^struct b2Chunk$/;"	s	file:
+b2Chunk	Common/b2BlockAllocator.h	/^struct b2Chunk;$/;"	x
 b2Chunk::blockSize	Common/b2BlockAllocator.cpp	/^	int32 blockSize;$/;"	m	struct:b2Chunk	file:	access:public
 b2Chunk::blocks	Common/b2BlockAllocator.cpp	/^	b2Block* blocks;$/;"	m	struct:b2Chunk	file:	access:public
 b2CircleContact	Dynamics/Contacts/b2CircleContact.cpp	/^b2CircleContact::b2CircleContact(b2Fixture* fixtureA, b2Fixture* fixtureB)$/;"	f	class:b2CircleContact	signature:(b2Fixture* fixtureA, b2Fixture* fixtureB)
@@ -1496,6 +1490,7 @@ b2CircleContact::~b2CircleContact	Dynamics/Contacts/b2CircleContact.h	/^	~b2Circ
 b2CircleShape	Collision/Shapes/b2CircleShape.h	/^	b2CircleShape();$/;"	p	class:b2CircleShape	access:public	signature:()
 b2CircleShape	Collision/Shapes/b2CircleShape.h	/^class b2CircleShape : public b2Shape$/;"	c	inherits:b2Shape
 b2CircleShape	Collision/Shapes/b2CircleShape.h	/^inline b2CircleShape::b2CircleShape()$/;"	f	class:b2CircleShape	signature:()
+b2CircleShape	Collision/b2Collision.h	/^class b2CircleShape;$/;"	x
 b2CircleShape::Clone	Collision/Shapes/b2CircleShape.cpp	/^b2Shape* b2CircleShape::Clone(b2BlockAllocator* allocator) const$/;"	f	class:b2CircleShape	signature:(b2BlockAllocator* allocator) const
 b2CircleShape::Clone	Collision/Shapes/b2CircleShape.h	/^	b2Shape* Clone(b2BlockAllocator* allocator) const;$/;"	p	class:b2CircleShape	access:public	signature:(b2BlockAllocator* allocator) const
 b2CircleShape::ComputeAABB	Collision/Shapes/b2CircleShape.cpp	/^void b2CircleShape::ComputeAABB(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const$/;"	f	class:b2CircleShape	signature:(b2AABB* aabb, const b2Transform& transform, int32 childIndex) const
@@ -1538,6 +1533,7 @@ b2CollidePolygons	Collision/b2Collision.h	/^void b2CollidePolygons(b2Manifold* m
 b2Color	Common/b2Draw.h	/^	b2Color() {}$/;"	f	struct:b2Color	access:public	signature:()
 b2Color	Common/b2Draw.h	/^	b2Color(float32 r, float32 g, float32 b) : r(r), g(g), b(b) {}$/;"	f	struct:b2Color	access:public	signature:(float32 r, float32 g, float32 b)
 b2Color	Common/b2Draw.h	/^struct b2Color$/;"	s
+b2Color	Dynamics/b2World.h	/^struct b2Color;$/;"	x
 b2Color::Set	Common/b2Draw.h	/^	void Set(float32 ri, float32 gi, float32 bi) { r = ri; g = gi; b = bi; }$/;"	f	struct:b2Color	access:public	signature:(float32 ri, float32 gi, float32 bi)
 b2Color::b	Common/b2Draw.h	/^	float32 r, g, b;$/;"	m	struct:b2Color	access:public
 b2Color::b2Color	Common/b2Draw.h	/^	b2Color() {}$/;"	f	struct:b2Color	access:public	signature:()
@@ -1548,6 +1544,14 @@ b2Contact	Dynamics/Contacts/b2Contact.cpp	/^b2Contact::b2Contact(b2Fixture* fA, 
 b2Contact	Dynamics/Contacts/b2Contact.h	/^	b2Contact() : m_fixtureA(NULL), m_fixtureB(NULL) {}$/;"	f	class:b2Contact	access:protected	signature:()
 b2Contact	Dynamics/Contacts/b2Contact.h	/^	b2Contact(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB);$/;"	p	class:b2Contact	access:protected	signature:(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB)
 b2Contact	Dynamics/Contacts/b2Contact.h	/^class b2Contact$/;"	c
+b2Contact	Dynamics/Contacts/b2Contact.h	/^class b2Contact;$/;"	x
+b2Contact	Dynamics/Contacts/b2ContactSolver.h	/^class b2Contact;$/;"	x
+b2Contact	Dynamics/b2Body.h	/^	friend class b2Contact;$/;"	x
+b2Contact	Dynamics/b2Body.h	/^class b2Contact;$/;"	x
+b2Contact	Dynamics/b2ContactManager.h	/^class b2Contact;$/;"	x
+b2Contact	Dynamics/b2Fixture.h	/^	friend class b2Contact;$/;"	x
+b2Contact	Dynamics/b2Island.h	/^class b2Contact;$/;"	x
+b2Contact	Dynamics/b2WorldCallbacks.h	/^class b2Contact;$/;"	x
 b2Contact::AddType	Dynamics/Contacts/b2Contact.cpp	/^void b2Contact::AddType(b2ContactCreateFcn* createFcn, b2ContactDestroyFcn* destoryFcn,$/;"	f	class:b2Contact	signature:(b2ContactCreateFcn* createFcn, b2ContactDestroyFcn* destoryFcn, b2Shape::Type type1, b2Shape::Type type2)
 b2Contact::AddType	Dynamics/Contacts/b2Contact.h	/^	static void AddType(b2ContactCreateFcn* createFcn, b2ContactDestroyFcn* destroyFcn,$/;"	p	class:b2Contact	access:protected	signature:(b2ContactCreateFcn* createFcn, b2ContactDestroyFcn* destroyFcn, b2Shape::Type typeA, b2Shape::Type typeB)
 b2Contact::Create	Dynamics/Contacts/b2Contact.cpp	/^b2Contact* b2Contact::Create(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB, b2BlockAllocator* allocator)$/;"	f	class:b2Contact	signature:(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB, b2BlockAllocator* allocator)
@@ -1602,9 +1606,14 @@ b2Contact::SetRestitution	Dynamics/Contacts/b2Contact.h	/^	void SetRestitution(f
 b2Contact::SetRestitution	Dynamics/Contacts/b2Contact.h	/^inline void b2Contact::SetRestitution(float32 restitution)$/;"	f	class:b2Contact	signature:(float32 restitution)
 b2Contact::Update	Dynamics/Contacts/b2Contact.cpp	/^void b2Contact::Update(b2ContactListener* listener)$/;"	f	class:b2Contact	signature:(b2ContactListener* listener)
 b2Contact::Update	Dynamics/Contacts/b2Contact.h	/^	void Update(b2ContactListener* listener);$/;"	p	class:b2Contact	access:protected	signature:(b2ContactListener* listener)
+b2Contact::b2Body	Dynamics/Contacts/b2Contact.h	/^	friend class b2Body;$/;"	x
 b2Contact::b2Contact	Dynamics/Contacts/b2Contact.cpp	/^b2Contact::b2Contact(b2Fixture* fA, int32 indexA, b2Fixture* fB, int32 indexB)$/;"	f	class:b2Contact	signature:(b2Fixture* fA, int32 indexA, b2Fixture* fB, int32 indexB)
 b2Contact::b2Contact	Dynamics/Contacts/b2Contact.h	/^	b2Contact() : m_fixtureA(NULL), m_fixtureB(NULL) {}$/;"	f	class:b2Contact	access:protected	signature:()
 b2Contact::b2Contact	Dynamics/Contacts/b2Contact.h	/^	b2Contact(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB);$/;"	p	class:b2Contact	access:protected	signature:(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB)
+b2Contact::b2ContactManager	Dynamics/Contacts/b2Contact.h	/^	friend class b2ContactManager;$/;"	x
+b2Contact::b2ContactSolver	Dynamics/Contacts/b2Contact.h	/^	friend class b2ContactSolver;$/;"	x
+b2Contact::b2Fixture	Dynamics/Contacts/b2Contact.h	/^	friend class b2Fixture;$/;"	x
+b2Contact::b2World	Dynamics/Contacts/b2Contact.h	/^	friend class b2World;$/;"	x
 b2Contact::e_bulletHitFlag	Dynamics/Contacts/b2Contact.h	/^		e_bulletHitFlag		= 0x0010,$/;"	e	enum:b2Contact::__anon4
 b2Contact::e_enabledFlag	Dynamics/Contacts/b2Contact.h	/^		e_enabledFlag		= 0x0004,$/;"	e	enum:b2Contact::__anon4
 b2Contact::e_filterFlag	Dynamics/Contacts/b2Contact.h	/^		e_filterFlag		= 0x0008,$/;"	e	enum:b2Contact::__anon4
@@ -1633,6 +1642,7 @@ b2Contact::~b2Contact	Dynamics/Contacts/b2Contact.h	/^	virtual ~b2Contact() {}$/
 b2ContactCreateFcn	Dynamics/Contacts/b2Contact.h	/^typedef b2Contact* b2ContactCreateFcn(	b2Fixture* fixtureA, int32 indexA,$/;"	t
 b2ContactDestroyFcn	Dynamics/Contacts/b2Contact.h	/^typedef void b2ContactDestroyFcn(b2Contact* contact, b2BlockAllocator* allocator);$/;"	t
 b2ContactEdge	Dynamics/Contacts/b2Contact.h	/^struct b2ContactEdge$/;"	s
+b2ContactEdge	Dynamics/b2Body.h	/^struct b2ContactEdge;$/;"	x
 b2ContactEdge::contact	Dynamics/Contacts/b2Contact.h	/^	b2Contact* contact;		\/\/\/< the contact$/;"	m	struct:b2ContactEdge	access:public
 b2ContactEdge::next	Dynamics/Contacts/b2Contact.h	/^	b2ContactEdge* next;	\/\/\/< the next contact edge in the body's contact list$/;"	m	struct:b2ContactEdge	access:public
 b2ContactEdge::other	Dynamics/Contacts/b2Contact.h	/^	b2Body* other;			\/\/\/< provides quick access to the other body attached.$/;"	m	struct:b2ContactEdge	access:public
@@ -1645,6 +1655,7 @@ b2ContactFeature::indexA	Collision/b2Collision.h	/^	uint8 indexA;		\/\/\/< Featu
 b2ContactFeature::indexB	Collision/b2Collision.h	/^	uint8 indexB;		\/\/\/< Feature index on shapeB$/;"	m	struct:b2ContactFeature	access:public
 b2ContactFeature::typeA	Collision/b2Collision.h	/^	uint8 typeA;		\/\/\/< The feature type on shapeA$/;"	m	struct:b2ContactFeature	access:public
 b2ContactFeature::typeB	Collision/b2Collision.h	/^	uint8 typeB;		\/\/\/< The feature type on shapeB$/;"	m	struct:b2ContactFeature	access:public
+b2ContactFilter	Dynamics/b2ContactManager.h	/^class b2ContactFilter;$/;"	x
 b2ContactFilter	Dynamics/b2WorldCallbacks.h	/^class b2ContactFilter$/;"	c
 b2ContactFilter::ShouldCollide	Dynamics/b2WorldCallbacks.cpp	/^bool b2ContactFilter::ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB)$/;"	f	class:b2ContactFilter	signature:(b2Fixture* fixtureA, b2Fixture* fixtureB)
 b2ContactFilter::ShouldCollide	Dynamics/b2WorldCallbacks.h	/^	virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB);$/;"	p	class:b2ContactFilter	access:public	signature:(b2Fixture* fixtureA, b2Fixture* fixtureB)
@@ -1656,15 +1667,22 @@ b2ContactImpulse	Dynamics/b2WorldCallbacks.h	/^struct b2ContactImpulse$/;"	s
 b2ContactImpulse::count	Dynamics/b2WorldCallbacks.h	/^	int32 count;$/;"	m	struct:b2ContactImpulse	access:public
 b2ContactImpulse::normalImpulses	Dynamics/b2WorldCallbacks.h	/^	float32 normalImpulses[b2_maxManifoldPoints];$/;"	m	struct:b2ContactImpulse	access:public
 b2ContactImpulse::tangentImpulses	Dynamics/b2WorldCallbacks.h	/^	float32 tangentImpulses[b2_maxManifoldPoints];$/;"	m	struct:b2ContactImpulse	access:public
+b2ContactListener	Dynamics/Contacts/b2Contact.h	/^class b2ContactListener;$/;"	x
+b2ContactListener	Dynamics/b2ContactManager.h	/^class b2ContactListener;$/;"	x
+b2ContactListener	Dynamics/b2Island.h	/^class b2ContactListener;$/;"	x
 b2ContactListener	Dynamics/b2WorldCallbacks.h	/^class b2ContactListener$/;"	c
 b2ContactListener::BeginContact	Dynamics/b2WorldCallbacks.h	/^	virtual void BeginContact(b2Contact* contact) { B2_NOT_USED(contact); }$/;"	f	class:b2ContactListener	access:public	signature:(b2Contact* contact)
 b2ContactListener::EndContact	Dynamics/b2WorldCallbacks.h	/^	virtual void EndContact(b2Contact* contact) { B2_NOT_USED(contact); }$/;"	f	class:b2ContactListener	access:public	signature:(b2Contact* contact)
 b2ContactListener::PostSolve	Dynamics/b2WorldCallbacks.h	/^	virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)$/;"	f	class:b2ContactListener	access:public	signature:(b2Contact* contact, const b2ContactImpulse* impulse)
 b2ContactListener::PreSolve	Dynamics/b2WorldCallbacks.h	/^	virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)$/;"	f	class:b2ContactListener	access:public	signature:(b2Contact* contact, const b2Manifold* oldManifold)
 b2ContactListener::~b2ContactListener	Dynamics/b2WorldCallbacks.h	/^	virtual ~b2ContactListener() {}$/;"	f	class:b2ContactListener	access:public	signature:()
+b2ContactManager	Dynamics/Contacts/b2Contact.h	/^	friend class b2ContactManager;$/;"	x
+b2ContactManager	Dynamics/b2Body.h	/^	friend class b2ContactManager;$/;"	x
 b2ContactManager	Dynamics/b2ContactManager.cpp	/^b2ContactManager::b2ContactManager()$/;"	f	class:b2ContactManager	signature:()
 b2ContactManager	Dynamics/b2ContactManager.h	/^	b2ContactManager();$/;"	p	class:b2ContactManager	access:public	signature:()
 b2ContactManager	Dynamics/b2ContactManager.h	/^class b2ContactManager$/;"	c
+b2ContactManager	Dynamics/b2Fixture.h	/^	friend class b2ContactManager;$/;"	x
+b2ContactManager	Dynamics/b2World.h	/^	friend class b2ContactManager;$/;"	x
 b2ContactManager::AddPair	Dynamics/b2ContactManager.cpp	/^void b2ContactManager::AddPair(void* proxyUserDataA, void* proxyUserDataB)$/;"	f	class:b2ContactManager	signature:(void* proxyUserDataA, void* proxyUserDataB)
 b2ContactManager::AddPair	Dynamics/b2ContactManager.h	/^	void AddPair(void* proxyUserDataA, void* proxyUserDataB);$/;"	p	class:b2ContactManager	access:public	signature:(void* proxyUserDataA, void* proxyUserDataB)
 b2ContactManager::Collide	Dynamics/b2ContactManager.cpp	/^void b2ContactManager::Collide()$/;"	f	class:b2ContactManager	signature:()
@@ -1682,6 +1700,7 @@ b2ContactManager::m_contactFilter	Dynamics/b2ContactManager.h	/^	b2ContactFilter
 b2ContactManager::m_contactList	Dynamics/b2ContactManager.h	/^	b2Contact* m_contactList;$/;"	m	class:b2ContactManager	access:public
 b2ContactManager::m_contactListener	Dynamics/b2ContactManager.h	/^	b2ContactListener* m_contactListener;$/;"	m	class:b2ContactManager	access:public
 b2ContactPositionConstraint	Dynamics/Contacts/b2ContactSolver.cpp	/^struct b2ContactPositionConstraint$/;"	s	file:
+b2ContactPositionConstraint	Dynamics/Contacts/b2ContactSolver.h	/^struct b2ContactPositionConstraint;$/;"	x
 b2ContactPositionConstraint::indexA	Dynamics/Contacts/b2ContactSolver.cpp	/^	int32 indexA;$/;"	m	struct:b2ContactPositionConstraint	file:	access:public
 b2ContactPositionConstraint::indexB	Dynamics/Contacts/b2ContactSolver.cpp	/^	int32 indexB;$/;"	m	struct:b2ContactPositionConstraint	file:	access:public
 b2ContactPositionConstraint::invIA	Dynamics/Contacts/b2ContactSolver.cpp	/^	float32 invIA, invIB;$/;"	m	struct:b2ContactPositionConstraint	file:	access:public
@@ -1701,9 +1720,12 @@ b2ContactRegister	Dynamics/Contacts/b2Contact.h	/^struct b2ContactRegister$/;"	s
 b2ContactRegister::createFcn	Dynamics/Contacts/b2Contact.h	/^	b2ContactCreateFcn* createFcn;$/;"	m	struct:b2ContactRegister	access:public
 b2ContactRegister::destroyFcn	Dynamics/Contacts/b2Contact.h	/^	b2ContactDestroyFcn* destroyFcn;$/;"	m	struct:b2ContactRegister	access:public
 b2ContactRegister::primary	Dynamics/Contacts/b2Contact.h	/^	bool primary;$/;"	m	struct:b2ContactRegister	access:public
+b2ContactResult	Dynamics/b2WorldCallbacks.h	/^struct b2ContactResult;$/;"	x
+b2ContactSolver	Dynamics/Contacts/b2Contact.h	/^	friend class b2ContactSolver;$/;"	x
 b2ContactSolver	Dynamics/Contacts/b2ContactSolver.cpp	/^b2ContactSolver::b2ContactSolver(b2ContactSolverDef* def)$/;"	f	class:b2ContactSolver	signature:(b2ContactSolverDef* def)
 b2ContactSolver	Dynamics/Contacts/b2ContactSolver.h	/^	b2ContactSolver(b2ContactSolverDef* def);$/;"	p	class:b2ContactSolver	access:public	signature:(b2ContactSolverDef* def)
 b2ContactSolver	Dynamics/Contacts/b2ContactSolver.h	/^class b2ContactSolver$/;"	c
+b2ContactSolver	Dynamics/b2Body.h	/^	friend class b2ContactSolver;$/;"	x
 b2ContactSolver::InitializeVelocityConstraints	Dynamics/Contacts/b2ContactSolver.cpp	/^void b2ContactSolver::InitializeVelocityConstraints()$/;"	f	class:b2ContactSolver	signature:()
 b2ContactSolver::InitializeVelocityConstraints	Dynamics/Contacts/b2ContactSolver.h	/^	void InitializeVelocityConstraints();$/;"	p	class:b2ContactSolver	access:public	signature:()
 b2ContactSolver::SolvePositionConstraints	Dynamics/Contacts/b2ContactSolver.cpp	/^bool b2ContactSolver::SolvePositionConstraints()$/;"	f	class:b2ContactSolver	signature:()
@@ -1736,6 +1758,7 @@ b2ContactSolverDef::positions	Dynamics/Contacts/b2ContactSolver.h	/^	b2Position*
 b2ContactSolverDef::step	Dynamics/Contacts/b2ContactSolver.h	/^	b2TimeStep step;$/;"	m	struct:b2ContactSolverDef	access:public
 b2ContactSolverDef::velocities	Dynamics/Contacts/b2ContactSolver.h	/^	b2Velocity* velocities;$/;"	m	struct:b2ContactSolverDef	access:public
 b2ContactVelocityConstraint	Dynamics/Contacts/b2ContactSolver.h	/^struct b2ContactVelocityConstraint$/;"	s
+b2ContactVelocityConstraint	Dynamics/b2Island.h	/^struct b2ContactVelocityConstraint;$/;"	x
 b2ContactVelocityConstraint::K	Dynamics/Contacts/b2ContactSolver.h	/^	b2Mat22 K;$/;"	m	struct:b2ContactVelocityConstraint	access:public
 b2ContactVelocityConstraint::contactIndex	Dynamics/Contacts/b2ContactSolver.h	/^	int32 contactIndex;$/;"	m	struct:b2ContactVelocityConstraint	access:public
 b2ContactVelocityConstraint::friction	Dynamics/Contacts/b2ContactSolver.h	/^	float32 friction;$/;"	m	struct:b2ContactVelocityConstraint	access:public
@@ -1750,6 +1773,8 @@ b2ContactVelocityConstraint::normalMass	Dynamics/Contacts/b2ContactSolver.h	/^	b
 b2ContactVelocityConstraint::pointCount	Dynamics/Contacts/b2ContactSolver.h	/^	int32 pointCount;$/;"	m	struct:b2ContactVelocityConstraint	access:public
 b2ContactVelocityConstraint::points	Dynamics/Contacts/b2ContactSolver.h	/^	b2VelocityConstraintPoint points[b2_maxManifoldPoints];$/;"	m	struct:b2ContactVelocityConstraint	access:public
 b2ContactVelocityConstraint::restitution	Dynamics/Contacts/b2ContactSolver.h	/^	float32 restitution;$/;"	m	struct:b2ContactVelocityConstraint	access:public
+b2Controller	Dynamics/b2Body.h	/^class b2Controller;$/;"	x
+b2Controller	Dynamics/b2World.h	/^	friend class b2Controller;$/;"	x
 b2Cross	Common/b2Math.h	/^inline b2Vec2 b2Cross(const b2Vec2& a, float32 s)$/;"	f	signature:(const b2Vec2& a, float32 s)
 b2Cross	Common/b2Math.h	/^inline b2Vec2 b2Cross(float32 s, const b2Vec2& a)$/;"	f	signature:(float32 s, const b2Vec2& a)
 b2Cross	Common/b2Math.h	/^inline b2Vec3 b2Cross(const b2Vec3& a, const b2Vec3& b)$/;"	f	signature:(const b2Vec3& a, const b2Vec3& b)
@@ -1770,6 +1795,7 @@ b2DistanceInput::useRadii	Collision/b2Distance.h	/^	bool useRadii;$/;"	m	struct:
 b2DistanceJoint	Dynamics/Joints/b2DistanceJoint.cpp	/^b2DistanceJoint::b2DistanceJoint(const b2DistanceJointDef* def)$/;"	f	class:b2DistanceJoint	signature:(const b2DistanceJointDef* def)
 b2DistanceJoint	Dynamics/Joints/b2DistanceJoint.h	/^	b2DistanceJoint(const b2DistanceJointDef* data);$/;"	p	class:b2DistanceJoint	access:protected	signature:(const b2DistanceJointDef* data)
 b2DistanceJoint	Dynamics/Joints/b2DistanceJoint.h	/^class b2DistanceJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2DistanceJoint	Dynamics/b2Body.h	/^	friend class b2DistanceJoint;$/;"	x
 b2DistanceJoint::Dump	Dynamics/Joints/b2DistanceJoint.cpp	/^void b2DistanceJoint::Dump()$/;"	f	class:b2DistanceJoint	signature:()
 b2DistanceJoint::Dump	Dynamics/Joints/b2DistanceJoint.h	/^	void Dump();$/;"	p	class:b2DistanceJoint	access:public	signature:()
 b2DistanceJoint::GetAnchorA	Dynamics/Joints/b2DistanceJoint.cpp	/^b2Vec2 b2DistanceJoint::GetAnchorA() const$/;"	f	class:b2DistanceJoint	signature:() const
@@ -1802,6 +1828,7 @@ b2DistanceJoint::SolveVelocityConstraints	Dynamics/Joints/b2DistanceJoint.cpp	/^
 b2DistanceJoint::SolveVelocityConstraints	Dynamics/Joints/b2DistanceJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2DistanceJoint	access:protected	signature:(const b2SolverData& data)
 b2DistanceJoint::b2DistanceJoint	Dynamics/Joints/b2DistanceJoint.cpp	/^b2DistanceJoint::b2DistanceJoint(const b2DistanceJointDef* def)$/;"	f	class:b2DistanceJoint	signature:(const b2DistanceJointDef* def)
 b2DistanceJoint::b2DistanceJoint	Dynamics/Joints/b2DistanceJoint.h	/^	b2DistanceJoint(const b2DistanceJointDef* data);$/;"	p	class:b2DistanceJoint	access:protected	signature:(const b2DistanceJointDef* data)
+b2DistanceJoint::b2Joint	Dynamics/Joints/b2DistanceJoint.h	/^	friend class b2Joint;$/;"	x
 b2DistanceJoint::m_bias	Dynamics/Joints/b2DistanceJoint.h	/^	float32 m_bias;$/;"	m	class:b2DistanceJoint	access:protected
 b2DistanceJoint::m_dampingRatio	Dynamics/Joints/b2DistanceJoint.h	/^	float32 m_dampingRatio;$/;"	m	class:b2DistanceJoint	access:protected
 b2DistanceJoint::m_frequencyHz	Dynamics/Joints/b2DistanceJoint.h	/^	float32 m_frequencyHz;$/;"	m	class:b2DistanceJoint	access:protected
@@ -1860,6 +1887,8 @@ b2Dot	Common/b2Math.h	/^inline float32 b2Dot(const b2Vec3& a, const b2Vec3& b)$/
 b2Draw	Common/b2Draw.cpp	/^b2Draw::b2Draw()$/;"	f	class:b2Draw	signature:()
 b2Draw	Common/b2Draw.h	/^	b2Draw();$/;"	p	class:b2Draw	access:public	signature:()
 b2Draw	Common/b2Draw.h	/^class b2Draw$/;"	c
+b2Draw	Dynamics/b2World.h	/^class b2Draw;$/;"	x
+b2Draw	Rope/b2Rope.h	/^class b2Draw;$/;"	x
 b2Draw::AppendFlags	Common/b2Draw.cpp	/^void b2Draw::AppendFlags(uint32 flags)$/;"	f	class:b2Draw	signature:(uint32 flags)
 b2Draw::AppendFlags	Common/b2Draw.h	/^	void AppendFlags(uint32 flags);$/;"	p	class:b2Draw	access:public	signature:(uint32 flags)
 b2Draw::ClearFlags	Common/b2Draw.cpp	/^void b2Draw::ClearFlags(uint32 flags)$/;"	f	class:b2Draw	signature:(uint32 flags)
@@ -1883,6 +1912,7 @@ b2Draw::e_pairBit	Common/b2Draw.h	/^		e_pairBit				= 0x0008,	\/\/\/< draw broad-
 b2Draw::e_shapeBit	Common/b2Draw.h	/^		e_shapeBit				= 0x0001,	\/\/\/< draw shapes$/;"	e	enum:b2Draw::__anon3
 b2Draw::m_drawFlags	Common/b2Draw.h	/^	uint32 m_drawFlags;$/;"	m	class:b2Draw	access:protected
 b2Draw::~b2Draw	Common/b2Draw.h	/^	virtual ~b2Draw() {}$/;"	f	class:b2Draw	access:public	signature:()
+b2DynamicTree	Collision/b2BroadPhase.h	/^	friend class b2DynamicTree;$/;"	x
 b2DynamicTree	Collision/b2DynamicTree.cpp	/^b2DynamicTree::b2DynamicTree()$/;"	f	class:b2DynamicTree	signature:()
 b2DynamicTree	Collision/b2DynamicTree.h	/^	b2DynamicTree();$/;"	p	class:b2DynamicTree	access:public	signature:()
 b2DynamicTree	Collision/b2DynamicTree.h	/^class b2DynamicTree$/;"	c
@@ -2000,9 +2030,11 @@ b2EdgeAndPolygonContact::b2EdgeAndPolygonContact	Dynamics/Contacts/b2EdgeAndPoly
 b2EdgeAndPolygonContact::b2EdgeAndPolygonContact	Dynamics/Contacts/b2EdgeAndPolygonContact.h	/^	b2EdgeAndPolygonContact(b2Fixture* fixtureA, b2Fixture* fixtureB);$/;"	p	class:b2EdgeAndPolygonContact	access:public	signature:(b2Fixture* fixtureA, b2Fixture* fixtureB)
 b2EdgeAndPolygonContact::~b2EdgeAndPolygonContact	Dynamics/Contacts/b2EdgeAndPolygonContact.h	/^	~b2EdgeAndPolygonContact() {}$/;"	f	class:b2EdgeAndPolygonContact	access:public	signature:()
 b2EdgeSeparation	Collision/b2CollidePolygon.cpp	/^static float32 b2EdgeSeparation(const b2PolygonShape* poly1, const b2Transform& xf1, int32 edge1,$/;"	f	file:	signature:(const b2PolygonShape* poly1, const b2Transform& xf1, int32 edge1, const b2PolygonShape* poly2, const b2Transform& xf2)
+b2EdgeShape	Collision/Shapes/b2ChainShape.h	/^class b2EdgeShape;$/;"	x
 b2EdgeShape	Collision/Shapes/b2EdgeShape.h	/^	b2EdgeShape();$/;"	p	class:b2EdgeShape	access:public	signature:()
 b2EdgeShape	Collision/Shapes/b2EdgeShape.h	/^class b2EdgeShape : public b2Shape$/;"	c	inherits:b2Shape
 b2EdgeShape	Collision/Shapes/b2EdgeShape.h	/^inline b2EdgeShape::b2EdgeShape()$/;"	f	class:b2EdgeShape	signature:()
+b2EdgeShape	Collision/b2Collision.h	/^class b2EdgeShape;$/;"	x
 b2EdgeShape::Clone	Collision/Shapes/b2EdgeShape.cpp	/^b2Shape* b2EdgeShape::Clone(b2BlockAllocator* allocator) const$/;"	f	class:b2EdgeShape	signature:(b2BlockAllocator* allocator) const
 b2EdgeShape::Clone	Collision/Shapes/b2EdgeShape.h	/^	b2Shape* Clone(b2BlockAllocator* allocator) const;$/;"	p	class:b2EdgeShape	access:public	signature:(b2BlockAllocator* allocator) const
 b2EdgeShape::ComputeAABB	Collision/Shapes/b2EdgeShape.cpp	/^void b2EdgeShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const$/;"	f	class:b2EdgeShape	signature:(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const
@@ -2033,9 +2065,16 @@ b2Filter::groupIndex	Dynamics/b2Fixture.h	/^	int16 groupIndex;$/;"	m	struct:b2Fi
 b2Filter::maskBits	Dynamics/b2Fixture.h	/^	uint16 maskBits;$/;"	m	struct:b2Filter	access:public
 b2FindIncidentEdge	Collision/b2CollidePolygon.cpp	/^static void b2FindIncidentEdge(b2ClipVertex c[2],$/;"	f	file:	signature:(b2ClipVertex c[2], const b2PolygonShape* poly1, const b2Transform& xf1, int32 edge1, const b2PolygonShape* poly2, const b2Transform& xf2)
 b2FindMaxSeparation	Collision/b2CollidePolygon.cpp	/^static float32 b2FindMaxSeparation(int32* edgeIndex,$/;"	f	file:	signature:(int32* edgeIndex, const b2PolygonShape* poly1, const b2Transform& xf1, const b2PolygonShape* poly2, const b2Transform& xf2)
+b2Fixture	Dynamics/Contacts/b2Contact.h	/^	friend class b2Fixture;$/;"	x
+b2Fixture	Dynamics/Contacts/b2Contact.h	/^class b2Fixture;$/;"	x
+b2Fixture	Dynamics/b2Body.h	/^class b2Fixture;$/;"	x
 b2Fixture	Dynamics/b2Fixture.cpp	/^b2Fixture::b2Fixture()$/;"	f	class:b2Fixture	signature:()
 b2Fixture	Dynamics/b2Fixture.h	/^	b2Fixture();$/;"	p	class:b2Fixture	access:protected	signature:()
 b2Fixture	Dynamics/b2Fixture.h	/^class b2Fixture$/;"	c
+b2Fixture	Dynamics/b2Fixture.h	/^class b2Fixture;$/;"	x
+b2Fixture	Dynamics/b2World.h	/^	friend class b2Fixture;$/;"	x
+b2Fixture	Dynamics/b2World.h	/^class b2Fixture;$/;"	x
+b2Fixture	Dynamics/b2WorldCallbacks.h	/^class b2Fixture;$/;"	x
 b2Fixture::Create	Dynamics/b2Fixture.cpp	/^void b2Fixture::Create(b2BlockAllocator* allocator, b2Body* body, const b2FixtureDef* def)$/;"	f	class:b2Fixture	signature:(b2BlockAllocator* allocator, b2Body* body, const b2FixtureDef* def)
 b2Fixture::Create	Dynamics/b2Fixture.h	/^	void Create(b2BlockAllocator* allocator, b2Body* body, const b2FixtureDef* def);$/;"	p	class:b2Fixture	access:protected	signature:(b2BlockAllocator* allocator, b2Body* body, const b2FixtureDef* def)
 b2Fixture::CreateProxies	Dynamics/b2Fixture.cpp	/^void b2Fixture::CreateProxies(b2BroadPhase* broadPhase, const b2Transform& xf)$/;"	f	class:b2Fixture	signature:(b2BroadPhase* broadPhase, const b2Transform& xf)
@@ -2096,8 +2135,12 @@ b2Fixture::Synchronize	Dynamics/b2Fixture.cpp	/^void b2Fixture::Synchronize(b2Br
 b2Fixture::Synchronize	Dynamics/b2Fixture.h	/^	void Synchronize(b2BroadPhase* broadPhase, const b2Transform& xf1, const b2Transform& xf2);$/;"	p	class:b2Fixture	access:protected	signature:(b2BroadPhase* broadPhase, const b2Transform& xf1, const b2Transform& xf2)
 b2Fixture::TestPoint	Dynamics/b2Fixture.h	/^	bool TestPoint(const b2Vec2& p) const;$/;"	p	class:b2Fixture	access:public	signature:(const b2Vec2& p) const
 b2Fixture::TestPoint	Dynamics/b2Fixture.h	/^inline bool b2Fixture::TestPoint(const b2Vec2& p) const$/;"	f	class:b2Fixture	signature:(const b2Vec2& p) const
+b2Fixture::b2Body	Dynamics/b2Fixture.h	/^	friend class b2Body;$/;"	x
+b2Fixture::b2Contact	Dynamics/b2Fixture.h	/^	friend class b2Contact;$/;"	x
+b2Fixture::b2ContactManager	Dynamics/b2Fixture.h	/^	friend class b2ContactManager;$/;"	x
 b2Fixture::b2Fixture	Dynamics/b2Fixture.cpp	/^b2Fixture::b2Fixture()$/;"	f	class:b2Fixture	signature:()
 b2Fixture::b2Fixture	Dynamics/b2Fixture.h	/^	b2Fixture();$/;"	p	class:b2Fixture	access:protected	signature:()
+b2Fixture::b2World	Dynamics/b2Fixture.h	/^	friend class b2World;$/;"	x
 b2Fixture::m_body	Dynamics/b2Fixture.h	/^	b2Body* m_body;$/;"	m	class:b2Fixture	access:protected
 b2Fixture::m_density	Dynamics/b2Fixture.h	/^	float32 m_density;$/;"	m	class:b2Fixture	access:protected
 b2Fixture::m_filter	Dynamics/b2Fixture.h	/^	b2Filter m_filter;$/;"	m	class:b2Fixture	access:protected
@@ -2109,6 +2152,7 @@ b2Fixture::m_proxyCount	Dynamics/b2Fixture.h	/^	int32 m_proxyCount;$/;"	m	class:
 b2Fixture::m_restitution	Dynamics/b2Fixture.h	/^	float32 m_restitution;$/;"	m	class:b2Fixture	access:protected
 b2Fixture::m_shape	Dynamics/b2Fixture.h	/^	b2Shape* m_shape;$/;"	m	class:b2Fixture	access:protected
 b2Fixture::m_userData	Dynamics/b2Fixture.h	/^	void* m_userData;$/;"	m	class:b2Fixture	access:protected
+b2FixtureDef	Dynamics/b2Body.h	/^struct b2FixtureDef;$/;"	x
 b2FixtureDef	Dynamics/b2Fixture.h	/^	b2FixtureDef()$/;"	f	struct:b2FixtureDef	access:public	signature:()
 b2FixtureDef	Dynamics/b2Fixture.h	/^struct b2FixtureDef$/;"	s
 b2FixtureDef::b2FixtureDef	Dynamics/b2Fixture.h	/^	b2FixtureDef()$/;"	f	struct:b2FixtureDef	access:public	signature:()
@@ -2129,6 +2173,7 @@ b2Free	Common/b2Settings.h	/^void b2Free(void* mem);$/;"	p	signature:(void* mem)
 b2FrictionJoint	Dynamics/Joints/b2FrictionJoint.cpp	/^b2FrictionJoint::b2FrictionJoint(const b2FrictionJointDef* def)$/;"	f	class:b2FrictionJoint	signature:(const b2FrictionJointDef* def)
 b2FrictionJoint	Dynamics/Joints/b2FrictionJoint.h	/^	b2FrictionJoint(const b2FrictionJointDef* def);$/;"	p	class:b2FrictionJoint	access:protected	signature:(const b2FrictionJointDef* def)
 b2FrictionJoint	Dynamics/Joints/b2FrictionJoint.h	/^class b2FrictionJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2FrictionJoint	Dynamics/b2Body.h	/^	friend class b2FrictionJoint;$/;"	x
 b2FrictionJoint::Dump	Dynamics/Joints/b2FrictionJoint.cpp	/^void b2FrictionJoint::Dump()$/;"	f	class:b2FrictionJoint	signature:()
 b2FrictionJoint::Dump	Dynamics/Joints/b2FrictionJoint.h	/^	void Dump();$/;"	p	class:b2FrictionJoint	access:public	signature:()
 b2FrictionJoint::GetAnchorA	Dynamics/Joints/b2FrictionJoint.cpp	/^b2Vec2 b2FrictionJoint::GetAnchorA() const$/;"	f	class:b2FrictionJoint	signature:() const
@@ -2157,6 +2202,7 @@ b2FrictionJoint::SolveVelocityConstraints	Dynamics/Joints/b2FrictionJoint.cpp	/^
 b2FrictionJoint::SolveVelocityConstraints	Dynamics/Joints/b2FrictionJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2FrictionJoint	access:protected	signature:(const b2SolverData& data)
 b2FrictionJoint::b2FrictionJoint	Dynamics/Joints/b2FrictionJoint.cpp	/^b2FrictionJoint::b2FrictionJoint(const b2FrictionJointDef* def)$/;"	f	class:b2FrictionJoint	signature:(const b2FrictionJointDef* def)
 b2FrictionJoint::b2FrictionJoint	Dynamics/Joints/b2FrictionJoint.h	/^	b2FrictionJoint(const b2FrictionJointDef* def);$/;"	p	class:b2FrictionJoint	access:protected	signature:(const b2FrictionJointDef* def)
+b2FrictionJoint::b2Joint	Dynamics/Joints/b2FrictionJoint.h	/^	friend class b2Joint;$/;"	x
 b2FrictionJoint::m_angularImpulse	Dynamics/Joints/b2FrictionJoint.h	/^	float32 m_angularImpulse;$/;"	m	class:b2FrictionJoint	access:protected
 b2FrictionJoint::m_angularMass	Dynamics/Joints/b2FrictionJoint.h	/^	float32 m_angularMass;$/;"	m	class:b2FrictionJoint	access:protected
 b2FrictionJoint::m_indexA	Dynamics/Joints/b2FrictionJoint.h	/^	int32 m_indexA;$/;"	m	class:b2FrictionJoint	access:protected
@@ -2187,6 +2233,10 @@ b2FrictionJointDef::maxTorque	Dynamics/Joints/b2FrictionJoint.h	/^	float32 maxTo
 b2GearJoint	Dynamics/Joints/b2GearJoint.cpp	/^b2GearJoint::b2GearJoint(const b2GearJointDef* def)$/;"	f	class:b2GearJoint	signature:(const b2GearJointDef* def)
 b2GearJoint	Dynamics/Joints/b2GearJoint.h	/^	b2GearJoint(const b2GearJointDef* data);$/;"	p	class:b2GearJoint	access:protected	signature:(const b2GearJointDef* data)
 b2GearJoint	Dynamics/Joints/b2GearJoint.h	/^class b2GearJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2GearJoint	Dynamics/Joints/b2Joint.h	/^	friend class b2GearJoint;$/;"	x
+b2GearJoint	Dynamics/Joints/b2PrismaticJoint.h	/^	friend class b2GearJoint;$/;"	x
+b2GearJoint	Dynamics/Joints/b2RevoluteJoint.h	/^	friend class b2GearJoint;$/;"	x
+b2GearJoint	Dynamics/b2Body.h	/^	friend class b2GearJoint;$/;"	x
 b2GearJoint::Dump	Dynamics/Joints/b2GearJoint.cpp	/^void b2GearJoint::Dump()$/;"	f	class:b2GearJoint	signature:()
 b2GearJoint::Dump	Dynamics/Joints/b2GearJoint.h	/^	void Dump();$/;"	p	class:b2GearJoint	access:public	signature:()
 b2GearJoint::GetAnchorA	Dynamics/Joints/b2GearJoint.cpp	/^b2Vec2 b2GearJoint::GetAnchorA() const$/;"	f	class:b2GearJoint	signature:() const
@@ -2211,6 +2261,7 @@ b2GearJoint::SolveVelocityConstraints	Dynamics/Joints/b2GearJoint.cpp	/^void b2G
 b2GearJoint::SolveVelocityConstraints	Dynamics/Joints/b2GearJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2GearJoint	access:protected	signature:(const b2SolverData& data)
 b2GearJoint::b2GearJoint	Dynamics/Joints/b2GearJoint.cpp	/^b2GearJoint::b2GearJoint(const b2GearJointDef* def)$/;"	f	class:b2GearJoint	signature:(const b2GearJointDef* def)
 b2GearJoint::b2GearJoint	Dynamics/Joints/b2GearJoint.h	/^	b2GearJoint(const b2GearJointDef* data);$/;"	p	class:b2GearJoint	access:protected	signature:(const b2GearJointDef* data)
+b2GearJoint::b2Joint	Dynamics/Joints/b2GearJoint.h	/^	friend class b2Joint;$/;"	x
 b2GearJoint::m_JvAC	Dynamics/Joints/b2GearJoint.h	/^	b2Vec2 m_JvAC, m_JvBD;$/;"	m	class:b2GearJoint	access:protected
 b2GearJoint::m_JvBD	Dynamics/Joints/b2GearJoint.h	/^	b2Vec2 m_JvAC, m_JvBD;$/;"	m	class:b2GearJoint	access:protected
 b2GearJoint::m_JwA	Dynamics/Joints/b2GearJoint.h	/^	float32 m_JwA, m_JwB, m_JwC, m_JwD;$/;"	m	class:b2GearJoint	access:protected
@@ -2273,6 +2324,8 @@ b2GrowableStack::~b2GrowableStack	Common/b2GrowableStack.h	/^	~b2GrowableStack()
 b2InvSqrt	Common/b2Math.h	/^inline float32 b2InvSqrt(float32 x)$/;"	f	signature:(float32 x)
 b2IsPowerOfTwo	Common/b2Math.h	/^inline bool b2IsPowerOfTwo(uint32 x)$/;"	f	signature:(uint32 x)
 b2IsValid	Common/b2Math.h	/^inline bool b2IsValid(float32 x)$/;"	f	signature:(float32 x)
+b2Island	Dynamics/Joints/b2Joint.h	/^	friend class b2Island;$/;"	x
+b2Island	Dynamics/b2Body.h	/^	friend class b2Island;$/;"	x
 b2Island	Dynamics/b2Island.cpp	/^b2Island::b2Island($/;"	f	class:b2Island	signature:( int32 bodyCapacity, int32 contactCapacity, int32 jointCapacity, b2StackAllocator* allocator, b2ContactListener* listener)
 b2Island	Dynamics/b2Island.h	/^	b2Island(int32 bodyCapacity, int32 contactCapacity, int32 jointCapacity,$/;"	p	class:b2Island	access:public	signature:(int32 bodyCapacity, int32 contactCapacity, int32 jointCapacity, b2StackAllocator* allocator, b2ContactListener* listener)
 b2Island	Dynamics/b2Island.h	/^class b2Island$/;"	c
@@ -2307,9 +2360,24 @@ b2Jacobian	Dynamics/Joints/b2Joint.h	/^struct b2Jacobian$/;"	s
 b2Jacobian::angularA	Dynamics/Joints/b2Joint.h	/^	float32 angularA;$/;"	m	struct:b2Jacobian	access:public
 b2Jacobian::angularB	Dynamics/Joints/b2Joint.h	/^	float32 angularB;$/;"	m	struct:b2Jacobian	access:public
 b2Jacobian::linear	Dynamics/Joints/b2Joint.h	/^	b2Vec2 linear;$/;"	m	struct:b2Jacobian	access:public
+b2Joint	Dynamics/Joints/b2DistanceJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2FrictionJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2GearJoint.h	/^	friend class b2Joint;$/;"	x
 b2Joint	Dynamics/Joints/b2Joint.cpp	/^b2Joint::b2Joint(const b2JointDef* def)$/;"	f	class:b2Joint	signature:(const b2JointDef* def)
 b2Joint	Dynamics/Joints/b2Joint.h	/^	b2Joint(const b2JointDef* def);$/;"	p	class:b2Joint	access:protected	signature:(const b2JointDef* def)
 b2Joint	Dynamics/Joints/b2Joint.h	/^class b2Joint$/;"	c
+b2Joint	Dynamics/Joints/b2Joint.h	/^class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2MouseJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2PrismaticJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2PulleyJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2RevoluteJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2RopeJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2WeldJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/Joints/b2WheelJoint.h	/^	friend class b2Joint;$/;"	x
+b2Joint	Dynamics/b2Body.h	/^class b2Joint;$/;"	x
+b2Joint	Dynamics/b2Island.h	/^class b2Joint;$/;"	x
+b2Joint	Dynamics/b2World.h	/^class b2Joint;$/;"	x
+b2Joint	Dynamics/b2WorldCallbacks.h	/^class b2Joint;$/;"	x
 b2Joint::Create	Dynamics/Joints/b2Joint.cpp	/^b2Joint* b2Joint::Create(const b2JointDef* def, b2BlockAllocator* allocator)$/;"	f	class:b2Joint	signature:(const b2JointDef* def, b2BlockAllocator* allocator)
 b2Joint::Create	Dynamics/Joints/b2Joint.h	/^	static b2Joint* Create(const b2JointDef* def, b2BlockAllocator* allocator);$/;"	p	class:b2Joint	access:protected	signature:(const b2JointDef* def, b2BlockAllocator* allocator)
 b2Joint::Destroy	Dynamics/Joints/b2Joint.cpp	/^void b2Joint::Destroy(b2Joint* joint, b2BlockAllocator* allocator)$/;"	f	class:b2Joint	signature:(b2Joint* joint, b2BlockAllocator* allocator)
@@ -2340,8 +2408,12 @@ b2Joint::SetUserData	Dynamics/Joints/b2Joint.h	/^	void SetUserData(void* data);$
 b2Joint::SetUserData	Dynamics/Joints/b2Joint.h	/^inline void b2Joint::SetUserData(void* data)$/;"	f	class:b2Joint	signature:(void* data)
 b2Joint::SolvePositionConstraints	Dynamics/Joints/b2Joint.h	/^	virtual bool SolvePositionConstraints(const b2SolverData& data) = 0;$/;"	p	class:b2Joint	access:protected	signature:(const b2SolverData& data)
 b2Joint::SolveVelocityConstraints	Dynamics/Joints/b2Joint.h	/^	virtual void SolveVelocityConstraints(const b2SolverData& data) = 0;$/;"	p	class:b2Joint	access:protected	signature:(const b2SolverData& data)
+b2Joint::b2Body	Dynamics/Joints/b2Joint.h	/^	friend class b2Body;$/;"	x
+b2Joint::b2GearJoint	Dynamics/Joints/b2Joint.h	/^	friend class b2GearJoint;$/;"	x
+b2Joint::b2Island	Dynamics/Joints/b2Joint.h	/^	friend class b2Island;$/;"	x
 b2Joint::b2Joint	Dynamics/Joints/b2Joint.cpp	/^b2Joint::b2Joint(const b2JointDef* def)$/;"	f	class:b2Joint	signature:(const b2JointDef* def)
 b2Joint::b2Joint	Dynamics/Joints/b2Joint.h	/^	b2Joint(const b2JointDef* def);$/;"	p	class:b2Joint	access:protected	signature:(const b2JointDef* def)
+b2Joint::b2World	Dynamics/Joints/b2Joint.h	/^	friend class b2World;$/;"	x
 b2Joint::m_bodyA	Dynamics/Joints/b2Joint.h	/^	b2Body* m_bodyA;$/;"	m	class:b2Joint	access:protected
 b2Joint::m_bodyB	Dynamics/Joints/b2Joint.h	/^	b2Body* m_bodyB;$/;"	m	class:b2Joint	access:protected
 b2Joint::m_collideConnected	Dynamics/Joints/b2Joint.h	/^	bool m_collideConnected;$/;"	m	class:b2Joint	access:protected
@@ -2356,6 +2428,7 @@ b2Joint::m_userData	Dynamics/Joints/b2Joint.h	/^	void* m_userData;$/;"	m	class:b
 b2Joint::~b2Joint	Dynamics/Joints/b2Joint.h	/^	virtual ~b2Joint() {}$/;"	f	class:b2Joint	access:protected	signature:()
 b2JointDef	Dynamics/Joints/b2Joint.h	/^	b2JointDef()$/;"	f	struct:b2JointDef	access:public	signature:()
 b2JointDef	Dynamics/Joints/b2Joint.h	/^struct b2JointDef$/;"	s
+b2JointDef	Dynamics/b2World.h	/^struct b2JointDef;$/;"	x
 b2JointDef::b2JointDef	Dynamics/Joints/b2Joint.h	/^	b2JointDef()$/;"	f	struct:b2JointDef	access:public	signature:()
 b2JointDef::bodyA	Dynamics/Joints/b2Joint.h	/^	b2Body* bodyA;$/;"	m	struct:b2JointDef	access:public
 b2JointDef::bodyB	Dynamics/Joints/b2Joint.h	/^	b2Body* bodyB;$/;"	m	struct:b2JointDef	access:public
@@ -2363,6 +2436,7 @@ b2JointDef::collideConnected	Dynamics/Joints/b2Joint.h	/^	bool collideConnected;
 b2JointDef::type	Dynamics/Joints/b2Joint.h	/^	b2JointType type;$/;"	m	struct:b2JointDef	access:public
 b2JointDef::userData	Dynamics/Joints/b2Joint.h	/^	void* userData;$/;"	m	struct:b2JointDef	access:public
 b2JointEdge	Dynamics/Joints/b2Joint.h	/^struct b2JointEdge$/;"	s
+b2JointEdge	Dynamics/b2Body.h	/^struct b2JointEdge;$/;"	x
 b2JointEdge::joint	Dynamics/Joints/b2Joint.h	/^	b2Joint* joint;			\/\/\/< the joint$/;"	m	struct:b2JointEdge	access:public
 b2JointEdge::next	Dynamics/Joints/b2Joint.h	/^	b2JointEdge* next;		\/\/\/< the next joint edge in the body's joint list$/;"	m	struct:b2JointEdge	access:public
 b2JointEdge::other	Dynamics/Joints/b2Joint.h	/^	b2Body* other;			\/\/\/< provides quick access to the other body attached.$/;"	m	struct:b2JointEdge	access:public
@@ -2372,6 +2446,7 @@ b2LimitState	Dynamics/Joints/b2Joint.h	/^enum b2LimitState$/;"	g
 b2Log	Common/b2Settings.cpp	/^void b2Log(const char* string, ...)$/;"	f	signature:(const char* string, ...)
 b2Log	Common/b2Settings.h	/^void b2Log(const char* string, ...);$/;"	p	signature:(const char* string, ...)
 b2Manifold	Collision/b2Collision.h	/^struct b2Manifold$/;"	s
+b2Manifold	Dynamics/b2WorldCallbacks.h	/^struct b2Manifold;$/;"	x
 b2Manifold::Type	Collision/b2Collision.h	/^	enum Type$/;"	g	struct:b2Manifold	access:public
 b2Manifold::e_circles	Collision/b2Collision.h	/^		e_circles,$/;"	e	enum:b2Manifold::Type
 b2Manifold::e_faceA	Collision/b2Collision.h	/^		e_faceA,$/;"	e	enum:b2Manifold::Type
@@ -2430,6 +2505,7 @@ b2MixRestitution	Dynamics/Contacts/b2Contact.h	/^inline float32 b2MixRestitution
 b2MouseJoint	Dynamics/Joints/b2MouseJoint.cpp	/^b2MouseJoint::b2MouseJoint(const b2MouseJointDef* def)$/;"	f	class:b2MouseJoint	signature:(const b2MouseJointDef* def)
 b2MouseJoint	Dynamics/Joints/b2MouseJoint.h	/^	b2MouseJoint(const b2MouseJointDef* def);$/;"	p	class:b2MouseJoint	access:protected	signature:(const b2MouseJointDef* def)
 b2MouseJoint	Dynamics/Joints/b2MouseJoint.h	/^class b2MouseJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2MouseJoint	Dynamics/b2Body.h	/^	friend class b2MouseJoint;$/;"	x
 b2MouseJoint::Dump	Dynamics/Joints/b2MouseJoint.h	/^	void Dump() { b2Log("Mouse joint dumping is not supported.\\n"); }$/;"	f	class:b2MouseJoint	access:public	signature:()
 b2MouseJoint::GetAnchorA	Dynamics/Joints/b2MouseJoint.cpp	/^b2Vec2 b2MouseJoint::GetAnchorA() const$/;"	f	class:b2MouseJoint	signature:() const
 b2MouseJoint::GetAnchorA	Dynamics/Joints/b2MouseJoint.h	/^	b2Vec2 GetAnchorA() const;$/;"	p	class:b2MouseJoint	access:public	signature:() const
@@ -2461,6 +2537,7 @@ b2MouseJoint::SolvePositionConstraints	Dynamics/Joints/b2MouseJoint.cpp	/^bool b
 b2MouseJoint::SolvePositionConstraints	Dynamics/Joints/b2MouseJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2MouseJoint	access:protected	signature:(const b2SolverData& data)
 b2MouseJoint::SolveVelocityConstraints	Dynamics/Joints/b2MouseJoint.cpp	/^void b2MouseJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2MouseJoint	signature:(const b2SolverData& data)
 b2MouseJoint::SolveVelocityConstraints	Dynamics/Joints/b2MouseJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2MouseJoint	access:protected	signature:(const b2SolverData& data)
+b2MouseJoint::b2Joint	Dynamics/Joints/b2MouseJoint.h	/^	friend class b2Joint;$/;"	x
 b2MouseJoint::b2MouseJoint	Dynamics/Joints/b2MouseJoint.cpp	/^b2MouseJoint::b2MouseJoint(const b2MouseJointDef* def)$/;"	f	class:b2MouseJoint	signature:(const b2MouseJointDef* def)
 b2MouseJoint::b2MouseJoint	Dynamics/Joints/b2MouseJoint.h	/^	b2MouseJoint(const b2MouseJointDef* def);$/;"	p	class:b2MouseJoint	access:protected	signature:(const b2MouseJointDef* def)
 b2MouseJoint::m_C	Dynamics/Joints/b2MouseJoint.h	/^	b2Vec2 m_C;$/;"	m	class:b2MouseJoint	access:protected
@@ -2534,6 +2611,7 @@ b2PolygonContact::~b2PolygonContact	Dynamics/Contacts/b2PolygonContact.h	/^	~b2P
 b2PolygonShape	Collision/Shapes/b2PolygonShape.h	/^	b2PolygonShape();$/;"	p	class:b2PolygonShape	access:public	signature:()
 b2PolygonShape	Collision/Shapes/b2PolygonShape.h	/^class b2PolygonShape : public b2Shape$/;"	c	inherits:b2Shape
 b2PolygonShape	Collision/Shapes/b2PolygonShape.h	/^inline b2PolygonShape::b2PolygonShape()$/;"	f	class:b2PolygonShape	signature:()
+b2PolygonShape	Collision/b2Collision.h	/^class b2PolygonShape;$/;"	x
 b2PolygonShape::Clone	Collision/Shapes/b2PolygonShape.cpp	/^b2Shape* b2PolygonShape::Clone(b2BlockAllocator* allocator) const$/;"	f	class:b2PolygonShape	signature:(b2BlockAllocator* allocator) const
 b2PolygonShape::Clone	Collision/Shapes/b2PolygonShape.h	/^	b2Shape* Clone(b2BlockAllocator* allocator) const;$/;"	p	class:b2PolygonShape	access:public	signature:(b2BlockAllocator* allocator) const
 b2PolygonShape::ComputeAABB	Collision/Shapes/b2PolygonShape.cpp	/^void b2PolygonShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const$/;"	f	class:b2PolygonShape	signature:(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const
@@ -2572,6 +2650,7 @@ b2PositionSolverManifold::separation	Dynamics/Contacts/b2ContactSolver.cpp	/^	fl
 b2PrismaticJoint	Dynamics/Joints/b2PrismaticJoint.cpp	/^b2PrismaticJoint::b2PrismaticJoint(const b2PrismaticJointDef* def)$/;"	f	class:b2PrismaticJoint	signature:(const b2PrismaticJointDef* def)
 b2PrismaticJoint	Dynamics/Joints/b2PrismaticJoint.h	/^	b2PrismaticJoint(const b2PrismaticJointDef* def);$/;"	p	class:b2PrismaticJoint	access:protected	signature:(const b2PrismaticJointDef* def)
 b2PrismaticJoint	Dynamics/Joints/b2PrismaticJoint.h	/^class b2PrismaticJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2PrismaticJoint	Dynamics/b2Body.h	/^	friend class b2PrismaticJoint;$/;"	x
 b2PrismaticJoint::Dump	Dynamics/Joints/b2PrismaticJoint.cpp	/^void b2PrismaticJoint::Dump()$/;"	f	class:b2PrismaticJoint	signature:()
 b2PrismaticJoint::Dump	Dynamics/Joints/b2PrismaticJoint.h	/^	void Dump();$/;"	p	class:b2PrismaticJoint	access:public	signature:()
 b2PrismaticJoint::EnableLimit	Dynamics/Joints/b2PrismaticJoint.cpp	/^void b2PrismaticJoint::EnableLimit(bool flag)$/;"	f	class:b2PrismaticJoint	signature:(bool flag)
@@ -2619,6 +2698,8 @@ b2PrismaticJoint::SolvePositionConstraints	Dynamics/Joints/b2PrismaticJoint.cpp	
 b2PrismaticJoint::SolvePositionConstraints	Dynamics/Joints/b2PrismaticJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2PrismaticJoint	access:protected	signature:(const b2SolverData& data)
 b2PrismaticJoint::SolveVelocityConstraints	Dynamics/Joints/b2PrismaticJoint.cpp	/^void b2PrismaticJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2PrismaticJoint	signature:(const b2SolverData& data)
 b2PrismaticJoint::SolveVelocityConstraints	Dynamics/Joints/b2PrismaticJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2PrismaticJoint	access:protected	signature:(const b2SolverData& data)
+b2PrismaticJoint::b2GearJoint	Dynamics/Joints/b2PrismaticJoint.h	/^	friend class b2GearJoint;$/;"	x
+b2PrismaticJoint::b2Joint	Dynamics/Joints/b2PrismaticJoint.h	/^	friend class b2Joint;$/;"	x
 b2PrismaticJoint::b2PrismaticJoint	Dynamics/Joints/b2PrismaticJoint.cpp	/^b2PrismaticJoint::b2PrismaticJoint(const b2PrismaticJointDef* def)$/;"	f	class:b2PrismaticJoint	signature:(const b2PrismaticJointDef* def)
 b2PrismaticJoint::b2PrismaticJoint	Dynamics/Joints/b2PrismaticJoint.h	/^	b2PrismaticJoint(const b2PrismaticJointDef* def);$/;"	p	class:b2PrismaticJoint	access:protected	signature:(const b2PrismaticJointDef* def)
 b2PrismaticJoint::m_K	Dynamics/Joints/b2PrismaticJoint.h	/^	b2Mat33 m_K;$/;"	m	class:b2PrismaticJoint	access:protected
@@ -2666,6 +2747,7 @@ b2PrismaticJointDef::maxMotorForce	Dynamics/Joints/b2PrismaticJoint.h	/^	float32
 b2PrismaticJointDef::motorSpeed	Dynamics/Joints/b2PrismaticJoint.h	/^	float32 motorSpeed;$/;"	m	struct:b2PrismaticJointDef	access:public
 b2PrismaticJointDef::referenceAngle	Dynamics/Joints/b2PrismaticJoint.h	/^	float32 referenceAngle;$/;"	m	struct:b2PrismaticJointDef	access:public
 b2PrismaticJointDef::upperTranslation	Dynamics/Joints/b2PrismaticJoint.h	/^	float32 upperTranslation;$/;"	m	struct:b2PrismaticJointDef	access:public
+b2Profile	Dynamics/b2Island.h	/^struct b2Profile;$/;"	x
 b2Profile	Dynamics/b2TimeStep.h	/^struct b2Profile$/;"	s
 b2Profile::broadphase	Dynamics/b2TimeStep.h	/^	float32 broadphase;$/;"	m	struct:b2Profile	access:public
 b2Profile::collide	Dynamics/b2TimeStep.h	/^	float32 collide;$/;"	m	struct:b2Profile	access:public
@@ -2678,6 +2760,7 @@ b2Profile::step	Dynamics/b2TimeStep.h	/^	float32 step;$/;"	m	struct:b2Profile	ac
 b2PulleyJoint	Dynamics/Joints/b2PulleyJoint.cpp	/^b2PulleyJoint::b2PulleyJoint(const b2PulleyJointDef* def)$/;"	f	class:b2PulleyJoint	signature:(const b2PulleyJointDef* def)
 b2PulleyJoint	Dynamics/Joints/b2PulleyJoint.h	/^	b2PulleyJoint(const b2PulleyJointDef* data);$/;"	p	class:b2PulleyJoint	access:protected	signature:(const b2PulleyJointDef* data)
 b2PulleyJoint	Dynamics/Joints/b2PulleyJoint.h	/^class b2PulleyJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2PulleyJoint	Dynamics/b2Body.h	/^	friend class b2PulleyJoint;$/;"	x
 b2PulleyJoint::Dump	Dynamics/Joints/b2PulleyJoint.cpp	/^void b2PulleyJoint::Dump()$/;"	f	class:b2PulleyJoint	signature:()
 b2PulleyJoint::Dump	Dynamics/Joints/b2PulleyJoint.h	/^	void Dump();$/;"	p	class:b2PulleyJoint	access:public	signature:()
 b2PulleyJoint::GetAnchorA	Dynamics/Joints/b2PulleyJoint.cpp	/^b2Vec2 b2PulleyJoint::GetAnchorA() const$/;"	f	class:b2PulleyJoint	signature:() const
@@ -2704,6 +2787,7 @@ b2PulleyJoint::SolvePositionConstraints	Dynamics/Joints/b2PulleyJoint.cpp	/^bool
 b2PulleyJoint::SolvePositionConstraints	Dynamics/Joints/b2PulleyJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2PulleyJoint	access:protected	signature:(const b2SolverData& data)
 b2PulleyJoint::SolveVelocityConstraints	Dynamics/Joints/b2PulleyJoint.cpp	/^void b2PulleyJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2PulleyJoint	signature:(const b2SolverData& data)
 b2PulleyJoint::SolveVelocityConstraints	Dynamics/Joints/b2PulleyJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2PulleyJoint	access:protected	signature:(const b2SolverData& data)
+b2PulleyJoint::b2Joint	Dynamics/Joints/b2PulleyJoint.h	/^	friend class b2Joint;$/;"	x
 b2PulleyJoint::b2PulleyJoint	Dynamics/Joints/b2PulleyJoint.cpp	/^b2PulleyJoint::b2PulleyJoint(const b2PulleyJointDef* def)$/;"	f	class:b2PulleyJoint	signature:(const b2PulleyJointDef* def)
 b2PulleyJoint::b2PulleyJoint	Dynamics/Joints/b2PulleyJoint.h	/^	b2PulleyJoint(const b2PulleyJointDef* data);$/;"	p	class:b2PulleyJoint	access:protected	signature:(const b2PulleyJointDef* data)
 b2PulleyJoint::m_constant	Dynamics/Joints/b2PulleyJoint.h	/^	float32 m_constant;$/;"	m	class:b2PulleyJoint	access:protected
@@ -2766,6 +2850,7 @@ b2ReferenceFace::v2	Collision/b2CollideEdge.cpp	/^	b2Vec2 v1, v2;$/;"	m	struct:b
 b2RevoluteJoint	Dynamics/Joints/b2RevoluteJoint.cpp	/^b2RevoluteJoint::b2RevoluteJoint(const b2RevoluteJointDef* def)$/;"	f	class:b2RevoluteJoint	signature:(const b2RevoluteJointDef* def)
 b2RevoluteJoint	Dynamics/Joints/b2RevoluteJoint.h	/^	b2RevoluteJoint(const b2RevoluteJointDef* def);$/;"	p	class:b2RevoluteJoint	access:protected	signature:(const b2RevoluteJointDef* def)
 b2RevoluteJoint	Dynamics/Joints/b2RevoluteJoint.h	/^class b2RevoluteJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2RevoluteJoint	Dynamics/b2Body.h	/^	friend class b2RevoluteJoint;$/;"	x
 b2RevoluteJoint::Dump	Dynamics/Joints/b2RevoluteJoint.cpp	/^void b2RevoluteJoint::Dump()$/;"	f	class:b2RevoluteJoint	signature:()
 b2RevoluteJoint::Dump	Dynamics/Joints/b2RevoluteJoint.h	/^	void Dump();$/;"	p	class:b2RevoluteJoint	access:public	signature:()
 b2RevoluteJoint::EnableLimit	Dynamics/Joints/b2RevoluteJoint.cpp	/^void b2RevoluteJoint::EnableLimit(bool flag)$/;"	f	class:b2RevoluteJoint	signature:(bool flag)
@@ -2812,6 +2897,8 @@ b2RevoluteJoint::SolvePositionConstraints	Dynamics/Joints/b2RevoluteJoint.cpp	/^
 b2RevoluteJoint::SolvePositionConstraints	Dynamics/Joints/b2RevoluteJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2RevoluteJoint	access:protected	signature:(const b2SolverData& data)
 b2RevoluteJoint::SolveVelocityConstraints	Dynamics/Joints/b2RevoluteJoint.cpp	/^void b2RevoluteJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2RevoluteJoint	signature:(const b2SolverData& data)
 b2RevoluteJoint::SolveVelocityConstraints	Dynamics/Joints/b2RevoluteJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2RevoluteJoint	access:protected	signature:(const b2SolverData& data)
+b2RevoluteJoint::b2GearJoint	Dynamics/Joints/b2RevoluteJoint.h	/^	friend class b2GearJoint;$/;"	x
+b2RevoluteJoint::b2Joint	Dynamics/Joints/b2RevoluteJoint.h	/^	friend class b2Joint;$/;"	x
 b2RevoluteJoint::b2RevoluteJoint	Dynamics/Joints/b2RevoluteJoint.cpp	/^b2RevoluteJoint::b2RevoluteJoint(const b2RevoluteJointDef* def)$/;"	f	class:b2RevoluteJoint	signature:(const b2RevoluteJointDef* def)
 b2RevoluteJoint::b2RevoluteJoint	Dynamics/Joints/b2RevoluteJoint.h	/^	b2RevoluteJoint(const b2RevoluteJointDef* def);$/;"	p	class:b2RevoluteJoint	access:protected	signature:(const b2RevoluteJointDef* def)
 b2RevoluteJoint::m_enableLimit	Dynamics/Joints/b2RevoluteJoint.h	/^	bool m_enableLimit;$/;"	m	class:b2RevoluteJoint	access:protected
@@ -2897,6 +2984,7 @@ b2RopeDef::vertices	Rope/b2Rope.h	/^	b2Vec2* vertices;$/;"	m	struct:b2RopeDef	ac
 b2RopeJoint	Dynamics/Joints/b2RopeJoint.cpp	/^b2RopeJoint::b2RopeJoint(const b2RopeJointDef* def)$/;"	f	class:b2RopeJoint	signature:(const b2RopeJointDef* def)
 b2RopeJoint	Dynamics/Joints/b2RopeJoint.h	/^	b2RopeJoint(const b2RopeJointDef* data);$/;"	p	class:b2RopeJoint	access:protected	signature:(const b2RopeJointDef* data)
 b2RopeJoint	Dynamics/Joints/b2RopeJoint.h	/^class b2RopeJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2RopeJoint	Dynamics/b2Body.h	/^	friend class b2RopeJoint;$/;"	x
 b2RopeJoint::Dump	Dynamics/Joints/b2RopeJoint.cpp	/^void b2RopeJoint::Dump()$/;"	f	class:b2RopeJoint	signature:()
 b2RopeJoint::Dump	Dynamics/Joints/b2RopeJoint.h	/^	void Dump();$/;"	p	class:b2RopeJoint	access:public	signature:()
 b2RopeJoint::GetAnchorA	Dynamics/Joints/b2RopeJoint.cpp	/^b2Vec2 b2RopeJoint::GetAnchorA() const$/;"	f	class:b2RopeJoint	signature:() const
@@ -2920,6 +3008,7 @@ b2RopeJoint::SolvePositionConstraints	Dynamics/Joints/b2RopeJoint.cpp	/^bool b2R
 b2RopeJoint::SolvePositionConstraints	Dynamics/Joints/b2RopeJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2RopeJoint	access:protected	signature:(const b2SolverData& data)
 b2RopeJoint::SolveVelocityConstraints	Dynamics/Joints/b2RopeJoint.cpp	/^void b2RopeJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2RopeJoint	signature:(const b2SolverData& data)
 b2RopeJoint::SolveVelocityConstraints	Dynamics/Joints/b2RopeJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2RopeJoint	access:protected	signature:(const b2SolverData& data)
+b2RopeJoint::b2Joint	Dynamics/Joints/b2RopeJoint.h	/^	friend class b2Joint;$/;"	x
 b2RopeJoint::b2RopeJoint	Dynamics/Joints/b2RopeJoint.cpp	/^b2RopeJoint::b2RopeJoint(const b2RopeJointDef* def)$/;"	f	class:b2RopeJoint	signature:(const b2RopeJointDef* def)
 b2RopeJoint::b2RopeJoint	Dynamics/Joints/b2RopeJoint.h	/^	b2RopeJoint(const b2RopeJointDef* data);$/;"	p	class:b2RopeJoint	access:protected	signature:(const b2RopeJointDef* data)
 b2RopeJoint::m_impulse	Dynamics/Joints/b2RopeJoint.h	/^	float32 m_impulse;$/;"	m	class:b2RopeJoint	access:protected
@@ -2974,6 +3063,8 @@ b2SeparationFunction::m_sweepA	Collision/b2TimeOfImpact.cpp	/^	b2Sweep m_sweepA,
 b2SeparationFunction::m_sweepB	Collision/b2TimeOfImpact.cpp	/^	b2Sweep m_sweepA, m_sweepB;$/;"	m	struct:b2SeparationFunction	file:	access:public
 b2SeparationFunction::m_type	Collision/b2TimeOfImpact.cpp	/^	Type m_type;$/;"	m	struct:b2SeparationFunction	file:	access:public
 b2Shape	Collision/Shapes/b2Shape.h	/^class b2Shape$/;"	c
+b2Shape	Collision/b2Collision.h	/^class b2Shape;$/;"	x
+b2Shape	Collision/b2Distance.h	/^class b2Shape;$/;"	x
 b2Shape::Clone	Collision/Shapes/b2Shape.h	/^	virtual b2Shape* Clone(b2BlockAllocator* allocator) const = 0;$/;"	p	class:b2Shape	access:public	signature:(b2BlockAllocator* allocator) const
 b2Shape::ComputeAABB	Collision/Shapes/b2Shape.h	/^	virtual void ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const = 0;$/;"	p	class:b2Shape	access:public	signature:(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const
 b2Shape::ComputeMass	Collision/Shapes/b2Shape.h	/^	virtual void ComputeMass(b2MassData* massData, float32 density) const = 0;$/;"	p	class:b2Shape	access:public	signature:(b2MassData* massData, float32 density) const
@@ -3018,14 +3109,17 @@ b2SimplexVertex::indexB	Collision/b2Distance.cpp	/^	int32 indexB;	\/\/ wB index$
 b2SimplexVertex::w	Collision/b2Distance.cpp	/^	b2Vec2 w;		\/\/ wB - wA$/;"	m	struct:b2SimplexVertex	file:	access:public
 b2SimplexVertex::wA	Collision/b2Distance.cpp	/^	b2Vec2 wA;		\/\/ support point in proxyA$/;"	m	struct:b2SimplexVertex	file:	access:public
 b2SimplexVertex::wB	Collision/b2Distance.cpp	/^	b2Vec2 wB;		\/\/ support point in proxyB$/;"	m	struct:b2SimplexVertex	file:	access:public
+b2SolverData	Dynamics/Joints/b2Joint.h	/^struct b2SolverData;$/;"	x
 b2SolverData	Dynamics/b2TimeStep.h	/^struct b2SolverData$/;"	s
 b2SolverData::positions	Dynamics/b2TimeStep.h	/^	b2Position* positions;$/;"	m	struct:b2SolverData	access:public
 b2SolverData::step	Dynamics/b2TimeStep.h	/^	b2TimeStep step;$/;"	m	struct:b2SolverData	access:public
 b2SolverData::velocities	Dynamics/b2TimeStep.h	/^	b2Velocity* velocities;$/;"	m	struct:b2SolverData	access:public
-b2Sqrt	Common/b2Math.h	60;"	d
 b2StackAllocator	Common/b2StackAllocator.cpp	/^b2StackAllocator::b2StackAllocator()$/;"	f	class:b2StackAllocator	signature:()
 b2StackAllocator	Common/b2StackAllocator.h	/^	b2StackAllocator();$/;"	p	class:b2StackAllocator	access:public	signature:()
 b2StackAllocator	Common/b2StackAllocator.h	/^class b2StackAllocator$/;"	c
+b2StackAllocator	Dynamics/Contacts/b2Contact.h	/^class b2StackAllocator;$/;"	x
+b2StackAllocator	Dynamics/Contacts/b2ContactSolver.h	/^class b2StackAllocator;$/;"	x
+b2StackAllocator	Dynamics/b2Island.h	/^class b2StackAllocator;$/;"	x
 b2StackAllocator::Allocate	Common/b2StackAllocator.cpp	/^void* b2StackAllocator::Allocate(int32 size)$/;"	f	class:b2StackAllocator	signature:(int32 size)
 b2StackAllocator::Allocate	Common/b2StackAllocator.h	/^	void* Allocate(int32 size);$/;"	p	class:b2StackAllocator	access:public	signature:(int32 size)
 b2StackAllocator::Free	Common/b2StackAllocator.cpp	/^void b2StackAllocator::Free(void* p)$/;"	f	class:b2StackAllocator	signature:(void* p)
@@ -3108,6 +3202,7 @@ b2Timer::s_invFrequency	Common/b2Timer.h	/^	static float64 s_invFrequency;$/;"	m
 b2Transform	Common/b2Math.h	/^	b2Transform() {}$/;"	f	struct:b2Transform	access:public	signature:()
 b2Transform	Common/b2Math.h	/^	b2Transform(const b2Vec2& position, const b2Rot& rotation) : p(position), q(rotation) {}$/;"	f	struct:b2Transform	access:public	signature:(const b2Vec2& position, const b2Rot& rotation)
 b2Transform	Common/b2Math.h	/^struct b2Transform$/;"	s
+b2Transform	Dynamics/b2WorldCallbacks.h	/^struct b2Transform;$/;"	x
 b2Transform::Set	Common/b2Math.h	/^	void Set(const b2Vec2& position, float32 angle)$/;"	f	struct:b2Transform	access:public	signature:(const b2Vec2& position, float32 angle)
 b2Transform::SetIdentity	Common/b2Math.h	/^	void SetIdentity()$/;"	f	struct:b2Transform	access:public	signature:()
 b2Transform::b2Transform	Common/b2Math.h	/^	b2Transform() {}$/;"	f	struct:b2Transform	access:public	signature:()
@@ -3126,6 +3221,7 @@ b2TreeNode::userData	Collision/b2DynamicTree.h	/^	void* userData;$/;"	m	struct:b
 b2Vec2	Common/b2Math.h	/^	b2Vec2() {}$/;"	f	struct:b2Vec2	access:public	signature:()
 b2Vec2	Common/b2Math.h	/^	b2Vec2(float32 x, float32 y) : x(x), y(y) {}$/;"	f	struct:b2Vec2	access:public	signature:(float32 x, float32 y)
 b2Vec2	Common/b2Math.h	/^struct b2Vec2$/;"	s
+b2Vec2	Dynamics/b2WorldCallbacks.h	/^struct b2Vec2;$/;"	x
 b2Vec2::IsValid	Common/b2Math.h	/^	bool IsValid() const$/;"	f	struct:b2Vec2	access:public	signature:() const
 b2Vec2::Length	Common/b2Math.h	/^	float32 Length() const$/;"	f	struct:b2Vec2	access:public	signature:() const
 b2Vec2::LengthSquared	Common/b2Math.h	/^	float32 LengthSquared() const$/;"	f	struct:b2Vec2	access:public	signature:() const
@@ -3143,6 +3239,7 @@ b2Vec2::operator -	Common/b2Math.h	/^	b2Vec2 operator -() const { b2Vec2 v; v.Se
 b2Vec2::operator -=	Common/b2Math.h	/^	void operator -= (const b2Vec2& v)$/;"	f	struct:b2Vec2	access:public	signature:(const b2Vec2& v)
 b2Vec2::x	Common/b2Math.h	/^	float32 x, y;$/;"	m	struct:b2Vec2	access:public
 b2Vec2::y	Common/b2Math.h	/^	float32 x, y;$/;"	m	struct:b2Vec2	access:public
+b2Vec2_zero	Common/b2Math.h	/^extern const b2Vec2 b2Vec2_zero;$/;"	x
 b2Vec3	Common/b2Math.h	/^	b2Vec3() {}$/;"	f	struct:b2Vec3	access:public	signature:()
 b2Vec3	Common/b2Math.h	/^	b2Vec3(float32 x, float32 y, float32 z) : x(x), y(y), z(z) {}$/;"	f	struct:b2Vec3	access:public	signature:(float32 x, float32 y, float32 z)
 b2Vec3	Common/b2Math.h	/^struct b2Vec3$/;"	s
@@ -3175,6 +3272,7 @@ b2Version::revision	Common/b2Settings.h	/^	int32 revision;		\/\/\/< bug fixes$/;
 b2WeldJoint	Dynamics/Joints/b2WeldJoint.cpp	/^b2WeldJoint::b2WeldJoint(const b2WeldJointDef* def)$/;"	f	class:b2WeldJoint	signature:(const b2WeldJointDef* def)
 b2WeldJoint	Dynamics/Joints/b2WeldJoint.h	/^	b2WeldJoint(const b2WeldJointDef* def);$/;"	p	class:b2WeldJoint	access:protected	signature:(const b2WeldJointDef* def)
 b2WeldJoint	Dynamics/Joints/b2WeldJoint.h	/^class b2WeldJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2WeldJoint	Dynamics/b2Body.h	/^	friend class b2WeldJoint;$/;"	x
 b2WeldJoint::Dump	Dynamics/Joints/b2WeldJoint.cpp	/^void b2WeldJoint::Dump()$/;"	f	class:b2WeldJoint	signature:()
 b2WeldJoint::Dump	Dynamics/Joints/b2WeldJoint.h	/^	void Dump();$/;"	p	class:b2WeldJoint	access:public	signature:()
 b2WeldJoint::GetAnchorA	Dynamics/Joints/b2WeldJoint.cpp	/^b2Vec2 b2WeldJoint::GetAnchorA() const$/;"	f	class:b2WeldJoint	signature:() const
@@ -3198,6 +3296,7 @@ b2WeldJoint::SolvePositionConstraints	Dynamics/Joints/b2WeldJoint.cpp	/^bool b2W
 b2WeldJoint::SolvePositionConstraints	Dynamics/Joints/b2WeldJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2WeldJoint	access:protected	signature:(const b2SolverData& data)
 b2WeldJoint::SolveVelocityConstraints	Dynamics/Joints/b2WeldJoint.cpp	/^void b2WeldJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2WeldJoint	signature:(const b2SolverData& data)
 b2WeldJoint::SolveVelocityConstraints	Dynamics/Joints/b2WeldJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2WeldJoint	access:protected	signature:(const b2SolverData& data)
+b2WeldJoint::b2Joint	Dynamics/Joints/b2WeldJoint.h	/^	friend class b2Joint;$/;"	x
 b2WeldJoint::b2WeldJoint	Dynamics/Joints/b2WeldJoint.cpp	/^b2WeldJoint::b2WeldJoint(const b2WeldJointDef* def)$/;"	f	class:b2WeldJoint	signature:(const b2WeldJointDef* def)
 b2WeldJoint::b2WeldJoint	Dynamics/Joints/b2WeldJoint.h	/^	b2WeldJoint(const b2WeldJointDef* def);$/;"	p	class:b2WeldJoint	access:protected	signature:(const b2WeldJointDef* def)
 b2WeldJoint::m_bias	Dynamics/Joints/b2WeldJoint.h	/^	float32 m_bias;$/;"	m	class:b2WeldJoint	access:protected
@@ -3232,6 +3331,7 @@ b2WeldJointDef::referenceAngle	Dynamics/Joints/b2WeldJoint.h	/^	float32 referenc
 b2WheelJoint	Dynamics/Joints/b2WheelJoint.cpp	/^b2WheelJoint::b2WheelJoint(const b2WheelJointDef* def)$/;"	f	class:b2WheelJoint	signature:(const b2WheelJointDef* def)
 b2WheelJoint	Dynamics/Joints/b2WheelJoint.h	/^	b2WheelJoint(const b2WheelJointDef* def);$/;"	p	class:b2WheelJoint	access:protected	signature:(const b2WheelJointDef* def)
 b2WheelJoint	Dynamics/Joints/b2WheelJoint.h	/^class b2WheelJoint : public b2Joint$/;"	c	inherits:b2Joint
+b2WheelJoint	Dynamics/b2Body.h	/^	friend class b2WheelJoint;$/;"	x
 b2WheelJoint::Dump	Dynamics/Joints/b2WheelJoint.cpp	/^void b2WheelJoint::Dump()$/;"	f	class:b2WheelJoint	signature:()
 b2WheelJoint::Dump	Dynamics/Joints/b2WheelJoint.h	/^	void Dump();$/;"	p	class:b2WheelJoint	access:public	signature:()
 b2WheelJoint::EnableMotor	Dynamics/Joints/b2WheelJoint.cpp	/^void b2WheelJoint::EnableMotor(bool flag)$/;"	f	class:b2WheelJoint	signature:(bool flag)
@@ -3278,6 +3378,7 @@ b2WheelJoint::SolvePositionConstraints	Dynamics/Joints/b2WheelJoint.cpp	/^bool b
 b2WheelJoint::SolvePositionConstraints	Dynamics/Joints/b2WheelJoint.h	/^	bool SolvePositionConstraints(const b2SolverData& data);$/;"	p	class:b2WheelJoint	access:protected	signature:(const b2SolverData& data)
 b2WheelJoint::SolveVelocityConstraints	Dynamics/Joints/b2WheelJoint.cpp	/^void b2WheelJoint::SolveVelocityConstraints(const b2SolverData& data)$/;"	f	class:b2WheelJoint	signature:(const b2SolverData& data)
 b2WheelJoint::SolveVelocityConstraints	Dynamics/Joints/b2WheelJoint.h	/^	void SolveVelocityConstraints(const b2SolverData& data);$/;"	p	class:b2WheelJoint	access:protected	signature:(const b2SolverData& data)
+b2WheelJoint::b2Joint	Dynamics/Joints/b2WheelJoint.h	/^	friend class b2Joint;$/;"	x
 b2WheelJoint::b2WheelJoint	Dynamics/Joints/b2WheelJoint.cpp	/^b2WheelJoint::b2WheelJoint(const b2WheelJointDef* def)$/;"	f	class:b2WheelJoint	signature:(const b2WheelJointDef* def)
 b2WheelJoint::b2WheelJoint	Dynamics/Joints/b2WheelJoint.h	/^	b2WheelJoint(const b2WheelJointDef* def);$/;"	p	class:b2WheelJoint	access:protected	signature:(const b2WheelJointDef* def)
 b2WheelJoint::m_ax	Dynamics/Joints/b2WheelJoint.h	/^	b2Vec2 m_ax, m_ay;$/;"	m	class:b2WheelJoint	access:protected
@@ -3324,6 +3425,12 @@ b2WheelJointDef::localAnchorB	Dynamics/Joints/b2WheelJoint.h	/^	b2Vec2 localAnch
 b2WheelJointDef::localAxisA	Dynamics/Joints/b2WheelJoint.h	/^	b2Vec2 localAxisA;$/;"	m	struct:b2WheelJointDef	access:public
 b2WheelJointDef::maxMotorTorque	Dynamics/Joints/b2WheelJoint.h	/^	float32 maxMotorTorque;$/;"	m	struct:b2WheelJointDef	access:public
 b2WheelJointDef::motorSpeed	Dynamics/Joints/b2WheelJoint.h	/^	float32 motorSpeed;$/;"	m	struct:b2WheelJointDef	access:public
+b2World	Dynamics/Contacts/b2Contact.h	/^	friend class b2World;$/;"	x
+b2World	Dynamics/Contacts/b2Contact.h	/^class b2World;$/;"	x
+b2World	Dynamics/Joints/b2Joint.h	/^	friend class b2World;$/;"	x
+b2World	Dynamics/b2Body.h	/^	friend class b2World;$/;"	x
+b2World	Dynamics/b2Body.h	/^class b2World;$/;"	x
+b2World	Dynamics/b2Fixture.h	/^	friend class b2World;$/;"	x
 b2World	Dynamics/b2World.cpp	/^b2World::b2World(const b2Vec2& gravity)$/;"	f	class:b2World	signature:(const b2Vec2& gravity)
 b2World	Dynamics/b2World.h	/^	b2World(const b2Vec2& gravity);$/;"	p	class:b2World	access:public	signature:(const b2Vec2& gravity)
 b2World	Dynamics/b2World.h	/^class b2World$/;"	c
@@ -3412,6 +3519,10 @@ b2World::SolveTOI	Dynamics/b2World.cpp	/^void b2World::SolveTOI(const b2TimeStep
 b2World::SolveTOI	Dynamics/b2World.h	/^	void SolveTOI(const b2TimeStep& step);$/;"	p	class:b2World	access:private	signature:(const b2TimeStep& step)
 b2World::Step	Dynamics/b2World.cpp	/^void b2World::Step(float32 dt, int32 velocityIterations, int32 positionIterations)$/;"	f	class:b2World	signature:(float32 dt, int32 velocityIterations, int32 positionIterations)
 b2World::Step	Dynamics/b2World.h	/^	void Step(	float32 timeStep,$/;"	p	class:b2World	access:public	signature:( float32 timeStep, int32 velocityIterations, int32 positionIterations)
+b2World::b2Body	Dynamics/b2World.h	/^	friend class b2Body;$/;"	x
+b2World::b2ContactManager	Dynamics/b2World.h	/^	friend class b2ContactManager;$/;"	x
+b2World::b2Controller	Dynamics/b2World.h	/^	friend class b2Controller;$/;"	x
+b2World::b2Fixture	Dynamics/b2World.h	/^	friend class b2Fixture;$/;"	x
 b2World::b2World	Dynamics/b2World.cpp	/^b2World::b2World(const b2Vec2& gravity)$/;"	f	class:b2World	signature:(const b2Vec2& gravity)
 b2World::b2World	Dynamics/b2World.h	/^	b2World(const b2Vec2& gravity);$/;"	p	class:b2World	access:public	signature:(const b2Vec2& gravity)
 b2World::e_clearForces	Dynamics/b2World.h	/^		e_clearForces	= 0x0004$/;"	e	enum:b2World::__anon5
@@ -3450,54 +3561,30 @@ b2WorldRayCastWrapper	Dynamics/b2World.cpp	/^struct b2WorldRayCastWrapper$/;"	s	
 b2WorldRayCastWrapper::RayCastCallback	Dynamics/b2World.cpp	/^	float32 RayCastCallback(const b2RayCastInput& input, int32 proxyId)$/;"	f	struct:b2WorldRayCastWrapper	access:public	signature:(const b2RayCastInput& input, int32 proxyId)
 b2WorldRayCastWrapper::broadPhase	Dynamics/b2World.cpp	/^	const b2BroadPhase* broadPhase;$/;"	m	struct:b2WorldRayCastWrapper	file:	access:public
 b2WorldRayCastWrapper::callback	Dynamics/b2World.cpp	/^	b2RayCastCallback* callback;$/;"	m	struct:b2WorldRayCastWrapper	file:	access:public
-b2_aabbExtension	Common/b2Settings.h	58;"	d
-b2_aabbMultiplier	Common/b2Settings.h	63;"	d
 b2_addState	Collision/b2Collision.h	/^	b2_addState,		\/\/\/< point was added in the update$/;"	e	enum:b2PointState
-b2_angularSleepTolerance	Common/b2Settings.h	125;"	d
-b2_angularSlop	Common/b2Settings.h	71;"	d
-b2_baumgarte	Common/b2Settings.h	112;"	d
 b2_blockSizes	Common/b2BlockAllocator.h	/^const int32 b2_blockSizes = 14;$/;"	v
 b2_chunkArrayIncrement	Common/b2BlockAllocator.h	/^const int32 b2_chunkArrayIncrement = 128;$/;"	v
 b2_chunkSize	Common/b2BlockAllocator.h	/^const int32 b2_chunkSize = 16 * 1024;$/;"	v
 b2_defaultFilter	Dynamics/b2ContactManager.cpp	/^b2ContactFilter b2_defaultFilter;$/;"	v
 b2_defaultListener	Dynamics/b2ContactManager.cpp	/^b2ContactListener b2_defaultListener;$/;"	v
 b2_dynamicBody	Dynamics/b2Body.h	/^	b2_dynamicBody$/;"	e	enum:b2BodyType
-b2_epsilon	Common/b2Settings.h	38;"	d
 b2_gjkCalls	Collision/b2Distance.cpp	/^int32 b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;$/;"	v
 b2_gjkIters	Collision/b2Distance.cpp	/^int32 b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;$/;"	v
 b2_gjkMaxIters	Collision/b2Distance.cpp	/^int32 b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;$/;"	v
 b2_kinematicBody	Dynamics/b2Body.h	/^	b2_kinematicBody,$/;"	e	enum:b2BodyType
-b2_linearSleepTolerance	Common/b2Settings.h	122;"	d
-b2_linearSlop	Common/b2Settings.h	67;"	d
-b2_maxAngularCorrection	Common/b2Settings.h	97;"	d
 b2_maxBlockSize	Common/b2BlockAllocator.h	/^const int32 b2_maxBlockSize = 640;$/;"	v
-b2_maxFloat	Common/b2Settings.h	37;"	d
-b2_maxLinearCorrection	Common/b2Settings.h	93;"	d
-b2_maxManifoldPoints	Common/b2Settings.h	49;"	d
-b2_maxPolygonVertices	Common/b2Settings.h	53;"	d
-b2_maxRotation	Common/b2Settings.h	106;"	d
-b2_maxRotationSquared	Common/b2Settings.h	107;"	d
 b2_maxStackEntries	Common/b2StackAllocator.h	/^const int32 b2_maxStackEntries = 32;$/;"	v
-b2_maxSubSteps	Common/b2Settings.h	79;"	d
-b2_maxTOIContacts	Common/b2Settings.h	85;"	d
-b2_maxTranslation	Common/b2Settings.h	101;"	d
-b2_maxTranslationSquared	Common/b2Settings.h	102;"	d
 b2_minPulleyLength	Dynamics/Joints/b2PulleyJoint.h	/^const float32 b2_minPulleyLength = 2.0f;$/;"	v
 b2_nullFeature	Collision/b2Collision.h	/^const uint8 b2_nullFeature = UCHAR_MAX;$/;"	v
-b2_nullNode	Collision/b2DynamicTree.h	25;"	d
 b2_nullState	Collision/b2Collision.h	/^	b2_nullState,		\/\/\/< point does not exist$/;"	e	enum:b2PointState
 b2_persistState	Collision/b2Collision.h	/^	b2_persistState,	\/\/\/< point persisted across the update$/;"	e	enum:b2PointState
-b2_pi	Common/b2Settings.h	39;"	d
-b2_polygonRadius	Common/b2Settings.h	76;"	d
 b2_removeState	Collision/b2Collision.h	/^	b2_removeState		\/\/\/< point was removed in the update$/;"	e	enum:b2PointState
 b2_stackSize	Common/b2StackAllocator.h	/^const int32 b2_stackSize = 100 * 1024;	\/\/ 100k$/;"	v
 b2_staticBody	Dynamics/b2Body.h	/^	b2_staticBody = 0,$/;"	e	enum:b2BodyType
-b2_timeToSleep	Common/b2Settings.h	119;"	d
-b2_toiBaugarte	Common/b2Settings.h	113;"	d
 b2_toiMaxRootIters	Collision/b2TimeOfImpact.cpp	/^int32 b2_toiRootIters, b2_toiMaxRootIters;$/;"	v
 b2_toiRootIters	Collision/b2TimeOfImpact.cpp	/^int32 b2_toiRootIters, b2_toiMaxRootIters;$/;"	v
-b2_velocityThreshold	Common/b2Settings.h	89;"	d
 b2_version	Common/b2Settings.cpp	/^b2Version b2_version = {2, 2, 1};$/;"	v
+b2_version	Common/b2Settings.h	/^extern b2Version b2_version;$/;"	x
 blockSize	Common/b2BlockAllocator.cpp	/^	int32 blockSize;$/;"	m	struct:b2Chunk	file:	access:public
 blocks	Common/b2BlockAllocator.cpp	/^	b2Block* blocks;$/;"	m	struct:b2Chunk	file:	access:public
 bodyA	Dynamics/Joints/b2Joint.h	/^	b2Body* bodyA;$/;"	m	struct:b2JointDef	access:public
