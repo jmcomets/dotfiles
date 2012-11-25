@@ -74,7 +74,7 @@ set wildmode=longest,list
 set wildignore=*.o,*~,*.pyc,*.gch
 
 " Show line numbers
-set number
+set nonumber
 
 " Always show current position
 set ruler
@@ -205,9 +205,9 @@ set background=dark
 "  4 - wombat
 "  5 - tesla
 "  6 - adrian
-"  7 - ir_black
-"  8 - monokai
-colorscheme obsidian
+"  7 - monokai
+"  8 - inkpot
+colorscheme wombat
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
@@ -252,9 +252,8 @@ set switchbuf=useopen,usetab,newtab
 " Tab display
 set showtabline=0
 
-" Split windows in preferred direction (right, below)
+" Split towards the right
 set splitright
-set splitbelow
 
 if has("autocmd")
     " Return to last edit position when opening files
@@ -274,6 +273,8 @@ endif
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Useful mappings for managing tabs
 nmap <silent> <leader>tn :tabnew<cr>
@@ -281,9 +282,6 @@ nmap <silent> <leader>to :tabonly<cr>
 nmap <silent> <leader>tc :tabclose<cr>
 nmap <silent> <C-tab> :tabnext<cr>
 nmap <silent> <C-S-tab> :tabprevious<cr>
-
-" Switch CWD to the directory of the open buffer
-"nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Switch buffers quickly
 nmap <silent> <leader>n :bn<cr>
@@ -307,27 +305,21 @@ vnoremap <silent> <M-j> :m '>+1<cr>gv=gv
 vnoremap <silent> <M-k> :m '<-2<cr>gv=gv
 
 " Toggle invisibles display
-nmap <silent> <leader>i :set list!<cr>
-
-" Toggle between absolute / relative line numbering
-nmap <silent> <leader>r :call ToggleRelNumbering()<cr>
-
-" Toggle foldmethod
-nmap <silent> <leader>f :call ToggleFDM()<cr>
+nmap <silent> <leader>i :setlocal list!<cr>
 
 " Toggle search highlighting
-nmap <silent> <leader><cr> :call ToggleHiSearch()<cr>
+nmap <silent> <leader><cr> :nohl<cr>
 
-" Center screen at cursor
+" Center screen at cursor when searching
 nnoremap n nzz
 nnoremap } }zz
 
-" Find current word in new window
-nmap <silent> <leader>sw :let @/=expand("<cword>")<bar>split<bar>normal n<cr>
-nmap <silent> <leader>sW :let @/='\<'.expand("<cword>").'\>'<bar>split<bar>normal n<cr>
+" Don't jump when searching with * / #
+nnoremap * *<C-o>zz
+nnoremap # #<C-o>zz
 
 " Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left>
 
 " Select all text in current file
 nmap <leader>a ggVG
@@ -342,8 +334,8 @@ nnoremap ` '
 " Map ";" to ":" (avoid typos)
 noremap ; :
 
-" Map "²" to "~" (quicker), and don't go forward one character
-"nmap ² ~h
+" Map Space to re-indenting (much faster)
+nmap <space> =
 
 " Resolve inconsistency between "Y" (line),
 "   and "D" (til end of line)
@@ -365,9 +357,6 @@ nnoremap <silent> <leader>w :w<cr>
 
 " Close current file
 nmap <silent> <leader>q :q<cr>
-
-" Run "ls" in cwd Shell
-nmap <silent> <leader>ls :!ls<cr>
 
 " Edit / Source configuration
 nmap <silent> <leader>co :e $MYVIMRC<cr>
@@ -458,33 +447,6 @@ function! s:Bclose(bang, buffer) " -------------- {{{
 endfunction " ----------------------------------- }}}
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
-" Toggle search highlighting
-function! ToggleHiSearch() " --- {{{
-    if (&hls)
-        set nohls
-    else
-        set hls
-    endif
-endfunction " ------------------ }}}
-
-" Toggle numbering (absolute / relative)
-function! ToggleRelNumbering() " --- {{{
-    if (&number)
-        set relativenumber
-    else
-        set number
-    endif
-endfunction " ---------------------- }}}
-
-" Toggle foldmethod
-function! ToggleFDM() " ----- {{{
-    if (&foldmethod == 'syntax')
-        set foldmethod=indent
-    else
-        set foldmethod=syntax
-    endif
-endfunction " --------------- }}}
-
 " ---- }}}
 
 " FileType settings ---------------------------------------------- {{{
@@ -515,25 +477,6 @@ endif
 " ---------------------------------------------------------------- }}}
 
 " Plugin customization ------------------------------------------- {{{
-
-" TagList
-let Tlist_Auto_Highlight_Tag=1
-let Tlist_Auto_Update=1
-let Tlist_Close_On_Select=1
-let Tlist_Compact_Format=1
-let Tlist_Display_Prototype=1
-let Tlist_Display_Tag_Scope=1
-let Tlist_Enable_Fold_Column=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Show_One_File=1
-let Tlist_Use_Right_Window=1
-map <silent> <F4> :Tlist<cr>
-imap <F4> <C-o><F4><cr>
-
-" NerdTree
-map <silent> <F3> :NERDTreeToggle<cr>
-imap <F3> <C-o><F3><cr>
 
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
