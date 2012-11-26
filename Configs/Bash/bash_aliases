@@ -62,7 +62,3 @@ alias t="tree"
 # install -> apt-get install
 make-completion-wrapper _apt_get _install apt-get install
 complete -o filenames -F _install install
-
-# Project-specific
-alias tp="cd ~/Desktop/tp-specifs"
-alias en="cd ~/Desktop/engine"

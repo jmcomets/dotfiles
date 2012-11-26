@@ -204,10 +204,9 @@ set background=dark
 "  3 - mustang
 "  4 - wombat
 "  5 - tesla
-"  6 - adrian
-"  7 - monokai
-"  8 - inkpot
-colorscheme wombat
+"  6 - monokai
+"  7 - inkpot
+colorscheme obsidian
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
@@ -319,7 +318,7 @@ nnoremap * *<C-o>zz
 nnoremap # #<C-o>zz
 
 " Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left><left>
 
 " Select all text in current file
 nmap <leader>a ggVG
