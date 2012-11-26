@@ -1,14 +1,13 @@
 /**
  * @file vector.hpp
- * Contains utilities::vector.
+ * Contains Bundle::Vector.
  *
  * @details
  * This generic vector (size and type) allows both flexibility and
- * performance when vector algebra is needed. It is a header-only
- * implementation file.
+ * performance when vector algebra is needed.
  *
  * @author Jean-Marie Comets
- * @version 0.9
+ * @version 1.0
  *
  * @section LICENSE
  * This program is free software: you can redistribute it and/or modify
@@ -24,66 +23,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @todo overload array-assignment operator (ex: v[2] = 5)
- *
  */
-
-//-------------------- Personal quick reference --------------------//
-
-/* Syntax:
- *   "+" = implemented
- *   "-" = not implemented
- *
- * Constructors :
- *  + vector(std::initializer_list<T>)
- *  + vector(const vector &)
- *
- * Virtual destructor (does nothing).
- *
- * Methods :
- *  + T coord(unsigned int) const
- *  + void setCoord(unsigned int, T)
- *  + void copy(std::initializer_list<T>)
- *  + void copy(const vector &)
- *  + bool equals(const vector &) const
- *  + void add(const vector &)
- *  + void substract(const vector &)
- *  + void multiply(T)
- *  + void divide(T)
- *  + T dot(const vector &) const
- *  + T norm() const
- *  + T angle(const vector &) const
- *  + vector & unit() const
- *  + void dump(const vector<T, N> &)
- *
- * Operators :
- * 	+ "+" : add
- * 	+ "-" : substract
- * 	+ "*" : dot-product / multiplication
- * 	+ "/" : division
- * 	+ "^" : angle
- * 	+ "[]" : access
- * 	+ "=" : copy
- * 	+ "==" : equality
- * 	+ "!=" : difference
- *
- * Extra dump() method implemented as well
- *
- */
-
-//--------------------- Vector implementation ---------------------//
 
 #ifndef VECTOR_H_INCLUDED_
 #define VECTOR_H_INCLUDED_
 
-#include <initializer_list> // for constructor from `{}`
-#include <algorithm> // for copy
-#include <stdexcept> // for exceptions
-#include <memory> // for auto_ptr
-#include <cmath> // for calculus
-#include <iostream> // for dump
+#include <cmath>
+#include <stdexcept>
+#include <iostream>
+#include <algorithm>
 
-namespace utilities
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
+#include <initializer_list>
+#endif // __GXX_EXPERIMENTAL_CXX0X__
+
+namespace Bundle
 {
 
 /**
@@ -92,39 +46,49 @@ namespace utilities
  * @tparam T
  * @tparam N
  */
-template<class T, unsigned int N>
-class vector
+template<class T, std::size_t N>
+    class Vector
 {
-    private:
-        /**
-         * @brief array containing the vector's coordinates.
-         */
-        T _coords [N];
     public:
         /**
-         * @brief constructs from iniliatizer list
+         * @breif constructs and initializes to value
+         *
+         * @param value (default is 0)
+         */
+        Vector(T value = 0)
+        {
+            for (std::size_t i = 0; i < N; i++)
+            {
+                coords_[i] = value;
+            }
+        }
+
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
+        /**
+         * @brief constructs from initializer list
          *
          * @param coords
          */
-        inline vector(std::initializer_list<T> coords)
+        Vector(std::initializer_list<T> coords)
         {
-            copy(coords);
+            Copy(coords);
         }
+#endif // __GXX_EXPERIMENTAL_CXX0X__
 
         /**
          * @brief copy constructor
          *
          * @param v
          */
-        inline vector(const vector & v)
+        Vector(const Vector & v)
         {
-            copy(v);
+            Copy(v);
         }
 
         /**
          * @brief destructor
          */
-        inline virtual ~vector()
+        virtual ~Vector()
         {
         }
 
@@ -135,69 +99,56 @@ class vector
          *
          * @return the index'th coordinate
          */
-        inline T coord(unsigned int index) const
+        T Coord(std::size_t index)
         {
             if (index >= N)
             {
                 throw std::out_of_range("Given index is out of bounds");
             }
-            return _coords[index];
+            return coords_[index];
         }
 
         /**
-         * @brief sets coordinates (indexed from 0)
+         * @brief const gets coordinates (indexed from 0)
          *
          * @param index
-         * @param value
+         *
+         * @return the index'th coordinate
          */
-        inline void setCoord(unsigned int index, T value)
+        T Coord(std::size_t index) const
         {
             if (index >= N)
             {
                 throw std::out_of_range("Given index is out of bounds");
             }
-            _coords[index] = value;
+            return coords_[index];
         }
 
         /**
-         * @brief copies from initializer list
-         *
-         * @param coords
-         */
-        inline void copy(std::initializer_list<T> coords)
-        {
-            if (coords.size() != N)
-            {
-                throw std::length_error("Given size is different from vector's");
-            }
-            std::copy(coords.begin(), coords.end(), _coords);
-        }
-
-        /**
-         * @brief copies from other vector
+         * @brief copies from other Vector
          *
          * @param v
          */
-        inline void copy(const vector & v)
+        void Copy(const Vector & v)
         {
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                _coords[i] = v._coords[i];
+                coords_[i] = v.coords_[i];
             }
         }
 
         /**
-         * @brief checks equality with other vector
+         * @brief checks equality with other Vector
          *
          * @param v
          *
          * @return
          */
-        inline bool equals(const vector & v) const
+        bool Equals(const Vector & v) const
         {
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                if (_coords[i] != v._coords[i])
+                if (coords_[i] != v.coords_[i])
                 {
                     return false;
                 }
@@ -206,28 +157,28 @@ class vector
         }
 
         /**
-         * @brief adds with given vector
+         * @brief adds with given Vector
          *
          * @param v
          */
-        inline void add(const vector & v)
+        void Add(const Vector & v)
         {
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                _coords[i] += v._coords[i];
+                coords_[i] += v.coords_[i];
             }
         }
 
         /**
-         * @brief substracts with given vector
+         * @brief substracts with given Vector
          *
          * @param v
          */
-        inline void substract(const vector & v)
+        void Substract(const Vector & v)
         {
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                _coords[i] -= v._coords[i];
+                coords_[i] -= v.coords_[i];
             }
         }
 
@@ -236,11 +187,11 @@ class vector
          *
          * @param c
          */
-        inline void multiply(T c)
+        void Multiply(T c)
         {
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                _coords[i] *= c;
+                coords_[i] *= c;
             }
         }
 
@@ -249,94 +200,81 @@ class vector
          *
          * @param c
          */
-        inline void divide(T c)
+        void Divide(T c)
         {
             if (c == 0)
             {
                 throw std::overflow_error("Cannot divide by zero");
             }
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                _coords[i] /= c;
+                coords_[i] /= c;
             }
         }
 
         /**
-         * @brief computes the dot product with given vector
+         * @brief computes the dot product with given Vector
          *
          * @param v
          *
          * @return the dot product < current | given >
          */
-        inline T dot(const vector & v) const
+        T Dot(const Vector & v) const
         {
             T dprod = 0;
-            for (unsigned int i = 0; i < N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                dprod += _coords[i] * v._coords[i];
+                dprod += coords_[i] * v.coords_[i];
             }
             return dprod;
         }
 
         /**
-         * @brief computes the norm of the vector
+         * @brief computes the norm of the Vector
          *
-         * @return the norm of the vector
+         * @return the norm of the Vector
          */
-        inline T norm() const
+        T Norm() const
         {
-            return std::sqrt(dot(*this));
+            return std::sqrt(Dot(*this));
         }
 
         /**
-         * @brief computes the angle with given vector
+         * @brief computes the angle with given Vector
          *
          * @param v
          *
          * @return the angle (current, given) in radians
          */
-        inline T angle(const vector & v) const
+        T Angle(const Vector & v) const
         {
-            if (norm() == 0 || v.norm() == 0)
+            if (Norm() == 0 || v.Norm() == 0)
             {
-                throw std::overflow_error("Cannot compute angle with null vector");
+                throw std::overflow_error("Cannot compute angle with null Vector");
             }
-            return std::acos(dot(v) / (norm() * v.norm()));
+            return std::acos(Dot(v) / (Norm() * v.Norm()));
         }
 
         /**
-         * @brief gets the corresponding unit vector
+         * @brief gets the corresponding unit Vector
          *
-         * @return a new colinear unit vector
+         * @return a collinear unit Vector
          */
-        inline vector & unit() const
+        Vector Unit() const
         {
-            std::auto_ptr<vector<T, N>> v(new vector<T, N>(*this));
-            v->divide(v->norm());
-            return *v;
+            Vector<T, N> v(*this);
+            v.Divide(v.Norm());
+            return v;
         }
 
         /**
-         * @brief overloads the assignment operator for initializer list
-         *
-         * @param coords
-         *
-         * @return the reference to current vector
-         */
-        inline vector & operator=(std::initializer_list<T> coords)
-        {
-            copy(coords);
-            return *this;
-        }
-
-        /**
-         * @brief overloads the assignment operator for vector
+         * @brief overloads the assignment operator for Vector
          *
          * @param v
          *
-         * @return the reference to current vector
+         * @return the reference to current Vector
          */
-        inline vector & operator=(const vector & v)
+        inline Vector & operator=(const Vector & v)
         {
             if (this != &v)
             {
@@ -346,83 +284,95 @@ class vector
         }
 
         /**
-         * @brief overloads the "+=" operator (alias for add())
+         * @brief overloads the "+=" operator
          *
          * @param v
          *
-         * @return the reference to current vector
+         * @return the reference to current Vector
          */
-        inline vector & operator+=(const vector & v)
+        inline Vector & operator+=(const Vector & v)
         {
-            add(v);
+            Add(v);
             return *this;
         }
 
         /**
-         * @brief overloads the "-=" operator (alias for substract())
+         * @brief overloads the "-=" operator
          *
          * @param v
          *
-         * @return the reference to current vector
+         * @return the reference to current Vector
          */
-        inline vector & operator-=(const vector & v)
+        inline Vector & operator-=(const Vector & v)
         {
-            substract(v);
+            Substract(v);
             return *this;
         }
 
         /**
-         * @brief overloads "*=" operator (alias for multiply())
+         * @brief overloads "*=" operator
          *
          * @param a
          *
-         * @return the reference to current vector
+         * @return the reference to current Vector
          */
-        inline vector & operator*=(T a)
+        inline Vector & operator*=(T a)
         {
-            multiply(a);
+            Multiply(a);
             return *this;
         }
 
         /**
-         * @brief overloads the "/=" operator (alias for divide())
+         * @brief overloads the "/=" operator
          *
          * @param a
          *
-         * @return the reference to current vector
+         * @return the reference to current Vector
          */
-        inline vector & operator/=(T a)
+        inline Vector & operator/=(T a)
         {
-            divide(a);
+            Divide(a);
             return *this;
         }
 
         /**
-         * @brief overloads the "*" operator (alias for dot())
+         * @brief overloads the "*" operator
          *
          * @param v
          *
-         * @return the dot product with given vector
+         * @return the dot product with given Vector
          */
-        inline T operator*(const vector & v) const
+        inline T operator*(const Vector & v) const
         {
-            return dot(v);
+            return Dot(v);
         }
 
         /**
-         * @brief overloads the "^" operator (alias for angle())
+         * @brief overloads the "^" operator
          *
          * @param v
          *
-         * @return the angle with given vector
+         * @return the angle with given Vector
          */
-        inline T operator^(const vector & v) const
+        inline T operator^(const Vector & v) const
         {
-            return angle(v);
+            return Angle(v);
         }
 
         /**
-         * @brief overloads the "[]" operator (alias for coord())
+         * @brief overloads the "[]" operator
+         *
+         * @param index
+         *
+         * @return the coordinate asked for
+         */
+        inline T & operator[](int index)
+        {
+            return Coord(index);
+        }
+
+        /**
+         * @brief const overload of the "[]" operator
          *
          * @param index
          *
@@ -430,47 +380,54 @@ class vector
          */
         inline T operator[](int index) const
         {
-            return coord(index);
+            return Coord(index);
         }
 
         /**
-         * @brief overloads the "==" operator (alias for equals())
+         * @brief overloads the "==" operator
          *
          * @param v
          *
          * @return if vectors are equal
          */
-        inline bool operator==(const vector & v) const
+        inline bool operator==(const Vector & v) const
         {
-            return equals(v);
+            return Equals(v);
         }
 
         /**
-         * @brief overloads the "!=" operator (alias for !equals())
+         * @brief overloads the "!=" operator
          *
          * @param v
          *
          * @return if vectors are different
          */
-        inline bool operator!=(const vector & v) const
+        inline bool operator!=(const Vector & v) const
         {
-            return !equals(v);
+            return !(*this == v);
         }
-}; // class vector
+
+    private:
+        /**
+         * @brief array containing the Vector's coordinates.
+         */
+        T coords_ [N];
+}; // class Vector
 
 /**
- * @brief dumps the given vector in standard output stream
+ * @brief dumps the given Vector in standard output stream
  *
  * @tparam T
  * @tparam N
  * @param v
  */
-template<class T, unsigned int N> inline void dump(const vector<T, N> & v)
+template<class T, std::size_t N>
+    inline void dump(const Vector<T, N> & v)
 {
     using std::cout;
     using std::endl;
-    cout << "utilities::vector at " << &v << " (";
-    for (unsigned int i = 0; i < N; ++i)
+    cout << "Bundle::Vector at " << &v << " (";
+    for (std::size_t i = 0; i < N; ++i)
     {
         cout << v[i];
         if (i < N - 1)
@@ -481,6 +438,6 @@ template<class T, unsigned int N> inline void dump(const vector<T, N> & v)
     cout << ")" << endl;
 }
 
-} // namespace utilities
+} // namespace Bundle
 
 #endif // VECTOR_H_INCLUDED_
