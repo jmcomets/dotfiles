@@ -72,7 +72,7 @@ apt-get $confirm upgrade
 #   - git
 #   - tree
 
-apt-get install $confirm ubuntu-restricted-extras build-essential cmake gnome-tweak-tool vlc compizconfig-settings-manager indicator-sysmonitor gnome-shell gnome-shell-extensions-common vim vim-gtk exuberant-ctags gimp synaptic git tree
+apt-get install $confirm ubuntu-restricted-extras build-essential cmake gnome-tweak-tool vlc compizconfig-settings-manager indicator-sysmonitor gnome-shell gnome-shell-extensions-common vim vim-gtk exuberant-ctags gimp synaptic git tree dvtm
 
 # Time interval in nanoseconds:
 T="$(($(date +%s%N)-T))"
