@@ -29,7 +29,6 @@ alias dw="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias img="cd ~/Images"
 alias mkdir="mkdir -p"
-alias dvtm="dvtm -m ^W"
 alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
 
 # Quick display

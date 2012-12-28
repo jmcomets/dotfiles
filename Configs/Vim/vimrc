@@ -132,6 +132,9 @@ set magic
 " Default completing function
 set omnifunc=syntaxcomplete#Complete
 
+" Complete menu
+set completeopt=menuone,longest,preview
+
 " ---------------------------------------------------------------- }}}
 
 " Status line ---------------------------------------------------- {{{
@@ -201,12 +204,12 @@ set background=dark
 " Colorschemes:
 "  1 - jellybeans
 "  2 - obsidian
-"  3 - mustang
+"  3 - hornet
 "  4 - wombat
-"  5 - tesla
-"  6 - monokai
-"  7 - inkpot
-colorscheme obsidian
+"  5 - mustang
+"  6 - molokai
+"  7 - solarized
+colorscheme hornet
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
@@ -332,9 +335,6 @@ nnoremap ` '
 
 " Map ";" to ":" (avoid typos)
 noremap ; :
-
-" Map Space to re-indenting (much faster)
-nmap <space> =
 
 " Resolve inconsistency between "Y" (line),
 "   and "D" (til end of line)
