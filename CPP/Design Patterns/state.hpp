@@ -3,6 +3,10 @@
 
 struct State
 {
+    State()
+    {
+    }
+
     virtual ~State()
     {
     }
@@ -15,36 +19,35 @@ struct State
 class Context
 {
     public:
-        Context(State * s = 0): state_(s)
+        Context(State * s = 0): _state(s)
         {
-            if (state_)
+            if (_state)
             {
-                state_->enter();
+                _state->enter();
             }
         }
 
         virtual ~Context()
         {
-            //delete state_;
         }
 
         void set_state(State * s)
         {
-            state_->leave();
-            state_ = s;
-            state_->enter();
+            _state->leave();
+            _state = s;
+            _state->enter();
         }
 
         void handle()
         {
-            if (state_)
+            if (_state)
             {
-                state_->handle();
+                _state->handle();
             }
         }
 
     private:
-        State * state_;
+        State * _state;
 }; // class Context
 
 #endif // STATE_H_INCLUDED_
