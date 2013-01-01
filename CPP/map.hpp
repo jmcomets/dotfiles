@@ -1,6 +1,8 @@
 #ifndef MAP_H_INCLUDED_
 #define MAP_H_INCLUDED_
 
+// TODO: comments, tests and style guidelines
+
 namespace utilities
 {
 
