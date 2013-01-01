@@ -126,6 +126,9 @@ set foldlevel=1
 " How many tenths of a second to blink when matching brackets
 set matchtime=2
 
+" Enable modeline
+set modeline
+
 " For regular expressions turn magic on
 set magic
 
@@ -163,7 +166,7 @@ set smarttab
 " Indent by 4 spaces, 8 for tabs
 set shiftwidth=4
 set softtabstop=4
-set tabstop=8
+set tabstop=4
 
 " Invisible characters
 set nolist
@@ -216,21 +219,21 @@ set guifont=Droid\ Sans\ Mono\ 11
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set go-=r
-    set go-=R
-    set go-=l
-    set go-=L
-    set go-=m
-    set go-=T
-    set go+=e
+    set guitablabel=%M\ %t
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions+=e
     set t_Co=256
-    set gtl=%M\ %t
 endif
 
 " Configure for terminal
 if &term =~ "xterm"
     if has("terminfo")
-        let g:CommandTCancelMap=['<ESC>','<C-c>']
+        let g:CommandTCancelMap = ['<Esc>', '<C-c>']
         set t_Co=256
         set t_Sf=<Esc>[3%p1%dm
         set t_Sb=<Esc>[4%p1%dm
@@ -286,8 +289,8 @@ nmap <silent> <C-tab> :tabnext<cr>
 nmap <silent> <C-S-tab> :tabprevious<cr>
 
 " Switch buffers quickly
-nmap <silent> <leader>n :bn<cr>
-nmap <silent> <leader>N :bp<cr>
+nmap <silent> <leader>n :bnext<cr>
+nmap <silent> <leader>N :bprevious<cr>
 
 " Open last (alternative) buffer
 nmap <leader><leader> <C-^>
@@ -296,15 +299,21 @@ nmap <leader><leader> <C-^>
 nmap <silent> <leader>bd :Bclose!<cr>
 
 " Close all buffers
-nmap <silent> <leader>ba :1,1000bd!<cr>
+nmap <silent> <leader>ba :1,1000bdelete!<cr>
+
+" Move between windows using CTRL+[hjkl]
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 
 " Move a line of text using ALT+[jk]
-nnoremap <silent> <M-j> :m .+1<cr>==
-nnoremap <silent> <M-k> :m .-2<cr>==
-inoremap <silent> <M-j> <Esc>:m .+1<cr>==gi
-inoremap <silent> <M-k> <Esc>:m .-2<cr>==gi
-vnoremap <silent> <M-j> :m '>+1<cr>gv=gv
-vnoremap <silent> <M-k> :m '<-2<cr>gv=gv
+nnoremap <silent> <M-j> :move .+1<cr>==
+nnoremap <silent> <M-k> :move .-2<cr>==
+inoremap <silent> <M-j> <Esc>:move .+1<cr>==gi
+inoremap <silent> <M-k> <Esc>:move .-2<cr>==gi
+vnoremap <silent> <M-j> :move '>+1<cr>gv=gv
+vnoremap <silent> <M-k> :move '<-2<cr>gv=gv
 
 " Toggle invisibles display
 nmap <silent> <leader>i :setlocal list!<cr>
@@ -312,19 +321,8 @@ nmap <silent> <leader>i :setlocal list!<cr>
 " Toggle search highlighting
 nmap <silent> <leader><cr> :nohl<cr>
 
-" Center screen at cursor when searching
-nnoremap n nzz
-nnoremap } }zz
-
-" Don't jump when searching with * / #
-nnoremap * *<C-o>zz
-nnoremap # #<C-o>zz
-
 " Quick search-replace
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left><left>
-
-" Select all text in current file
-nmap <leader>a ggVG
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
@@ -333,11 +331,7 @@ nmap 0 ^
 nnoremap ' `
 nnoremap ` '
 
-" Map ";" to ":" (avoid typos)
-noremap ; :
-
-" Resolve inconsistency between "Y" (line),
-"   and "D" (til end of line)
+" Resolve inconsistency between "Y" (line), and "D" (eol)
 "nmap D dd
 nmap Y y$
 
@@ -352,14 +346,14 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 " Fast saving
-nnoremap <silent> <leader>w :w<cr>
+nnoremap <silent> <leader>w :write<cr>
 
 " Close current file
-nmap <silent> <leader>q :q<cr>
+nmap <silent> <leader>q :quit<cr>
 
 " Edit / Source configuration
-nmap <silent> <leader>co :e $MYVIMRC<cr>
-nmap <silent> <leader>so :so $MYVIMRC<cr>
+nmap <silent> <leader>co :edit $MYVIMRC<cr>
+nmap <silent> <leader>so :source $MYVIMRC<cr>
 
 " Toggle paste mode on and off
 nmap <silent> <leader>pp :setlocal paste!<cr>
@@ -476,6 +470,22 @@ endif
 " ---------------------------------------------------------------- }}}
 
 " Plugin customization ------------------------------------------- {{{
+
+" NERDTree
+let NERDTreeChDirMode = 2
+let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeShowBookmarks = 1
+nmap <F3> :NERDTreeToggle<cr>
+imap <F3> <C-o><F3>
+
+" TagList
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_File_Fold_Auto_Close = 1
+nmap <F4> :TlistToggle<cr>
+imap <F4> <C-o><F4>
 
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
