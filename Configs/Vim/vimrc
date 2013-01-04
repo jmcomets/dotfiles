@@ -9,7 +9,7 @@
 "   - Status line
 "   - Text, tab and indent related
 "   - Colors and Fonts
-"   - Moving around, tabs and buffers
+"   - Moving around
 "   - Searching
 "   - Various key remaps
 "   - Helper functions
@@ -204,15 +204,13 @@ set incsearch
 " Dark backgrounds are better
 set background=dark
 
-" Colorschemes:
-"  1 - jellybeans
-"  2 - obsidian
-"  3 - hornet
-"  4 - wombat
-"  5 - mustang
-"  6 - molokai
-"  7 - solarized
-colorscheme hornet
+" Colorscheme for GUI / Terminal
+if has("gui_running")
+    colorscheme wombat
+else
+    set t_Co=256 " FIXME: hack for now
+    colorscheme jellybeans
+endif
 
 " Editing font
 set guifont=Droid\ Sans\ Mono\ 11
@@ -227,21 +225,6 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
     set guioptions+=e
-    set t_Co=256
-endif
-
-" Configure for terminal
-if &term =~ "xterm"
-    if has("terminfo")
-        let g:CommandTCancelMap = ['<Esc>', '<C-c>']
-        set t_Co=256
-        set t_Sf=<Esc>[3%p1%dm
-        set t_Sb=<Esc>[4%p1%dm
-    else
-        set t_Co=8
-        set t_Sf=<Esc>[3%dm
-        set t_Sb=<Esc>[4%dm
-    endif
 endif
 
 " ---------------------------------------------------------------- }}}
@@ -280,13 +263,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-
-" Useful mappings for managing tabs
-nmap <silent> <leader>tn :tabnew<cr>
-nmap <silent> <leader>to :tabonly<cr>
-nmap <silent> <leader>tc :tabclose<cr>
-nmap <silent> <C-tab> :tabnext<cr>
-nmap <silent> <C-S-tab> :tabprevious<cr>
 
 " Switch buffers quickly
 nmap <silent> <leader>n :bnext<cr>

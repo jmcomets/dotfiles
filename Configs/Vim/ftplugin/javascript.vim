@@ -1,5 +1,4 @@
-" Folding for JavaScript
-" source: http://amix.dk/blog/post/19132
+" Folding for JavaScript, source: "http://amix.dk/blog/post/19132"
 function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
@@ -10,6 +9,4 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
-if (has("autocmd"))
-    autocmd FileType javascript call JavaScriptFold()
-endif
+call JavaScriptFold()
