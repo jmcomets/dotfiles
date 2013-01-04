@@ -14,7 +14,3 @@ set foldmethod=indent
 " Auto-completion
 set omnifunc=pythoncomplete#Complete
 set tags+=~/.vim/tags/python
-
-" Quickfix configuration (error formatting and result of ":make")
-"set errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-"set makeprg=python

@@ -208,7 +208,7 @@ set background=dark
 if has("gui_running")
     colorscheme wombat
 else
-    set t_Co=256 " FIXME: hack for now
+    set t_Co=256
     colorscheme jellybeans
 endif
 
