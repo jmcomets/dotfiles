@@ -213,7 +213,7 @@ else
 endif
 
 " Editing font
-set guifont=Droid\ Sans\ Mono\ 11
+set guifont=Monospace\ 11
 
 " Set extra options when running in GUI mode
 if has("gui_running")

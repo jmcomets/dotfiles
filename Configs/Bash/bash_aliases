@@ -58,5 +58,5 @@ alias t="tree"
 # Completion
 #
 # install -> apt-get install
-make-completion-wrapper _apt_get _install apt-get install
-complete -o filenames -F _install install
+#make-completion-wrapper _apt_get _apt_get_install apt-get install
+#complete -o filenames -F _apt_get_install install
