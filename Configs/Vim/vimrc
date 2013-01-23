@@ -138,7 +138,7 @@ set magic
 set omnifunc=syntaxcomplete#Complete
 
 " Complete menu
-set completeopt=menuone,longest,preview
+set completeopt=menuone,preview
 
 " ---------------------------------------------------------------- }}}
 
@@ -238,6 +238,11 @@ set hidden
 
 " Specify the behavior when switching between buffers
 set switchbuf=useopen,usetab,newtab
+
+" Manage tabs
+nnoremap <silent> œ :tabnext<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tc :tabclose<cr>
 
 " Tab display
 set showtabline=0

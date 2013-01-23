@@ -54,6 +54,7 @@ alias v="vim"
 alias g="gvim -f --remote-silent"
 alias l="ls"
 alias t="tree"
+alias n="nautilus ."
 
 # Completion
 #
