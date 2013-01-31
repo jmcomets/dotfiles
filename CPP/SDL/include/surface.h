@@ -11,18 +11,18 @@ class Surface
         // Default Constructor:
         //   - takes optional low-level SDL_Surface
         //      pointer for reference assignment
-        Surface(SDL_Surface * s = 0);
+        Surface(SDL_Surface * = 0);
 
         // Building Constructor:
         //   - takes width + height
-        Surface(int, int, const Color & color = Color());
+        Surface(int, int, const Color & = Color());
 
         // Copy Constructor:
         //   - creates a deep copy
         Surface(const Surface &);
 
         // Virtual Destructor:
-        //   - frees member m_surface
+        //   - frees member _surface
         virtual ~Surface();
 
         // Methods
@@ -32,7 +32,7 @@ class Surface
         void copy(const Surface &);
 
         // Explicit surface freeing
-        //   - frees and resets m_surface to 0
+        //   - frees and resets _surface to 0
         void free();
 
         // Update the surface's representation
@@ -40,7 +40,7 @@ class Surface
 
         // Quick getter for SDL_Surface
         inline SDL_Surface * to_sdl()
-            { return m_surface; }
+            { return _surface; }
 
         // Best way of duplicating surface
         SDL_Surface * duplicate();
@@ -61,16 +61,16 @@ class Surface
         //   - setH => set height
         //
         // Contract:
-        //   - member m_surface is not NULL
+        //   - member _surface is not NULL
         //      (can be checked with a boolean cast)
         inline int w() const
-            { return m_surface->w; }
+            { return _surface->w; }
         inline void setW(int w)
-            { m_surface->w = w; }
+            { _surface->w = w; }
         inline int h() const
-            { return m_surface->h; }
+            { return _surface->h; }
         inline void setH(int h)
-            { m_surface->h = h; }
+            { _surface->h = h; }
 
         // Operators
 
@@ -80,18 +80,35 @@ class Surface
         // Object state checker, corresponds to
         // stored surface's state.
         inline operator bool() const
-            { return m_surface != 0; }
+            { return _surface != 0; }
 
         // Constants
 
         // Surface creation (format) flags
-        static Uint32 Flags;
+        static enum Flag
+        {
+            AnyFormat = SDL_ANYFORMAT,     // Allow any pixel-format *               
+            ASyncBlit = SDL_ASYNCBLIT,     // Use asynchronous blit if possible      
+            DoubleBuf = SDL_DOUBLEBUF,     // Double buffered *                      
+            HWAccel = SDL_HWACCEL,         // Use hardware acceleration blit         
+            HWPalette = SDL_HWPALETTE,     // Have an exclusive palette              
+            HWSurface = SDL_HWSURFACE,     // Stored in video memory                 
+            FullScreen = SDL_FULLSCREEN,   // Full screen surface *                  
+            OpenGL = SDL_OPENGL,           // Have an OpenGL context *               
+            OpenGLBlit = SDL_OPENGLBLIT,   // Support OpenGL blitting *.             
+            Resizable = SDL_RESIZABLE,     // Resizable surface *                    
+            RLEAccel = SDL_RLEACCEL,       // Accelerated colorkey blitting with RLE 
+            SrcAlpha = SDL_SRCALPHA,       // Use alpha blending blit                
+            SrcColorKey = SDL_SRCCOLORKEY, // Use colorkey blitting                  
+            SWSurface = SDL_SWSURFACE,     // Stored in the system memory.           
+            Prealloc = SDL_PREALLOC,       // Use preallocated memory                
+        } Flags;
 
         // Display's Bits Per Pixels
         static Uint8 Bpp;
 
     protected:
-        SDL_Surface * m_surface;
+        SDL_Surface * _surface;
 };
 
 #endif // SURFACE_H_INCLUDED_

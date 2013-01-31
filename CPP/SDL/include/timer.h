@@ -63,6 +63,7 @@ class Timer
         int fps() const;
         bool is_paused() const;
         bool is_started() const;
+
     private:
         int m_fps;
         bool m_started, m_paused;

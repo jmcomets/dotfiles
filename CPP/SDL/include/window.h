@@ -34,7 +34,7 @@ class Window
 
         // Return current screen surface
         inline static Surface * current()
-            { return m_screen; }
+            { return _screen; }
 
         // Destructor, no-op
         virtual ~Window() {}
@@ -50,8 +50,8 @@ class Window
         Window & operator=(const Window &);
 
     private:
-        static Surface * m_screen;
-        static Flags m_flags;
+        static Surface * _screen;
+        static Flags _flags;
 };
 
 #endif // WINDOW_H_INCLUDED_

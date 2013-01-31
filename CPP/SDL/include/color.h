@@ -10,18 +10,18 @@ class Color
                 Uint8 blue = 0, Uint8 alpha = 0);
         virtual ~Color();
         inline Uint8 r() const
-            { return m_color.r; }
+            { return _color.r; }
         inline Uint8 b() const
-            { return m_color.b; }
+            { return _color.b; }
         inline Uint8 g() const
-            { return m_color.g; }
+            { return _color.g; }
         inline Uint8 a() const
-            { return m_alpha; }
+            { return _alpha; }
         inline SDL_Color * to_sdl()
-            { return &m_color; }
+            { return &_color; }
     private:
-        SDL_Color m_color;
-        Uint8 m_alpha;
+        SDL_Color _color;
+        Uint8 _alpha;
 };
 
 #endif // COLOR_H_INCLUDED_

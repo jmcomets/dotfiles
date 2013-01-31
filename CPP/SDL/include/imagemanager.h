@@ -26,6 +26,7 @@ class ImageManager
         // returns if given relative file path
         // from base directory is loaded in images
         bool is_loaded(const std::string &) const;
+
     private:
         // disallow copy / assign
         ImageManager(const ImageManager &);

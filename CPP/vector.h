@@ -34,8 +34,8 @@
 #include <algorithm>
 
 #ifdef __GXX_EXPERIMENTAL_CXX0X__
-#include <initializer_list>
-#endif // __GXX_EXPERIMENTAL_CXX0X__
+#  include <initializer_list>
+#endif
 
 namespace Bundle
 {
@@ -412,7 +412,7 @@ template<class T, std::size_t N>
          * @brief array containing the Vector's coordinates.
          */
         T coords_ [N];
-}; // class Vector
+};
 
 /**
  * @brief dumps the given Vector in standard output stream
@@ -438,6 +438,6 @@ template<class T, std::size_t N>
     cout << ")" << endl;
 }
 
-} // namespace Bundle
+}
 
-#endif // VECTOR_H_INCLUDED_
+#endif
