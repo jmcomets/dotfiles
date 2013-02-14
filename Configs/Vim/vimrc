@@ -75,7 +75,7 @@ set wildmode=longest,list
 " Ignore compiled files and backups
 set wildignore=*.o,*~,*.pyc,*.gch
 
-" Show line numbers
+" Don't show line numbers
 set nonumber
 
 " Always show current position
@@ -86,7 +86,7 @@ set cmdheight=2
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+"set whichwrap+=<,>,h,l
 
 " No annoying sound on errors
 set noerrorbells
@@ -278,6 +278,9 @@ nmap <silent> <leader>N :bprevious<cr>
 " Open last (alternative) buffer
 nmap <leader><leader> <C-^>
 
+" Focus window
+nmap <leader>o <C-w>o
+
 " Close buffer without closing window
 nmap <silent> <leader>bd :Bclose!<cr>
 
@@ -301,7 +304,7 @@ vnoremap <silent> <M-k> :move '<-2<cr>gv=gv
 " Toggle invisibles display
 nmap <silent> <leader>i :setlocal list!<cr>
 
-" Toggle search highlighting
+" Disable search highlighting
 nmap <silent> <leader><cr> :nohl<cr>
 
 " Quick search-replace
