@@ -4,9 +4,6 @@
 #
 # vim: set ft=sh
 
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
-
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US" 
@@ -15,7 +12,7 @@ export LANG="en_US"
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
 else
-    export TERM='xterm-color'
+    export TERM='xterm'
 fi
 
 # Add private bin directory if it exists
