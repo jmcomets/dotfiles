@@ -446,6 +446,9 @@ if has("autocmd")
     " Pascal
     autocmd BufNewFile,BufRead *.pas,*.PAS set filetype=pascal
 
+    " Go
+    autocmd BufNewFile,BufRead *.go set filetype=go
+
     " Markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
