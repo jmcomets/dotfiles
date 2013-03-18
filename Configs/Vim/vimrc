@@ -207,7 +207,7 @@ set background=dark
 
 " Colorscheme for GUI / Terminal
 if has("gui_running")
-    colorscheme solarized
+    colorscheme wombat
 else
     set t_Co=256
     colorscheme jellybeans
