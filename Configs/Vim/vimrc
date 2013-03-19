@@ -277,10 +277,10 @@ nmap <silent> <leader>bd :Bclose!<cr>
 nmap <silent> <leader>ba :1,1000bdelete!<cr>
 
 " Move between windows using CTRL+[hjkl]
-"nnoremap <C-h> <C-W>h
-"nnoremap <C-j> <C-W>j
-"nnoremap <C-k> <C-W>k
-"nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 
 " Move a line of text using ALT+[jk]
 nnoremap <silent> <M-j> :move .+1<cr>==

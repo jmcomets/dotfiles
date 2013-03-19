@@ -18,6 +18,7 @@ set tags+=~/.vim/tags/cpp
 "set tags+=~/.vim/tags/sdl
 "set tags+=~/.vim/tags/gl
 "set tags+=~/.vim/tags/sfml
+set tags+=~/.vim/tags/sfml2
 "set tags+=~/.vim/tags/box2d
 
 " Build Ctags with Ctrl-F12
