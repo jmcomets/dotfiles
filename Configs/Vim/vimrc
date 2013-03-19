@@ -432,6 +432,12 @@ if has("autocmd")
     " JSON / JavaScript
     autocmd BufNewFile,BufRead *.json set filetype=javascript
 
+    " Pascal
+    autocmd BufNewFile,BufRead *.pas,*.PAS set filetype=pascal
+
+    " Go
+    autocmd BufNewFile,BufRead *.go set filetype=go
+
     " Markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
@@ -462,5 +468,50 @@ imap <F4> <C-o><F4>
 " Gist
 let g:gist_detect_filetype = 1
 let g:gist_show_privates = 1
+
+" FuzzyFinder
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+nnoremap <silent> sj     :FufBuffer<cr>
+nnoremap <silent> sk     :FufFileWithCurrentBufferDir<cr>
+nnoremap <silent> sK     :FufFileWithFullCwd<cr>
+nnoremap <silent> s<C-k> :FufFile<cr>
+nnoremap <silent> sl     :FufCoverageFileChange<cr>
+nnoremap <silent> sL     :FufCoverageFileChange<cr>
+nnoremap <silent> s<C-l> :FufCoverageFileRegister<cr>
+nnoremap <silent> sd     :FufDirWithCurrentBufferDir<cr>
+nnoremap <silent> sD     :FufDirWithFullCwd<cr>
+nnoremap <silent> s<C-d> :FufDir<cr>
+nnoremap <silent> sn     :FufMruFile<cr>
+nnoremap <silent> sN     :FufMruFileInCwd<cr>
+nnoremap <silent> sm     :FufMruCmd<cr>
+nnoremap <silent> su     :FufBookmarkFile<cr>
+nnoremap <silent> s<C-u> :FufBookmarkFileAdd<cr>
+vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<cr>
+nnoremap <silent> si     :FufBookmarkDir<cr>
+nnoremap <silent> s<C-i> :FufBookmarkDirAdd<cr>
+nnoremap <silent> st     :FufTag<cr>
+nnoremap <silent> sT     :FufTag!<cr>
+nnoremap <silent> s<C-]> :FufTagWithCursorWord!<cr>
+nnoremap <silent> s,     :FufBufferTag<cr>
+nnoremap <silent> s<     :FufBufferTag!<cr>
+vnoremap <silent> s,     :FufBufferTagWithSelectedText!<cr>
+vnoremap <silent> s<     :FufBufferTagWithSelectedText<cr>
+nnoremap <silent> s}     :FufBufferTagWithCursorWord!<cr>
+nnoremap <silent> s.     :FufBufferTagAll<cr>
+nnoremap <silent> s>     :FufBufferTagAll!<cr>
+vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<cr>
+vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<cr>
+nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<cr>
+nnoremap <silent> sg     :FufTaggedFile<cr>
+nnoremap <silent> sG     :FufTaggedFile!<cr>
+nnoremap <silent> so     :FufJumpList<cr>
+nnoremap <silent> sp     :FufChangeList<cr>
+nnoremap <silent> sq     :FufQuickfix<cr>
+nnoremap <silent> sy     :FufLine<cr>
+nnoremap <silent> sh     :FufHelp<cr>
+nnoremap <silent> se     :FufEditDataFile<cr>
+nnoremap <silent> sr     :FufRenewCache<cr>
 
 " ---------------------------------------------------------------- }}}
