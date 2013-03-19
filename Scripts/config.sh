@@ -1,26 +1,33 @@
 #!/bin/bash
 #
-# Setup script for Bash / Vim configurations.
+#   Setup script for workspace configuration.
 #
-# Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
-# Version: 1.1 - 28/08/2012, 15:41
+#   Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
+#   Version: 1.2 - 23/02/2013, 21:47
 #
-# Run as follows:
-#   $ chmod 0777 config.sh
-#   $ ./config.sh
-# Or quicker:
-#   $ bash config.sh
+#   Run as follows:
+#     > chmod 0777 config.sh
+#     > ./config.sh
+#   Or quicker:
+#     > bash config.sh
 #
 
-# Setup Config's folder link
-ln -fs ~/Projects/Configs ~/Configs
+WORKSPACE=$HOME
+PROJECTS=$WORKSPACE/Projects
+CONFIGS=$WORKSPACE/Configs
+BUNDLE=$WORKSPACE/Bundle
+
+# Setup projects subdirectory links
+ln -fs $PROJECTS/Configs $CONFIGS
+ln -fs $PROJECTS/Bundle $BUNDLE
 
 # Setup Vim file links
-ln -fs ~/Configs/Vim ~/.vim
+ln -fs $CONFIGS/Vim ~/.vim
 ln -fs ~/.vim/vimrc ~/.vimrc
 
 # Setup Bash file links
-ln -fs ~/Configs/Bash ~/.bash
+ln -fs $CONFIGS/Bash ~/.bash
 ln -fs ~/.bash/bashrc ~/.bashrc
+ln -fs ~/.bash/bash_profile ~/.bash_profile
 ln -fs ~/.bash/inputrc ~/.inputrc
 ln -fs ~/.bash/dircolors ~/.dircolors
