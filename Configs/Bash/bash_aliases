@@ -25,6 +25,10 @@ alias search="sudo dpkg -l"
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
+alias h="cd ~"
+alias d="cd ~/Desktop"
+alias p="cd ~/Projects"
+alias b="cd ~/Bundle"
 alias dw="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias img="cd ~/Images"
@@ -35,20 +39,11 @@ alias uua="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get aut
 alias grep="grep --color=auto"
 alias tree="tree -Csu"
 alias ls="ls -X --color=auto"
-alias la="ls -a"
+alias la="ls -A"
 alias ll="ls -l"
-alias lla="ls -la"
-
-# Git
-alias gc="git clone"
-alias gr="git reset"
-alias ga="git add"
-alias gaa="git add ."
+alias lla="ls -lA"
 
 # One-key commands
-alias h="cd ~"
-alias d="cd ~/Desktop"
-alias p="cd ~/Projects"
 alias c="clear"
 alias v="vim"
 alias g="gvim -f --remote-silent"
@@ -56,8 +51,5 @@ alias l="ls"
 alias t="tree"
 alias n="nautilus ."
 
-# Completion
-#
-# install -> apt-get install
-#make-completion-wrapper _apt_get _apt_get_install apt-get install
-#complete -o filenames -F _apt_get_install install
+# IF aliases
+alias sshif="ssh jmcomets@iftpserv2.insa-lyon.fr"
