@@ -1,6 +1,7 @@
 " Setup correct display
 setl omnifunc=omni#cpp#complete#Main
 setl foldmethod=syntax
+set path+=/usr/include/c++/4.7/*
 
 " Fswitch
 nmap <silent> <leader>of :FSHere<cr>

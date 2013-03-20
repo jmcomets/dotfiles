@@ -252,7 +252,7 @@ if has("autocmd")
                 \ endif
 
     " Cd directory when opening files
-    autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+    "autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 endif
 
 " ---------------------------------------------------------------- }}}
