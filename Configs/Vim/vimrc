@@ -276,6 +276,9 @@ nmap <silent> <leader>bd :Bclose!<cr>
 " Close all buffers
 nmap <silent> <leader>ba :1,1000bdelete!<cr>
 
+" Go to the 80th column
+nnoremap <bar><bar> 80<bar>
+
 " Move between windows using CTRL+[hjkl]
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
