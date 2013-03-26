@@ -70,23 +70,25 @@ snippet mu
 snippet cl
 	class ${1:`Filename('$1', 'name')`} 
 	{
-	public:
-		$1(${2});
-		~$1();
+		public:
+			$1(${2});
+			~$1();
 
-	private:
-		${3:/* data */}
+		private:
+			${3:/* data */}
 	};
 # member function implementation
 snippet mfun
-	${4:void} ${1:`Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
+	${4:void} ${1:`Filename('$1', 'ClassName')`}::${2:memberFunction}(${3})
+	{
 		${5:/* code */}
 	}
 # namespace
 snippet ns
-	namespace ${1:`Filename('', 'my')`} {
+	namespace ${1:`Filename('', 'my')`}
+	{
 		${2}
-	} /* namespace $1 */
+	}
 ##
 ## Input/Output
 # std::cout
@@ -99,24 +101,29 @@ snippet cin
 ## Iteration
 # for i 
 snippet fori
-	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	for (${1:std::size_t} ${2:i} = 0; $2 < ${1:count}; $2${3:++})
+	{
 		${4:/* code */}
 	}${5}
 
 # foreach
 snippet fore
-	for (${1:auto} ${2:i} : ${3:container}) {
+	for (${1:auto} ${2:i} : ${3:container})
+	{
 		${4:/* code */}
 	}${5}
 # iterator
 snippet iter
-	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
+	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin();
+		$4 != $5.end(); ++$4)
+	{
 		${6}
 	}${7}
 
 # auto iterator
 snippet itera
-	for (auto ${1:i} = $1.begin(); $1 != $1.end(); ++$1) {
+	for (auto ${1:i} = $1.begin(); $1 != $1.end(); $1++)
+	{
 		${2:std::cout << *$1 << std::endl;}
 	}${3}
 ##
@@ -126,6 +133,7 @@ snippet ld
 	[${1}](${2}){${3:/* code */}}${4}
 # lambda (multi-line)
 snippet lld
-	[${1}](${2}){
+	[${1}](${2})
+	{
 		${3:/* code */}
 	}${4}
