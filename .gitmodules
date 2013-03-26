@@ -52,3 +52,6 @@
 [submodule "Configs/Vim/bundle/html5-syntax"]
 	path = Configs/Vim/bundle/html5-syntax
 	url = https://github.com/othree/html5-syntax.vim.git
+[submodule "Configs/Vim/bundle/vim-repeat"]
+	path = Configs/Vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
