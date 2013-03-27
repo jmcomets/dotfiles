@@ -17,5 +17,5 @@ set foldmethod=indent
 set omnifunc=pythoncomplete#Complete
 set tags+=~/.vim/tags/python
 
-" Make == python
+" Make == run in interpreter
 set makeprg=python\ %
