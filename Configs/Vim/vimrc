@@ -503,9 +503,6 @@ nnoremap <silent> sy     :FufLine<cr>
 nnoremap <silent> sh     :FufHelp<cr>
 nnoremap <silent> se     :FufEditDataFile<cr>
 nnoremap <silent> sr     :FufRenewCache<cr>
-
-" Snipmate
-"let g:snipMate = {}
-"let g:snipMate['snippet_dirs'] = funcref#Function('return ["~/.vim/snippets"]')
+nnoremap s <nop>
 
 " ---------------------------------------------------------------- }}}

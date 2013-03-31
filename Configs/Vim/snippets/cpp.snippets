@@ -135,5 +135,17 @@ snippet ld
 snippet lld
 	[${1}](${2})
 	{
-		${3:/* code */}
+		${3:// code}
 	}${4}
+# try block
+snippet try
+	try
+	{
+		${1:// code}
+	}${2}
+# catch block
+snippet catch
+	catch (${1:...})
+	{
+		${2}
+	}${3}

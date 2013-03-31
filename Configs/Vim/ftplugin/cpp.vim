@@ -22,6 +22,12 @@ set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/sfml2
 "set tags+=~/.vim/tags/box2d
 
+" Clang completion speedup
+let g:clang_use_library = 1
+
+" Fix for boost
+set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+
 " Build Ctags with Ctrl-F12
 nmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
