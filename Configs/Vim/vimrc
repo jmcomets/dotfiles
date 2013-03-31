@@ -506,6 +506,7 @@ nnoremap <silent> sy     :FufLine<cr>
 nnoremap <silent> sh     :FufHelp<cr>
 nnoremap <silent> se     :FufEditDataFile<cr>
 nnoremap <silent> sr     :FufRenewCache<cr>
+nnoremap <silent> ss     :FufFile **/<cr>
 nnoremap s <nop>
 
 " ---------------------------------------------------------------- }}}
