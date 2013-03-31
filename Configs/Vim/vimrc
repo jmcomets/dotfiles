@@ -134,8 +134,11 @@ set modeline
 " For regular expressions turn magic on
 set magic
 
-" Default completing function
+" Completing function
 set omnifunc=syntaxcomplete#Complete
+
+" Tags
+set tags=./tags;/
 
 " Complete menu
 set completeopt=menuone,preview

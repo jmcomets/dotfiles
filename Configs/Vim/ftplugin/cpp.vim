@@ -1,7 +1,8 @@
 " Setup correct display
-setl omnifunc=omni#cpp#complete#Main
-setl foldmethod=syntax
+set omnifunc=omni#cpp#complete#Main
+set foldmethod=syntax
 set path+=/usr/include/c++/4.7/*
+set completeopt=menuone,menu,longest,preview
 
 " Fswitch
 nmap <silent> <leader>of :FSHere<cr>
@@ -14,30 +15,20 @@ nmap <silent> <leader>oK :FSSplitAbove<cr>
 nmap <silent> <leader>oj :FSBelow<cr>
 nmap <silent> <leader>oJ :FSSplitBelow<cr>
 
-" Ctag locations
-set tags+=~/.vim/tags/cpp
-"set tags+=~/.vim/tags/sdl
-"set tags+=~/.vim/tags/gl
-"set tags+=~/.vim/tags/sfml
-set tags+=~/.vim/tags/sfml2
-"set tags+=~/.vim/tags/box2d
-
-" Clang completion speedup
+" Clang completion fixes
 let g:clang_use_library = 1
-
-" Fix for boost
 set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+set tags+=~/.vim/tags/cpp
 
 " Build Ctags with Ctrl-F12
-nmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+nmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+px-d --fields=+iaS --extra=+q .<cr>
 
-" OmniCppComplete
-let OmniCpp_DefaultNamespaces = ["std"]
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_NamespaceSearch = 1
+" OmniCppComplete plugin
+let OmniCpp_DefaultNamespaces   = []
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_NamespaceSearch     = 1
 let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_MayCompleteArrow = 0
-let OmniCpp_MayCompleteScope = 0
-let OmniCpp_MayCompleteDot = 0
-set completeopt=menuone,menu,longest,preview
+let OmniCpp_ShowAccess          = 1
+let OmniCpp_MayCompleteArrow    = 0
+let OmniCpp_MayCompleteScope    = 1
+let OmniCpp_MayCompleteDot      = 0
