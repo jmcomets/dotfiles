@@ -1,8 +1,8 @@
 " Setup correct display
-set omnifunc=omni#cpp#complete#Main
-set foldmethod=syntax
-set path+=/usr/include/c++/4.7/*
-set completeopt=menuone,menu,longest,preview
+setl omnifunc=omni#cpp#complete#Main
+setl foldmethod=syntax
+setl path+=/usr/include/c++/4.7/*
+setl completeopt=menuone,menu,longest,preview
 
 " Fswitch
 nmap <silent> <leader>of :FSHere<cr>
@@ -17,8 +17,8 @@ nmap <silent> <leader>oJ :FSSplitBelow<cr>
 
 " Clang completion fixes
 let g:clang_use_library = 1
-set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
-set tags+=~/.vim/tags/cpp
+setl include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+setl tags+=~/.vim/tags/cpp
 
 " Build Ctags with Ctrl-F12
 nmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+px-d --fields=+iaS --extra=+q .<cr>

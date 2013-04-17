@@ -1,6 +1,6 @@
 " Set correct folding
 setl omnifunc=ccomplete#Complete
-set foldmethod=syntax
+setl foldmethod=syntax
 
 " Fswitch
 nmap <silent> <leader>of :FSHere<cr>
