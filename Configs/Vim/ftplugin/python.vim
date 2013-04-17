@@ -5,7 +5,7 @@ set softtabstop=4
 set shiftwidth=4
 "set textwidth=79
 "set colorcolumn=80
-match ErrorMsg '\%>80v.\+'
+"match ErrorMsg '\%>80v.\+'
 
 " Prevent "#" to go to the start of the line
 set nosmartindent

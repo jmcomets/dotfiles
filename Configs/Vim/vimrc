@@ -205,12 +205,10 @@ set incsearch
 
 " Colors and Fonts ----------------------------------------------- {{{
 
-" Dark backgrounds are better
+" 256-colors colorscheme on dark background
 set background=dark
-
-" Colorscheme for GUI / Terminal
 if has("gui_running")
-    colorscheme wombat
+    colorscheme molokai
 else
     set t_Co=256
     colorscheme jellybeans
@@ -307,6 +305,10 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
+
+" Quick indenting in normal node
+nmap <tab> ==
+vmap <tab> =gv
 
 " Exchange "`" and "'"
 nnoremap ' `
