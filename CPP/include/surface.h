@@ -85,7 +85,7 @@ class Surface
         // Constants
 
         // Surface creation (format) flags
-        static enum Flag
+        enum Flag
         {
             AnyFormat = SDL_ANYFORMAT,     // Allow any pixel-format *               
             ASyncBlit = SDL_ASYNCBLIT,     // Use asynchronous blit if possible      
@@ -101,8 +101,10 @@ class Surface
             SrcAlpha = SDL_SRCALPHA,       // Use alpha blending blit                
             SrcColorKey = SDL_SRCCOLORKEY, // Use colorkey blitting                  
             SWSurface = SDL_SWSURFACE,     // Stored in the system memory.           
-            Prealloc = SDL_PREALLOC,       // Use preallocated memory                
-        } Flags;
+            Prealloc = SDL_PREALLOC        // Use preallocated memory                
+        };
+
+        static Uint32 Flags;
 
         // Display's Bits Per Pixels
         static Uint8 Bpp;

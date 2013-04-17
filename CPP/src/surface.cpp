@@ -3,7 +3,7 @@
 using namespace std;
 
 // Initialization of surfaces' flags
-Uint32 Surface::Flags = SDL_SWSURFACE;
+Uint32 Surface::Flags = Surface::SWSurface;
 
 // Initialization of surfaces' default Bits Per Pixel
 Uint8 Surface::Bpp = 32;
