@@ -58,6 +58,3 @@
 [submodule "Configs/Vim/bundle/html5"]
 	path = Configs/Vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
-[submodule "Configs/Vim/bundle/sparkup"]
-	path = Configs/Vim/bundle/sparkup
-	url = https://github.com/rstacruz/sparkup.git
