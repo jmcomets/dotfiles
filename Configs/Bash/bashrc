@@ -66,4 +66,4 @@ GIT_PS1_SHOWDIRTYSTATE=true
 #call /opt/local/etc/bash_completion
 
 # Custom scripts
-call $BASHRTP/bash_profile $BASHRTP/bash_colors $BASHRTP/bash_aliases
+call $BASHRTP/profile $BASHRTP/colors $BASHRTP/aliases

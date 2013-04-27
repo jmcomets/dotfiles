@@ -41,7 +41,7 @@ alias tree="tree -Csu"
 alias ls="ls -X --color=auto"
 alias la="ls -A"
 alias ll="ls -l"
-alias lla="ls -lA"
+alias lla="ls -la"
 
 # One-key commands
 alias c="clear"

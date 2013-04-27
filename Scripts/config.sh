@@ -28,6 +28,6 @@ ln -fs ~/.vim/vimrc ~/.vimrc
 # Setup Bash file links
 ln -fs $CONFIGS/Bash ~/.bash
 ln -fs ~/.bash/bashrc ~/.bashrc
-ln -fs ~/.bash/bash_profile ~/.bash_profile
+ln -fs ~/.bash/profile ~/.profile
 ln -fs ~/.bash/inputrc ~/.inputrc
 ln -fs ~/.bash/dircolors ~/.dircolors
