@@ -34,9 +34,6 @@
 [submodule "Configs/Vim/bundle/vim-matchit"]
 	path = Configs/Vim/bundle/vim-matchit
 	url = https://github.com/tsaleh/vim-matchit.git
-[submodule "Configs/Vim/bundle/vim-surround"]
-	path = Configs/Vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "Configs/Vim/bundle/vim-snipmate"]
 	path = Configs/Vim/bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate.git
@@ -58,3 +55,6 @@
 [submodule "Configs/Vim/bundle/html5"]
 	path = Configs/Vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
+[submodule "Configs/Vim/bundle/surround"]
+	path = Configs/Vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git

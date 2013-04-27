@@ -310,6 +310,9 @@ nmap 0 ^
 nmap <tab> ==
 vmap <tab> =gv
 
+" Quick surround character with spaces 
+nmap <leader><space> i<space><esc>la<space><esc>h
+
 " Exchange "`" and "'"
 nnoremap ' `
 nnoremap ` '
