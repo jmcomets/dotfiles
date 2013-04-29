@@ -75,8 +75,12 @@ set wildmode=longest,list
 " Ignore compiled files and backups
 set wildignore=*.o,*~,*.pyc,*.gch
 
-" Don't show line numbers
-set nonumber
+" Only show line numbers in GUI mode
+if has("gui_running")
+    set number
+else
+    set nonumber
+endif
 
 " Always show current position
 set ruler
@@ -195,8 +199,9 @@ set ignorecase
 " Try to be smart about cases
 set smartcase
 
-" Highlight results
+" Highlight results (but don't show immediately)
 set hlsearch
+nohlsearch
 
 " Makes search act like in modern browsers
 set incsearch
