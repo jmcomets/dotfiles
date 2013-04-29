@@ -469,8 +469,13 @@ endif
 let NERDTreeChDirMode = 2
 let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeShowBookmarks = 1
-nmap <F3> :NERDTreeToggle<cr>
+nmap <silent> <F3> :NERDTreeToggle<cr>
 imap <F3> <C-o><F3>
+
+" Taglist
+let Tlist_Use_Right_Window = 1
+nmap <silent> <F4> :TlistToggle<cr>
+imap <F4> <C-o><F4>
 
 " FuzzyFinder
 let g:fuf_modesDisable = []

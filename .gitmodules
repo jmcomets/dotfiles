@@ -55,3 +55,6 @@
 [submodule "Configs/Vim/bundle/repeat"]
 	path = Configs/Vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "Configs/Vim/bundle/taglist"]
+	path = Configs/Vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
