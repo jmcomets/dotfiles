@@ -210,13 +210,29 @@ set incsearch
 
 " Colors and Fonts ----------------------------------------------- {{{
 
-" 256-colors colorscheme on dark background
+" Colorscheme setup (for GUI, depends on time of day)
+
+" Helper function setting the colorscheme given
+" as parameter
+function! SetColorscheme(scheme)
+    execute 'colorscheme ' . a:scheme
+endfunction
+
+" Set colorscheme depending on time of day
 set background=dark
 if has("gui_running")
-    colorscheme molokai
+    call SetColorscheme("molokai")
+    if exists("*strftime")
+        let s:hour = strftime("%H")
+        if 6 < s:hour && s:hour < 18
+            set background=light
+            call SetColorscheme("mayansmoke")
+        endif
+        unlet s:hour
+    endif
 else
     set t_Co=256
-    colorscheme jellybeans
+    call SetColorscheme("jellybeans")
 endif
 
 " Editing font
