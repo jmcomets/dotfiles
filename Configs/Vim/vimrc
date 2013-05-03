@@ -45,12 +45,12 @@ set nobackup
 set nowb
 set noswapfile
 
-" Enable filetype plugins
-filetype plugin indent on
-
 " Start Pathogen plugin to load bundle
 call pathogen#infect()
 call pathogen#helptags()
+
+" Enable filetype plugins
+filetype plugin indent on
 
 " ---------------------------------------------------------------- }}}
 
@@ -75,11 +75,7 @@ set wildmode=longest,list
 set wildignore=*.o,*~,*.pyc,*.gch
 
 " Only show line numbers in GUI mode
-if has("gui_running")
-    set number
-else
-    set nonumber
-endif
+set number
 
 " Always show current position
 set ruler
@@ -320,7 +316,7 @@ nmap <silent> <leader>i :set list!<cr>
 nmap <silent> <leader><cr> :nohl<cr>
 
 " Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//ge<left><left><left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//geI<left><left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
