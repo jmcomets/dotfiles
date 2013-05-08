@@ -450,4 +450,7 @@ nnoremap <silent> sr     :FufRenewCache<cr>
 nnoremap <silent> ss     :FufFile **/<cr>
 nnoremap s <nop>
 
+" Snipmate
+let g:snips_author = 'Jean-Marie Comets'
+
 " ---------------------------------------------------------------- }}}

@@ -34,7 +34,7 @@ snippet cl
 # New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		"""${3:docstring for $1}"""
+		"""${3:Docstring for $1}"""
 		${4:# TODO: write code...}
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
@@ -44,7 +44,7 @@ snippet defs
 	def ${1:mname}(self, ${2:arg}):
 		${3:# TODO: write code...}
 # New Property
-snippet property
+snippet prop
 	def ${1:foo}():
 		doc = "${2:The $1 property.}"
 		def fget(self):
@@ -78,32 +78,32 @@ snippet cascii
 	# -*- coding: ascii -*-
 # Lambda
 snippet ld
-	${1:var} = lambda ${2:vars} : ${3:action}
+	${1:var} = lambda ${2:vars}: ${3:action}
 snippet .
 	self.
 snippet try Try/Except
 	try:
 		${1:# TODO: write code...}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 snippet try Try/Except/Else
 	try:
 		${1:# TODO: write code...}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 	else:
 		${5:# TODO: write code...}
 snippet try Try/Except/Finally
 	try:
 		${1:# TODO: write code...}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 	finally:
 		${5:# TODO: write code...}
 snippet try Try/Except/Else/Finally
 	try:
 		${1:# TODO: write code...}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 	else:
 		${5:# TODO: write code...}
@@ -128,9 +128,7 @@ snippet pdbbb
 snippet pprint
 	import pprint; pprint.pprint(${1})${2}
 snippet "
-	"""
-	${1:doc}
-	"""
+	"""${1:Docstring}"""
 # test function/method
 snippet test
 	def test_${1:description}(${2:`indent('.') ? 'self' : ''`}):
@@ -146,9 +144,9 @@ snippet fut
 # getopt
 snippet getopt
 	try:
-		# Short option syntax: "hv:"
-		# Long option syntax: "help" or "verbose="
-		opts, args = getopt.getopt(sys.argv[1:], "${1:short_options}", [${2:long_options}])
+		# Short option syntax: 'hv:'
+		# Long option syntax: 'help' or 'verbose='
+		opts, args = getopt.getopt(sys.argv[1:], '${1:short_options}', [${2:long_options}])
 	
 	except getopt.GetoptError, err:
 		# Print debug info
@@ -156,9 +154,9 @@ snippet getopt
 		${3:error_action}
 
 	for option, argument in opts:
-		if option in ("-h", "--help"):
+		if option in ('-h', '--help'):
 			${4}
-		elif option in ("-v", "--verbose"):
+		elif option in ('-v', '--verbose'):
 			verbose = argument
 # main
 snippet main
@@ -172,5 +170,27 @@ snippet main
 snippet as
 	assert ${1:condition}
 # assert (long)
-snippet asl
+snippet ass
 	assert ${1:condition}, '${2:assertion message}'
+# return
+snippet r
+	return ${1:obj_to_return}
+# yield
+snippet y
+	yield ${1:obj_to_yield}
+# try/except (short)
+snippet te
+	try:
+		${2:# TODO: write code...}
+	except ${1:Exception}: pass
+# raise
+snippet ra
+	raise ${1:Exception}('${2:exception message}')
+# decorator
+snippet dec
+	def ${1:decorator}(${2:f}):
+		"""${3:Docstring for $1}"""
+		def ${4:closure}(*args, **kwargs):
+			${5:# TODO: write decorating code...}
+			$2(*args, **kwargs)
+		return $4
