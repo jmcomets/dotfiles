@@ -6,11 +6,11 @@ snippet from
 	from ${1:package} import ${2:module}
 # Module Docstring
 snippet docs
-	'''
+	"""
 	File: ${1:`Filename('$1.py', 'foo.py')`}
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
-	'''
+	"""
 snippet wh
 	while ${1:condition}:
 		${2:# TODO: write code...}
@@ -143,7 +143,7 @@ snippet testcase
 			${3:# TODO: write code...}
 snippet fut
 	from __future__ import ${1}
-#getopt
+# getopt
 snippet getopt
 	try:
 		# Short option syntax: "hv:"
@@ -160,3 +160,17 @@ snippet getopt
 			${4}
 		elif option in ("-v", "--verbose"):
 			verbose = argument
+# main
+snippet main
+	def main(${1:param}):
+		${2:# TODO: write code...}
+	
+	if __name__ == '__main__':
+		${3:# TODO: write code...}
+		main($1)
+# assert (short)
+snippet as
+	assert ${1:condition}
+# assert (long)
+snippet asl
+	assert ${1:condition}, '${2:assertion message}'
