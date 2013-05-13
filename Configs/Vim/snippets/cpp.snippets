@@ -19,25 +19,25 @@ snippet set
 	std::set<${1:T}> ${2};${3}
 # std::map
 snippet map
-	std::map<${1:Key}, ${2:T}> ${3};${4}
+	std::map<${1:Key}, ${2:Value}> ${3};${4}
 # std::multiset
 snippet mset
 	std::multiset<${1:T}> ${2};${3}
 # std::multimap
 snippet mmap
-	std::multimap<${1:Key}, ${2:T}> ${3};${4}
+	std::multimap<${1:Key}, ${2:Value}> ${3};${4}
 # std::unordered_set
 snippet uset
 	std::unordered_set<${1:T}> ${2};${3}
 # std::unordered_map
 snippet umap
-	std::unordered_map<${1:Key}, ${2:T}> ${3};${4}
+	std::unordered_map<${1:Key}, ${2:Value}> ${3};${4}
 # std::unordered_multiset
 snippet umset
 	std::unordered_multiset<${1:T}> ${2};${3}
 # std::unordered_multimap
 snippet ummap
-	std::unordered_multimap<${1:Key}, ${2:T}> ${3};${4}
+	std::unordered_multimap<${1:Key}, ${2:Value}> ${3};${4}
 # std::stack
 snippet stack
 	std::stack<${1:T}> ${2};${3}
@@ -68,20 +68,23 @@ snippet mu
 ## Class
 # class
 snippet cl
-	class ${1:`Filename('$1', 'name')`} 
+	class ${1:`Filename('$1', 'name')`}
 	{
 		public:
-			$1(${2});
-			~$1();
+			$1() = delete;
+			$1($1 &&) = delete;
+			$1(const $1 &) = delete;
+			~$1() = default;
+			$1 & operator=(const $1 &) = delete;
 
 		private:
-			${3:/* data */}
+			${2}
 	};
 # member function implementation
 snippet mfun
 	${4:void} ${1:`Filename('$1', 'ClassName')`}::${2:memberFunction}(${3})
 	{
-		${5:/* code */}
+		${5}
 	}
 # namespace
 snippet ns
@@ -103,18 +106,18 @@ snippet cin
 snippet fori
 	for (${1:std::size_t} ${2:i} = 0; $2 < ${1:count}; $2${3:++})
 	{
-		${4:/* code */}
+		${4}
 	}${5}
 
 # foreach
 snippet fore
 	for (${1:auto} ${2:i} : ${3:container})
 	{
-		${4:/* code */}
+		${4}
 	}${5}
 # iterator
 snippet iter
-	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin();
+	for (${1:std::vector}<${2:T}>::${3:const_iterator} ${4:it} = ${5:container}.begin();
 		$4 != $5.end(); ++$4)
 	{
 		${6}
@@ -122,7 +125,7 @@ snippet iter
 
 # auto iterator
 snippet itera
-	for (auto ${1:i} = $1.begin(); $1 != $1.end(); $1++)
+	for (auto ${1:it} = $1.begin(); $1 != $1.end(); $1++)
 	{
 		${2:std::cout << *$1 << std::endl;}
 	}${3}
@@ -130,18 +133,18 @@ snippet itera
 ## Lambdas
 # lamda (one line)
 snippet ld
-	[${1}](${2}){${3:/* code */}}${4}
+	[${1}](${2}){${3}}${4}
 # lambda (multi-line)
 snippet lld
 	[${1}](${2})
 	{
-		${3:// code}
+		${3}
 	}${4}
 # try block
 snippet try
 	try
 	{
-		${1:// code}
+		${1}
 	}${2}
 # catch block
 snippet catch
