@@ -3,9 +3,6 @@ setl expandtab
 setl tabstop=8
 setl softtabstop=4
 setl shiftwidth=4
-"setl textwidth=79
-"setl colorcolumn=80
-"match ErrorMsg '\%>80v.\+'
 
 " Prevent "#" to go to the start of the line
 setl nosmartindent
@@ -17,5 +14,8 @@ setl foldmethod=indent
 setl omnifunc=pythoncomplete#Complete
 setl tags+=~/.vim/tags/python
 
-" Make == run in interpreter
-setl makeprg=python\ %
+" Execute file being edited with <F5>
+nmap <buffer> <F5> :!python %<cr>
+
+" Make -> check with pyflakes
+setl makeprg=pyflakes\ %
