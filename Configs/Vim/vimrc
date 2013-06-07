@@ -480,6 +480,12 @@ nnoremap <silent> sr     :FufRenewCache<cr>
 nnoremap s <nop>
 vnoremap s <nop>
 
+" MiniBufExpl
+nmap <silent> <leader>b :MiniBufExplorer<cr>
+nmap <silent> <leader>c :CMiniBufExplorer<cr>
+nmap <silent> <leader>u :UMiniBufExplorer<cr>
+nmap <silent> <leader>t :TMiniBufExplorer<cr>
+
 " Snipmate
 let g:snips_author = 'Jean-Marie Comets'
 

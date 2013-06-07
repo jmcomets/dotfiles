@@ -58,3 +58,6 @@
 [submodule "Configs/Vim/bundle/taglist"]
 	path = Configs/Vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "Configs/Vim/bundle/minibufexpl"]
+	path = Configs/Vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
