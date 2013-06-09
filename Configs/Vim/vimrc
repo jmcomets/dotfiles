@@ -362,8 +362,8 @@ nmap <silent> <leader>cd :cd %:p:h<cr>
 " Edit vimrc configuration
 nmap <silent> <leader>co :edit $MYVIMRC<cr>
 
-" Source current file
-nmap <silent> <leader>so :source %<cr>
+" Source this file
+nmap <silent> <leader>so :source $MYVIMRC<cr>
 
 " Quick make command
 map <silent> <leader>m :make<cr>
