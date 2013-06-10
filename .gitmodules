@@ -64,3 +64,6 @@
 [submodule "Configs/Vim/bundle/argtextobj"]
 	path = Configs/Vim/bundle/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule "Configs/Vim/bundle/Zencoding"]
+	path = Configs/Vim/bundle/Zencoding
+	url = https://github.com/mattn/zencoding-vim.git
