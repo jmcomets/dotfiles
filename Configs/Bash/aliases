@@ -51,5 +51,12 @@ alias l="ls"
 alias t="tree"
 alias n="nautilus ."
 
+# Git commands
+alias got="git"
+alias gut="git"
+alias gco="git co"
+alias gci="git ci"
+alias gbr="git br"
+
 # IF aliases
 alias sshif="ssh jmcomets@iftpserv2.insa-lyon.fr"
