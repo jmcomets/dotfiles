@@ -318,7 +318,7 @@ nmap <silent> <leader>i :set list!<cr>
 nmap <silent> <leader><cr> :nohl<cr>
 
 " Quick search-replace
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//geI<left><left><left><left>
+nnoremap <leader>s :%substitute/\v<<C-r><C-w>>//gI<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
