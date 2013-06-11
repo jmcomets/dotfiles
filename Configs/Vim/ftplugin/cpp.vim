@@ -4,17 +4,6 @@ setl foldmethod=syntax
 setl path+=/usr/include/c++/4.7/*
 setl completeopt=menuone,menu,longest,preview
 
-" Fswitch
-nmap <silent> <leader>of :FSHere<cr>
-nmap <silent> <leader>ol :FSRight<cr>
-nmap <silent> <leader>oL :FSSplitRight<cr>
-nmap <silent> <leader>oh :FSLeft<cr>
-nmap <silent> <leader>oH :FSSplitLeft<cr>
-nmap <silent> <leader>ok :FSAbove<cr>
-nmap <silent> <leader>oK :FSSplitAbove<cr>
-nmap <silent> <leader>oj :FSBelow<cr>
-nmap <silent> <leader>oJ :FSSplitBelow<cr>
-
 " Clang completion fixes
 let g:clang_use_library = 1
 setl include=^\\s*#\\s*include\ \\(<boost/\\)\\@!

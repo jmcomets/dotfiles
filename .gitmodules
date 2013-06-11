@@ -16,9 +16,6 @@
 [submodule "Configs/Vim/bundle/vim-colorschemes"]
 	path = Configs/Vim/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "Configs/Vim/bundle/vim-fswitch"]
-	path = Configs/Vim/bundle/vim-fswitch
-	url = https://github.com/derekwyatt/vim-fswitch.git
 [submodule "Configs/Vim/bundle/vim-fugitive"]
 	path = Configs/Vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
