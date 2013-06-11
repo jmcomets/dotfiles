@@ -402,11 +402,6 @@ endif
 
 " Plugin customization ------------------------------------------- {{{
 
-" Taglist
-let Tlist_Use_Right_Window = 1
-nmap <silent> <F4> :TlistToggle<cr>
-imap <F4> <C-o><F4>
-
 " FuzzyFinder
 let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
