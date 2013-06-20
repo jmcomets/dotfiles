@@ -344,12 +344,6 @@ vmap < <gv
 " Quick mapping for IDE-style completion
 inoremap <nul> <C-x><C-o>
 
-" Disable arrow keys (forever...)
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
 " Fast saving
 nnoremap <silent> <leader>w :write<cr>
 
