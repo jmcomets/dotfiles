@@ -289,19 +289,16 @@ nmap <silent> <leader>n :bnext<cr>
 nmap <silent> <leader>N :bprevious<cr>
 
 " Open last (alternative) buffer
-nmap <leader><leader> <C-^>
-
-" Close all buffers
-nmap <silent> <leader>ba :1,1000bdelete!<cr>
+nmap <leader>a <C-^>
 
 " Go to the 80th column
 nnoremap <bar><bar> 80<bar>
 
 " Move between windows using CTRL+[hjkl]
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Move a line of text using ALT+[jk]
 nnoremap <silent> <M-j> :move .+1<cr>==
@@ -315,10 +312,10 @@ vnoremap <silent> <M-k> :move '<-2<cr>gv=gv
 nmap <silent> <leader>i :set list!<cr>
 
 " Disable search highlighting
-nmap <silent> <leader><cr> :nohl<cr>
+nmap <silent> <leader><cr> :nohlsearch<cr>
 
 " Quick search-replace
-nnoremap <leader>s :%substitute/\v<<C-r><C-w>>//gI<left><left><left>
+nnoremap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
@@ -341,6 +338,10 @@ nmap Y y$
 vmap > >gv
 vmap < <gv
 
+" Move between methods
+nmap <leader>j ]m
+nmap <leader>k [m
+
 " Quick mapping for IDE-style completion
 inoremap <nul> <C-x><C-o>
 
@@ -348,7 +349,7 @@ inoremap <nul> <C-x><C-o>
 nnoremap <silent> <leader>w :write<cr>
 
 " Close current file
-nmap <silent> <leader>q :quit<cr>
+nnoremap <silent> <leader>q :quit<cr>
 
 " CD file's directory
 nmap <silent> <leader>cd :cd %:p:h<cr>
@@ -360,7 +361,11 @@ nmap <silent> <leader>co :edit $MYVIMRC<cr>
 nmap <silent> <leader>so :source $MYVIMRC<cr>
 
 " Quick make command
-map <silent> <leader>m :make<cr>
+nmap <silent> <leader>m :make<cr>
+
+" Quickfix mappings
+nmap <silent> ]q :cn<cr>
+nmap <silent> [q :cp<cr>
 
 " ---------------------------------------------------------------- }}}
 
@@ -475,5 +480,8 @@ vnoremap s <nop>
 
 " Snipmate
 let g:snips_author = 'Jean-Marie Comets'
+
+" Fugitive
+command Gpush :Git push
 
 " ---------------------------------------------------------------- }}}
