@@ -42,7 +42,7 @@ set ffs=unix,dos,mac
 
 " Turn backup off, since most stuff is in svn / git anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Start Pathogen plugin to load bundle
@@ -96,8 +96,8 @@ set timeoutlen=500
 " Hide the mouse pointer while typing
 set mousehide
 
-" Deactivate mouse entirely
-set mouse=
+" Mouse activated ?
+set mouse=a
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -406,7 +406,7 @@ let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 
-" Recursively search any file
+" Recursively search any file (slow)
 nnoremap <silent> ss     :FufFile **/<cr>
 
 " File
@@ -482,6 +482,7 @@ vnoremap s <nop>
 let g:snips_author = 'Jean-Marie Comets'
 
 " Fugitive
-command Gpush :Git push
+command! Gpush :Git push
+command! Gpull :Git pull
 
 " ---------------------------------------------------------------- }}}
