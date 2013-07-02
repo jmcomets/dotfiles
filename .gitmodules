@@ -64,9 +64,6 @@
 [submodule "Configs/Vim/bundle/rails"]
 	path = Configs/Vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule "Configs/Vim/bundle/django-support"]
-	path = Configs/Vim/bundle/django-support
-	url = https://github.com/lambdalisue/vim-django-support.git
 [submodule "Configs/Vim/bundle/django-pony"]
 	path = Configs/Vim/bundle/django-pony
 	url = https://github.com/rainerborene/vim-pony.git
