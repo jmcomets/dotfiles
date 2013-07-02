@@ -1,15 +1,15 @@
 " Setup correct display
-setl omnifunc=omni#cpp#complete#Main
-setl foldmethod=syntax
-setl path+=/usr/include/c++/4.7/*
-setl completeopt=menuone,menu,longest,preview
+setlocal omnifunc=omni#cpp#complete#Main
+setlocal foldmethod=syntax
+setlocal path+=/usr/include/c++/4.7/*
+setlocal completeopt=menuone,menu,longest,preview
 
 " Clang completion fixes
 let g:clang_use_library = 1
-setl include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+setlocal include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
 
 " Build Ctags with Ctrl-F12
-nmap <C-F12> :!ctags -R --sort=yes --c++-kinds=+px-d --fields=+iaS --extra=+q .<cr>
+nmap <buffer> <C-F12> :!ctags -R --sort=yes --c++-kinds=+px-d --fields=+iaS --extra=+q .<cr>
 
 " OmniCppComplete plugin
 let OmniCpp_DefaultNamespaces   = []

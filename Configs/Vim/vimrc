@@ -97,7 +97,7 @@ set timeoutlen=500
 set mousehide
 
 " Mouse activated ?
-set mouse=a
+set mouse=
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw

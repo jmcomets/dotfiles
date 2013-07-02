@@ -1,23 +1,23 @@
 " Force PEP8's recommended settings
-setl expandtab
-setl tabstop=8
-setl softtabstop=4
-setl shiftwidth=4
+setlocal expandtab
+setlocal tabstop=8
+setlocal softtabstop=4
+setlocal shiftwidth=4
 
 " Prevent "#" to go to the start of the line
-setl nosmartindent
+setlocal nosmartindent
 
 " Set correct folding method
-setl foldmethod=indent
+setlocal foldmethod=indent
 
 " Auto-completion
-setl omnifunc=pythoncomplete#Complete
-setl tags+=~/.vim/tags/python
+setlocal omnifunc=pythoncomplete#Complete
+setlocal tags+=~/.vim/tags/python
 
 " Use :make to see syntax errors. (:cn and :cp to move around, :dist to see
 " all errors)
-set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-set errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+setlocal errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " `gf` jumps to the filename under the cursor
 python << EOF
@@ -39,7 +39,7 @@ EOL
 vmap <buffer> <F5> :python EvaluateCurrentRange()<cr>
 
 " Execute file being edited with <F5>
-nmap <buffer> <F5> :!python %<cr>
+"nmap <buffer> <F5> :!python %<cr>
 
 " Use F7/Shift-F7 to add/remove a breakpoint (pdb.set_trace)
 " Totally cool.
