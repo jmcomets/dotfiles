@@ -67,3 +67,6 @@
 [submodule "Configs/Vim/bundle/django-pony"]
 	path = Configs/Vim/bundle/django-pony
 	url = git@github.com:jmcomets/vim-pony.git
+[submodule "Configs/Vim/bundle/unimpaired"]
+	path = Configs/Vim/bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
