@@ -13,8 +13,8 @@
 "   - Colors and Fonts
 "   - Moving around
 "   - Searching
-"   - Various key remaps
-"   - Filetype settings
+"   - Keymappings
+"   - FileType settings
 "   - Plugin customization
 "
 " ---------------------------------------------------------------- }}}
@@ -215,7 +215,7 @@ if has("gui_running")
         let s:hour = strftime("%H")
         if 6 < s:hour && s:hour < 18
             set background=light
-            colorscheme mayansmoke
+            colorscheme solarized
         endif
         unlet s:hour
     endif
@@ -278,7 +278,7 @@ endif
 
 " ---------------------------------------------------------------- }}}
 
-" Various key remaps --------------------------------------------- {{{
+" Keymappings ---------------------------------------------------- {{{
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
@@ -373,13 +373,13 @@ nmap <silent> [q :cp<cr>
 
 if has("autocmd")
     " Vimrc
-    autocmd BufNewFile,BufRead,BufEnter *vimrc set foldmethod=marker
+    autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
 
     " Makefile
-    autocmd FileType make setl noexpandtab
+    autocmd FileType make setlocal noexpandtab
 
     " C / C++
-    autocmd BufNewFile,BufRead,BufEnter *.hpp setl filetype=cpp
+    autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
 
     " JSON / JavaScript
     autocmd BufNewFile,BufRead *.json set filetype=javascript
@@ -394,7 +394,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
     " Python
-    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufWritePre *.py :%substitute/\v\s+$//ge
 endif
 
 " ---------------------------------------------------------------- }}}
