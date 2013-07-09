@@ -172,8 +172,7 @@ set softtabstop=4
 set tabstop=4
 
 " Invisible characters
-set nolist
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set list listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 " Virtual edit (awesome)
