@@ -26,5 +26,5 @@ PURPLE="\[\e[1;35m\]"
 CYAN="\[\e[1;36m\]"
 
 # Prompt format
-PS1=${BLUE}'\u'${NORMAL}${YELLOW}@${NORMAL}${RED}'\h'${NORMAL}${YELLOW}${NORMAL}${YELLOW}${NORMAL}${BLUE}:${NORMAL}${GREEN}'\w'${NORMAL}${PURPLE}'$(__git_ps1 "|%s")'"${NORMAL}${BLUE} "'\$'"${NORMAL} "
+PS1=${BLUE}'\u'${NORMAL}${YELLOW}@${NORMAL}${RED}'\h'${NORMAL}${YELLOW}${NORMAL}${YELLOW}${NORMAL}${BLUE}:${NORMAL}${GREEN}'\w'"${NORMAL}${PURPLE}${NORMAL}${BLUE} "'\$'"${NORMAL} "
 PS2="${BLUE}>${NORMAL} "
