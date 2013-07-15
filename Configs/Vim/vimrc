@@ -207,7 +207,6 @@ set incsearch
 " Colorscheme setup (for GUI, depends on time of day)
 
 " Set colorscheme depending on time of day
-set background=dark
 if has("gui_running")
     colorscheme molokai
     if exists("*strftime")
@@ -220,7 +219,9 @@ if has("gui_running")
     endif
 else
     set t_Co=256
-    colorscheme pyte
+    set background=light
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
 
 " Editing font
