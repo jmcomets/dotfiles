@@ -169,7 +169,7 @@ set smarttab
 " Indent by 4 spaces, 8 for tabs
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4
+set tabstop=8
 
 " Invisible characters
 set list listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
@@ -206,23 +206,24 @@ set incsearch
 
 " Colorscheme setup (for GUI, depends on time of day)
 
-" Set colorscheme depending on time of day
-if has("gui_running")
-    colorscheme molokai
-    if exists("*strftime")
-        let s:hour = strftime("%H")
-        if 6 < s:hour && s:hour < 18
-            set background=light
-            colorscheme solarized
-        endif
-        unlet s:hour
-    endif
-else
+" Setup 256 colors for terminal
+if !has("gui_running")
     set t_Co=256
-    set background=light
     let g:solarized_termcolors=256
-    colorscheme solarized
 endif
+
+" Set colorscheme depending on time of day
+if exists("*strftime")
+    let s:hour = strftime("%H")
+    if 6 < s:hour && s:hour < 20
+        set background=light
+    else
+        set background=dark
+    endif
+endif
+
+" Colorscheme : [Solarized](http://ethanschoonover.com/solarized)
+colorscheme solarized
 
 " Editing font
 set guifont=Monospace\ 11

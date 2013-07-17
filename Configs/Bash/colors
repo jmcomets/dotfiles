@@ -15,16 +15,24 @@ if [ -f "$HOME/.dircolors" ]; then
 fi
 
 # Colors
+BLACK="\[\e[0;30m\]"
+BLUE="\[\e[0;34m\]"
+BROWN="\[\e[0;33m\]"
+CYAN="\[\e[0;36m\]"
+DARKGRAY="\[\e[1;30m\]"
+GREEN="\[\e[0;32m\]"
+LIGHTBLUE="\[\e[1;34m\]"
+LIGHTCYAN="\[\e[1;36m\]"
+LIGHTGRAY="\[\e[0;37m\]"
+LIGHTGREEN="\[\e[1;32m\]"
+LIGHTPURPLE="\[\e[1;35m\]"
+LIGHTRED="\[\e[1;31m\]"
 NORMAL="\[\033[0m\]"
-BLACK="\[\e[1;30m\]"
+PURPLE="\[\e[0;35m\]"
+RED="\[\e[0;31m\]"
 WHITE="\[\e[1;37m\]"
-RED="\[\e[1;31m\]"
-GREEN="\[\e[1;32m\]"
 YELLOW="\[\e[1;33m\]"
-BLUE="\[\e[1;34m\]"
-PURPLE="\[\e[1;35m\]"
-CYAN="\[\e[1;36m\]"
 
 # Prompt format
-PS1=${BLUE}'\u'${NORMAL}${YELLOW}@${NORMAL}${RED}'\h'${NORMAL}${YELLOW}${NORMAL}${YELLOW}${NORMAL}${BLUE}:${NORMAL}${GREEN}'\w'"${NORMAL}${PURPLE}${NORMAL}${BLUE} "'\$'"${NORMAL} "
-PS2="${BLUE}>${NORMAL} "
+PS1="$BLUE\u $RED\w$NORMAL $BLUE\$$NORMAL "
+PS2="$BLUE>$NORMAL "
