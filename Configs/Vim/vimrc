@@ -205,21 +205,19 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup (for GUI, depends on time of day)
-
-" Setup 256 colors for terminal
-if !has("gui_running")
+set background=dark
+if has("gui_running")
+    " Set colorscheme depending on time of day
+    if exists("*strftime")
+        let s:hour = strftime("%H")
+        if 6 < s:hour && s:hour < 20
+            set background=light
+        endif
+    endif
+else
+    " Setup 256 colors for terminal
     set t_Co=256
     let g:solarized_termcolors=256
-endif
-
-" Set colorscheme depending on time of day
-if exists("*strftime")
-    let s:hour = strftime("%H")
-    if 6 < s:hour && s:hour < 20
-        set background=light
-    else
-        set background=dark
-    endif
 endif
 
 " Colorscheme : [Solarized](http://ethanschoonover.com/solarized)
