@@ -89,4 +89,16 @@ SOCK    01;35    # socket
 .xbm   01;35
 .xpm   01;35
 
+# Script files
+.c     01;33
+.cc    01;33
+.cpp   01;33
+.css   01;33
+.cxx   01;33
+.h     01;35
+.hpp   01;35
+.js    01;31
+.json  01;31
+.py    01;33
+
 # vim: set ft=sh
