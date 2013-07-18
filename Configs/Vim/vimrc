@@ -204,19 +204,13 @@ set incsearch
 
 " Colors and Fonts ----------------------------------------------- {{{
 
-" Colorscheme setup (for GUI, depends on time of day)
-set background=dark
+" Colorscheme setup (light for GUI, dark otherwise)
 if has("gui_running")
-    " Set colorscheme depending on time of day
-    if exists("*strftime")
-        let s:hour = strftime("%H")
-        if 6 < s:hour && s:hour < 20
-            set background=light
-        endif
-    endif
+    set background=light
 else
     " Setup 256 colors for terminal
     set t_Co=256
+    set background=dark
     let g:solarized_termcolors=256
 endif
 
@@ -374,6 +368,9 @@ if has("autocmd")
 
     " Makefile
     autocmd FileType make setlocal noexpandtab
+
+    " Bash's vi-edition-mode "v" command editor window
+    autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 
     " C / C++
     autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
