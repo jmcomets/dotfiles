@@ -102,6 +102,17 @@ set mouse=
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+" Fix for terminal enabling ALT key mappings
+if !has("gui_running")
+    let s:c = "a"
+    while s:c <= "z"
+      execute "set <A-" . s:c . ">=\e" . s:c
+      execute "imap \e" . s:c . " <A-" . s:c . ">"
+      let s:c = nr2char(1 + char2nr(s:c))
+    endwhile
+    set timeout ttimeoutlen=50
+endif
+
 " ---------------------------------------------------------------- }}}
 
 " Syntax related ------------------------------------------------- {{{
