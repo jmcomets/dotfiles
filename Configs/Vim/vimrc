@@ -8,13 +8,12 @@
 "   - Preamble
 "   - Vim user interface
 "   - Syntax related
-"   - Status line
 "   - Text, tab and indent related
 "   - Colors and Fonts
 "   - Moving around
 "   - Searching
 "   - Keymappings
-"   - FileType settings
+"   - Filetype settings
 "   - Plugin customization
 "
 " ---------------------------------------------------------------- }}}
@@ -153,19 +152,11 @@ set tags=./tags;/
 " Complete menu
 set completeopt=menuone,preview
 
-" ---------------------------------------------------------------- }}}
-
-" Status line ---------------------------------------------------- {{{
-
 " Always put a status line in, even if there is only one window
 set laststatus=2
 
 " Status line with Git extra
 set statusline=%F%m\ [%{&ff}]%y%r%{fugitive#statusline()}[%l,%v][%p%%][\%03.b]
-
-" Status line stolen from Top Vimbits
-"  - found here : "http://vimbits.com/bits/95"
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " ---------------------------------------------------------------- }}}
 
@@ -371,7 +362,7 @@ nmap <silent> [q :cp<cr>
 
 " ---------------------------------------------------------------- }}}
 
-" FileType settings ---------------------------------------------- {{{
+" Filetype settings ---------------------------------------------- {{{
 
 if has("autocmd")
     " Vimrc
