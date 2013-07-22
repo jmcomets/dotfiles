@@ -356,10 +356,6 @@ nmap <silent> <leader>so :source $MYVIMRC<cr>
 " Quick make command
 nmap <silent> <leader>m :make<cr>
 
-" Quickfix mappings
-nmap <silent> ]q :cn<cr>
-nmap <silent> [q :cp<cr>
-
 " ---------------------------------------------------------------- }}}
 
 " Filetype settings ---------------------------------------------- {{{
