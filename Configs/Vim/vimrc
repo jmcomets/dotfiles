@@ -112,6 +112,8 @@ if !has("gui_running")
     set timeout ttimeoutlen=50
 endif
 
+set path+=/usr/local/include
+
 " ---------------------------------------------------------------- }}}
 
 " Syntax related ------------------------------------------------- {{{
@@ -206,14 +208,15 @@ set incsearch
 
 " Colors and Fonts ----------------------------------------------- {{{
 
-" Colorscheme setup (light for GUI, dark otherwise)
+" Colorscheme setup
 if has("gui_running")
     set background=light
 else
-    " Setup 256 colors for terminal
-    set t_Co=256
     set background=dark
-    let g:solarized_termcolors=256
+    let s:nb_colors = 256
+    let g:solarized_termcolors = s:nb_colors
+    execute 'set t_Co=' . s:nb_colors
+    unlet s:nb_colors
 endif
 
 " Colorscheme : [Solarized](http://ethanschoonover.com/solarized)
@@ -232,6 +235,13 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
     set guioptions+=e
+elseif has("terminfo")
+    let g:CommandTCancelMap=['<ESC>','<C-c>']
+    set t_Sf=<Esc>[3%p1%dm
+    set t_Sb=<Esc>[4%p1%dm
+else
+    set t_Sf=<Esc>[3%dm
+    set t_Sb=<Esc>[4%dm
 endif
 
 " ---------------------------------------------------------------- }}}

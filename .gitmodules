@@ -67,3 +67,6 @@
 [submodule "Configs/Vim/bundle/unimpaired"]
 	path = Configs/Vim/bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "Configs/Vim/bundle/eunuch"]
+	path = Configs/Vim/bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch.git
