@@ -3,7 +3,7 @@
 #   Setup script for workspace configuration.
 #
 #   Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
-#   Version: 1.2 - 23/02/2013, 21:47
+#   Version: 1.3 - 24/07/2013, 14:43
 #
 #   Run as follows:
 #     > chmod 0777 config.sh
@@ -17,17 +17,24 @@ PROJECTS=$WORKSPACE/Projects
 CONFIGS=$WORKSPACE/Configs
 BUNDLE=$WORKSPACE/Bundle
 
+# Refactored link command
+function setup_link()
+{
+    rm -f $2 && ln -s $1 $2
+    return $?
+}
+
 # Setup projects subdirectory links
-ln -fs $PROJECTS/Configs $CONFIGS
-ln -fs $PROJECTS/Bundle $BUNDLE
+setup_link $PROJECTS/Configs $CONFIGS
+setup_link $PROJECTS/Bundle $BUNDLE
 
 # Setup Vim file links
-ln -fs $CONFIGS/Vim ~/.vim
-ln -fs ~/.vim/vimrc ~/.vimrc
+setup_link $CONFIGS/Vim ~/.vim
+setup_link ~/.vim/vimrc ~/.vimrc
 
 # Setup Bash file links
-ln -fs $CONFIGS/Bash ~/.bash
-ln -fs ~/.bash/bashrc ~/.bashrc
-ln -fs ~/.bash/profile ~/.profile
-ln -fs ~/.bash/inputrc ~/.inputrc
-ln -fs ~/.bash/dircolors ~/.dircolors
+setup_link $CONFIGS/Bash ~/.bash
+setup_link ~/.bash/bashrc ~/.bashrc
+setup_link ~/.bash/profile ~/.profile
+setup_link ~/.bash/inputrc ~/.inputrc
+setup_link ~/.bash/dircolors ~/.dircolors
