@@ -381,6 +381,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 
     " C / C++
+    autocmd BufNewFile,BufRead,BufEnter *.ih set filetype=cpp
     autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
 
     " JSON / JavaScript

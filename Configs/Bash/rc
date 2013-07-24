@@ -67,3 +67,5 @@ GIT_PS1_SHOWDIRTYSTATE=true
 
 # Custom scripts
 call $BASHRTP/profile $BASHRTP/colors $BASHRTP/aliases
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
