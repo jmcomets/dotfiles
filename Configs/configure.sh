@@ -34,7 +34,11 @@ setup_link ~/.vim/vimrc ~/.vimrc
 
 # Setup Bash file links
 setup_link $CONFIGS/Bash ~/.bash
-setup_link ~/.bash/bashrc ~/.bashrc
+setup_link ~/.bash/rc ~/.bashrc
 setup_link ~/.bash/profile ~/.profile
 setup_link ~/.bash/inputrc ~/.inputrc
 setup_link ~/.bash/dircolors ~/.dircolors
+
+# Setup Zsh file links
+setup_link $CONFIGS/Zsh ~/.zsh
+setup_link ~/.zsh/rc ~/.zshrc
