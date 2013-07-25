@@ -5,75 +5,94 @@
 " Version: 2.6 (2013 June 2)
 "
 " Sections:
-"   - Preamble
+"   - Basics
 "   - Vim user interface
 "   - Syntax related
 "   - Text, tab and indent related
+"   - Searching
 "   - Colors and Fonts
 "   - Moving around
-"   - Searching
 "   - Keymappings
 "   - Filetype settings
 "   - Plugin customization
 "
 " ---------------------------------------------------------------- }}}
 
-" Preamble ------------------------------------------------------- {{{
+" Basics --------------------------------------------------------- {{{
 
 " Sets how many lines of history Vim has to remember
 set history=700
 
-" Set to auto read when a file is changed from the outside
+" Reload buffer when its file is changed from the outside
 set autoread
 
-" Vim startup message
-set shortmess+=I
-
-" Set mapleader (shortcut key) to ","
+" Mapleader is "," (consider someday removing this)
 let mapleader = ","
-let g:mapleader = ","
 
-" Set utf8 as standard encoding and en_US as the standard language
+" Set UTF8 as standard encoding
 set encoding=utf8
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
-" Turn backup off, since most stuff is in svn / git anyway...
+" Disable backup/swap
 set nobackup
 set nowritebackup
 set noswapfile
+
+" The "m" at the end of Vi
+set nocompatible
+
+" Add "$" at end of "change" nouns
+set cpoptions+=$
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guitablabel=%M\ %t
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions+=e
+endif
+
+" Remove startup message
+set shortmess+=I
 
 " Start Pathogen plugin to load bundle
 call pathogen#infect()
 call pathogen#helptags()
 
-" Enable filetype plugins
+" Enable plugins
 filetype plugin indent on
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" Fix for terminal enabling ALT key mappings
+if !has("gui_running")
+    let s:c = "a"
+    while s:c <= "z"
+        execute "set <A-" . s:c . ">=\e" . s:c
+        execute "imap \e" . s:c . " <A-" . s:c . ">"
+        let s:c = nr2char(1 + char2nr(s:c))
+    endwhile
+    set timeout ttimeoutlen=50
+endif
 
 " ---------------------------------------------------------------- }}}
 
 " Vim user interface --------------------------------------------- {{{
 
-" Compatible options
-set cpoptions+=$
-
 " Title is name of current file
 set title
 
-" Set 5 lines to the cursor - when moving vertically using j / k
-set scrolloff=5
+" Set amount of lines above the cursor
+set scrolloff=3
 
-" Turn on the WiLd menu
-set wildmenu
-
-" Behave shell-like when completing shell
-set wildmode=longest,list
-
-" Ignore compiled files and backups
-set wildignore=*.o,*~,*.pyc,*.gch
-
-" Only show line numbers in GUI mode
+" Show line numbers
 set number
 
 " Always show current position
@@ -82,11 +101,33 @@ set ruler
 " Height of the command bar
 set cmdheight=2
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-"set whichwrap+=<,>,h,l
+" Always put a status line in, even if there is only one window
+set laststatus=2
 
-" No annoying sound on errors
+" Status line (if Fugitive, with Git extra)
+if exists('g:loaded_fugitive')
+    set statusline=%F%m\ [%{&ff}]%y%r%{fugitive#statusline()}[%l,%v][%p%%][\%03.b]
+else
+    set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+endif
+
+" Turn on the Wild menu
+set wildmenu
+
+" Behave shell-like when completing shell
+set wildmode=longest,list
+
+" Ignore compiled files and backups
+set wildignore=*.o,*~,*.pyc,*.gch
+
+" Virtual edit (awesome)
+set virtualedit=all
+
+" Backspace unindents (and obviously backspaces in insert mode)
+set backspace=start,indent
+"set whichwrap+=<,>,h,l " disabled since virtualedit
+
+" Don't notify any errors
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -98,22 +139,6 @@ set mousehide
 " Mouse activated ?
 set mouse=
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" Fix for terminal enabling ALT key mappings
-if !has("gui_running")
-    let s:c = "a"
-    while s:c <= "z"
-      execute "set <A-" . s:c . ">=\e" . s:c
-      execute "imap \e" . s:c . " <A-" . s:c . ">"
-      let s:c = nr2char(1 + char2nr(s:c))
-    endwhile
-    set timeout ttimeoutlen=50
-endif
-
-set path+=/usr/local/include
-
 " ---------------------------------------------------------------- }}}
 
 " Syntax related ------------------------------------------------- {{{
@@ -121,44 +146,40 @@ set path+=/usr/local/include
 " Enable syntax highlighting
 syntax enable
 
+" Enable modeline
+set modeline
+
 " Show matching brackets when text indicator is over them
 set showmatch
 
-" Fold settings
+" How many tenths of a second to blink when matching brackets
+set matchtime=2
+
+" Default fold method
 set foldmethod=indent
 
 " Max number of fold levels
 set foldnestmax=10
 
-" Folding everything
+" Folding everything (disable at start)
 set nofoldenable
 
 " Again, folding parent levels
 set foldlevel=1
 
-" How many tenths of a second to blink when matching brackets
-set matchtime=2
-
-" Enable modeline
-set modeline
-
-" For regular expressions turn magic on
-set magic
-
-" Completing function
-set omnifunc=syntaxcomplete#Complete
-
-" Tags
+" Tags (go up directories and collect "tags" files)
 set tags=./tags;/
+
+" Default complete function
+set omnifunc=syntaxcomplete#Complete
 
 " Complete menu
 set completeopt=menuone,preview
 
-" Always put a status line in, even if there is only one window
-set laststatus=2
-
-" Status line with Git extra
-set statusline=%F%m\ [%{&ff}]%y%r%{fugitive#statusline()}[%l,%v][%p%%][\%03.b]
+" Add "/usr/local/include" to path when running Unix
+if has("unix")
+    set path+=/usr/local/include
+endif
 
 " ---------------------------------------------------------------- }}}
 
@@ -179,9 +200,6 @@ set tabstop=8
 set list listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
-" Virtual edit (awesome)
-set virtualedit=all
-
 " Explicit FTW
 set autoindent
 set smartindent
@@ -190,6 +208,9 @@ set wrap
 " ---------------------------------------------------------------- }}}
 
 " Searching ------------------------------------------------------ {{{
+
+" Regex magic
+set magic
 
 " Ignore case
 set ignorecase
@@ -213,40 +234,26 @@ if has("gui_running")
     set background=light
 else
     set background=dark
-    let s:nb_colors = 256
+    let s:nb_colors = 256 " TODO detect this number dynamically
     let g:solarized_termcolors = s:nb_colors
     execute 'set t_Co=' . s:nb_colors
     unlet s:nb_colors
 endif
 
-" Colorscheme : [Solarized](http://ethanschoonover.com/solarized)
+" [Solarized](http://ethanschoonover.com/solarized)
 colorscheme solarized
 
 " Editing font
 set guifont=Monospace\ 11
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guitablabel=%M\ %t
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions+=e
-elseif has("terminfo")
-    let g:CommandTCancelMap=['<ESC>','<C-c>']
-    set t_Sf=<Esc>[3%p1%dm
-    set t_Sb=<Esc>[4%p1%dm
-else
-    set t_Sf=<Esc>[3%dm
-    set t_Sb=<Esc>[4%dm
+" In terminal, the "escape" also acts as Ctrl-C
+if has("terminfo")
+    let g:CommandTCancelMap = ['<esc>','<C-c>']
 endif
 
 " ---------------------------------------------------------------- }}}
 
-" Moving around, tabs, windows and buffers ----------------------- {{{
+" Moving around -------------------------------------------------- {{{
 
 " A buffer becomes hidden when it is abandoned
 set hidden
@@ -295,39 +302,27 @@ nmap <silent> <leader>N :bprevious<cr>
 nmap <leader>a <C-^>
 
 " Go to the 80th column
-nnoremap <bar><bar> 80<bar>
-
-" Move between windows using CTRL+[hjkl]
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nmap <bar><bar> 80<bar>
 
 " Move a line of text using ALT+[jk]
-nnoremap <silent> <M-j> :move .+1<cr>==
-nnoremap <silent> <M-k> :move .-2<cr>==
-inoremap <silent> <M-j> <Esc>:move .+1<cr>==gi
-inoremap <silent> <M-k> <Esc>:move .-2<cr>==gi
-vnoremap <silent> <M-j> :move '>+1<cr>gv=gv
-vnoremap <silent> <M-k> :move '<-2<cr>gv=gv
-
-" Toggle invisibles display
-nmap <silent> <leader>i :set list!<cr>
+nmap <silent> <M-j> :move .+1<cr>==
+nmap <silent> <M-k> :move .-2<cr>==
+imap <silent> <M-j> <Esc>:move .+1<cr>==gi
+imap <silent> <M-k> <Esc>:move .-2<cr>==gi
+vmap <silent> <M-j> :move '>+1<cr>gv=gv
+vmap <silent> <M-k> :move '<-2<cr>gv=gv
 
 " Disable search highlighting
 nmap <silent> <leader><cr> :nohlsearch<cr>
 
-" Quick search-replace
-nnoremap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
+" Search-replace current word
+nmap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
 
 " Quick indenting in normal node
 nmap <tab> ==
-
-" Quick surround character with spaces 
-nmap <leader><space> i<space><esc>la<space><esc>h
 
 " Exchange "`" and "'"
 nnoremap ' `
@@ -341,29 +336,20 @@ nmap Y y$
 vmap > >gv
 vmap < <gv
 
-" Move between methods
-nmap <leader>j ]m
-nmap <leader>k [m
-
-" Quick mapping for IDE-style completion
-inoremap <nul> <C-x><C-o>
+" Enable IDE-style completion
+imap <nul> <C-x><C-o>
 
 " Fast saving
-nnoremap <silent> <leader>w :write<cr>
+nmap <silent> <leader>w :write<cr>
 
-" Close current file
-nnoremap <silent> <leader>q :quit<cr>
+" Close current window
+nmap <silent> <leader>q :quit<cr>
 
-" CD file's directory
-nmap <silent> <leader>cd :cd %:p:h<cr>
-
-" Edit vimrc configuration
+" Edit/source vimrc
 nmap <silent> <leader>co :edit $MYVIMRC<cr>
-
-" Source this file
 nmap <silent> <leader>so :source $MYVIMRC<cr>
 
-" Quick make command
+" Run "make" (makeprg)
 nmap <silent> <leader>m :make<cr>
 
 " ---------------------------------------------------------------- }}}
@@ -404,88 +390,86 @@ endif
 
 " Plugin customization ------------------------------------------- {{{
 
+" Snipmate
+let g:snips_author = 'Jean-Marie Comets'
+
 " FuzzyFinder
-let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 
+" Disable 
+let g:fuf_modesDisable = ['coveragefile', 'bookmarkfile', 'bookmarkdir']
+
 " Recursively search any file (slow)
-nnoremap <silent> ss     :FufFile **/<cr>
+nmap <silent> ss     :FufFile **/<cr>
 
 " File
-nnoremap <silent> sk     :FufFileWithCurrentBufferDir<cr>
-nnoremap <silent> sK     :FufFileWithFullCwd<cr>
-nnoremap <silent> s<C-k> :FufFile<cr>
+nmap <silent> sk     :FufFileWithCurrentBufferDir<cr>
+nmap <silent> sK     :FufFileWithFullCwd<cr>
+nmap <silent> s<C-k> :FufFile<cr>
 
 " Directory
-nnoremap <silent> sd     :FufDirWithCurrentBufferDir<cr>
-nnoremap <silent> sD     :FufDirWithFullCwd<cr>
-nnoremap <silent> s<C-d> :FufDir<cr>
+nmap <silent> sd     :FufDirWithCurrentBufferDir<cr>
+nmap <silent> sD     :FufDirWithFullCwd<cr>
+nmap <silent> s<C-d> :FufDir<cr>
 
 " MRU (most recently used)
-nnoremap <silent> sn     :FufMruFile<cr>
-nnoremap <silent> sN     :FufMruFileInCwd<cr>
-nnoremap <silent> sm     :FufMruCmd<cr>
-nnoremap <silent> sM     :FufMruCmd!<cr>
+nmap <silent> sn     :FufMruFile<cr>
+nmap <silent> sN     :FufMruFileInCwd<cr>
+nmap <silent> sm     :FufMruCmd<cr>
+nmap <silent> sM     :FufMruCmd!<cr>
 
 " Buffer/Buffer search
-nnoremap <silent> sj     :FufBuffer<cr>
-nnoremap <silent> s,     :FufBufferTag<cr>
-nnoremap <silent> s?     :FufBufferTag!<cr>
-nnoremap <silent> s;     :FufBufferTagAll<cr>
-nnoremap <silent> s.     :FufBufferTagAll!<cr>
-nnoremap <silent> s}     :FufBufferTagWithCursorWord!<cr>
-nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<cr>
+nmap <silent> sj     :FufBuffer<cr>
+nmap <silent> s,     :FufBufferTag<cr>
+nmap <silent> s?     :FufBufferTag!<cr>
+nmap <silent> s;     :FufBufferTagAll<cr>
+nmap <silent> s.     :FufBufferTagAll!<cr>
+nmap <silent> s}     :FufBufferTagWithCursorWord!<cr>
+nmap <silent> s]     :FufBufferTagAllWithCursorWord!<cr>
 
 " Visual mode mappings (with selected text), notice how
 " these are switched for uppercase/lowercase convetion,
 " since it is pretty obvious we don't want to do fuzzy
 " searching when we have already selected the text to search
-vnoremap <silent> s,     :FufBufferTagWithSelectedText!<cr>
-vnoremap <silent> s?     :FufBufferTagWithSelectedText<cr>
-vnoremap <silent> s;     :FufBufferTagAllWithSelectedText!<cr>
-vnoremap <silent> s.     :FufBufferTagAllWithSelectedText<cr>
+vmap <silent> s,     :FufBufferTagWithSelectedText!<cr>
+vmap <silent> s?     :FufBufferTagWithSelectedText<cr>
+vmap <silent> s;     :FufBufferTagAllWithSelectedText!<cr>
+vmap <silent> s.     :FufBufferTagAllWithSelectedText<cr>
 
 " Various with fuzzy/partial for lowercase/uppercase key
-nnoremap <silent> st     :FufTag<cr>
-nnoremap <silent> sT     :FufTag!<cr>
-nnoremap <silent> s<C-t> :FufTagWithCursorWord!<cr>
-nnoremap <silent> sh     :FufHelp<cr>
-nnoremap <silent> sH     :FufHelp!<cr>
-nnoremap <silent> sy     :FufLine<cr>
-nnoremap <silent> sY     :FufLine!<cr>
-nnoremap <silent> so     :FufJumpList<cr>
-nnoremap <silent> sO     :FufJumpList!<cr>
-nnoremap <silent> sq     :FufQuickfix<cr>
-nnoremap <silent> sQ     :FufQuickfix!<cr>
-nnoremap <silent> sg     :FufTaggedFile<cr>
-nnoremap <silent> sG     :FufTaggedFile!<cr>
-nnoremap <silent> sp     :FufChangeList<cr>
-nnoremap <silent> sP     :FufChangeList!<cr>
+nmap <silent> st     :FufTag<cr>
+nmap <silent> sT     :FufTag!<cr>
+nmap <silent> s<C-t> :FufTagWithCursorWord!<cr>
+nmap <silent> sh     :FufHelp<cr>
+nmap <silent> sH     :FufHelp!<cr>
+nmap <silent> sy     :FufLine<cr>
+nmap <silent> sY     :FufLine!<cr>
+nmap <silent> so     :FufJumpList<cr>
+nmap <silent> sO     :FufJumpList!<cr>
+nmap <silent> sq     :FufQuickfix<cr>
+nmap <silent> sQ     :FufQuickfix!<cr>
+nmap <silent> sg     :FufTaggedFile<cr>
+nmap <silent> sG     :FufTaggedFile!<cr>
+nmap <silent> sp     :FufChangeList<cr>
+nmap <silent> sP     :FufChangeList!<cr>
 
 " Unused but recommended mappings
-"nnoremap <silent> sl     :FufCoverageFileChange<cr>
-"nnoremap <silent> sL     :FufCoverageFileChange!<cr>
-"nnoremap <silent> s<C-l> :FufCoverageFileRegister<cr>
-"nnoremap <silent> su     :FufBookmarkFile<cr>
-"nnoremap <silent> s<C-u> :FufBookmarkFileAdd<cr>
-"vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<cr>
-"nnoremap <silent> si     :FufBookmarkDir<cr>
-"nnoremap <silent> s<C-i> :FufBookmarkDirAdd<cr>
+"nmap <silent> sl     :FufCoverageFileChange<cr>
+"nmap <silent> sL     :FufCoverageFileChange!<cr>
+"nmap <silent> s<C-l> :FufCoverageFileRegister<cr>
+"nmap <silent> su     :FufBookmarkFile<cr>
+"nmap <silent> s<C-u> :FufBookmarkFileAdd<cr>
+"vmap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<cr>
+"nmap <silent> si     :FufBookmarkDir<cr>
+"nmap <silent> s<C-i> :FufBookmarkDirAdd<cr>
 
 " Helpful specific commands
-nnoremap <silent> se     :FufEditDataFile<cr>
-nnoremap <silent> sr     :FufRenewCache<cr>
+nmap <silent> se     :FufEditDataFile<cr>
+nmap <silent> sr     :FufRenewCache<cr>
 
 " Fix for hesitation
-nnoremap s <nop>
-vnoremap s <nop>
-
-" Snipmate
-let g:snips_author = 'Jean-Marie Comets'
-
-" Fugitive
-command! Gpush :Git push
-command! Gpull :Git pull
+nmap s <nop>
+vmap s <nop>
 
 " ---------------------------------------------------------------- }}}
