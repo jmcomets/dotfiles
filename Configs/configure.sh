@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 #
 #   Setup script for workspace configuration.
 #
 #   Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
-#   Version: 1.3 - 24/07/2013, 14:43
+#   Version: 1.4 - 25/07/2013, 15:26
 #
 #   Run as follows:
 #     > chmod 0777 config.sh
 #     > ./config.sh
 #   Or quicker:
-#     > bash config.sh
+#     > sh config.sh
 #
 
 WORKSPACE=$HOME
