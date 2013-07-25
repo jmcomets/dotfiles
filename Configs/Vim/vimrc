@@ -355,34 +355,39 @@ nmap <silent> <leader>m :make<cr>
 
 " Filetype settings ---------------------------------------------- {{{
 
-if has("autocmd")
-    " Vimrc
-    autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
+if has("autocmd") " Autocommands (in a group to avoid re-sourcing)
+    augroup vimrc_autocommands
+        " Remove all previous autocommands from this group
+        autocmd!
 
-    " Makefile
-    autocmd FileType make setlocal noexpandtab
+        " Vimrc
+        autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
 
-    " Bash's vi-edition-mode "v" command editor window
-    autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
+        " Makefile
+        autocmd FileType make setlocal noexpandtab
 
-    " C / C++
-    autocmd BufNewFile,BufRead,BufEnter *.ih set filetype=cpp
-    autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
+        " Bash's vi-edition-mode "v" command editor window
+        autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 
-    " JSON / JavaScript
-    autocmd BufNewFile,BufRead *.json set filetype=javascript
+        " C / C++
+        autocmd BufNewFile,BufRead,BufEnter *.ih set filetype=cpp
+        autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
 
-    " Pascal
-    autocmd BufNewFile,BufRead *.pas,*.PAS set filetype=pascal
+        " JSON / JavaScript
+        autocmd BufNewFile,BufRead *.json set filetype=javascript
 
-    " Go
-    autocmd BufNewFile,BufRead *.go set filetype=go
+        " Pascal
+        autocmd BufNewFile,BufRead *.pas,*.PAS set filetype=pascal
 
-    " Markdown
-    autocmd BufNewFile,BufRead *.md set filetype=markdown
+        " Go
+        autocmd BufNewFile,BufRead *.go set filetype=go
 
-    " Python
-    autocmd BufWritePre *.py :%substitute/\v\s+$//ge
+        " Markdown
+        autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+        " Python
+        autocmd BufWritePre *.py :%substitute/\v\s+$//ge
+    augroup END
 endif
 
 " ---------------------------------------------------------------- }}}
