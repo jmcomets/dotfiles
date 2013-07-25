@@ -70,6 +70,6 @@
 [submodule "Configs/Vim/bundle/eunuch"]
 	path = Configs/Vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch.git
-[submodule "Configs/Zsh"]
-	path = Configs/Zsh
+[submodule "Configs/Zsh/oh-my-zsh"]
+	path = Configs/Zsh/oh-my-zsh
 	url = git@github.com:jmcomets/oh-my-zsh.git
