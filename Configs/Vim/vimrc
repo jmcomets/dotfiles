@@ -122,8 +122,8 @@ set wildignore=*.o,*~,*.pyc,*.gch
 " Virtual edit (awesome)
 set virtualedit=all
 
-" Backspace unindents (and obviously backspaces in insert mode)
-set backspace=start,indent
+" Backspace unindents and joins lines
+set backspace=start,indent,eol
 "set whichwrap+=<,>,h,l " disabled since virtualedit
 
 " Don't notify any errors
