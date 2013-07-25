@@ -11,7 +11,7 @@ Clone this repo, including the submodules:
 
     git clone --recursive https://github.com/jmcomets/projects.git Projects
 
-_Note_: if you choose to clone the repo elsewhere, note that there is a
+__Note__: if you choose to clone the repo elsewhere, note that there is a
 shell alias to cd to ~/Projects, defined in .bash/aliases (and for zsh).
 
 Run the installation script (you may want to backup your ~/.*rc files,
