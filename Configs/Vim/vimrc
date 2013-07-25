@@ -267,22 +267,25 @@ set showtabline=0
 set splitright
 
 if has("autocmd")
-    " Return to last edit position when opening files
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \     exe "normal! g`\"" |
-                \ endif
+    augroup vimrc_autocommands
+        " Return to last edit position when opening files
+        autocmd BufReadPost *
+                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                    \     execute "normal! g`\"" |
+                    \ endif
 
-    let s:autocd = 0 " boolean indicating if should cd with current file
+        let s:autocd = 0 " boolean indicating if should cd with current file
 
-    " Cd directory when opening files
-    if exists("s:autocd") && s:autocd != 0
-        if exists("+autochdir")
-            set autochdir
-        else
-            autocmd BufEnter * execute "chdir " . escape(expand("%:p:h"), ' ')
+        " Cd directory when opening files
+        if exists("s:autocd") && s:autocd != 0
+            if exists("+autochdir")
+                set autochdir
+            else
+                autocmd BufEnter *
+                            \ execute "chdir " . escape(expand("%:p:h"), ' ')
+            endif
         endif
-    endif
+    augroup END
 endif
 
 " ---------------------------------------------------------------- }}}
