@@ -258,7 +258,7 @@ endif
 set hidden
 
 " Specify the behavior when switching between buffers
-set switchbuf=useopen,usetab,newtab
+set switchbuf=useopen,usetab
 
 " Tab display
 set showtabline=0
