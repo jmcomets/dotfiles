@@ -105,11 +105,10 @@ set cmdheight=2
 set laststatus=2
 
 " Status line (if Fugitive, with Git extra)
-if exists('g:loaded_fugitive')
-    set statusline=%F%m\ [%{&ff}]%y%r%{fugitive#statusline()}[%l,%v][%p%%][\%03.b]
-else
-    set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-endif
+silent! call fugitive#statusline()
+set statusline=%F%m\ [%{&ff}]%y%r
+set statusline+=%{exists('*fugitive#statusline')?fugitive#statusline():''}
+set statusline+=[%l,%v][%p%%][\%03.b]
 
 " Turn on the Wild menu
 set wildmenu
@@ -307,8 +306,8 @@ nmap <bar><bar> 80<bar>
 " Move a line of text using ALT+[jk]
 nmap <silent> <M-j> :move .+1<cr>==
 nmap <silent> <M-k> :move .-2<cr>==
-imap <silent> <M-j> <Esc>:move .+1<cr>==gi
-imap <silent> <M-k> <Esc>:move .-2<cr>==gi
+imap <silent> <M-j> <esc>:move .+1<cr>==gi
+imap <silent> <M-k> <esc>:move .-2<cr>==gi
 vmap <silent> <M-j> :move '>+1<cr>gv=gv
 vmap <silent> <M-k> :move '<-2<cr>gv=gv
 
