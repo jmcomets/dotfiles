@@ -453,16 +453,6 @@ nmap <silent> sG     :FufTaggedFile!<cr>
 nmap <silent> sp     :FufChangeList<cr>
 nmap <silent> sP     :FufChangeList!<cr>
 
-" Unused but recommended mappings
-"nmap <silent> sl     :FufCoverageFileChange<cr>
-"nmap <silent> sL     :FufCoverageFileChange!<cr>
-"nmap <silent> s<C-l> :FufCoverageFileRegister<cr>
-"nmap <silent> su     :FufBookmarkFile<cr>
-"nmap <silent> s<C-u> :FufBookmarkFileAdd<cr>
-"vmap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<cr>
-"nmap <silent> si     :FufBookmarkDir<cr>
-"nmap <silent> s<C-i> :FufBookmarkDirAdd<cr>
-
 " Helpful specific commands
 nmap <silent> se     :FufEditDataFile<cr>
 nmap <silent> sr     :FufRenewCache<cr>
