@@ -73,3 +73,6 @@
 [submodule "Configs/Zsh"]
 	path = Configs/Zsh
 	url = git@github.com:jmcomets/oh-my-zsh.git
+[submodule "Configs/Vim/bundle/cython"]
+	path = Configs/Vim/bundle/cython
+	url = https://github.com/tshirtman/vim-cython.git
