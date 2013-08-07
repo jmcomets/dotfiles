@@ -231,15 +231,14 @@ set incsearch
 " Colorscheme setup
 if has("gui_running")
     set background=light
-    colorscheme ashen
 else
     set background=dark
     let s:nb_colors = 256 " TODO detect this number dynamically
     let g:solarized_termcolors = s:nb_colors
     execute 'set t_Co=' . s:nb_colors
     unlet s:nb_colors
-    colorscheme solarized
 endif
+colorscheme solarized
 
 " Editing font
 set guifont=Monospace\ 11

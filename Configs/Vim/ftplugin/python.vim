@@ -38,9 +38,6 @@ def EvaluateCurrentRange():
 EOL
 vmap <buffer> <F5> :python EvaluateCurrentRange()<cr>
 
-" Execute file being edited with <F5>
-"nmap <buffer> <F5> :!python %<cr>
-
 " Use F7/Shift-F7 to add/remove a breakpoint (pdb.set_trace)
 " Totally cool.
 python << EOF
