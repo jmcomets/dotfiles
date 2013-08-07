@@ -37,7 +37,6 @@ function! s:Cswitch(bang) " -------------- {{{
       autocmd CursorMoved <buffer> execute 'colorscheme ' . getline('.')
   augroup END
   let l:failed = append(0, s:GetColorschemes())
-  set nomodifiable
 endfunction " ----------------------------------- }}}
 
 command! -bang -nargs=0 Cswitch call s:Cswitch('<bang>')
