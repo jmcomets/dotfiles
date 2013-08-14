@@ -8,12 +8,15 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US" 
 
-# Configure terminal correctly for Vim
+# Configure terminal correctly for Vi(m)
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
 else
     export TERM='xterm'
 fi
+
+# Vi as standard editor
+export EDITOR=vi
 
 # Add private bin directory if it exists
 if [ -d "$HOME/bin" ] ; then
