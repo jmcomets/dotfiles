@@ -136,7 +136,7 @@ set timeoutlen=500
 set mousehide
 
 " Mouse activated ?
-set mouse=
+set mouse=a
 
 " ---------------------------------------------------------------- }}}
 
