@@ -14,10 +14,9 @@ setlocal foldmethod=indent
 setlocal omnifunc=pythoncomplete#Complete
 setlocal tags+=~/.vim/tags/python
 
-" Use :make to see syntax errors. (:cn and :cp to move around, :dist to see
-" all errors)
-setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-setlocal errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+" Use :make for syntax checking (using pylint)
+setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+setlocal errorformat=%f:%l:\ %m
 
 " `gf` jumps to the filename under the cursor
 python << EOF
