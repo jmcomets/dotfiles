@@ -5,12 +5,6 @@
 #   Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
 #   Version: 1.4 - 25/07/2013, 15:26
 #
-#   Run as follows:
-#     > chmod 0777 config.sh
-#     > ./config.sh
-#   Or quicker:
-#     > sh config.sh
-#
 
 WORKSPACE=$HOME
 PROJECTS=$WORKSPACE/Projects
@@ -42,3 +36,5 @@ setup_link ~/.bash/dircolors ~/.dircolors
 # Setup Zsh file links
 setup_link $CONFIGS/Zsh ~/.zsh
 setup_link ~/.zsh/rc ~/.zshrc
+
+# vim: ft=sh et sw=4 sts=4
