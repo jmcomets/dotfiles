@@ -12,7 +12,7 @@ CONFIGS=$WORKSPACE/Configs
 BUNDLE=$WORKSPACE/Bundle
 
 # Refactored link command
-function setup_link()
+setup_link()
 {
     rm -f $2 && ln -s $1 $2
     return $?
