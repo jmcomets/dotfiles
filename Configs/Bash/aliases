@@ -15,7 +15,6 @@ alias search="sudo dpkg -l"
 
 # Display
 alias grep="grep --color=auto"
-alias tree="tree -Csu"
 alias ls="ls -X --color=auto"
 
 # Shortcuts
