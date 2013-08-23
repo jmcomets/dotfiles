@@ -1,17 +1,15 @@
 #!/bin/bash
 #
 # Configuration for shell colors
-#
-# vim: set ft=sh
 
-# Global `ls` color file /etc/DIR_COLORS
+# Basic `ls` colors
 if [ -f "/etc/DIR_COLORS" ]; then
     eval $(dircolors -b /etc/DIR_COLORS)
-fi
 
-# Custom `ls` color file : ~/.dircolors
-if [ -f "$HOME/.dircolors" ]; then
-    eval $(dircolors -b ~/.dircolors)
+    # Custom `ls` colors
+    if [ -f "$HOME/.dircolors" ]; then
+        eval $(dircolors -b ~/.dircolors)
+    fi
 fi
 
 # Colors
@@ -36,3 +34,5 @@ YELLOW="\[\e[1;33m\]"
 # Prompt format
 PS1="$LIGHTBLUE\u $YELLOW\w$LIGHTPURPLE\$(__git_ps1) $LIGHTBLUE\$$NORMAL "
 PS2="$LIGHTBLUE>$NORMAL "
+
+# vim: ft=sh

@@ -1,8 +1,6 @@
 #!/bin/bash
 #
 # Configuration for shell aliases.
-#
-# vim: set ft=sh
 
 # Security
 alias df="df -h"
@@ -37,3 +35,5 @@ alias got="git"
 alias gut="git"
 alias ms="ls"
 alias sl="ls"
+
+# vim: ft=sh
