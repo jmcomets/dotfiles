@@ -1,8 +1,6 @@
 #!/bin/bash
 #
 # Main configuration for shell
-#
-# vim: set ft=sh
 
 # If not running interactively, don't do anything
 if [ -z "$PS1" ]; then
@@ -68,3 +66,5 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # Custom scripts
 call $BASHRTP/profile $BASHRTP/colors $BASHRTP/aliases
 call $BASHRTP/completion/*
+
+# vim: ft=sh
