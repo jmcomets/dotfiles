@@ -372,7 +372,7 @@ let g:snips_author = 'Jean-Marie Comets'
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 
-" Disable 
+" Disable
 let g:fuf_modesDisable = ['coveragefile', 'bookmarkfile', 'bookmarkdir']
 
 " Recursively search any file (slow)
