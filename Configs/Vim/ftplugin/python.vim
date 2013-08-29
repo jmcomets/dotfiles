@@ -29,13 +29,15 @@ for p in sys.path:
         vim.command(r'set path+=%s' % (p.replace(' ', r'\ ')))
 EOF
 
-" Select a range in visual mode and execute it
+" Select a range in visual mode and execute it,
+" otherwise execute entire buffer
 python << EOL
 import vim
 def EvaluateCurrentRange():
     eval(compile('\n'.join(vim.current.range), '', 'exec'), globals())
 EOL
 vmap <buffer> <F5> :python EvaluateCurrentRange()<cr>
+nmap <buffer> <F5> :!python %<cr>
 
 " Use F7/Shift-F7 to add/remove a breakpoint (pdb.set_trace)
 " Totally cool.
