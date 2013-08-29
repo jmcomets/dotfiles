@@ -37,3 +37,15 @@
 [submodule "Configs/Vim/bundle/tlib"]
 	path = Configs/Vim/bundle/tlib
 	url = https://github.com/vim-scripts/tlib.git
+[submodule "Configs/Vim/bundle/fugitive"]
+	path = Configs/Vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "Configs/Vim/bundle/matchit"]
+	path = Configs/Vim/bundle/matchit
+	url = https://github.com/tmhedberg/matchit.git
+[submodule "Configs/Vim/bundle/python-matchit"]
+	path = Configs/Vim/bundle/python-matchit
+	url = https://github.com/voithos/vim-python-matchit.git
+[submodule "Configs/Vim/bundle/pony"]
+	path = Configs/Vim/bundle/pony
+	url = https://github.com/jmcomets/vim-pony.git
