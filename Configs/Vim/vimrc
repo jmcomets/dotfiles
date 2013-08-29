@@ -365,9 +365,6 @@ endif
 
 " Plugin customization ------------------------------------------- {{{
 
-" Snipmate
-let g:snips_author = 'Jean-Marie Comets'
-
 " FuzzyFinder
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
