@@ -22,6 +22,9 @@ setup_link()
 setup_link $PROJECTS/Configs $CONFIGS
 setup_link $PROJECTS/Bundle $BUNDLE
 
+# Setup Bin file link
+setup_link $CONFIGS/Bin ~/bin
+
 # Setup Vim file links
 setup_link $CONFIGS/Vim ~/.vim
 setup_link ~/.vim/vimrc ~/.vimrc
@@ -32,9 +35,5 @@ setup_link ~/.bash/rc ~/.bashrc
 setup_link ~/.bash/profile ~/.profile
 setup_link ~/.bash/inputrc ~/.inputrc
 setup_link ~/.bash/dircolors ~/.dircolors
-
-# Setup Zsh file links
-setup_link $CONFIGS/Zsh ~/.zsh
-setup_link ~/.zsh/rc ~/.zshrc
 
 # vim: ft=sh et sw=4 sts=4

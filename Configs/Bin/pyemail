@@ -1,0 +1,6 @@
+#!/bin/sh
+
+address=localhost:1025
+
+echo "Email debugging server starting at '$address', stop with Ctrl-C"
+python -m smtpd -n -c DebuggingServer $address

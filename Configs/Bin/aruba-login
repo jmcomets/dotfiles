@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Prompt for login/password
+read -p "Login (default=$USER): " login
+test $login || login=$USER
+stty -echo
+read -p "Password: " password
+stty echo
+
+wget --no-check-certificate --post-data="fqdn=insa-lyon.fr&password=$password&submit=Envoyer&user=$login" \
+    -O /dev/null 'https://securelogin.arubanetworks.com/cgi-bin/login'
+
+# vim: ft=sh et sw=2 sts=2

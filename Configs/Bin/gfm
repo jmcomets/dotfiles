@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import json
+try:
+    import requests
+except ImportError:
+    print 'requests is required'
+
+def gfm(text):
+    """Converts Github Flavored Markdown to HTML."""
+    r = requests.post('https://api.github.com/markdown',
+            data=json.dumps({ 'text': text }))
+    return r.text
+
+if __name__ == '__main__':
+    import sys
+    argv = sys.argv[1:]
+    if not argv:
+        print gfm(sys.stdin.read())
+    elif len(argv) == 1:
+        try:
+            with open(argv[0], 'r') as file_:
+                text = file_.read()
+            sys.stdout.write(gfm(text))
+        except IOError:
+            sys.stderr.write('File %s could not be opened' % argv[0])
+    else:
+        sys.stderr.write('Usage: gfm FILE, cat FILE | gfm')
+
+# vim: ft=python et sw=2 sts=2
