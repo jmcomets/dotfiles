@@ -1,78 +1,39 @@
-[submodule "Configs/Vim/bundle/FuzzyFinder"]
-	path = Configs/Vim/bundle/FuzzyFinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
-[submodule "Configs/Vim/bundle/L9"]
-	path = Configs/Vim/bundle/L9
-	url = https://github.com/vim-scripts/L9.git
-[submodule "Configs/Vim/bundle/OmniCppComplete"]
-	path = Configs/Vim/bundle/OmniCppComplete
-	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule "Configs/Vim/bundle/VisIncr"]
-	path = Configs/Vim/bundle/VisIncr
-	url = https://github.com/vim-scripts/VisIncr.git
-[submodule "Configs/Vim/bundle/vim-addon-mw-utils"]
-	path = Configs/Vim/bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "Configs/Vim/bundle/vim-colorschemes"]
-	path = Configs/Vim/bundle/vim-colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "Configs/Vim/bundle/vim-fugitive"]
-	path = Configs/Vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "Configs/Vim/bundle/vim-python-matchit"]
-	path = Configs/Vim/bundle/vim-python-matchit
-	url = https://github.com/voithos/vim-python-matchit.git
-[submodule "Configs/Vim/bundle/nerdtree"]
-	path = Configs/Vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "Configs/Vim/bundle/nerdcommenter"]
-	path = Configs/Vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "Configs/Vim/bundle/vim-matchit"]
-	path = Configs/Vim/bundle/vim-matchit
-	url = https://github.com/tsaleh/vim-matchit.git
-[submodule "Configs/Vim/bundle/vim-snipmate"]
-	path = Configs/Vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-[submodule "Configs/Vim/bundle/snipmate-snippets"]
-	path = Configs/Vim/bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git
-[submodule "Configs/Vim/bundle/tlib"]
-	path = Configs/Vim/bundle/tlib
-	url = https://github.com/vim-scripts/tlib.git
-[submodule "Configs/Vim/bundle/vim-visual-star-search"]
-	path = Configs/Vim/bundle/vim-visual-star-search
-	url = https://github.com/bronson/vim-visual-star-search.git
-[submodule "Configs/Vim/bundle/html5"]
-	path = Configs/Vim/bundle/html5
-	url = https://github.com/othree/html5.vim.git
 [submodule "Configs/Vim/bundle/surround"]
 	path = Configs/Vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "Configs/Vim/bundle/repeat"]
 	path = Configs/Vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "Configs/Vim/bundle/minibufexpl"]
-	path = Configs/Vim/bundle/minibufexpl
-	url = https://github.com/fholgado/minibufexpl.vim.git
-[submodule "Configs/Vim/bundle/argtextobj"]
-	path = Configs/Vim/bundle/argtextobj
-	url = https://github.com/vim-scripts/argtextobj.vim.git
-[submodule "Configs/Vim/bundle/Zencoding"]
-	path = Configs/Vim/bundle/Zencoding
-	url = https://github.com/mattn/zencoding-vim.git
-[submodule "Configs/Vim/bundle/django-pony"]
-	path = Configs/Vim/bundle/django-pony
-	url = git@github.com:jmcomets/vim-pony.git
 [submodule "Configs/Vim/bundle/unimpaired"]
 	path = Configs/Vim/bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "Configs/Vim/bundle/eunuch"]
 	path = Configs/Vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch.git
-[submodule "Configs/Zsh"]
-	path = Configs/Zsh
-	url = git@github.com:jmcomets/oh-my-zsh.git
-[submodule "Configs/Vim/bundle/cython"]
-	path = Configs/Vim/bundle/cython
-	url = https://github.com/tshirtman/vim-cython.git
+[submodule "Configs/Vim/bundle/nerdtree"]
+	path = Configs/Vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "Configs/Vim/bundle/nerdcommenter"]
+	path = Configs/Vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "Configs/Vim/bundle/html5"]
+	path = Configs/Vim/bundle/html5
+	url = https://github.com/othree/html5.vim.git
+[submodule "Configs/Vim/bundle/Zencoding"]
+	path = Configs/Vim/bundle/Zencoding
+	url = https://github.com/mattn/zencoding-vim.git
+[submodule "Configs/Vim/bundle/argtextobj"]
+	path = Configs/Vim/bundle/argtextobj
+	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule "Configs/Vim/bundle/FuzzyFinder"]
+	path = Configs/Vim/bundle/FuzzyFinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "Configs/Vim/bundle/L9"]
+	path = Configs/Vim/bundle/L9
+	url = https://github.com/vim-scripts/L9.git
+[submodule "Configs/Vim/bundle/VisIncr"]
+	path = Configs/Vim/bundle/VisIncr
+	url = https://github.com/vim-scripts/VisIncr.git
+[submodule "Configs/Vim/bundle/tlib"]
+	path = Configs/Vim/bundle/tlib
+	url = https://github.com/vim-scripts/tlib.git

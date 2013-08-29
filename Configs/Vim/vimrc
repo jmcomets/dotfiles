@@ -21,7 +21,7 @@
 " Basics --------------------------------------------------------- {{{
 
 " Sets how many lines of history Vim has to remember
-set history=700
+set history=1000
 
 " Reload buffer when its file is changed from the outside
 set autoread
