@@ -8,7 +8,7 @@ if [ -f "/etc/DIR_COLORS" ]; then
 fi
 
 # Custom `ls` colors
-if [ -f "$HOME/.dircolors" ]; then
+if [ -f ~/.dircolors ]; then
     eval $(dircolors -b ~/.dircolors)
 fi
 
