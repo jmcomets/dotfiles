@@ -2,14 +2,14 @@
 #
 # Configuration for shell colors
 
-# Basic `ls` colors
+# Base `ls` colors
 if [ -f "/etc/DIR_COLORS" ]; then
     eval $(dircolors -b /etc/DIR_COLORS)
+fi
 
-    # Custom `ls` colors
-    if [ -f "$HOME/.dircolors" ]; then
-        eval $(dircolors -b ~/.dircolors)
-    fi
+# Custom `ls` colors
+if [ -f "$HOME/.dircolors" ]; then
+    eval $(dircolors -b ~/.dircolors)
 fi
 
 # Colors
