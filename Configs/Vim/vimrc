@@ -125,7 +125,7 @@ set timeoutlen=500
 set mousehide
 
 " Mouse activated ?
-set mouse=a
+set mouse=
 
 " ---------------------------------------------------------------- }}}
 
@@ -218,16 +218,16 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
+set background=dark
 if has("gui_running")
-    set background=light
+    colorscheme ir_black
 else
     let s:nb_colors = system('tput colors')
-    set background=dark
     execute 'set t_Co=' . s:nb_colors
     let g:solarized_termcolors = s:nb_colors
     unlet s:nb_colors
+    colorscheme solarized
 endif
-colorscheme solarized
 
 " Editing font
 set guifont=Monospace\ 11
