@@ -13,7 +13,7 @@
 "   - Colors and Fonts
 "   - Moving around
 "   - Keymappings
-"   - Filetype settings
+"   - Autocommands
 "   - Plugin customization
 "
 " ---------------------------------------------------------------- }}}
@@ -253,28 +253,6 @@ set showtabline=0
 " Split towards the right
 set splitright
 
-if has("autocmd")
-    augroup vimrc_autocommands
-        " Return to last edit position when opening files
-        autocmd BufReadPost *
-                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                    \     execute "normal! g`\"" |
-                    \ endif
-
-        let s:autocd = 0 " boolean indicating if should cd with current file
-
-        " Cd directory when opening files
-        if exists("s:autocd") && s:autocd != 0
-            if exists("+autochdir")
-                set autochdir
-            else
-                autocmd BufEnter *
-                            \ execute "chdir " . escape(expand("%:p:h"), ' ')
-            endif
-        endif
-    augroup END
-endif
-
 " ---------------------------------------------------------------- }}}
 
 " Keymappings ---------------------------------------------------- {{{
@@ -343,13 +321,30 @@ nmap <silent> <leader>m :make<cr>
 
 " ---------------------------------------------------------------- }}}
 
-" Filetype settings ---------------------------------------------- {{{
+" Autocommands --------------------------------------------------- {{{
 
-if has("autocmd") " Autocommands (in a group to avoid re-sourcing)
+if has("autocmd")
     augroup vimrc_autocommands
         " Remove all previous autocommands from this group
         autocmd!
 
+        " Return to last edit position when opening files
+        autocmd BufReadPost *
+                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                    \     execute "normal! g`\"" |
+                    \ endif
+
+        let s:autocd = 0 " boolean indicating if should cd with current file
+
+        " Cd directory when opening files
+        if exists("s:autocd") && s:autocd != 0
+            if exists("+autochdir")
+                set autochdir
+            else
+                autocmd BufEnter *
+                            \ execute "chdir " . escape(expand("%:p:h"), ' ')
+            endif
+        endif
         " Vimrc
         autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
 
