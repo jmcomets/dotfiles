@@ -49,3 +49,6 @@
 [submodule "Configs/Vim/bundle/pony"]
 	path = Configs/Vim/bundle/pony
 	url = https://github.com/jmcomets/vim-pony.git
+[submodule "Configs/Vim/bundle/syntastic"]
+	path = Configs/Vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git

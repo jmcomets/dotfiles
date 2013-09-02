@@ -429,4 +429,9 @@ nmap <silent> sr     :FufRenewCache<cr>
 nmap s <nop>
 vmap s <nop>
 
+" Syntastic for status line
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 " ---------------------------------------------------------------- }}}
