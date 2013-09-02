@@ -46,3 +46,6 @@
 [submodule "Configs/Vim/bundle/pony"]
 	path = Configs/Vim/bundle/pony
 	url = https://github.com/jmcomets/vim-pony.git
+[submodule "Configs/Vim/bundle/switch"]
+	path = Configs/Vim/bundle/switch
+	url = https://github.com/AndrewRadev/switch.vim.git
