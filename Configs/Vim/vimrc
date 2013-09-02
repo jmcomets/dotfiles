@@ -283,7 +283,7 @@ vmap <silent> <M-k> :move '<-2<cr>gv=gv
 nmap <silent> <leader><cr> :nohlsearch<cr>
 
 " Search-replace current word
-nmap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
+nmap <leader>r :%s/\v<<C-r><C-w>>//gI<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
@@ -428,5 +428,8 @@ nmap <silent> sr     :FufRenewCache<cr>
 " Fix for hesitation
 nmap s <nop>
 vmap s <nop>
+
+" Switch
+nmap <silent> <leader>s :Switch<cr>
 
 " ---------------------------------------------------------------- }}}
