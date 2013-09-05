@@ -219,15 +219,13 @@ set incsearch
 
 " Colorscheme setup
 set background=dark
-if has("gui_running")
-    colorscheme ir_black
-else
+if !has("gui_running")
     let s:nb_colors = system('tput colors')
     execute 'set t_Co=' . s:nb_colors
     let g:solarized_termcolors = s:nb_colors
     unlet s:nb_colors
-    colorscheme solarized
 endif
+colorscheme solarized
 
 " Editing font
 set guifont=Monospace\ 11
