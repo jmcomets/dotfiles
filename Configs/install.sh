@@ -19,6 +19,7 @@ apt-get -y install  \
     git             \
     python-pip      \
     tree            \
+    curl            \
     vim
 if [ "$?" -ne "0" ]; then
     echo "Installation failed at step: base packages" 1>&2

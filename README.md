@@ -28,9 +28,9 @@ symbolink links (Bundle, Configs, .vim, .bash, etc...):
 ### From an "empty" machine:
 
 The `install.sh` script (in Configs) will do the big installation,
-provided you can type the following command:
+provided you can type on the following command:
 
-    https://raw.github.com/jmcomets/projects/master/Configs/install.sh | sudo sh
+    wget -q0- https://raw.github.com/jmcomets/projects/master/Configs/install.sh | sudo sh
 
 This will install some basic packages (build-essential, vim, git, etc...), as well as
 PIP (python package manager), a few cool python packages, NodeJS/NPM and some
