@@ -20,8 +20,8 @@ apt-get -y install  \
     python-pip      \
     tree            \
     vim
-if [ "$?" -ne "0"]; then
-    echo "Installation failed at step: base packages"
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: base packages" 1>&2
     exit 2
 fi
 
@@ -29,8 +29,8 @@ fi
 pip install     \
     requests    \
     virtualenv
-if [ "$?" -ne "0"]; then
-    echo "Installation failed at step: python packages"
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: python packages" 1>&2
     exit 2
 fi
 
@@ -40,18 +40,18 @@ cd /tmp                         \
     && git clone $node_git node \
     && cd node                  \
     && ./configure              \
-    && make                     \
+    && make -j                  \
     && make install             \
-if [ "$?" -ne "0"]; then
-    echo "Installation failed at step: node"
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: node" 1>&2
     exit 2
 fi
 # ...and packages
 npm install -g  \
     grunt-cli   \
     bower
-if [ "$?" -ne "0"]; then
-    echo "Installation failed at step: node packages"
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: node packages" 1>&2
     exit 2
 fi
 
