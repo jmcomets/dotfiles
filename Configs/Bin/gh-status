@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+"""
+Script querying status.github.com for Github's status.
+Requires the requests module.
+"""
+
+github_status_api_url = 'https://status.github.com/api.json'
+
+def _requires_requests(f):
+  try:
+    global requests
+    import requests
+    return f
+  except ImportError:
+    print '"requests" module required, %s not defined' % f.__name__
+
+@_requires_requests
+def get_github_status(api_url=None):
+  """
+  Query `github_status_api_url` for Github's current status.
+  Returns a string (good, bad, etc...) corresponding to the
+  status string returned by Github's API.
+  If `api_url` is given, uses that url for api querying,
+  otherwise uses the default `github_status_api_url`.
+  """
+  r = requests.get(api_url or github_status_api_url)
+  api = r.json()
+  r = requests.get(api['status_url'])
+  status = r.json()
+  return status['status']
+
+if __name__ == '__main__':
+  print 'Github status is: "%s"' % get_github_status()
+
+# vim: ft=python et sw=2 sts=2
