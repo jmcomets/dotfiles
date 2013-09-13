@@ -317,6 +317,16 @@ nmap <silent> <leader>so :source $MYVIMRC<cr>
 " Run "make" (makeprg)
 nmap <silent> <leader>m :make<cr>
 
+" Cd to current file (if auto, no mapping)
+let s:autocd = 0 " boolean indicating if should cd with current file
+if !exists("s:autocd") || s:autocd == 0
+    nmap <silent> <leader>cd :cd %:p:h<cr>
+endif
+
+" Tab mappings
+nmap <silent> <leader>tn :tabnew<cr>
+nmap <silent> <leader>tc :tabclose<cr>
+
 " ---------------------------------------------------------------- }}}
 
 " Autocommands --------------------------------------------------- {{{
@@ -331,8 +341,6 @@ if has("autocmd")
                     \ if line("'\"") > 0 && line("'\"") <= line("$") |
                     \     execute "normal! g`\"" |
                     \ endif
-
-        let s:autocd = 0 " boolean indicating if should cd with current file
 
         " Cd directory when opening files
         if exists("s:autocd") && s:autocd != 0
