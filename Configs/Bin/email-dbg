@@ -1,6 +1,8 @@
 #!/bin/sh
 
-address=localhost:1025
-
+default_port=1027
+read -p "Port (default=$default_port): " port
+test $port || port=$default_port
+address=localhost:$port
 echo "Email debugging server starting at '$address', stop with Ctrl-C"
 python -m smtpd -n -c DebuggingServer $address

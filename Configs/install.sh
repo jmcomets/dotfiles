@@ -12,18 +12,48 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-# Command for "install"
-INSTALL='apt-get -y install'
-
-# Install packages
-$INSTALL            \
-    aptitude        \
+# Base packages
+apt-get -y install  \
     build-essential \
     cmake           \
     git             \
     python-pip      \
     tree            \
-    vim             \
-    zsh
+    curl            \
+    vim
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: base packages" 1>&2
+    exit 2
+fi
+
+# Python packages
+pip install     \
+    requests    \
+    virtualenv
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: python packages" 1>&2
+    exit 2
+fi
+
+# Node
+node_git='https://github.com/joyent/node.git'
+cd /tmp                         \
+    && git clone $node_git node \
+    && cd node                  \
+    && ./configure              \
+    && make -j                  \
+    && make install             \
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: node" 1>&2
+    exit 2
+fi
+# ...and packages
+npm install -g  \
+    grunt-cli   \
+    bower
+if [ "$?" -ne "0" ]; then
+    echo "Installation failed at step: node packages" 1>&2
+    exit 2
+fi
 
 # vim: ft=sh et sw=4 sts=4
