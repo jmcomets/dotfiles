@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Configuration for shell profile,
+# sourced by all shells.
+
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+# Configure terminal correctly for Vi(m)
+if [ -n "$DISPLAY" -a "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
+
+# Vi as standard editor
+export EDITOR=vi
+
+# Add directory to path (if it exists)
+add_bin_to_path()
+{
+  if [ -d "$1" ] ; then
+    export PATH="$1:$PATH"
+  fi
+}
+
+# Add bin directories
+add_bin_to_path $HOME/bin
+# rvm case
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# vim: ft=sh et sw=2 sts=2
