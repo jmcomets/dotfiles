@@ -107,7 +107,7 @@ alias sl="ls"
 
 # ---------- COLORS ---------- {{{
 
-PS1="%{$fg[blue]%} %n %{$fg[yellow]%}%~ %{$fg[blue]%}%# %{$reset_color%}"
+PS1="%{$fg[blue]%}%n %{$fg[yellow]%}%~ %{$fg[blue]%}%# %{$reset_color%}"
 PS2="%{$fg[red]>%} %{$reset_color%}"
 
 # ------------------------- }}}
