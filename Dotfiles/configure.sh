@@ -8,7 +8,7 @@
 
 WORKSPACE=$HOME
 PROJECTS=$WORKSPACE/Projects
-CONFIGS=$WORKSPACE/Configs
+DOTFILES=$WORKSPACE/Dotfiles
 BUNDLE=$WORKSPACE/Bundle
 
 # Refactored link command
@@ -19,26 +19,26 @@ setup_link()
 }
 
 # Setup projects subdirectory links
-setup_link $PROJECTS/Configs $CONFIGS
+setup_link $PROJECTS/Dotfiles $DOTFILES
 setup_link $PROJECTS/Bundle $BUNDLE
 
 # Setup Bin file link
-setup_link $CONFIGS/Bin ~/bin
+setup_link $DOTFILES/Bin ~/bin
 
 # Setup Vim file links
-setup_link $CONFIGS/Vim ~/.vim
+setup_link $DOTFILES/Vim ~/.vim
 setup_link ~/.vim/vimrc ~/.vimrc
 
 # Setup shell profile link
-setup_link $CONFIGS/Shell/profile ~/.profile
+setup_link $DOTFILES/Shell/profile ~/.profile
 
 # Setup Zsh file links
-setup_link $CONFIGS/Shell/zsh ~/.zsh
+setup_link $DOTFILES/Shell/zsh ~/.zsh
 setup_link ~/.zsh/rc ~/.zshrc
 setup_link ~/.zsh/env ~/.zshenv
 
 # Setup Bash file links
-setup_link $CONFIGS/Shell/bash ~/.bash
+setup_link $DOTFILES/Shell/bash ~/.bash
 setup_link ~/.bash/rc ~/.bashrc
 setup_link ~/.bash/inputrc ~/.inputrc
 setup_link ~/.bash/dircolors ~/.dircolors
