@@ -54,7 +54,6 @@ if has("gui_running")
     set guioptions-=l
     set guioptions-=L
     set guioptions-=m
-    set guioptions-=T
     set guioptions+=e
 endif
 
@@ -220,7 +219,16 @@ set incsearch
 " Colorscheme setup
 set background=dark
 if !has("gui_running")
-    let s:nb_colors = system('tput colors')
+    let color_commands = {
+                \ 'bash': 'tput colors',
+                \ 'zsh': 'for i in {000..255}; do '
+                \           . 'test $(print -P -- "%F{$i}") = "%f" '
+                \           . '|| echo $(( $i + 1 ))'
+                \       . '; done'
+                \       . '| sed -e "/^$/d" | tail -n 1',
+                \ }
+    let shell_type = substitute(system('basename $SHELL'), '\n', '', '')
+    let s:nb_colors = system(color_commands[shell_type])
     execute 'set t_Co=' . s:nb_colors
     let g:solarized_termcolors = s:nb_colors
     unlet s:nb_colors

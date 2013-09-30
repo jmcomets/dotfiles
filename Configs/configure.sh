@@ -29,8 +29,12 @@ setup_link $CONFIGS/Bin ~/bin
 setup_link $CONFIGS/Vim ~/.vim
 setup_link ~/.vim/vimrc ~/.vimrc
 
+# Setup Zsh file links
+setup_link $CONFIGS/Shell/zsh ~/.zsh
+setup_link ~/.zsh/rc ~/.zshrc
+
 # Setup Bash file links
-setup_link $CONFIGS/Bash ~/.bash
+setup_link $CONFIGS/Shell/bash ~/.bash
 setup_link ~/.bash/rc ~/.bashrc
 setup_link ~/.bash/profile ~/.profile
 setup_link ~/.bash/inputrc ~/.inputrc
