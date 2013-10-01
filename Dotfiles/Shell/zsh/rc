@@ -18,35 +18,6 @@ bashcompinit
 
 # ----------- BASE --------- {{{
 
-# Completion
-zstyle ':completion:*' add-space true
-zstyle ':completion:*' max-errors 3
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
-    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# appearance
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BNo match for %d%b'
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' select-prompt '%SCurrent seelction at %p%s'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$VAR)(?)*=00=$color[green]=$color[bg-green]" )'
-zstyle ':completion:*:*:*:*:hosts' list-colors '=*=30;41'
-zstyle ':completion:*:*:*:*:users' list-colors '=*=$color[green]=$color[red]'
-# disable entries already put the "rm" command
-zstyle ':completion:*:rm:*' ignore-line yes
-# kill/killall completion
-zstyle ':completion:*:processes' command 'ps -ax'
-zstyle ':completion:*:processes-names' command 'ps -aeo comm='
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:killall:*:processes-names' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:killall:*' menu yes select
-
-# Load completion modules
-zmodload -a colors
-zmodload -a autocomplete
-zmodload -a complist
-
 # Vi-style
 bindkey -v
 bindkey '^[[A' up-line-or-search
@@ -61,49 +32,11 @@ HISTFILE=~/.zsh_history
 
 # ------------------------- }}}
 
-# ---------- ALIASES ---------- {{{
+# ---------- EXTERNAL ---------- {{{
 
-# Security
-alias df="df -h"
-alias rm="rm -vi"
-alias cp="cp -vi"
-alias mv="mv -vi"
-
-# Package managing shortcuts
-alias search="sudo dpkg -l"
-
-# Display
-alias grep="grep --color=auto"
-alias ls="ls -X --color=auto"
-
-# Shortcuts
-alias ..="cd ../"
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias la="ls -A"
-alias ll="ls -l"
-alias lla="ls -la"
-alias c="clear"
-alias v="vim"
-alias l="ls"
-alias t="tree"
-alias g="gvim --remote-silent"
-alias p="cd ~/Projects"
-alias d="cd ~/Desktop"
-alias dw="cd ~/Downloads"
-
-# Typos
-alias got="git"
-alias gut="git"
-alias ms="ls"
-alias sl="ls"
-
-# ------------------------- }}}
-
-# ---------- COLORS ---------- {{{
-
-PS1="%{$fg[blue]%}%n %{$fg[yellow]%}%~ %{$fg[blue]%}%# %{$reset_color%}"
-PS2="%{$fg[red]>%} %{$reset_color%}"
+source ~/.zsh/colors
+source ~/.zsh/completion
+source ~/Projects/Dotfiles/Shell/aliases
 
 # ------------------------- }}}
 

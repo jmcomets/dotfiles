@@ -4,12 +4,12 @@
 
 # Base `ls` colors
 if [ -f "/etc/DIR_COLORS" ]; then
-    eval $(dircolors -b /etc/DIR_COLORS)
+  eval $(dircolors -b /etc/DIR_COLORS)
 fi
 
 # Custom `ls` colors
 if [ -f ~/.dircolors ]; then
-    eval $(dircolors -b ~/.dircolors)
+  eval $(dircolors -b ~/.dircolors)
 fi
 
 # Colors
@@ -35,4 +35,4 @@ YELLOW="\[\e[1;33m\]"
 PS1="$LIGHTBLUE\u $YELLOW\w$LIGHTPURPLE\$(__git_ps1) $LIGHTBLUE[$SHLVL]$NORMAL "
 PS2="$LIGHTBLUE>$NORMAL "
 
-# vim: ft=sh
+# vim: ft=sh et sw=2 sts=2

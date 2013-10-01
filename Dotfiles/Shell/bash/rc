@@ -38,7 +38,7 @@ fi
 
 # Set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # Source a bash script (file) if it exists
@@ -47,12 +47,12 @@ fi
 # TODO: add wildcard support
 function call()
 {
-    for ((j = 1 ; j <= $# ; ++j))
-    do
-        if [ -f "${!j}" ]; then
-            source ${!j};
-        fi
-    done
+  for ((j = 1 ; j <= $# ; ++j))
+  do
+    if [ -f "${!j}" ]; then
+      source ${!j};
+    fi
+  done
 }
 
 # Global scripts
@@ -63,8 +63,11 @@ call /usr/local/git/contrib/completion/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 #call /opt/local/etc/bash_completion
 
-# Custom scripts
-call $BASHRTP/profile $BASHRTP/colors $BASHRTP/aliases
-call $BASHRTP/completion/*
+# External
+source $BASHRTP/colors
+source $BASHRTP/profile
+source $BASHRTP/completion/*
+# global aliases
+source ~/Projects/Dotfiles/Shell/aliases
 
-# vim: ft=sh
+# vim: ft=sh et sw=2 sts=2

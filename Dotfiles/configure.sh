@@ -8,7 +8,7 @@
 
 WORKSPACE=$HOME
 PROJECTS=$WORKSPACE/Projects
-DOTFILES=$WORKSPACE/Dotfiles
+DOTFILES=$PROJECTS/Dotfiles
 BUNDLE=$WORKSPACE/Bundle
 
 # Refactored link command
@@ -19,7 +19,6 @@ setup_link()
 }
 
 # Setup projects subdirectory links
-setup_link $PROJECTS/Dotfiles $DOTFILES
 setup_link $PROJECTS/Bundle $BUNDLE
 
 # Setup Bin file link
