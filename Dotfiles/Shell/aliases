@@ -26,12 +26,19 @@ alias g="gvim --remote-silent"
 alias p="cd ~/Projects"
 alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"
-alias browse="xdg-open ."
 
 # Typos
 alias got="git"
 alias gut="git"
 alias ms="ls"
 alias sl="ls"
+
+# Browse "alias", opening file explorer with either
+# path given as first argument, or current directory
+browse()
+{
+  dir=${1:=.}
+  xdg-open $dir
+}
 
 # vim: ft=sh et sw=2 sts=2
