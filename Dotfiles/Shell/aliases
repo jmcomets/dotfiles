@@ -18,20 +18,22 @@ alias ....="cd ../../../"
 alias la="ls -A"
 alias ll="ls -l"
 alias lla="ls -la"
-alias c="clear"
-alias v="vim"
 alias l="ls"
 alias t="tree"
-alias g="gvim --remote-silent"
 alias p="cd ~/Projects"
+alias v="cd ~/.vim"
+alias vb="cd ~/.vim/bundle"
 alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"
+alias lns="ln -s"
 
 # Typos
 alias got="git"
 alias gut="git"
 alias ms="ls"
 alias sl="ls"
+alias dc="cd"
+alias vm="mv"
 
 # Browse "alias", opening file explorer with either
 # path given as first argument, or current directory
@@ -40,5 +42,7 @@ browse()
   dir=${1:=.}
   xdg-open $dir
 }
+# ...shortcut
+alias b="browse"
 
 # vim: ft=sh et sw=2 sts=2

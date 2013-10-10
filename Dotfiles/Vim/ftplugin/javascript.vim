@@ -8,5 +8,9 @@ function! JavaScriptFold()
     endfunction
     setl foldtext=FoldText()
 endfunction
-
 call JavaScriptFold()
+
+" Display settings
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal softtabstop=2

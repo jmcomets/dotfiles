@@ -1,2 +1,2 @@
-PS1="%{$fg[blue]%}%n %{$fg[yellow]%}%~ %{$fg[blue]%}%# %{$reset_color%}"
-PS2="%{$fg[red]>%} %{$reset_color%}"
+PS1="%{$fg_bold[blue]%}%n %{$fg_bold[yellow]%}%~ %{$fg_bold[blue]%}%# %{$reset_color%}"
+PS2="%{$fg_bold[red]>%} %{$reset_color%}"

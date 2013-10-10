@@ -49,3 +49,9 @@
 [submodule "Dotfiles/Vim/bundle/switch"]
 	path = Dotfiles/Vim/bundle/switch
 	url = https://github.com/AndrewRadev/switch.vim.git
+[submodule "Dotfiles/Vim/bundle/rake"]
+	path = Dotfiles/Vim/bundle/rake
+	url = https://github.com/tpope/vim-rake.git
+[submodule "Dotfiles/Vim/bundle/bundler"]
+	path = Dotfiles/Vim/bundle/bundler
+	url = https://github.com/tpope/vim-bundler.git
