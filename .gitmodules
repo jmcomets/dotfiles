@@ -55,3 +55,12 @@
 [submodule "Dotfiles/Vim/bundle/bundler"]
 	path = Dotfiles/Vim/bundle/bundler
 	url = https://github.com/tpope/vim-bundler.git
+[submodule "Dotfiles/Vim/bundle/virtualenv"]
+	path = Dotfiles/Vim/bundle/virtualenv
+	url = https://github.com/jmcantrell/vim-virtualenv.git
+[submodule "Dotfiles/Vim/bundle/emmet"]
+	path = Dotfiles/Vim/bundle/emmet
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "Dotfiles/Vim/bundle/latex"]
+	path = Dotfiles/Vim/bundle/latex
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git

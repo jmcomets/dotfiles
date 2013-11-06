@@ -54,7 +54,7 @@ if has("gui_running")
     set guioptions-=l
     set guioptions-=L
     set guioptions-=m
-    set guioptions+=e
+    set guioptions-=e
     set guioptions-=T
 endif
 
@@ -125,7 +125,7 @@ set timeoutlen=500
 set mousehide
 
 " Mouse activated ?
-set mouse=
+set mouse=a
 
 " ---------------------------------------------------------------- }}}
 
@@ -218,8 +218,11 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
-set background=dark
-if !has("gui_running")
+if has("gui_running")
+    set background=light
+    set guifont=Monospace\ 11
+else
+    set background=dark
     let color_commands = {
                 \ 'bash': 'tput colors',
                 \ 'zsh': 'for i in {000..255}; do '
@@ -235,9 +238,6 @@ if !has("gui_running")
     unlet s:nb_colors
 endif
 colorscheme solarized
-
-" Editing font
-set guifont=Monospace\ 11
 
 " In terminal, the "escape" also acts as Ctrl-C
 if has("terminfo")

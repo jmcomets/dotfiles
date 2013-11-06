@@ -1,6 +1,6 @@
 " Vim filetype plugin
-" Language:	    LessCSS
-" Author:	    Tim Pope <vimNOSPAM@tpope.org>
+" Language:         LessCSS
+" Author:           Tim Pope <vimNOSPAM@tpope.org>
 " Maintainer:   Leonard Ehrenfried <leonard.ehrenfried@web.de>
 " Last Change:  2011 Sep 30
 
@@ -22,4 +22,8 @@ setlocal comments=s1:/*,mb:*,ex:*/
 
 let &l:include = '^\s*@import\s\+\%(url(\)\=["'']\='
 
-" vim:set sw=2:
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal softtabstop=2
+
+" vim: et sw=2 sts=2
