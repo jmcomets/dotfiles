@@ -371,6 +371,9 @@ if has("autocmd")
     augroup END
 endif
 
+" LaTeX-specification
+let g:tex_flavor = 'latex'
+
 " ---------------------------------------------------------------- }}}
 
 " Plugin customization ------------------------------------------- {{{
