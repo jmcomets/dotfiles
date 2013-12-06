@@ -38,6 +38,9 @@ source ~/.zsh/colors
 source ~/.zsh/completion
 source ~/Projects/Dotfiles/Shell/aliases
 
+# virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
 # ------------------------- }}}
 
 # vim: ft=zsh et sw=2 sts=2 fdm=marker
