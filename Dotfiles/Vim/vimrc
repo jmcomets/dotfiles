@@ -336,6 +336,9 @@ endif
 nmap <silent> <leader>tn :tabnew<cr>
 nmap <silent> <leader>tc :tabclose<cr>
 
+" Why in the world is this not well defined?
+imap ê <C-v>ê
+
 " ---------------------------------------------------------------- }}}
 
 " Autocommands --------------------------------------------------- {{{
@@ -449,5 +452,8 @@ vmap s <nop>
 
 " Switch
 nmap <silent> <leader>s :Switch<cr>
+
+" UltiSnips
+let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
 
 " ---------------------------------------------------------------- }}}
