@@ -64,3 +64,9 @@
 [submodule "Dotfiles/Vim/bundle/ultisnips"]
 	path = Dotfiles/Vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "Dotfiles/Vim/bundle/mustache-handlebars"]
+	path = Dotfiles/Vim/bundle/mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars.git
+[submodule "Dotfiles/Vim/bundle/coffeescript"]
+	path = Dotfiles/Vim/bundle/coffeescript
+	url = https://github.com/kchmck/vim-coffee-script.git
