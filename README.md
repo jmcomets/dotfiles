@@ -1,8 +1,12 @@
 jmcomets' projects
 ==================
 
-Repository holding useful files I like to keep in remote access
-(mainly Vim configuration, Bash configuration/prompt and a few scripts).
+Repository holding useful files I like to keep in remote access.
+
+## Features
+
+- *awesome* Vim configuration
+- customized bash/zsh prompt (using the [solarized][] theme
 
 ## Installation
 
@@ -13,7 +17,7 @@ Clone this repo:
     # basic clone
     git clone https://github.com/jmcomets/projects.git ~/Projects
 
-    # including the submodules
+    # including the submodules (mainly Vim plugins)
     git clone --recursive https://github.com/jmcomets/projects.git ~/Projects
 
 __Note__: if you choose to clone the repo elsewhere, note that there is a
@@ -25,13 +29,4 @@ symbolink links (Bundle, .vim, .bash, etc...):
 
     Projects/Dotfiles/configure.sh # setup links
 
-### From an "empty" machine:
-
-The `install.sh` script (in Dotfiles) will do the big installation,
-provided you can type on the following command:
-
-    wget -q0- https://raw.github.com/jmcomets/projects/master/Dotfiles/install.sh | sudo sh
-
-This will install some basic packages (build-essential, vim, git, etc...), as well as
-PIP (python package manager), a few cool python packages, NodeJS/NPM and some
-web development utilities (bower, grunt-cli, etc...).
+[solarized]: https://github.com/altercation/solarized
