@@ -25,7 +25,7 @@ add_bin_to_path()
 
 # Add bin directories
 add_bin_to_path $HOME/bin
-# rvm case
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# rvm
+add_bin_to_path "$HOME/.rvm/scripts/rvm"
 
 # vim: ft=sh et sw=2 sts=2

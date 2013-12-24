@@ -9,7 +9,7 @@ alias search="sudo dpkg -l"
 
 # Display
 alias grep="grep --color=auto"
-alias ls="ls -X --color=auto"
+alias ls="ls -FX --color=auto"
 
 # Shortcuts
 alias ..="cd ../"
