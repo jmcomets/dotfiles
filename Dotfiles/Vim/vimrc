@@ -219,10 +219,10 @@ set incsearch
 
 " Colorscheme setup
 if has("gui_running")
-    set background=light
     set guifont=Monospace\ 11
+    set background=light
+    colorscheme solarized
 else
-    set background=dark
     let color_commands = {
                 \ 'bash': 'tput colors',
                 \ 'zsh': 'for i in {000..255}; do '
@@ -234,10 +234,8 @@ else
     let shell_type = substitute(system('basename $SHELL'), '\n', '', '')
     let s:nb_colors = system(color_commands[shell_type])
     execute 'set t_Co=' . s:nb_colors
-    let g:solarized_termcolors = s:nb_colors
     unlet s:nb_colors
 endif
-colorscheme solarized
 
 " In terminal, the "escape" also acts as Ctrl-C
 if has("terminfo")
