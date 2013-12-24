@@ -1,8 +1,8 @@
-PS1="%{$fg_bold[blue]%}%n %{$fg_bold[yellow]%}%~ %{$fg_bold[blue]%}%# %{$reset_color%}"
-PS2="%{$fg_bold[red]>%} %{$reset_color%}"
-
-if [ -x /usr/bin/dircolors ]; then
+if [ -x "/usr/bin/dircolors" ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
+
+PS1="%{$fg[blue]%}%n %{$fg[yellow]%}%~ %{$fg[blue]%}%# %{$reset_color%}"
+PS2="%{$fg[red]>%} %{$reset_color%}"
 
 # vim: ft=zsh et sw=2 sts=2 fdm=marker
