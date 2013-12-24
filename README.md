@@ -1,7 +1,7 @@
 jmcomets' projects
 ==================
 
-Repository holding useful files I like to keep in remote access.
+![Pimp My Console](../../blob/master/Misc/pimp-my-console.png?raw=true)
 
 ## Features
 
