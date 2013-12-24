@@ -239,6 +239,7 @@ else
     let s:nb_colors = system(color_commands[shell_type])
     execute 'set t_Co=' . s:nb_colors
     unlet s:nb_colors
+    colorscheme desert
 endif
 
 " In terminal, the "escape" also acts as Ctrl-C
