@@ -6,7 +6,7 @@ jmcomets' projects
 ## Features
 
 - *awesome* Vim configuration
-- customized bash/zsh prompt (using the [solarized][] theme
+- customized bash/zsh prompt (using the [solarized][] theme)
 
 ## Installation
 
