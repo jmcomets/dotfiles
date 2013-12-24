@@ -14,11 +14,13 @@ jmcomets' projects
 
 Clone this repo:
 
-    # basic clone
-    git clone https://github.com/jmcomets/projects.git ~/Projects
+```bash
+# basic clone
+git clone https://github.com/jmcomets/projects.git ~/Projects
 
-    # including the submodules (mainly Vim plugins)
-    git clone --recursive https://github.com/jmcomets/projects.git ~/Projects
+# including the submodules (mainly Vim plugins)
+git clone --recursive https://github.com/jmcomets/projects.git ~/Projects
+```
 
 __Note__: if you choose to clone the repo elsewhere, note that there is a
 shell alias to cd to ~/Projects, defined in .bash/aliases.
@@ -27,6 +29,8 @@ Run the installation script (you may want to backup your ~/.\*rc files,
 which will be overwritten by this script). This also sets up some extra
 symbolink links (Bundle, .vim, .bash, etc...):
 
-    Projects/Dotfiles/configure.sh # setup links
+```bash
+Projects/Dotfiles/configure.sh # setup links
+```
 
 [solarized]: https://github.com/altercation/solarized
