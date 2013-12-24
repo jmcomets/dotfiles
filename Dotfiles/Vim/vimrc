@@ -220,7 +220,11 @@ set incsearch
 " Colorscheme setup
 if has("gui_running")
     set guifont=Monospace\ 11
-    set background=light
+    if strftime("%H") >= 5 && strftime("%H") <= 17
+        set background=light
+    else
+        set background=dark
+    endif
     colorscheme solarized
 else
     let color_commands = {
