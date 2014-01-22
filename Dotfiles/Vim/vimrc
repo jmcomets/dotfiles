@@ -220,12 +220,6 @@ set incsearch
 " Colorscheme setup
 if has("gui_running")
     set guifont=Monospace\ 11
-    if strftime("%H") >= 5 && strftime("%H") <= 17
-        set background=light
-    else
-        set background=dark
-    endif
-    colorscheme solarized
 else
     let color_commands = {
                 \ 'bash': 'tput colors',
@@ -238,13 +232,38 @@ else
     let shell_type = substitute(system('basename $SHELL'), '\n', '', '')
     let s:nb_colors = system(color_commands[shell_type])
     execute 'set t_Co=' . s:nb_colors
-    unlet s:nb_colors
-    colorscheme desert
 endif
+
+" Solarized
+colorscheme solarized
+" light/dark depending on TOD
+augroup vimrc_solarized
+    function! s:BgColorToD()
+        if exists("g:colors_name") && g:colors_name == "solarized"
+            if strftime("%H") >= 5 && strftime("%H") < 17 
+                if exists("s:nb_colors") && s:nb_colors < 16
+                    set background=dark
+                else
+                    if &background != "light"
+                        set background=light
+                    endif
+                endif
+            else
+                if &background != "dark"
+                    set background=dark
+                endif
+            endif
+        endif
+    endfunction
+    " call this function every time we save
+    autocmd BufEnter * call s:BgColorToD()
+    " and when sourcing this file
+    call s:BgColorToD()
+augroup END
 
 " In terminal, the "escape" also acts as Ctrl-C
 if has("terminfo")
-    let g:CommandTCancelMap = ['<esc>', '<C-c>']
+    let g:CommandTCancelMap = ["<esc>", "<C-c>"]
 endif
 
 " ---------------------------------------------------------------- }}}
@@ -363,7 +382,7 @@ if has("autocmd")
                 set autochdir
             else
                 autocmd BufEnter *
-                            \ execute "chdir " . escape(expand("%:p:h"), ' ')
+                            \ execute "chdir " . escape(expand("%:p:h"), " ")
             endif
         endif
         " Vimrc
@@ -378,7 +397,7 @@ if has("autocmd")
 endif
 
 " LaTeX-specification
-let g:tex_flavor = 'latex'
+let g:tex_flavor = "latex"
 
 " ---------------------------------------------------------------- }}}
 
@@ -389,7 +408,7 @@ let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 
 " Disable
-let g:fuf_modesDisable = ['coveragefile', 'bookmarkfile', 'bookmarkdir']
+let g:fuf_modesDisable = ["coveragefile", "bookmarkfile", "bookmarkdir"]
 
 " Recursively search any file (slow)
 nmap <silent> ss     :FufFile **/<cr>
