@@ -67,3 +67,6 @@
 [submodule "Dotfiles/Vim/bundle/coffeescript"]
 	path = Dotfiles/Vim/bundle/coffeescript
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "Dotfiles/Vim/bundle/jedi"]
+	path = Dotfiles/Vim/bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim.git

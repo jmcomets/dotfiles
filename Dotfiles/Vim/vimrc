@@ -240,7 +240,7 @@ colorscheme solarized
 function! s:BgColorToD()
     if exists("g:colors_name") && g:colors_name == "solarized"
         if strftime("%H") >= 5 && strftime("%H") < 17
-            if exists("s:nb_colors") && s:nb_colors < 16
+            if exists("s:nb_colors") && (!has("gui_running") || s:nb_colors < 16)
                 set background=dark
             else
                 if &background != "light"

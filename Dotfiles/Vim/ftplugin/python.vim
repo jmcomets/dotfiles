@@ -10,9 +10,8 @@ setlocal nosmartindent
 " Set correct folding method
 setlocal foldmethod=indent
 
-" Auto-completion
-setlocal omnifunc=pythoncomplete#Complete
-setlocal tags+=~/.vim/tags/python
+" Auto-completion (using jedi-vim now)
+"setlocal omnifunc=pythoncomplete#Complete
 
 " Use :make for syntax checking (using pylint)
 setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
