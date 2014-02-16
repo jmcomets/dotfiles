@@ -231,6 +231,9 @@ else
                 \ }
     let shell_type = substitute(system('basename $SHELL'), '\n', '', '')
     let s:nb_colors = system(color_commands[shell_type])
+    if $COLORTERM == 'gnome-terminal'
+        let s:nb_colors = 256
+    endif
     execute 'set t_Co=' . s:nb_colors
 endif
 

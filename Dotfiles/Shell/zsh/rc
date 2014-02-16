@@ -39,7 +39,7 @@ source ~/.zsh/completion
 source ~/Projects/Dotfiles/Shell/aliases
 
 # virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # ------------------------- }}}
 
