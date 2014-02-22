@@ -239,36 +239,7 @@ endif
 
 " Solarized
 colorscheme solarized
-" set solarized colorscheme light/dark depending on time of day (TOD)
-function! s:BgColorToD()
-    if exists("g:colors_name") && g:colors_name == "solarized"
-        if strftime("%H") >= 5 && strftime("%H") < 17
-            if exists("s:nb_colors") && (!has("gui_running") || s:nb_colors < 16)
-                set background=dark
-            else
-                if &background != "light"
-                    set background=light
-                endif
-            endif
-        else
-            if &background != "dark"
-                set background=dark
-            endif
-        endif
-    endif
-endfunction
-
-augroup vimrc_solarized
-    " Remove all previous autocommands from this group
-    autocmd!
-
-    " Call this function every time we enter a new buffer
-    if exists("g:solarized_follow_tod") && g:solarized_follow_tod
-        autocmd BufEnter * call s:BgColorToD()
-    endif
-    " and when sourcing this file
-    call s:BgColorToD()
-augroup END
+set background=dark
 
 " In terminal, the "escape" also acts as Ctrl-C
 if has("terminfo")

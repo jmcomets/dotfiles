@@ -45,4 +45,11 @@ browse()
 # ...shortcut
 alias b="browse"
 
+# Workon alias (similar to virtualenv-wrapper)
+VENVS_DIR=~/.venvs
+workon()
+{
+  source $VENVS_DIR/$1/bin/activate
+}
+
 # vim: ft=sh et sw=2 sts=2

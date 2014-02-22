@@ -12,8 +12,8 @@ if [ -n "$DISPLAY" -a "$TERM" = "xterm" ]; then
   export TERM=xterm-256color
 fi
 
-# Vi as standard editor
-export EDITOR=vi
+# Vim as standard editor
+export EDITOR=vim
 
 # Add directory to path (if it exists)
 add_bin_to_path()

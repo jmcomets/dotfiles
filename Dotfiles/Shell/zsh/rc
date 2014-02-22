@@ -41,6 +41,10 @@ source ~/Projects/Dotfiles/Shell/aliases
 # virtualenvwrapper
 #source /usr/local/bin/virtualenvwrapper.sh
 
+# powerline
+#source /usr/share/zsh/site-contrib/powerline.zsh
+#export VIRTUAL_ENV_DISABLE_PROMPT=true
+
 # ------------------------- }}}
 
 # vim: ft=zsh et sw=2 sts=2 fdm=marker

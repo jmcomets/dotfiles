@@ -4,10 +4,10 @@
 " Author: Jean-Marie Comets
 " Date: 2013 May 1
 
-if exists("g:loaded_nerdtree_extension")
+if exists("g:loaded_nerdtree_runfile")
     finish
 endif
-let g:loaded_nerdtree_extension = 1
+let g:loaded_nerdtree_runfile = 1
 
 " Change CWD along with NERDTree
 let NERDTreeChDirMode = 2
