@@ -36,7 +36,7 @@ HISTFILE=~/.zsh_history
 
 source ~/.zsh/colors
 source ~/.zsh/completion
-source ~/Projects/Dotfiles/Shell/aliases
+source ~/.dotfiles/Shell/aliases
 
 # virtualenvwrapper
 #source /usr/local/bin/virtualenvwrapper.sh

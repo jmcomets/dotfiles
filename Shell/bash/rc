@@ -68,6 +68,6 @@ source $BASHRTP/colors
 source $BASHRTP/profile
 source $BASHRTP/completion/*
 # global aliases
-source ~/Projects/Dotfiles/Shell/aliases
+source ~/.dotfiles/Shell/aliases
 
 # vim: ft=sh et sw=2 sts=2
