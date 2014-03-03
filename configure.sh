@@ -6,8 +6,12 @@ DOTFILES=~/.dotfiles
 # Refactored link command
 setup_link()
 {
-    rm -rf $2 && ln -s $1 $2
-    return $?
+    if [ -f $1 ]; then
+        rm -rf $2 && ln -s $1 $2
+        return $?
+    else
+        return 1
+    fi
 }
 
 # A few useful directories
