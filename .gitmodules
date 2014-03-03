@@ -1,0 +1,57 @@
+[submodule "Vim/bundle/switch"]
+	path = Vim/bundle/switch
+	url = https://github.com/AndrewRadev/switch.vim.git
+[submodule "Vim/bundle/latex"]
+	path = Vim/bundle/latex
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
+[submodule "Vim/bundle/emmet"]
+	path = Vim/bundle/emmet
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "Vim/bundle/mustache-handlebars"]
+	path = Vim/bundle/mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars.git
+[submodule "Vim/bundle/html5"]
+	path = Vim/bundle/html5
+	url = https://github.com/othree/html5.vim.git
+[submodule "Vim/bundle/nerdcommenter"]
+	path = Vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "Vim/bundle/nerdtree"]
+	path = Vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "Vim/bundle/matchit"]
+	path = Vim/bundle/matchit
+	url = https://github.com/tmhedberg/matchit.git
+[submodule "Vim/bundle/eunuch"]
+	path = Vim/bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "Vim/bundle/fugitive"]
+	path = Vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "Vim/bundle/repeat"]
+	path = Vim/bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "Vim/bundle/surround"]
+	path = Vim/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "Vim/bundle/unimpaired"]
+	path = Vim/bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "Vim/bundle/argtextobj"]
+	path = Vim/bundle/argtextobj
+	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule "Vim/bundle/FuzzyFinder"]
+	path = Vim/bundle/FuzzyFinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "Vim/bundle/L9"]
+	path = Vim/bundle/L9
+	url = https://github.com/vim-scripts/L9.git
+[submodule "Vim/bundle/tlib"]
+	path = Vim/bundle/tlib
+	url = https://github.com/vim-scripts/tlib.git
+[submodule "Vim/bundle/VisIncr"]
+	path = Vim/bundle/VisIncr
+	url = https://github.com/vim-scripts/VisIncr.git
+[submodule "Vim/bundle/python-matchit"]
+	path = Vim/bundle/python-matchit
+	url = https://github.com/voithos/vim-python-matchit.git

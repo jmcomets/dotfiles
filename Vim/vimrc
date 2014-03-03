@@ -218,28 +218,15 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
+let s:nb_colors = system('echo $SCREEN_COLORS') + 0
+execute 'set t_Co=' . s:nb_colors
+colorscheme grb256
+set background=dark
+
+" GUI font
 if has("gui_running")
     set guifont=Monospace\ 11
-else
-    let color_commands = {
-                \ 'bash': 'tput colors',
-                \ 'zsh': 'for i in {000..255}; do '
-                \           . 'test $(print -P -- "%F{$i}") = "%f" '
-                \           . '|| echo $(( $i + 1 ))'
-                \       . '; done'
-                \       . '| sed -e "/^$/d" | tail -n 1',
-                \ }
-    let shell_type = substitute(system('basename $SHELL'), '\n', '', '')
-    let s:nb_colors = system(color_commands[shell_type])
-    if $COLORTERM == 'gnome-terminal'
-        let s:nb_colors = 256
-    endif
-    execute 'set t_Co=' . s:nb_colors
 endif
-
-" Solarized
-colorscheme solarized
-set background=dark
 
 " In terminal, the "escape" also acts as Ctrl-C
 if has("terminfo")
