@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Root dotfiles directory
+DOTFILES=~/.dotfiles
+
 # Refactored link command
 setup_link()
 {
@@ -7,32 +10,32 @@ setup_link()
     return $?
 }
 
-# Root dotfiles directory
-DOTFILES=~/.dotfiles
+# A few useful directories
+mkdir -p ~/Bundle ~/Vendor
 
-# Setup Bin file link
+# Local "bin" directory
 setup_link $DOTFILES/Bin ~/bin
 
-# Setup Vim file links
+# Vim
 setup_link $DOTFILES/Vim ~/.vim
 setup_link ~/.vim/vimrc ~/.vimrc
 
-# Setup shell profile link
+# Shell
 setup_link $DOTFILES/Shell/profile ~/.profile
 setup_link $DOTFILES/Shell/dircolors ~/.dircolors
 
-# Setup Zsh file links
+# Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh
 setup_link ~/.zsh/rc ~/.zshrc
 setup_link ~/.zsh/env ~/.zshenv
 
-# Setup Bash file links
+# Bash
 setup_link $DOTFILES/Shell/bash ~/.bash
 setup_link ~/.bash/rc ~/.bashrc
 setup_link ~/.bash/inputrc ~/.inputrc
 setup_link ~/.bash/profile ~/.bash_profile
 
-# Git aliases
+# Git
 git config --global alias.br 'branch'
 git config --global alias.ci 'commit'
 git config --global alias.cim 'commit -m'
