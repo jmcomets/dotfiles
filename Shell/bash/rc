@@ -28,46 +28,26 @@ HISTFILESIZE=2000
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
-# Private bash runtime path
-export BASHRTP=$HOME/.bash
-
 # Make less more friendly for non-text input files
 if [ -x /usr/bin/lesspipe ]; then
   eval "$(SHELL=/bin/sh lesspipe)"
 fi
 
-# Set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-  debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# Source a bash script (file) if it exists
-# Usage: call f1 f2 ... fn
-#
-# TODO: add wildcard support
-function call()
-{
-  for ((j = 1 ; j <= $# ; ++j))
-  do
-    if [ -f "${!j}" ]; then
-      source ${!j};
-    fi
-  done
-}
+# Private bash runtime path
+export BASHRTP=$HOME/.bash
+# profile with helpers
+source $BASHRTP/profile
 
 # Global scripts
-call /etc/bashrc /etc/bash_completion
+call /etc/bashrc
+call /etc/bash_completion
+
+# Extras
+source $BASHRTP/colors
+source $BASHRTP/completion/*
 
 # Git prompt
-call /usr/local/git/contrib/completion/git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
-#call /opt/local/etc/bash_completion
-
-# External
-source $BASHRTP/colors
-source $BASHRTP/profile
-source $BASHRTP/completion/*
-# global aliases
-source ~/.dotfiles/Shell/aliases
+call /usr/local/git/contrib/completion/git-completion.bash && \
+  GIT_PS1_SHOWDIRTYSTATE=true
 
 # vim: ft=sh et sw=2 sts=2

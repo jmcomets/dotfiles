@@ -55,3 +55,9 @@
 [submodule "Vim/bundle/python-matchit"]
 	path = Vim/bundle/python-matchit
 	url = https://github.com/voithos/vim-python-matchit.git
+[submodule "Vim/bundle/rails"]
+	path = Vim/bundle/rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "Vim/bundle/bundler"]
+	path = Vim/bundle/bundler
+	url = https://github.com/tpope/vim-bundler.git

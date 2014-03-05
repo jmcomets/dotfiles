@@ -34,16 +34,12 @@ HISTFILE=~/.zsh_history
 
 # ---------- EXTERNAL ---------- {{{
 
-source ~/.zsh/colors
-source ~/.zsh/completion
-source ~/.dotfiles/Shell/aliases
-
-# virtualenvwrapper
-#source /usr/local/bin/virtualenvwrapper.sh
+call ~/.zsh/colors
+call ~/.zsh/completion
 
 # powerline
-#source /usr/share/zsh/site-contrib/powerline.zsh
-#export VIRTUAL_ENV_DISABLE_PROMPT=true
+call /usr/share/zsh/site-contrib/powerline.zsh && \
+  export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 # ------------------------- }}}
 

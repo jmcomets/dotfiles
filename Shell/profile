@@ -81,12 +81,31 @@ add_bin_to_path()
 {
   if [ -d "$1" ] ; then
     export PATH="$1:$PATH"
+    return 0
+  else
+    return 1
+  fi
+}
+
+# Source shell script (if it exists)
+call()
+{
+  if [ -f "$1" ] ; then
+    source "$1"
+    return $?
+  else
+    return 1
   fi
 }
 
 # Add bin directories
+add_bin_to_path $HOME/.local/bin
 add_bin_to_path $HOME/bin
 # rvm
-add_bin_to_path "$HOME/.rvm/scripts/rvm"
+add_bin_to_path "$HOME/.rvm/bin" && \
+  call "$HOME/.rvm/scripts/rvm"
+
+# Shell aliases
+call $HOME/.aliases
 
 # vim: ft=sh et sw=2 sts=2
