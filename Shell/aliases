@@ -4,9 +4,6 @@ alias rm="rm -vi"
 alias cp="cp -vi"
 alias mv="mv -vi"
 
-# Package managing shortcuts
-alias search="sudo dpkg -l"
-
 # Display
 alias grep="grep --color=auto"
 alias ls="ls -FX --color=auto"
@@ -21,10 +18,12 @@ alias lla="ls -la"
 alias l="ls"
 alias t="tree"
 alias v="cd ~/.vim"
-alias vb="cd ~/.vim/bundle"
 alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"
-alias lns="ln -s"
+alias ag="apt-get"
+alias sag="sudo apt-get"
+alias x="xdg-open"
+alias xx="xdg-open ."
 
 # Typos
 alias got="git"
@@ -34,21 +33,16 @@ alias sl="ls"
 alias dc="cd"
 alias vm="mv"
 
-# Browse "alias", opening file explorer with either
-# path given as first argument, or current directory
-browse()
-{
-  dir=${1:=.}
-  xdg-open $dir
-}
-# ...shortcut
-alias b="browse"
-
 # Workon alias (similar to virtualenv-wrapper)
 VENVS_DIR=~/.venvs
 workon()
 {
   source $VENVS_DIR/$1/bin/activate
+}
+# and mkvirtualenv
+mkvirtualenv()
+{
+  virtualenv $VENVS_DIR/$1 && workon $1
 }
 
 # vim: ft=sh et sw=2 sts=2
