@@ -8,6 +8,6 @@ read -p "Password: " password
 stty echo
 
 wget --no-check-certificate --post-data="fqdn=insa-lyon.fr&password=$password&submit=Envoyer&user=$login" \
-    -O /dev/null 'https://securelogin.arubanetworks.com/cgi-bin/login'
+    -O /dev/null 'https://a6000.insa-lyon.fr/cgi-bin/login'
 
 # vim: ft=sh et sw=2 sts=2
