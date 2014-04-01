@@ -1,51 +1,55 @@
-snippet bgc "background-color" !b
-background-color: ${1};
+priority -50
+
+snippet /@?imp/ "@import '...';" br
+@import '${1:file}';
 endsnippet
-snippet bg "background" !b
-background:${1};
+
+snippet /@?inc/ "@include mixin(...);" br
+@include ${1:mixin}(${2:arguments});
 endsnippet
-snippet bgp "background-position" b
-background-position: ${1} ${2};
+
+snippet /@?ext?/ "@extend %placeholder;" br
+@extend %${1:placeholder};
 endsnippet
-snippet bgi "backgorund-image" !b
-background-image: url('${1}');${2}
+
+snippet /@?mixin/ "@mixin (...) { ... }" br
+@mixin ${1:name}(${2:arguments}) {
+	${VISUAL}$0
+}
 endsnippet
-snippet : ":" i
-: ${1};
+
+snippet /@?fun/ "@function (...) { ... }" br
+@function ${1:name}(${2:arguments}) {
+	${VISUAL}$0
+}
 endsnippet
-snippet m "margin" !b
-margin${1}
+
+snippet /@?if/ "@if (...) { ... }" br
+@if ${1:condition} {
+	${VISUAL}$0
+}
 endsnippet
-snippet p "padding" !b
-padding${1}
+
+snippet /(} )?@?else/ "@else { ... }" br
+@else ${1:condition} {
+	${VISUAL}$0
+}
 endsnippet
-snippet -b "-bottom" i
--bottom: ${1};${2}
+
+snippet /@?for/ "@for loop" br
+@for ${1:$i} from ${2:1} through ${3:3} {
+	${VISUAL}$0
+}
 endsnippet
-snippet -l "-left" i
--left: ${1};${2}
+
+snippet /@?each/ "@each loop" br
+@each ${1:$item} in ${2:item, item, item} {
+	${VISUAL}$0
+}
 endsnippet
-snippet -r "-right" i
--right: ${1};${2}
-endsnippet
-snippet border "border" i
-border: 1px solid ${1};${2}
-endsnippet
-snippet display "display" b
-display: ${1};${2}
-endsnippet
-snippet o.h "overflow: hidden;" b
-overflow: hidden;
-endsnippet
-snippet position "position" !b
-position: ${1:absolute/static/relative/fixed};${2}
-endsnippet
-snippet pos "position" !b
-position: ${1:absolute/static/relative/fixed};${2}
-endsnippet
-snippet w "width" !b
-width: ${1:auto};${2}
-endsnippet
-snippet h "height" !b
-height: ${1};${2}
+
+snippet /@?while/ "@while loop" br
+@while ${1:$i} ${2:>} ${3:0} {
+	${VISUAL}$0
+}
 endsnippet
