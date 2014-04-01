@@ -378,4 +378,11 @@ let g:tex_flavor = "latex"
 
 " Plugin customization ------------------------------------------- {{{
 
+" CtrlP
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 
+            \ 'undo', 'line', 'mixed']
+
 " ---------------------------------------------------------------- }}}

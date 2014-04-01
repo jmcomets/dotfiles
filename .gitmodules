@@ -40,3 +40,9 @@
 [submodule "Vim/bundle/python-matchit"]
 	path = Vim/bundle/python-matchit
 	url = https://github.com/voithos/vim-python-matchit.git
+[submodule "Vim/bundle/ctrlp"]
+	path = Vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "Vim/bundle/xptemplate"]
+	path = Vim/bundle/xptemplate
+	url = git@github.com:drmingdrmer/xptemplate.git
