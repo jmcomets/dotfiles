@@ -24,6 +24,9 @@ alias ag="apt-get"
 alias sag="sudo apt-get"
 alias x="xdg-open"
 alias xx="xdg-open ."
+alias py='python'
+alias py2='python2'
+alias py3='python3'
 
 # Typos
 alias got="git"

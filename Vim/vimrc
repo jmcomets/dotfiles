@@ -124,8 +124,12 @@ set timeoutlen=500
 " Hide the mouse pointer while typing
 set mousehide
 
-" Mouse activated ?
-set mouse=
+" Mouse activated only in GUI
+if has('gui_running')
+    set mouse=a
+else
+    set mouse=
+endif
 
 " ---------------------------------------------------------------- }}}
 
@@ -220,7 +224,11 @@ set incsearch
 " Colorscheme setup
 let s:nb_colors = system('echo $SCREEN_COLORS') + 0
 execute 'set t_Co=' . s:nb_colors
-colorscheme grb256
+if has('gui_running')
+    colorscheme solarized
+else
+    colorscheme grb256
+endif
 set background=dark
 
 " GUI font
@@ -441,8 +449,5 @@ vmap s <nop>
 
 " Switch
 nmap <silent> <leader>s :Switch<cr>
-
-" UltiSnips
-let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
 
 " ---------------------------------------------------------------- }}}
