@@ -384,15 +384,4 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
             \ 'undo', 'line', 'mixed']
 
-" UltiSnips
-
-" Trigger configuration
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Snippets editing
-let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
-let g:UltiSnipsEditSplit = "horizontal"
-
 " ---------------------------------------------------------------- }}}
