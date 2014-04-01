@@ -62,7 +62,7 @@ endif
 set shortmess+=I
 
 " Start Pathogen plugin to load bundle
-call pathogen#infect()
+call pathogen#infect("extensions")
 call pathogen#helptags()
 
 " Enable plugins
@@ -324,14 +324,13 @@ nmap <silent> <leader>so :source $MYVIMRC<cr>
 nmap <silent> <leader>m :make<cr>
 
 " Cd to current file (if auto, no mapping)
-let s:autocd = 0 " boolean indicating if should cd with current file
+let s:autocd=0 " boolean indicating if should cd with current file
 if !exists("s:autocd") || s:autocd == 0
     nmap <silent> <leader>cd :cd %:p:h<cr>
 endif
 
-" Tab mappings
-nmap <silent> <leader>tn :tabnew<cr>
-nmap <silent> <leader>tc :tabclose<cr>
+" Surround word with spaces
+nmap <leader><space> gea<space><esc>ea<space><esc>b
 
 " Why in the world is this not well defined?
 imap ê <C-v>ê
@@ -382,7 +381,18 @@ let g:tex_flavor = "latex"
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
             \ 'undo', 'line', 'mixed']
+
+" UltiSnips
+
+" Trigger configuration
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Snippets editing
+let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
+let g:UltiSnipsEditSplit = "horizontal"
 
 " ---------------------------------------------------------------- }}}
