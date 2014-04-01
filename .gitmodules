@@ -1,6 +1,3 @@
-[submodule "Vim/bundle/switch"]
-	path = Vim/bundle/switch
-	url = https://github.com/AndrewRadev/switch.vim.git
 [submodule "Vim/bundle/latex"]
 	path = Vim/bundle/latex
 	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
@@ -40,27 +37,6 @@
 [submodule "Vim/bundle/argtextobj"]
 	path = Vim/bundle/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
-[submodule "Vim/bundle/FuzzyFinder"]
-	path = Vim/bundle/FuzzyFinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
-[submodule "Vim/bundle/L9"]
-	path = Vim/bundle/L9
-	url = https://github.com/vim-scripts/L9.git
-[submodule "Vim/bundle/tlib"]
-	path = Vim/bundle/tlib
-	url = https://github.com/vim-scripts/tlib.git
-[submodule "Vim/bundle/VisIncr"]
-	path = Vim/bundle/VisIncr
-	url = https://github.com/vim-scripts/VisIncr.git
 [submodule "Vim/bundle/python-matchit"]
 	path = Vim/bundle/python-matchit
 	url = https://github.com/voithos/vim-python-matchit.git
-[submodule "Vim/bundle/rails"]
-	path = Vim/bundle/rails
-	url = https://github.com/tpope/vim-rails.git
-[submodule "Vim/bundle/bundler"]
-	path = Vim/bundle/bundler
-	url = https://github.com/tpope/vim-bundler.git
-[submodule "Vim/bundle/coffeescript"]
-	path = Vim/bundle/coffeescript
-	url = https://github.com/kchmck/vim-coffee-script.git
