@@ -378,7 +378,8 @@ let g:tex_flavor = "latex"
 " Plugin customization ------------------------------------------- {{{
 
 " CtrlP
-let g:ctrlp_map = '<leader>pp'
+let g:ctrlp_map = '<leader>p'
+nmap <silent> <leader>pp :CtrlP<cr>
 nmap <silent> <leader>pb :CtrlPBuffer<cr>
 nmap <silent> <leader>pm :CtrlPMixed<cr>
 nmap <silent> <leader>pl :CtrlPLine<cr>
