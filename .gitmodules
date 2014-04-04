@@ -52,3 +52,6 @@
 [submodule "Vim/bundle/jedi"]
 	path = Vim/bundle/jedi
 	url = git@github.com:davidhalter/jedi-vim.git
+[submodule "Vim/bundle/expand-region"]
+	path = Vim/bundle/expand-region
+	url = git@github.com:terryma/vim-expand-region.git

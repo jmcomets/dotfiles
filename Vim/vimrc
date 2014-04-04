@@ -418,4 +418,8 @@ let g:jedi#usages_command = '<leader>jn'
 let g:jedi#goto_definitions_command = '<leader>jd'
 let g:jedi#goto_assignments_command = '<leader>jg'
 
+" Expand region
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
 " ---------------------------------------------------------------- }}}
