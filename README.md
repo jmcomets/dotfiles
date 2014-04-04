@@ -27,7 +27,7 @@ which will be overwritten by this script). This also sets up some extra
 symbolic links (.vim, .zsh, .bash, etc...):
 
 ```bash
-~/.dotfiles/Dotfiles/configure.sh # setup links
+~/.dotfiles/configure.sh # setup links
 ```
 
 ## Scripts
