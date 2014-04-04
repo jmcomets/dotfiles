@@ -307,6 +307,9 @@ nmap Y y$
 vmap > >gv
 vmap < <gv
 
+" Select pasted text with gV
+nmap gV `[v`]
+
 " Enable IDE-style completion
 imap <nul> <C-x><C-o>
 
