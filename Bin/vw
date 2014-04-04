@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-Viw workspace management tool.
+Vim plugin management tool.
 
 Usage:
-    vw plugin (on|off) <plugin_name>
+    vwp (on|off) <plugin_name> ...
 
 Options:
     -h, --help      Show this screen and exit.
@@ -25,38 +25,38 @@ vim_dir = os.path.join(os.getenv('HOME'), '.vim')
 plugin_src_dir = os.path.join(vim_dir, 'bundle')
 plugin_dest_dir = os.path.join(vim_dir, 'extensions')
 
-def plugin_on_off(args):
-    enable, plugin_name = args['on'], args['<plugin_name>']
-
-    # check source
-    plugin_src = os.path.join(plugin_src_dir, plugin_name)
-    if not os.path.exists(plugin_src):
-        print 'Plugin', plugin_name, 'not installed'
-        sys.exit(1)
-
-    # enable/disable
-    plugin_dest = os.path.join(plugin_dest_dir, plugin_name)
-    if enable:
-        print 'Enabling plugin', plugin_name
-        if os.path.exists(plugin_dest):
-            print 'Plugin already enabled!'
-            sys.exit(1)
-        try:
-            os.symlink(plugin_src, plugin_dest)
-        except OSError as e:
-            print 'Error: %s' % e
-            sys.exit(1)
-    else:
-        print 'Disabling plugin', plugin_name
-        try:
-            os.unlink(plugin_dest)
-        except OSError as e:
-            print 'Error: %s' % e
-            sys.exit(1)
-
 if __name__ == '__main__':
     args = docopt.docopt(__doc__)
-    if args['plugin'] and 'on' in args:
-        plugin_on_off(args)
+    retcode = 1
+    for plugin_name in args['<plugin_name>']:
+        # check source
+        plugin_src = os.path.join(plugin_src_dir, plugin_name)
+        if not os.path.exists(plugin_src):
+            print 'Plugin', plugin_name, 'not installed'
+            continue
+
+        # enable/disable
+        plugin_dest = os.path.join(plugin_dest_dir, plugin_name)
+        if args['on'] and not args['off']:
+            print 'Enabling plugin', plugin_name, '...',
+            if os.path.exists(plugin_dest):
+                print 'plugin already enabled!'
+                continue
+            try:
+                os.symlink(plugin_src, plugin_dest)
+            except OSError as e:
+                print 'error: %s' % e
+                continue
+            print 'success'
+        else:
+            print 'Disabling plugin', plugin_name, '...',
+            try:
+                os.unlink(plugin_dest)
+            except OSError as e:
+                print 'error: %s' % e
+                sys.exit(1)
+            print 'success'
+        retcode = 0
+    sys.exit(retcode)
 
 # vim: ft=python et sw=4 sts=4

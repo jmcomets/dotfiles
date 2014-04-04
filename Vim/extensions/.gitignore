@@ -1,4 +1,2 @@
-# Ignore all hidden files
-.*
-# Except this file
+*
 !.gitignore
