@@ -30,6 +30,7 @@ if __name__ == '__main__':
     retcode = 1
     for plugin_name in args['<plugin_name>']:
         # check source
+        plugin_name = plugin_name.strip('/')
         plugin_src = os.path.join(plugin_src_dir, plugin_name)
         if not os.path.exists(plugin_src):
             print 'Plugin', plugin_name, 'not installed'
