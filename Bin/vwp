@@ -55,7 +55,7 @@ if __name__ == '__main__':
                 os.unlink(plugin_dest)
             except OSError as e:
                 print 'error: %s' % e
-                sys.exit(1)
+                continue
             print 'success'
         retcode = 0
     sys.exit(retcode)
