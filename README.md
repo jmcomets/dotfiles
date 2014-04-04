@@ -6,7 +6,7 @@ jmcomets' dotfiles
 ## Features
 
 - *awesome* Vim configuration
-- customized bash/zsh prompt (using the [solarized][] theme)
+- customized shell prompt
 
 ## Installation
 
@@ -27,9 +27,18 @@ which will be overwritten by this script). This also sets up some extra
 symbolic links (.vim, .zsh, .bash, etc...):
 
 ```bash
-~/.dotfiles/Dotfiles/configure.sh # setup links
+~/.dotfiles/configure.sh # setup links
 ```
 
+## Scripts
+
+A [simple vim plugin manager script] is available (command: vwp), but requires [docopt] to be used.
+Alternatively symlinks can be created in [~/.vim/extensions], pointing to vim plugin directories
+(I put them in [~/.vim/bundle]).
+
 [Pimp My Console]: ../../blob/master/Misc/pimp-my-console.png?raw=true
-[aliases]: ../../blob/master/Dotfiles/Shell/aliases
-[solarized]: https://github.com/altercation/solarized
+[aliases]: ../../blob/master/Shell/aliases
+[~/.vim/extensions]: ../../blob/master/Vim/extensions
+[~/.vim/bundle]: ../../blob/master/Vim/bundle
+[simple vim plugin manager script]: ../../blob/master/Bin/vwp
+[docopt]: https://github.com/docopt/docopt
