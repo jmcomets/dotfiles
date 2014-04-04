@@ -378,7 +378,12 @@ let g:tex_flavor = "latex"
 " Plugin customization ------------------------------------------- {{{
 
 " CtrlP
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<leader>pp'
+nmap <silent> <leader>pb :CtrlPBuffer<cr>
+nmap <silent> <leader>pm :CtrlPMixed<cr>
+nmap <silent> <leader>pl :CtrlPLine<cr>
+nmap <silent> <leader>pq :CtrlPQuickfix<cr>
+
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
@@ -394,5 +399,19 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Snippets editing
 let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
 let g:UltiSnipsEditSplit = "horizontal"
+
+" Conque
+
+" Quickly open $SHELL
+nmap <silent> <leader>sh :ConqueTerm zsh<cr>
+let g:ConqueTerm_StartMessages = 0
+
+" Jedi
+"let g:jedi#completions_command = '<C-space>'
+"let g:jedi#documentation_command = '<K'>
+let g:jedi#rename_command = '<leader>jr'
+let g:jedi#usages_command = '<leader>jn'
+let g:jedi#goto_definitions_command = '<leader>jd'
+let g:jedi#goto_assignments_command = '<leader>jg'
 
 " ---------------------------------------------------------------- }}}
