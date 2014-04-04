@@ -32,7 +32,7 @@ symbolic links (.vim, .zsh, .bash, etc...):
 
 ## Scripts
 
-A [simple vim plugin manager script] is available (command: vwp), but requires docopt to be used.
+A [simple vim plugin manager script] is available (command: vwp), but requires [docopt] to be used.
 Alternatively symlinks can be created in [~/.vim/extensions], pointing to vim plugin directories
 (I put them in [~/.vim/bundle]).
 
@@ -41,3 +41,4 @@ Alternatively symlinks can be created in [~/.vim/extensions], pointing to vim pl
 [~/.vim/extensions]: ../../blob/master/Vim/extensions
 [~/.vim/bundle]: ../../blob/master/Vim/bundle
 [simple vim plugin manager script]: ../../blob/master/Bin/vwp
+[docopt]: https://github.com/docopt/docopt
