@@ -311,7 +311,7 @@ vmap < <gv
 nmap gV `[v`]
 
 " Enable IDE-style completion
-imap <nul> <C-x><C-o>
+"imap <nul> <C-x><C-o>
 
 " Fast saving
 nmap <silent> <leader>w :write<cr>
@@ -320,8 +320,8 @@ nmap <silent> <leader>w :write<cr>
 nmap <silent> <leader>q :quit<cr>
 
 " Edit/source vimrc
-nmap <silent> <leader>co :edit $MYVIMRC<cr>
-nmap <silent> <leader>so :source $MYVIMRC<cr>
+nmap <silent> <leader>ve :edit $MYVIMRC<cr>
+nmap <silent> <leader>vs :source $MYVIMRC<cr>
 
 " Run "make" (makeprg)
 nmap <silent> <leader>m :make<cr>
@@ -333,10 +333,13 @@ if !exists("s:autocd") || s:autocd == 0
 endif
 
 " Surround word with spaces
-nmap <leader><space> gea<space><esc>ea<space><esc>b
+"nmap <leader><space> gea<space><esc>ea<space><esc>b
 
 " Why in the world is this not well defined?
 imap ê <C-v>ê
+
+" Sort visual selection (who uses replace mode ?)
+vmap <silent> R :!sort<cr>
 
 " ---------------------------------------------------------------- }}}
 
