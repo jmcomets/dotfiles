@@ -348,7 +348,7 @@
       <key>profiles/Default/custom_command</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/custom_command</schema_key>
       <value>
-        <string></string>
+        <string>tmux -2</string>
       </value>
     </entry>
     <entry>
@@ -502,7 +502,7 @@
       <key>profiles/Default/use_custom_command</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/use_custom_command</schema_key>
       <value>
-        <bool>false</bool>
+        <bool>true</bool>
       </value>
     </entry>
     <entry>

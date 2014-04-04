@@ -28,7 +28,7 @@ setup_link ~/.vim/vimrc ~/.vimrc
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
 setup_link $DOTFILES/Shell/dircolors ~/.dircolors
-gconftool --load $DOTFILES/Shell/colorscheme
+gconftool --load $DOTFILES/Shell/gnome-terminal.xml
 
 # Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh
