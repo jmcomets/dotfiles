@@ -1,0 +1,22 @@
+# basic stuff
+set-option -g default-shell $SHELL
+setw -g xterm-keys on
+set -g default-terminal "screen-256color"
+
+# act like GNU screen
+unbind C-b
+set -g prefix C-a
+
+# act like vim
+setw -g mode-keys vi
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# splits
+bind-key | split-window -h
+bind-key - split-window
+
+# status bar
+set-option -g status off

@@ -46,3 +46,9 @@
 [submodule "Vim/bundle/ultisnips"]
 	path = Vim/bundle/ultisnips
 	url = git@github.com:SirVer/ultisnips.git
+[submodule "Vim/bundle/conque"]
+	path = Vim/bundle/conque
+	url = git@github.com:oplatek/Conque-Shell.git
+[submodule "Vim/bundle/jedi"]
+	path = Vim/bundle/jedi
+	url = git@github.com:davidhalter/jedi-vim.git

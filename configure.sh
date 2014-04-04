@@ -54,4 +54,7 @@ git config --global user.name 'Jean-Marie Comets'
 git config --global user.email 'jean.marie.comets@gmail.com'
 git config --global color.ui 'auto'
 
+# Tmux
+setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
+
 # vim: ft=sh et sw=4 sts=4
