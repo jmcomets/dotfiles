@@ -45,13 +45,13 @@
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "Vim/bundle/ultisnips"]
 	path = Vim/bundle/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
+	url = https://github.com/SirVer/ultisnips.git
 [submodule "Vim/bundle/conque"]
 	path = Vim/bundle/conque
-	url = git@github.com:oplatek/Conque-Shell.git
+	url = https://github.com/oplatek/Conque-Shell.git
 [submodule "Vim/bundle/jedi"]
 	path = Vim/bundle/jedi
-	url = git@github.com:davidhalter/jedi-vim.git
+	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "Vim/bundle/expand-region"]
 	path = Vim/bundle/expand-region
-	url = git@github.com:terryma/vim-expand-region.git
+	url = https://github.com/terryma/vim-expand-region.git

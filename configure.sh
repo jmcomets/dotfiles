@@ -6,7 +6,7 @@ DOTFILES=~/.dotfiles
 # Refactored link command
 setup_link()
 {
-    if [ -f $1 ]; then
+    if [ -e $1 ]; then
         rm -rf $2 && ln -s $1 $2
         return $?
     else
@@ -27,7 +27,6 @@ setup_link ~/.vim/vimrc ~/.vimrc
 # Shell
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
-setup_link $DOTFILES/Shell/dircolors ~/.dircolors
 gconftool --load $DOTFILES/Shell/gnome-terminal.xml
 
 # Zsh
@@ -53,6 +52,7 @@ git config --global alias.ciamne 'commit --amend --no-edit'
 git config --global user.name 'Jean-Marie Comets'
 git config --global user.email 'jean.marie.comets@gmail.com'
 git config --global color.ui 'auto'
+git config --global push.default simple
 
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
