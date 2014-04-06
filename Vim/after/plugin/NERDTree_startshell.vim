@@ -1,4 +1,4 @@
-if exists("g:loaded_nerdtree_start_shell_mapping")
+if exists("g:loaded_nerdtree_start_shell_mapping") || !exists("loaded_nerd_tree")
     finish
 endif
 let g:loaded_nerdtree_start_shell_mapping = 1
