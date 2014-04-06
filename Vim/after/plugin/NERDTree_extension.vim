@@ -4,7 +4,7 @@
 " Author: Jean-Marie Comets
 " Date: 2013 May 1
 
-if exists("g:loaded_nerdtree_runfile")
+if exists("g:loaded_nerdtree_runfile") || !exists("loaded_nerd_tree")
     finish
 endif
 let g:loaded_nerdtree_runfile = 1

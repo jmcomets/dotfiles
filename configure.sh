@@ -27,7 +27,7 @@ setup_link ~/.vim/vimrc ~/.vimrc
 # Shell
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
-gconftool --load $DOTFILES/Shell/gnome-terminal.xml
+test -e "$(which gconftool)" && gconftool --load $DOTFILES/Shell/gnome-terminal.xml
 
 # Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh

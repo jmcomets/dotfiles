@@ -4,7 +4,7 @@
 # sourced by all shells.
 
 # Prefer US English and use UTF-8
-export LC_ALL="en_US.UTF-8"
+export LC_ALL=""
 export LANG="en_US"
 
 # Generic do-it-all method to set $TERM correctly
