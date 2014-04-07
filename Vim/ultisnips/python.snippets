@@ -1,33 +1,6 @@
 priority -50
 
-###########################################################################
-#                            TEXTMATE SNIPPETS                            #
-###########################################################################
-
-#! header
-snippet #! "Shebang header for python scripts" b
-#!/usr/bin/env python
-# encoding: utf-8
-$0
-endsnippet
-
-snippet ifmain "ifmain" b
-if __name__ == '__main__':
-	${1:main()}$0
-endsnippet
-
-snippet for "for loop" b
-for ${1:item} in ${2:iterable}:
-	${3:pass}
-endsnippet
-
-##########
-# COMMON #
-##########
-
-# The smart def and smart class snippets use a global option called
-# "g:ultisnips_python_style" which, if set to "doxygen" will use doxygen
-# style comments in docstrings.
+# Global snippet helpers
 
 global !p
 
@@ -54,13 +27,10 @@ class Arg(object):
 	def is_kwarg(self):
 		return '=' in self.arg
 
-
 def get_args(arglist):
 	args = [Arg(arg) for arg in arglist.split(',') if arg]
 	args = [arg for arg in args if arg.name != 'self']
-
 	return args
-
 
 def get_quoting_style(snip):
 	style = snip.opt("g:ultisnips_python_quoting_style", "double")
@@ -75,12 +45,10 @@ def triple_quotes(snip):
 
 def get_style(snip):
 	style = snip.opt("g:ultisnips_python_style", "normal")
-
 	if    style == "doxygen": return DOXYGEN
 	elif  style == "sphinx": return SPHINX
 	elif  style == "google": return GOOGLE
 	else: return NORMAL
-
 
 def format_arg(arg, style):
 	if style == DOXYGEN:
@@ -92,7 +60,6 @@ def format_arg(arg, style):
 	elif style == GOOGLE:
 		return "%s (@todo): @todo" % arg
 
-
 def format_return(style):
 	if style == DOXYGEN:
 		return "@return: @todo"
@@ -100,7 +67,6 @@ def format_return(style):
 		return ":returns: @todo"
 	elif style == GOOGLE:
 		return "Returns: @todo"
-
 
 def write_docstring_args(args, snip):
 	if not args:
@@ -116,7 +82,6 @@ def write_docstring_args(args, snip):
 	else:
 		for arg in args:
 			snip += format_arg(arg, style)
-
 
 def write_google_docstring_args(args, snip):
 	kwargs = [arg for arg in args if arg.is_kwarg()]
@@ -138,7 +103,6 @@ def write_google_docstring_args(args, snip):
 		snip.unshift()
 		snip.rv += '\n' + snip.mkline('', indent='')
 
-
 def write_init_body(args, parents, snip):
 	parents = [p.strip() for p in parents.split(",")]
 	parents = [p for p in parents if p != 'object']
@@ -152,16 +116,25 @@ def write_init_body(args, parents, snip):
 	for arg in args:
 		snip += "self._%s = %s" % (arg, arg)
 
-
-def write_slots_args(args, snip):
-	args = ['"_%s"' % arg for arg in args]
-	snip += '__slots__ = (%s,)' % ', '.join(args)
-
 endglobal
 
-########################################
-# Class & Special Method Name Snippets #
-########################################
+# Snippets
+
+snippet #! "Shebang header for python scripts" b
+#!/usr/bin/env python
+# encoding: utf-8
+$0
+endsnippet
+
+snippet main "ifmain" b
+if __name__ == '__main__':
+	${1:main()}$0
+endsnippet
+
+snippet for "for loop" b
+for ${1:item} in ${2:iterable}:
+	${3:pass}
+endsnippet
 
 snippet class "class with docstrings" b
 class ${1:MyClass}(${2:object}):
@@ -185,116 +158,6 @@ write_init_body(args, t[2], snip)
 		$0
 endsnippet
 
-
-snippet slotclass "class with slots and docstrings" b
-class ${1:MyClass}(${2:object}):
-
-	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
-`!p
-snip >> 1
-args = get_args(t[4])
-write_slots_args(args, snip)
-`
-
-	def __init__(self$4):
-		`!p snip.rv = triple_quotes(snip)`${5:@todo: to be defined.}`!p
-snip.rv = ""
-snip >> 2
-
-args = get_args(t[4])
-
-write_docstring_args(args, snip)
-if args:
-	snip.rv += '\n' + snip.mkline('', indent='')
-	snip += triple_quotes(snip)
-
-write_init_body(args, t[2], snip)
-`
-		$0
-endsnippet
-
-
-snippet contain "methods for emulating a container type" b
-def __len__(self):
-	${1:pass}
-
-def __getitem__(self, key):
-	${2:pass}
-
-def __setitem__(self, key, value):
-	${3:pass}
-
-def __delitem__(self, key):
-	${4:pass}
-
-def __iter__(self):
-	${5:pass}
-
-def __reversed__(self):
-	${6:pass}
-
-def __contains__(self, item):
-	${7:pass}
-endsnippet
-
-
-snippet context "context manager methods" b
-def __enter__(self):
-	${1:pass}
-
-def __exit__(self, exc_type, exc_value, traceback):
-	${2:pass}
-endsnippet
-
-
-snippet attr "methods for customizing attribute access" b
-def __getattr__(self, name):
-	${1:pass}
-
-def __setattr__(self, name, value):
-	${2:pass}
-
-def __delattr__(self, name):
-	${3:pass}
-endsnippet
-
-
-snippet desc "methods implementing descriptors" b
-def __get__(self, instance, owner):
-	${1:pass}
-
-def __set__(self, instance, value):
-	${2:pass}
-
-def __delete__(self, instance):
-	${3:pass}
-endsnippet
-
-
-snippet cmp "methods implementing rich comparison"
-def __eq__(self, other):
-	${1:pass}
-
-def __ne__(self, other):
-	${2:pass}
-
-def __lt__(self, other):
-	${3:pass}
-
-def __le__(self, other):
-	${4:pass}
-
-def __gt__(self, other):
-	${5:pass}
-
-def __ge__(self, other):
-	${6:pass}
-
-def __cmp__(self, other):
-	${7:pass}
-endsnippet
-
-
 snippet repr "methods implementing string representation"
 def __repr__(self):
 	${1:pass}
@@ -304,95 +167,6 @@ def __str__(self):
 
 def __unicode__(self):
 	${3:pass}
-endsnippet
-
-
-# note: reflected operands and augmented arithmeitc assignements have been
-# intentionally ommited to reduce verbosity.
-snippet numeric "methods for emulating a numeric type" b
-def __add__(self, other):
-	${1:pass}
-
-def __sub__(self, other):
-	${2:pass}
-
-def __mul__(self, other):
-	${3:pass}
-
-def __div__(self, other):
-	${4:pass}
-
-def __truediv__(self, other):
-	${5:pass}
-
-def __floordiv__(self, other):
-	${6:pass}
-
-
-def __mod__(self, other):
-	${7:pass}
-
-def __divmod__(self, other):
-	${8:pass}
-
-def __pow__(self, other):
-	${9:pass}
-
-
-def __lshift__(self, other):
-	${10:pass}
-
-def __rshift__(self, other):
-	${11:pass}
-
-def __and__(self, other):
-	${12:pass}
-
-def __xor__(self, other):
-	${13:pass}
-
-def __or__(self, other):
-	${14:pass}
-
-
-def __neg__(self):
-	${15:pass}
-
-def __pos__(self):
-	${16:pass}
-
-def __abs__(self):
-	${17:pass}
-
-def __invert__(self):
-	${18:pass}
-
-
-def __complex__(self):
-	${19:pass}
-
-def __int__(self):
-	${20:pass}
-
-def __long__(self):
-	${21:pass}
-
-def __float__(self):
-	${22:pass}
-
-
-def __oct__(self):
-	${22:pass}
-
-def __hex__(self):
-	${23:pass}
-
-
-def __index__(self):
-	${24:pass}
-
-def __coerce__(self, other):
-	${25:pass}
 endsnippet
 
 snippet def "function with docstrings" b
@@ -414,7 +188,6 @@ snip += triple_quotes(snip) `
 	${0:pass}
 endsnippet
 
-
 # doesn't expand when there is a word in front
 snippet /(^|(?<=\W))\./ "self." r
 self.
@@ -422,16 +195,6 @@ endsnippet
 
 snippet from "from module import name" b
 from ${1:module} import ${2:Stuff}
-endsnippet
-
-
-##############
-# PROPERTIES #
-##############
-snippet roprop "Read Only Property" b
-@property
-def ${1:name}(self):
-	${2:return self._$1}$0
 endsnippet
 
 snippet rwprop "Read write property" b
@@ -458,10 +221,6 @@ else:
 $1 = property(**$1(), doc=$1.__doc__)
 endsnippet
 
-
-####################
-# If / Else / Elif #
-####################
 snippet if "If" b
 if ${1:condition}:
 	${2:pass}
@@ -483,21 +242,17 @@ else:
 	${5:pass}
 endsnippet
 
-
-##########################
-# Try / Except / Finally #
-##########################
 snippet try "Try / Except" b
 try:
 	${1:pass}
-except ${2:Exception}, ${3:e}:
+except ${2:Exception} as ${3:e}:
 	${4:raise $3}
 endsnippet
 
 snippet try "Try / Except / Else" b
 try:
 	${1:pass}
-except ${2:Exception}, ${3:e}:
+except ${2:Exception} as ${3:e}:
 	${4:raise $3}
 else:
 	${5:pass}
@@ -506,7 +261,7 @@ endsnippet
 snippet try "Try / Except / Finally" b
 try:
 	${1:pass}
-except ${2:Exception}, ${3:e}:
+except ${2:Exception} as ${3:e}:
 	${4:raise $3}
 finally:
 	${5:pass}
@@ -515,7 +270,7 @@ endsnippet
 snippet try "Try / Except / Else / Finally" b
 try:
 	${1:pass}
-except${2: ${3:Exception}, ${4:e}}:
+except${2: ${3:Exception} as ${4:e}}:
 	${5:raise}
 else:
 	${6:pass}
@@ -523,57 +278,8 @@ finally:
 	${7:pass}
 endsnippet
 
-
-#####################
-# Assertions & Tests #
-#####################
-
 snippet pdb "Set PDB breakpoint" b
 import pdb; pdb.set_trace()
-endsnippet
-
-snippet ipdb "Set IPDB breakpoint" b
-import ipdb; ipdb.set_trace()
-endsnippet
-
-snippet pudb "Set PUDB breakpoint" b
-import pudb; pudb.set_trace()
-endsnippet
-
-snippet ae "Assert equal" b
-self.assertEqual(${1:first},${2:second})
-endsnippet
-
-snippet at "Assert True" b
-self.assertTrue(${0:exp})
-endsnippet
-
-snippet af "Assert False" b
-self.assertFalse(${1:expression})
-endsnippet
-
-snippet aae "Assert almost equal" b
-self.assertAlmostEqual(${1:first},${2:second})
-endsnippet
-
-snippet ar "Assert raises" b
-self.assertRaises(${1:exception}, ${2:func}${3/.+/, /}${3:arguments})
-endsnippet
-
-
-snippet testcase "pyunit testcase" b
-class Test${1:Class}(${2:unittest.TestCase}):
-
-	`!p snip.rv = triple_quotes(snip)`${3:Test case docstring.}`!p snip.rv = triple_quotes(snip)`
-
-	def setUp(self):
-		${4:pass}
-
-	def tearDown(self):
-		${5:pass}
-
-	def test_${6:name}(self):
-		${7:pass}
 endsnippet
 
 snippet opj "os.path.join" b
