@@ -29,6 +29,7 @@ class Arg(object):
 def get_args(arglist):
 	args = [Arg(arg) for arg in arglist.split(',') if arg]
 	args = [arg for arg in args if arg.name != 'self']
+	args = [arg for arg in args if not arg.name.startswith('*')]
 	return args
 
 def get_quoting_style(snip):
