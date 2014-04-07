@@ -12,7 +12,6 @@ GOOGLE  = 0x4
 SINGLE_QUOTES = 0x1
 DOUBLE_QUOTES = 0x2
 
-
 class Arg(object):
 	def __init__(self, arg):
 		self.arg = arg
@@ -159,14 +158,12 @@ write_init_body(args, t[2], snip)
 endsnippet
 
 snippet repr "methods implementing string representation"
-def __repr__(self):
-	${1:pass}
-
-def __str__(self):
-	${2:pass}
-
 def __unicode__(self):
 	${3:pass}
+
+def __str__(self):
+	${1:pass}
+__repr__ = __str__
 endsnippet
 
 snippet def "function with docstrings" b
@@ -282,7 +279,11 @@ snippet pdb "Set PDB breakpoint" b
 import pdb; pdb.set_trace()
 endsnippet
 
-snippet opj "os.path.join" b
+snippet dbg "Debug a variable via pprint" b
+print('${1:var}: %s' % $1)
+endsnippet
+
+snippet opj "os.path.join"
 os.path.join(${1:this_dir}, ${2:sub_dir})
 endsnippet
 
