@@ -5,9 +5,6 @@ extends c
 # We want to overwrite everything in parent ft.
 priority -49
 
-###########################################################################
-#                            TextMate Snippets                            #
-###########################################################################
 snippet beginend "$1.begin(), $1.end() (beginend)"
 ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
 endsnippet
@@ -15,12 +12,12 @@ endsnippet
 snippet cl "class .. (class)"
 class ${1:`!p snip.rv = snip.basename or "name"`}
 {
-public:
-	${1/(\w+).*/$1/} (${2:arguments});
-	virtual ~${1/(\w+).*/$1/} ();
+	public:
+		${1/(\w+).*/$1/} (${2:arguments});
+		virtual ~${1/(\w+).*/$1/} ();
 
-private:
-	${0:/* data */}
+	private:
+		${0:/* data */}
 };
 endsnippet
 
@@ -46,12 +43,31 @@ snippet map "std::map (map)"
 std::map<${1:key}, ${2:value}> map$0;
 endsnippet
 
-snippet vector "std::vector (v)"
+snippet vec "std::vector (v)"
 std::vector<${1:char}> v$0;
 endsnippet
 
 snippet tp "template <typename ..> (template)"
-template <typename ${1:_InputIter}>
+template <typename ${1:InputIter}> $2
 endsnippet
 
-# vim:ft=snippets:
+snippet str "std string" w
+std::string ${1:str};
+endsnippet
+
+snippet p "std::cout"
+std::${2:cout} << ${1:"ok"} << std::endl;
+endsnippet
+
+snippet try "try/catch" b
+try
+{
+	$4
+}
+catch (${1:std::runtime_error} ${2:err})
+{
+	$3
+}
+endsnippet
+
+# vim:ft=snippets noet sw=4 ts=4:

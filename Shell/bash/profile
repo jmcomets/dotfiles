@@ -1,2 +1,4 @@
 source ~/.profile
-source ~/.bashrc
+
+# Uncomment when in ssh
+#source ~/.bashrc

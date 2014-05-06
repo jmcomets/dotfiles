@@ -284,8 +284,18 @@ snippet dbg "Debug a variable via pprint" b
 print('${1:var}: %s' % $1)
 endsnippet
 
+snippet pwd "this directory"
+${1:this_dir} = os.path.dirname(os.path.realpath(__file__))
+endsnippet
+
 snippet opj "os.path.join"
 os.path.join(${1:this_dir}, ${2:sub_dir})
+endsnippet
+
+snippet itstdin "iterate sys.stdin lines"
+for ${1:line} in sys.stdin:
+	${2:$1 = $1.rstrip('\n')}
+	$3
 endsnippet
 
 # vim:ft=snippets noet ts=4 sw=4:

@@ -901,4 +901,19 @@ it 'routes to #${1:action}' do
 end
 endsnippet
 
+# Rake snippets
+
+snippet ns "Namespace for rake"
+namespace :${1:db} do
+	$2
+end
+endsnippet
+
+snippet task "Task for rake"
+desc "${2:Description for task $1}"
+task :${1:name} => :${3:dependency} do
+	$4
+end
+endsnippet
+
 # vim:ft=snippets:

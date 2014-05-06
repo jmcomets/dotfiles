@@ -3,7 +3,7 @@
 # Configuration for shell input mode.
 
 # Set vi's context
-set editing-mode vi
+#set editing-mode vi
 
 # List all matches in case multiple possible completions are possible
 set show-all-if-ambiguous on

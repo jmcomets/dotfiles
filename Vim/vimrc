@@ -183,10 +183,10 @@ set expandtab
 " Be smart when using tabs
 set smarttab
 
-" Indent by 4 spaces, 8 for tabs
+" Indent by 4 spaces/tabs
 set shiftwidth=4
 set softtabstop=4
-set tabstop=8
+set tabstop=4
 
 " Invisible characters
 set list listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
@@ -382,6 +382,9 @@ let g:tex_flavor = "latex"
 " ---------------------------------------------------------------- }}}
 
 " Plugin customization ------------------------------------------- {{{
+
+" Dispatch
+nmap <silent> <leader>m :Make<cr>
 
 " CtrlP
 let g:ctrlp_map = '<leader>p'
