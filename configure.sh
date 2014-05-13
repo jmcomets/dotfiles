@@ -42,6 +42,8 @@ setup_link ~/.bash/profile ~/.bash_profile
 
 # Git
 git config --global alias.br 'branch'
+git config --global alias.rb 'rebase'
+git config --global alias.rbi 'rebase -i'
 git config --global alias.ci 'commit'
 git config --global alias.cim 'commit -m'
 git config --global alias.co 'checkout'

@@ -28,6 +28,7 @@ alias xx="xdg-open ."
 alias py='python'
 alias py2='python2'
 alias py3='python3'
+alias rcli="rhythmbox-client"
 
 # Use hub if it is installed
 #test -e "$(which hub)" && alias git="hub"
