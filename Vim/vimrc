@@ -408,12 +408,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Snippets editing
 let g:UltiSnipsEditSplit = "horizontal"
 
-" Conque
-
-" Quickly open $SHELL
-nmap <silent> <leader>zsh :ConqueTerm zsh<cr>
-let g:ConqueTerm_StartMessages = 0
-
 " Jedi
 "let g:jedi#completions_command = '<C-space>'
 "let g:jedi#documentation_command = '<K'>
