@@ -9,6 +9,7 @@ set -g mode-mouse on
 # act like GNU screen
 unbind C-b
 set -g prefix C-q
+unbind C-s
 
 # act like vim (sort of)
 setw -g mode-keys vi

@@ -52,8 +52,8 @@ snippet end "end (ERB)"
 endsnippet
 
 snippet for "for loop (ERB)"
-<% if !${1:list}.blank? %>
-	<% for ${2:item} in ${1} %>
+<% if !$1.blank? %>
+	<% for ${2:item} in ${1:list} %>
 		$3
 	<% end %>
 <% else %>
