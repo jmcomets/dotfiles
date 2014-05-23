@@ -7,7 +7,7 @@ alias mv="mv -vi"
 # Display
 alias grep="grep --color=auto"
 alias ls="ls -FX --color=auto"
-test -e "$(which tmux)" && alias tmux="tmux -2"
+test -e "$(which tmux)" && alias tmux="TERM=xterm-256color tmux -2"
 
 # Shortcuts
 alias ..="cd ../"
@@ -17,7 +17,6 @@ alias la="ls -A"
 alias ll="ls -l"
 alias lla="ls -la"
 alias l="ls"
-alias t="tree"
 alias v="cd ~/.vim"
 alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"

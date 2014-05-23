@@ -6,21 +6,26 @@ setw -g xterm-keys on
 # allow mouse
 set -g mode-mouse on
 
-# act like GNU screen
+# interact nicely with vim
 unbind C-b
 set -g prefix C-q
 unbind C-s
 
 # act like vim (sort of)
 setw -g mode-keys vi
-#bind h select-pane -L
-#bind j select-pane -D
-#bind k select-pane -U
-#bind l select-pane -R
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # splits
 bind-key | split-window -h
 bind-key - split-window
 
 # status bar
-set-option -g status off
+set-option -g status-position top
+set -g status-fg white
+set -g status-bg colour242
+
+# pane index starts at 1 (easier to reach)
+set-window-option -g pane-base-index 1
