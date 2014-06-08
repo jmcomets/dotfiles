@@ -3,7 +3,7 @@ priority -50
 # TextMate added these variables to cope with changes in ERB handling
 # in different versions of Rails -- for instance, Rails 3 automatically
 # strips whitespace so that it's no longer necessary to use a form like
-# <% end -%>, but if you're still maintaining Rails 2 projects, you
+# <% end %>, but if you're still maintaining Rails 2 projects, you
 # can't omit the minus sign and get the same behavior.
 #
 # The following regex replace substitutes the function below for the
@@ -48,7 +48,7 @@ snippet ft "form_tag"
 endsnippet
 
 snippet end "end (ERB)"
-<% end -%>
+<% end %>
 endsnippet
 
 snippet for "for loop (ERB)"
@@ -279,6 +279,10 @@ endsnippet
 
 snippet if "if (ERB)"
 <% if ${1:condition} %>$0
+endsnippet
+
+snippet un "unless (ERB)"
+<% unless ${1:condition} %>$0
 endsnippet
 
 snippet lf "link_to_function"

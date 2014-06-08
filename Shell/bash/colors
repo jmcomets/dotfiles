@@ -25,7 +25,7 @@ LIGHTPURPLE="\[\e[1;35m\]"
 LIGHTCYAN="\[\e[1;36m\]"
 
 # Prompt format
-PS1="$BLUE\h $YELLOW\w $BLUE\$$NORMAL "
+PS1="$BLUE\u$GREEN@$WHITE\h $YELLOW\w $BLUE\$$NORMAL "
 PS2="$BLUE>$NORMAL "
 
 # vim: ft=sh et sw=2 sts=2

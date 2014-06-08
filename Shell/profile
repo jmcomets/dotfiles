@@ -76,6 +76,8 @@ fi
 
 # Vim as standard editor
 export EDITOR=vim
+# hack
+export SCREEN_COLORS=256
 
 # Add directory to path (if it exists)
 add_bin_to_path()

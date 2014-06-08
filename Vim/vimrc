@@ -342,6 +342,11 @@ imap ê <C-v>ê
 " Sort visual selection (who uses replace mode ?)
 vmap <silent> R :!sort<cr>
 
+if has("gui_running") && executable("wmctrl")
+    nmap <silent> <F11> :call system("wmctrl -ir "
+                \ . v:windowid . " -b toggle,fullscreen")<cr>
+end
+
 " ---------------------------------------------------------------- }}}
 
 " Autocommands --------------------------------------------------- {{{
