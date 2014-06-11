@@ -67,3 +67,6 @@
 [submodule "Vim/bundle/google"]
 	path = Vim/bundle/google
 	url = https://github.com/szw/vim-g.git
+[submodule "Vim/bundle/merginal"]
+	path = Vim/bundle/merginal
+	url = https://github.com/idanarye/vim-merginal.git

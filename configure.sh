@@ -27,7 +27,7 @@ setup_link ~/.vim/vimrc ~/.vimrc
 # Shell
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
-test -e "$(which gconftool)" && gconftool --load $DOTFILES/Shell/gnome-terminal.xml
+#test -e "$(which gconftool)" && gconftool --load $DOTFILES/Shell/gnome-terminal.xml
 
 # Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh
@@ -51,6 +51,7 @@ git config --global alias.cob 'checkout -b'
 git config --global alias.st 'status'
 git config --global alias.ciam 'commit --amend'
 git config --global alias.ciamne 'commit --amend --no-edit'
+git config --global alias.l 'log --format=oneline --abbrev-commit'
 git config --global user.name 'Jean-Marie Comets'
 git config --global user.email 'jean.marie.comets@gmail.com'
 git config --global color.ui 'auto'
