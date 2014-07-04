@@ -30,6 +30,9 @@ alias py2='python2'
 alias py3='python3'
 alias rcli="rhythmbox-client"
 
+# Vim croquet
+alias vim='vim -w ~/.vimlog'
+
 # Use hub if it is installed
 #test -e "$(which hub)" && alias git="hub"
 
@@ -42,15 +45,28 @@ alias dc="cd"
 alias vm="mv"
 
 # Workon alias (similar to virtualenv-wrapper)
+BUNDLE_DIR=~/Bundle
 VENVS_DIR=~/.venvs
 workon()
 {
-  source $VENVS_DIR/$1/bin/activate
+  project_name=$1
+  if [ -d "$BUNDLE_DIR/$project_name" ]; then
+    if ! [ -d "$VENVS_DIR/$project_name" ]; then
+      echo "Virtual environment does not exist: create one with mkvirtualenv"
+      return 1
+    fi
+    cd $BUNDLE_DIR/$project_name
+    source $VENVS_DIR/$project_name/bin/activate
+  else
+    echo "Project does not exist, available ones are: $(command ls -C $VENVS_DIR)"
+    return 1
+  fi
 }
 # and mkvirtualenv
 mkvirtualenv()
 {
-  virtualenv $VENVS_DIR/$1 && workon $1
+  virtualenv $VENVS_DIR/$1
+  workon $1
 }
 
 # vim: ft=sh et sw=2 sts=2

@@ -333,6 +333,9 @@ if !exists("s:autocd") || s:autocd == 0
     nmap <silent> <leader>cd :cd %:p:h<cr>
 endif
 
+" Newline above in insert mode
+imap <S-cr> <C-o>O
+
 " Surround word with spaces
 "nmap <leader><space> gea<space><esc>ea<space><esc>b
 

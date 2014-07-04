@@ -903,17 +903,47 @@ endsnippet
 
 # Rake snippets
 
-snippet ns "Namespace for rake"
+snippet ns "Namespace for rake" b
 namespace :${1:db} do
 	$2
 end
 endsnippet
 
-snippet task "Task for rake"
+snippet task "Task for rake" b
 desc "${2:Description for task $1}"
 task :${1:name} => :${3:dependency} do
 	$4
 end
+endsnippet
+
+# Rspec snippets
+
+snippet desc "Rspec describe" b
+describe "${1:what to describe}" do
+	$2
+end$3
+endsnippet
+
+snippet it "Rspec spec 'it should...'" b
+it "${1:should follow some spec}"${2: do
+	$3
+end}$4
+endsnippet
+
+snippet b4 "Rspec before block (short)" b
+before { $1 }$2
+endsnippet
+
+snippet b44 "Rspec before block (multi-line)" b
+before do
+	$1
+end$2
+endsnippet
+
+snippet con "Rspec context" b
+context "${1:context description}" do
+	$2
+end$3
 endsnippet
 
 # vim:ft=snippets:

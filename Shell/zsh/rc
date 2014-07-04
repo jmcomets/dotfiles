@@ -44,3 +44,6 @@ call /usr/share/zsh/site-contrib/powerline.zsh && \
 # ------------------------- }}}
 
 # vim: ft=zsh et sw=2 sts=2 fdm=marker
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

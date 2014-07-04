@@ -70,3 +70,6 @@
 [submodule "Vim/bundle/merginal"]
 	path = Vim/bundle/merginal
 	url = https://github.com/idanarye/vim-merginal.git
+[submodule "Vim/bundle/coffeescript"]
+	path = Vim/bundle/coffeescript
+	url = https://github.com/kchmck/vim-coffee-script.git
