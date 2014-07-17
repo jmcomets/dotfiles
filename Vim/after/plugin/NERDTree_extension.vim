@@ -9,19 +9,6 @@ if exists("g:loaded_nerdtree_runfile") || !exists("loaded_nerd_tree")
 endif
 let g:loaded_nerdtree_runfile = 1
 
-" Change CWD along with NERDTree
-let NERDTreeChDirMode = 2
-
-" Files to ignore
-let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
-
-" Display bookmarks
-let NERDTreeShowBookmarks = 1
-
-" Mapping for NERDTree : <F3>
-nmap <silent> <F3> :NERDTreeToggle<cr>
-imap <F3> <C-o><F3>
-
 " Added keymap for executing a script : <F5>
 call NERDTreeAddKeyMap({
        \ 'key': '<F5>',

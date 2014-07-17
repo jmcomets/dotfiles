@@ -429,4 +429,15 @@ let g:jedi#goto_assignments_command = '<leader>jg'
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 
+" NERDTree
+let NERDTreeChDirMode = 2
+let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeShowBookmarks = 1
+nmap <silent> <F3> :NERDTreeToggle<cr>
+imap <F3> <C-o><F3>
+
+" Tagbar
+nmap <silent> <F4> :Tagbar<cr>
+imap <F4> <C-o><F4>
+
 " ---------------------------------------------------------------- }}}
