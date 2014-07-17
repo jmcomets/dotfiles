@@ -225,8 +225,8 @@ set incsearch
 let s:nb_colors = system('echo $SCREEN_COLORS') + 0
 execute 'set t_Co=' . s:nb_colors
 if has('gui_running')
-    colorscheme solarized
-    set background=light
+    colorscheme molokai
+    set background=dark
 else
     colorscheme grb256
     set background=dark
