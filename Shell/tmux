@@ -23,10 +23,10 @@ bind-key | split-window -h
 bind-key - split-window
 
 # status bar
+set-option -g status on
 set-option -g status-position top
 set -g status-fg white
 set -g status-bg colour242
-set-option -g status off
 
 # pane index starts at 1 (easier to reach)
 set-window-option -g pane-base-index 1

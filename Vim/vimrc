@@ -396,12 +396,12 @@ let g:tex_flavor = "latex"
 nmap <silent> <leader>m :Make<cr>
 
 " CtrlP
-let g:ctrlp_map = '<leader>p'
-nmap <silent> <leader>pp :CtrlP<cr>
-nmap <silent> <leader>pb :CtrlPBuffer<cr>
-nmap <silent> <leader>pm :CtrlPMixed<cr>
-nmap <silent> <leader>pl :CtrlPLine<cr>
-nmap <silent> <leader>pq :CtrlPQuickfix<cr>
+"let g:ctrlp_map = '<leader>p'
+"nmap <silent> <leader>pp :CtrlP<cr>
+"nmap <silent> <leader>pb :CtrlPBuffer<cr>
+"nmap <silent> <leader>pm :CtrlPMixed<cr>
+"nmap <silent> <leader>pl :CtrlPLine<cr>
+"nmap <silent> <leader>pq :CtrlPQuickfix<cr>
 
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -439,5 +439,16 @@ imap <F3> <C-o><F3>
 " Tagbar
 nmap <silent> <F4> :Tagbar<cr>
 imap <F4> <C-o><F4>
+
+" Fugitive
+nmap <silent> <leader>gs :Gstatus<cr>
+nmap <silent> <leader>gc :Gcommit<cr>
+nmap <silent> <leader>gd :Gdiff<cr>
+nmap <silent> <leader>gw :Gwrite<cr>
+nmap <silent> <leader>gl :Glog<cr>
+nmap <silent> <leader>gg :Ggrep 
+nmap <silent> <leader>gr :Ggrep <C-r><C-w><cr>
+nmap <leader>g :Git 
+set diffopt+=vertical
 
 " ---------------------------------------------------------------- }}}
