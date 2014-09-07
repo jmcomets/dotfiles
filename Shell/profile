@@ -13,7 +13,7 @@ export EDITOR=vim
 export SCREEN_COLORS=256
 
 # Add directory to path (if it exists)
-add_bin_to_path()
+add_to_path()
 {
   if [ -d "$1" ] ; then
     export PATH="$1:$PATH"
@@ -35,11 +35,14 @@ call()
 }
 
 # Add bin directories
-add_bin_to_path $HOME/.local/bin
-add_bin_to_path $HOME/bin
+add_to_path $HOME/.local/bin
+add_to_path $HOME/bin
 # rvm
-add_bin_to_path "$HOME/.rvm/bin" && \
+add_to_path "$HOME/.rvm/bin" && \
   call "$HOME/.rvm/scripts/rvm"
+# android sdk
+add_to_path $HOME/.local/share/android-sdk/tools
+add_to_path $HOME/.local/share/android-sdk/platform-tools
 
 # Shell aliases
 call $HOME/.aliases

@@ -26,7 +26,8 @@ bind-key - split-window
 set-option -g status on
 set-option -g status-position top
 set -g status-fg white
-set -g status-bg colour242
+#set -g status-bg colour242
+set -g status-bg red
 
 # pane index starts at 1 (easier to reach)
 set-window-option -g pane-base-index 1
