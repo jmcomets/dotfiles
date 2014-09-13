@@ -5,7 +5,7 @@ endif
 let g:loaded_rhythmbox = 1
 
 if !executable('rhythmbox-client')
-  echoerr 'rhythmbox-client must be installed'
+  "echoerr 'rhythmbox-client must be installed'
   finish
 endif
 
