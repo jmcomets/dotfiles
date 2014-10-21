@@ -393,7 +393,7 @@ let g:tex_flavor = "latex"
 " Plugin customization ------------------------------------------- {{{
 
 " Dispatch
-nmap <silent> <leader>m :Make<cr>
+"nmap <silent> <leader>m :Make<cr>
 
 " CtrlP
 "let g:ctrlp_map = '<leader>p'
