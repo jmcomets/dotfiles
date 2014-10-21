@@ -56,7 +56,7 @@ git config --global alias.rbc 'rebase --continue'
 git config --global user.name 'Jean-Marie Comets'
 git config --global user.email 'jean.marie.comets@gmail.com'
 git config --global color.ui 'auto'
-git config --global push.default simple
+#git config --global push.default simple
 
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf

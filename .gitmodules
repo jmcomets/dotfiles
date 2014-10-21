@@ -57,10 +57,10 @@
 	url = https://github.com/terryma/vim-expand-region.git
 [submodule "Vim/bundle/dispatch"]
 	path = Vim/bundle/dispatch
-	url = git://github.com/tpope/vim-dispatch.git
+	url = https://github.com/tpope/vim-dispatch.git
 [submodule "Vim/bundle/tabular"]
 	path = Vim/bundle/tabular
-	url = git@github.com:godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "Vim/bundle/rails"]
 	path = Vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
