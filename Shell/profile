@@ -46,14 +46,30 @@ call()
 # Add bin directories
 add_to_path $HOME/.local/bin
 add_to_path $HOME/bin
+
+# Shell aliases
+call $HOME/.aliases
+
+# Vendor shell extensions
+
+# virtualenvwrapper
+#call /usr/local/bin/virtualenvwrapper.sh
+
 # rvm
-add_to_path "$HOME/.rvm/bin" && \
-  call "$HOME/.rvm/scripts/rvm"
+add_to_path $HOME/.rvm/bin && call $HOME/.rvm/scripts/rvm
+
+# nvm
+export NVM_DIR=$HOME/.nvm && call $NVM_DIR/nvm.sh
+
 # android sdk
 add_to_path $HOME/.local/share/android-sdk/tools
 add_to_path $HOME/.local/share/android-sdk/platform-tools
 
-# Shell aliases
-call $HOME/.aliases
+# heroku
+add_to_path /usr/local/heroku/bin
+
+# nvm
+export NVM_DIR="/home/jmcomets/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # vim: ft=sh et sw=2 sts=2

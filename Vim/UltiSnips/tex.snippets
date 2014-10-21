@@ -42,8 +42,7 @@ snippet desc "Description" b
 endsnippet
 
 snippet it "Individual item" b
-\item ${1}
-$0
+\item $0
 endsnippet
 
 snippet part "Part" b
@@ -107,4 +106,13 @@ endsnippet
 snippet lp "Long parenthesis"
 \left(${1:${VISUAL:contents}}\right)$0
 endsnippet
+
+snippet bf "Bold"
+\textbf{${1:text}}$0
+endsnippet
+
+snippet i "Italic"
+\textit{${1:text}}$0
+endsnippet
+
 # vim:ft=snippets:

@@ -225,8 +225,8 @@ set incsearch
 let s:nb_colors = system('echo $SCREEN_COLORS') + 0
 execute 'set t_Co=' . s:nb_colors
 if has('gui_running')
-    colorscheme molokai
-    set background=dark
+    colorscheme solarized
+    set background=light
 else
     colorscheme grb256
     set background=dark
@@ -431,7 +431,10 @@ vmap V <Plug>(expand_region_shrink)
 
 " NERDTree
 let NERDTreeChDirMode = 2
-let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore = [
+            \ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
+            \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
+            \ ]
 let NERDTreeShowBookmarks = 1
 nmap <silent> <F3> :NERDTreeToggle<cr>
 imap <F3> <C-o><F3>
