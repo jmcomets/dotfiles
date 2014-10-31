@@ -1,63 +1,140 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """
 Vim plugin management tool.
-
-Usage:
-    vwp (on|off) <plugin_name> ...
-
-Options:
-    -h, --help      Show this screen and exit.
 """
 
 import os
 import sys
+import argparse
 
-try:
-    import docopt
-except ImportError:
-    print 'Exiting: docopt not installed'
-    sys.exit(1)
+# configuration
 
-# directories
 vim_dir = os.path.join(os.getenv('HOME'), '.vim')
 plugin_src_dir = os.path.join(vim_dir, 'bundle')
 plugin_dest_dir = os.path.join(vim_dir, 'extensions')
 
-if __name__ == '__main__':
-    args = docopt.docopt(__doc__)
-    retcode = 1
-    for plugin_name in args['<plugin_name>']:
-        # check source
-        plugin_name = plugin_name.strip('/')
-        plugin_src = os.path.join(plugin_src_dir, plugin_name)
-        if not os.path.exists(plugin_src):
-            print 'Plugin', plugin_name, 'not installed'
-            continue
+# logic
 
-        # enable/disable
-        plugin_dest = os.path.join(plugin_dest_dir, plugin_name)
-        if args['on'] and not args['off']:
-            print 'Enabling plugin', plugin_name, '...',
-            if os.path.exists(plugin_dest):
-                print 'plugin already enabled!'
-                continue
-            try:
-                os.symlink(plugin_src, plugin_dest)
-            except OSError as e:
-                print 'error: %s' % e
-                continue
-            print 'success'
+class PluginError(Exception):
+    pass
+
+def available_plugins():
+    return os.listdir(plugin_src_dir)
+
+def enabled_plugins():
+    return (ln for ln in os.listdir(plugin_dest_dir) \
+            if os.path.islink(os.path.join(plugin_dest_dir, ln)))
+
+def disabled_plugins():
+    return list(set(available_plugins()) - set(enabled_plugins()))
+
+def enable_plugin(plugin_name):
+    plugin_src = os.path.join(plugin_src_dir, plugin_name)
+    plugin_dest = os.path.join(plugin_dest_dir, plugin_name)
+    try:
+        os.symlink(plugin_src, plugin_dest)
+    except OSError as e:
+        raise PluginError("Couldn't enable %s" % plugin_name) from e
+
+def disable_plugin(plugin_name):
+    plugin_dest = os.path.join(plugin_dest_dir, plugin_name)
+    try:
+        os.unlink(plugin_dest)
+    except OSError as e:
+        raise PluginError("Couldn't disable %s" % plugin_name) from e
+
+# command-line interface
+
+parser = argparse.ArgumentParser(__doc__)
+subparsers = parser.add_subparsers()
+subparsers.required = True
+subparsers.dest = 'command'
+
+def command(*args, **kwargs):
+    command_parser = subparsers.add_parser(*args, **kwargs)
+    def decorator(f):
+        command_parser.set_defaults(func=f)
+        return command_parser
+    return decorator
+
+@command('ls', help='list available plugins')
+def cmd_list_plugins(args):
+    print_plugins = lambda ls: print('\n'.join(map(lambda x: '* %s' % x, ls)) or 'none')
+    print('Enabled plugins:')
+    print_plugins(enabled_plugins())
+    print('Disabled plugins:')
+    print_plugins(disabled_plugins())
+
+@command('base')
+def cmd_plugin_basedir(args):
+    print(plugin_src_dir)
+
+@command('dest')
+def cmd_plugin_destdir(args):
+    print(plugin_dest_dir)
+
+@command('enable', help='enable a plugin')
+def cmd_enable_plugin(args):
+    for plugin_name in args.plugins:
+        if plugin_name not in available_plugins():
+            print('Plugin %s not installed' % plugin_name)
+        elif plugin_name in enabled_plugins():
+            print('Plugin %s already enabled' % plugin_name)
         else:
-            print 'Disabling plugin', plugin_name, '...',
+            print('Enabling plugin %s...' % plugin_name, end='')
             try:
-                os.unlink(plugin_dest)
-            except OSError as e:
-                print 'error: %s' % e
-                continue
-            print 'success'
-        retcode = 0
-    sys.exit(retcode)
+                enable_plugin(plugin_name)
+            except PluginError as e:
+                print('Error: %s' % e)
+            else:
+                print('success')
+
+@command('disable', help='disable a plugin')
+def cmd_disable_plugin(args):
+    for plugin_name in args.plugins:
+        if plugin_name not in available_plugins():
+            print('Plugin %s not installed' % plugin_name)
+        elif plugin_name in disabled_plugins():
+            print('Plugin %s already disabled' % plugin_name)
+        else:
+            print('Disabling plugin %s...' % plugin_name, end='')
+            try:
+                disable_plugin(plugin_name)
+            except PluginError as e:
+                print('error: %s' % e)
+            else:
+                print('success')
+
+@command('all', help='enable all plugins')
+def cmd_all_plugins(args):
+    for plugin_name in disabled_plugins():
+        try:
+            print('Enabling plugin %s...' % plugin_name, end='')
+            enable_plugin(plugin_name)
+        except PluginError as e:
+            print('error: %s' % e)
+        else:
+            print('success')
+    print('All plugins enabled')
+
+@command('clear', help='disable all plugins')
+def cmd_clear_plugins(args):
+    for plugin_name in enabled_plugins():
+        try:
+            print('Disabling plugin %s...' % plugin_name, end='')
+            disable_plugin(plugin_name)
+        except PluginError as e:
+            print('error: %s' % e)
+        else:
+            print('success')
+    print('All plugins disabled')
+
+# add plugin argument to enable/disable commands
+for cmd in (cmd_enable_plugin, cmd_disable_plugin):
+    cmd.add_argument('plugins', nargs='+')
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+    sys.exit(args.func(args))
 
 # vim: ft=python et sw=4 sts=4
