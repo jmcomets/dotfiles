@@ -4,13 +4,12 @@
 # sourced by all shells.
 
 # Prefer US English and use UTF-8
-export LC_ALL="en_US.UTF-8"
-export LANG="$LC_ALL"
+#export LC_ALL="en_US.UTF-8"
+#export LANG="$LC_ALL"
+# deprecated: messes up keyboard layout
 
 # Vim as standard editor
 export EDITOR=vim
-# hack
-export SCREEN_COLORS=256
 
 # Colored man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'

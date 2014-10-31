@@ -222,7 +222,7 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
-let s:nb_colors = system('echo $SCREEN_COLORS') + 0
+let s:nb_colors = 256 " hack
 execute 'set t_Co=' . s:nb_colors
 if has('gui_running')
     colorscheme solarized
