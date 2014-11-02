@@ -79,3 +79,6 @@
 [submodule "Vim/bundle/abolish"]
 	path = Vim/bundle/abolish
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "Vim/bundle/golden-view"]
+	path = Vim/bundle/golden-view
+	url = https://github.com/zhaocai/GoldenView.Vim.git

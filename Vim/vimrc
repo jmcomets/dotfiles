@@ -222,13 +222,12 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
-let s:nb_colors = 256 " hack
-execute 'set t_Co=' . s:nb_colors
+set t_Co=256
 if has('gui_running')
     colorscheme solarized
     set background=light
 else
-    colorscheme grb256
+    colorscheme default
     set background=dark
 endif
 
@@ -438,12 +437,10 @@ let NERDTreeIgnore = [
             \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
             \ ]
 let NERDTreeShowBookmarks = 1
-nmap <silent> <F3> :NERDTreeToggle<cr>
-imap <F3> <C-o><F3>
+nmap <silent> <leader>e :NERDTreeToggle<cr>
 
 " Tagbar
-nmap <silent> <F4> :Tagbar<cr>
-imap <F4> <C-o><F4>
+nmap <silent> <leader>t :Tagbar<cr>
 
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
