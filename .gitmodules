@@ -49,9 +49,6 @@
 [submodule "Vim/bundle/conque"]
 	path = Vim/bundle/conque
 	url = https://github.com/oplatek/Conque-Shell.git
-[submodule "Vim/bundle/jedi"]
-	path = Vim/bundle/jedi
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "Vim/bundle/expand-region"]
 	path = Vim/bundle/expand-region
 	url = https://github.com/terryma/vim-expand-region.git
@@ -76,3 +73,12 @@
 [submodule "Vim/bundle/tagbar"]
 	path = Vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "Vim/bundle/exchange"]
+	path = Vim/bundle/exchange
+	url = https://github.com/tommcdo/vim-exchange.git
+[submodule "Vim/bundle/abolish"]
+	path = Vim/bundle/abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "Vim/bundle/golden-view"]
+	path = Vim/bundle/golden-view
+	url = https://github.com/zhaocai/GoldenView.Vim.git

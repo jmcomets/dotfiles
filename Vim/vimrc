@@ -222,13 +222,12 @@ set incsearch
 " Colors and Fonts ----------------------------------------------- {{{
 
 " Colorscheme setup
-let s:nb_colors = system('echo $SCREEN_COLORS') + 0
-execute 'set t_Co=' . s:nb_colors
+set t_Co=256
 if has('gui_running')
-    colorscheme molokai
-    set background=dark
+    colorscheme solarized
+    set background=light
 else
-    colorscheme grb256
+    colorscheme default
     set background=dark
 endif
 
@@ -288,7 +287,7 @@ vmap <silent> <M-k> :move '<-2<cr>gv=gv
 nmap <silent> <leader><cr> :nohlsearch<cr>
 
 " Search-replace current word
-nmap <leader>r :%s/\v<<C-r><C-w>>//gI<left><left><left>
+"nmap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
@@ -324,7 +323,7 @@ nmap <silent> <leader>q :quit<cr>
 nmap <silent> <leader>ve :edit $MYVIMRC<cr>
 nmap <silent> <leader>vs :source $MYVIMRC<cr>
 
-" Run "make" (makeprg)
+" Run "make" (makeprg or compiler)
 nmap <silent> <leader>m :make<cr>
 
 " Cd to current file (if auto, no mapping)
@@ -342,8 +341,10 @@ imap <S-cr> <C-o>O
 " Why in the world is this not well defined?
 imap ê <C-v>ê
 
-" Sort visual selection (who uses replace mode ?)
-vmap <silent> R :!sort<cr>
+" Sort visual selection (who uses replace mode?)
+"
+" Update: who actually uses this?
+"vmap <silent> R :!sort<cr>
 
 if has("gui_running") && executable("wmctrl")
     nmap <silent> <F11> :call system("wmctrl -ir "
@@ -393,7 +394,7 @@ let g:tex_flavor = "latex"
 " Plugin customization ------------------------------------------- {{{
 
 " Dispatch
-nmap <silent> <leader>m :Make<cr>
+"nmap <silent> <leader>m :Make<cr>
 
 " CtrlP
 "let g:ctrlp_map = '<leader>p'
@@ -431,14 +432,15 @@ vmap V <Plug>(expand_region_shrink)
 
 " NERDTree
 let NERDTreeChDirMode = 2
-let NERDTreeIgnore = ['\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore = [
+            \ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
+            \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
+            \ ]
 let NERDTreeShowBookmarks = 1
-nmap <silent> <F3> :NERDTreeToggle<cr>
-imap <F3> <C-o><F3>
+nmap <silent> <leader>e :NERDTreeToggle<cr>
 
 " Tagbar
-nmap <silent> <F4> :Tagbar<cr>
-imap <F4> <C-o><F4>
+nmap <silent> <leader>t :Tagbar<cr>
 
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
@@ -450,5 +452,9 @@ nmap <silent> <leader>gg :Ggrep
 nmap <silent> <leader>gr :Ggrep <C-r><C-w><cr>
 nmap <leader>g :Git 
 set diffopt+=vertical
+
+" Subvert
+nmap <leader>sa :%S/<C-r><C-w>//gc<left><left><left>
+nmap <leader>ss :S/<C-r><C-w>//gc<left><left><left>
 
 " ---------------------------------------------------------------- }}}

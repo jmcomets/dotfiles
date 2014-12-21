@@ -8,4 +8,11 @@ augroup vim_filetype_autocommands
     " C / C++
     autocmd BufNewFile,BufRead,BufEnter *.ih set filetype=cpp
     autocmd BufNewFile,BufRead,BufEnter *.hpp set filetype=cpp
+
+    " Open PDF files with xdg-open
+    function! s:OpenWithExternalProgram(cmd)
+        execute '!' . a:cmd . ' ' . expand('%')
+        bdelete
+    endfunction
+    autocmd BufRead *.pdf call s:OpenWithExternalProgram('xdg-open')
 augroup END
