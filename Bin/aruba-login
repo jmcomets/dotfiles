@@ -7,7 +7,7 @@ stty -echo
 read -p "Password: " password
 stty echo
 
-wget --no-check-certificate --post-data="fqdn=insa-lyon.fr&password=$password&submit=Envoyer&user=$login" \
-    -O /dev/null 'https://a6000.insa-lyon.fr/cgi-bin/login'
+wget --no-check-certificate --post-data="auth_user=$login@insa-lyon.fr&auth_pass=$password&accept=Login" \
+    -O - 'https://dsi-fence-1.insa-lyon.fr:8001'
 
 # vim: ft=sh et sw=2 sts=2
