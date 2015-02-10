@@ -82,3 +82,9 @@
 [submodule "Vim/bundle/golden-view"]
 	path = Vim/bundle/golden-view
 	url = https://github.com/zhaocai/GoldenView.Vim.git
+[submodule "Vim/bundle/rust"]
+	path = Vim/bundle/rust
+	url = https://github.com/wting/rust.vim.git
+[submodule "Vim/bundle/ack"]
+	path = Vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
