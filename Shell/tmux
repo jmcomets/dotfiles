@@ -4,12 +4,13 @@ set -g default-terminal "screen-256color"
 setw -g xterm-keys on
 
 # allow mouse
-set -g mode-mouse on
+#set -g mode-mouse on
 
 # interact nicely with vim
-unbind C-b
-set -g prefix C-q
-unbind C-s
+# DEPRECATED
+#unbind C-b
+#set -g prefix C-q
+#unbind C-s
 
 # act like vim (sort of)
 setw -g mode-keys vi
@@ -25,9 +26,8 @@ bind-key - split-window
 # status bar
 set-option -g status off
 set-option -g status-position top
-set -g status-fg white
-#set -g status-bg colour242
-set -g status-bg red
+set -g status-bg green #colour242
+set -g status-fg black
 
 # pane index starts at 1 (easier to reach)
 set-window-option -g pane-base-index 1
