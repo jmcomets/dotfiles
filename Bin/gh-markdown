@@ -4,7 +4,7 @@ import json
 try:
     import requests
 except ImportError:
-    print 'requests is required'
+    print('requests is required')
 
 def gfm(text):
     """Converts Github Flavored Markdown to HTML."""
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     import sys
     argv = sys.argv[1:]
     if not argv:
-        print gfm(sys.stdin.read())
+        print(gfm(sys.stdin.read()))
     elif len(argv) == 1:
         try:
             with open(argv[0], 'r') as file_:
