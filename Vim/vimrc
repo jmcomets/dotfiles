@@ -227,7 +227,7 @@ if has('gui_running')
     colorscheme solarized
     set background=light
 else
-    colorscheme default
+    colorscheme grb256
     set background=dark
 endif
 
@@ -310,8 +310,9 @@ vmap < <gv
 " Select pasted text with gV
 nmap gV `[v`]
 
-" Enable IDE-style completion
-"imap <nul> <C-x><C-o>
+" Search/Replace
+nmap <leader>sa :%s/<C-r><C-w>//gc<left><left><left>
+nmap <leader>ss :s/<C-r><C-w>//gc<left><left><left>
 
 " Fast saving
 nmap <silent> <leader>w :write<cr>
@@ -393,43 +394,6 @@ let g:tex_flavor = "latex"
 
 " Plugin customization ------------------------------------------- {{{
 
-" Dispatch
-"nmap <silent> <leader>m :Make<cr>
-
-" CtrlP
-"let g:ctrlp_map = '<leader>p'
-"nmap <silent> <leader>pp :CtrlP<cr>
-"nmap <silent> <leader>pb :CtrlPBuffer<cr>
-"nmap <silent> <leader>pm :CtrlPMixed<cr>
-"nmap <silent> <leader>pl :CtrlPLine<cr>
-"nmap <silent> <leader>pq :CtrlPQuickfix<cr>
-
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
-            \ 'undo', 'line', 'mixed']
-
-" UltiSnips
-
-" Trigger configuration
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Snippets editing
-let g:UltiSnipsEditSplit = "horizontal"
-
-" Jedi
-"let g:jedi#completions_command = '<C-space>'
-"let g:jedi#documentation_command = '<K'>
-let g:jedi#rename_command = '<leader>jr'
-let g:jedi#usages_command = '<leader>jn'
-let g:jedi#goto_definitions_command = '<leader>jd'
-let g:jedi#goto_assignments_command = '<leader>jg'
-
-" Expand region
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
-
 " NERDTree
 let NERDTreeChDirMode = 2
 let NERDTreeIgnore = [
@@ -439,8 +403,22 @@ let NERDTreeIgnore = [
 let NERDTreeShowBookmarks = 1
 nmap <silent> <leader>e :NERDTreeToggle<cr>
 
-" Tagbar
-nmap <silent> <leader>t :Tagbar<cr>
+" CtrlP
+
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
+            \ 'undo', 'line', 'mixed']
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  'node_modules',
+            \ }
+
+" UltiSnips
+
+" Trigger configuration
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit = "horizontal"
 
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
@@ -448,13 +426,33 @@ nmap <silent> <leader>gc :Gcommit<cr>
 nmap <silent> <leader>gd :Gdiff<cr>
 nmap <silent> <leader>gw :Gwrite<cr>
 nmap <silent> <leader>gl :Glog<cr>
-nmap <silent> <leader>gg :Ggrep 
-nmap <silent> <leader>gr :Ggrep <C-r><C-w><cr>
+nmap <silent> <leader>g/ :Ggrep <C-r><C-w><cr>
 nmap <leader>g :Git 
 set diffopt+=vertical
 
 " Subvert
-nmap <leader>sa :%S/<C-r><C-w>//gc<left><left><left>
-nmap <leader>ss :S/<C-r><C-w>//gc<left><left><left>
+"nmap <leader>sa :%S/<C-r><C-w>//gc<left><left><left>
+"nmap <leader>ss :S/<C-r><C-w>//gc<left><left><left>
+
+" Golden view
+"let g:goldenview__enable_default_mapping = 0
+
+" Expand region
+"vmap v <Plug>(expand_region_expand)
+"vmap V <Plug>(expand_region_shrink)
+
+" Dispatch
+"nmap <silent> <leader>m :Make<cr>
+
+" Tagbar
+"nmap <silent> <leader>t :Tagbar<cr>
+
+" Jedi
+"let g:jedi#completions_command = '<C-space>'
+"let g:jedi#documentation_command = '<K'>
+"let g:jedi#rename_command = '<leader>jr'
+"let g:jedi#usages_command = '<leader>jn'
+"let g:jedi#goto_definitions_command = '<leader>jd'
+"let g:jedi#goto_assignments_command = '<leader>jg'
 
 " ---------------------------------------------------------------- }}}
