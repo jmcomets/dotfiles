@@ -41,22 +41,7 @@ setup_link ~/.bash/inputrc ~/.inputrc
 setup_link ~/.bash/profile ~/.bash_profile
 
 # Git
-git config --global alias.br 'branch'
-git config --global alias.ci 'commit'
-git config --global alias.rb 'rebase'
-git config --global alias.st 'status'
-git config --global alias.cim 'commit -m'
-git config --global alias.ciam 'commit --amend'
-git config --global alias.ciamne 'commit --amend --no-edit'
-git config --global alias.co 'checkout'
-git config --global alias.cob 'checkout -b'
-git config --global alias.l 'log'
-git config --global alias.lg 'log --format=oneline --abbrev-commit --graph'
-git config --global alias.rbc 'rebase --continue'
-git config --global user.name 'Jean-Marie Comets'
-git config --global user.email 'jean.marie.comets@gmail.com'
-git config --global color.ui 'auto'
-#git config --global push.default simple
+setup_link $DOTFILES/Shell/gitconfig ~/.gitconfig
 
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf

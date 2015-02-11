@@ -1,0 +1,24 @@
+[alias]
+	br = branch
+	ci = commit
+	l = log
+	rb = rebase
+	st = status
+	cim = commit -m
+	ciam = commit --amend
+	ciamne = commit --amend --no-edit
+	co = checkout
+	cob = checkout -b
+	rbc = rebase --continue
+	lg = log --format=oneline --abbrev-commit --graph
+[user]
+	name = Jean-Marie Comets
+	email = jean.marie.comets@gmail.com
+[color]
+	ui = auto
+[push]
+	default = simple
+[credential]
+	helper = cache
+[core]
+	autocrlf = input
