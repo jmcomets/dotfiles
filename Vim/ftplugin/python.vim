@@ -11,11 +11,11 @@ setlocal nosmartindent
 setlocal foldmethod=indent
 
 " Auto-completion (using jedi-vim now)
-"setlocal omnifunc=pythoncomplete#Complete
+setlocal omnifunc=pythoncomplete#Complete
 
 " Use :make for syntax checking (using pylint)
-setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-setlocal errorformat=%f:%l:\ %m
+"setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+"setlocal errorformat=%f:%l:\ %m
 
 " `gf` jumps to the filename under the cursor
 python << EOF
@@ -39,4 +39,4 @@ vmap <buffer> <F5> :python EvaluateCurrentRange()<cr>
 nmap <buffer> <F5> :!python %<cr>
 
 " Add import with <leader>i
-nmap <buffer> <leader>i mmggoimport antigravity<esc>viw<C-g>
+nmap <buffer> <leader>i ggoimport antigravity<esc>viw<C-g>
