@@ -333,6 +333,9 @@ if !exists("s:autocd") || s:autocd == 0
     nmap <silent> <leader>cd :cd %:p:h<cr>
 endif
 
+" In command mode, insert "%:p:h" when typing %% (very useful)
+cnoremap %% <C-r>=expand("%:p:h")."/"<cr>
+
 " Newline above in insert mode
 imap <S-cr> <C-o>O
 

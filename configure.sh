@@ -42,6 +42,7 @@ setup_link ~/.bash/profile ~/.bash_profile
 
 # Git
 setup_link $DOTFILES/Shell/gitconfig ~/.gitconfig
+setup_link $DOTFILES/Shell/githelpers ~/.githelpers
 
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
