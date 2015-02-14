@@ -223,12 +223,11 @@ set incsearch
 
 " Colorscheme setup
 set t_Co=256
+set background=dark
 if has('gui_running')
     colorscheme solarized
-    set background=light
 else
     colorscheme grb256
-    set background=dark
 endif
 
 " GUI font
@@ -310,9 +309,9 @@ vmap < <gv
 " Select pasted text with gV
 nmap gV `[v`]
 
-" Search/Replace
-nmap <leader>sa :%s/<C-r><C-w>//gc<left><left><left>
-nmap <leader>ss :s/<C-r><C-w>//gc<left><left><left>
+" Replace current word
+nmap <leader>r :%s/<C-r><C-w>//gc<left><left><left>
+nmap <leader>rr :s/<C-r><C-w>//gc<left><left><left>
 
 " Fast saving
 nmap <silent> <leader>w :write<cr>
@@ -321,8 +320,8 @@ nmap <silent> <leader>w :write<cr>
 nmap <silent> <leader>q :quit<cr>
 
 " Edit/source vimrc
-nmap <silent> <leader>ve :edit $MYVIMRC<cr>
-nmap <silent> <leader>vs :source $MYVIMRC<cr>
+"nmap <silent> <leader>ve :edit $MYVIMRC<cr>
+"nmap <silent> <leader>vs :source $MYVIMRC<cr>
 
 " Run "make" (makeprg or compiler)
 nmap <silent> <leader>m :make<cr>
@@ -335,6 +334,11 @@ endif
 
 " In command mode, insert "%:p:h" when typing %% (very useful)
 cnoremap %% <C-r>=expand("%:p:h")."/"<cr>
+
+" Editing a file in the cwd (often used)
+nmap <leader>e :edit %%
+nmap <leader>s :split %%
+nmap <leader>v :vsplit %%
 
 " Newline above in insert mode
 imap <S-cr> <C-o>O
@@ -397,17 +401,7 @@ let g:tex_flavor = "latex"
 
 " Plugin customization ------------------------------------------- {{{
 
-" NERDTree
-let NERDTreeChDirMode = 2
-let NERDTreeIgnore = [
-            \ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
-            \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
-            \ ]
-let NERDTreeShowBookmarks = 1
-nmap <silent> <leader>e :NERDTreeToggle<cr>
-
 " CtrlP
-
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir',
@@ -416,9 +410,16 @@ let g:ctrlp_custom_ignore = {
             \ 'dir':  'node_modules',
             \ }
 
-" UltiSnips
+" NERDTree
+"let NERDTreeChDirMode = 2
+"let NERDTreeIgnore = [
+            "\ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
+            "\ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
+            "\ ]
+"let NERDTreeShowBookmarks = 1
+"nmap <silent> <leader>e :NERDTreeToggle<cr>
 
-" Trigger configuration
+" UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit = "horizontal"
