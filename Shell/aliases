@@ -9,21 +9,31 @@ alias grep="grep --color=auto"
 alias ls="ls -FX --color=auto"
 alias tmux="TERM=xterm-256color tmux -2"
 
-# Shortcuts
+# Moving around
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
-alias la="ls -A"
-alias ll="ls -l"
-alias lla="ls -la"
+
+# Miscellaneous
+alias ll="ls -lh"
 alias l="ls"
-alias g="gvim --remote-silent"
+alias j='jobs'
+alias f='fg'
+alias vi='vim'
+
+# Folders
 alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"
+
+# Apt
 alias ag="apt-get"
 alias sag="sudo apt-get"
+
+# Quick open
 alias x="xdg-open"
 alias xx="xdg-open ."
+
+# Python
 alias py='python'
 alias py2='python2'
 alias py3='python3'
