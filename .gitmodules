@@ -88,3 +88,9 @@
 [submodule "Vim/bundle/ack"]
 	path = Vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "Shell/zsh/git-prompt"]
+	path = Shell/zsh/git-prompt
+	url = https://github.com/olivierverdier/zsh-git-prompt.git
+[submodule "Vim/bundle/syntastic"]
+	path = Vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git

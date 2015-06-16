@@ -17,8 +17,6 @@ alias ....="cd ../../../"
 # Miscellaneous
 alias ll="ls -lh"
 alias l="ls"
-alias j='jobs'
-alias f='fg'
 alias vi='vim'
 
 # Folders
@@ -26,8 +24,12 @@ alias d="cd ~/Desktop"
 alias dw="cd ~/Downloads"
 
 # Apt
-alias ag="apt-get"
-alias sag="sudo apt-get"
+test -e "$(which apt-get)" && alias sag="sudo apt-get"
+
+# Pacman
+test -e "$(which pacman)" && alias pac="sudo pacman"
+test -e "$(which yaourt)" && alias yao="yaourt"
+test -e "$(which pkgfile)" && alias pkg="pkgfile"
 
 # Quick open
 alias x="xdg-open"

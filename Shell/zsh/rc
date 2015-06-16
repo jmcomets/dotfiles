@@ -1,5 +1,3 @@
-# ---------- MODULES ---------- {{{
-
 # Prompt
 autoload -U promptinit
 promptinit
@@ -9,14 +7,8 @@ autoload -U colors
 colors
 
 # Completion
-autoload -Uz compinit
-compinit -i
-autoload -U bashcompinit
-bashcompinit
-
-# ------------------------- }}}
-
-# ----------- BASE --------- {{{
+autoload -U compinit
+compinit
 
 # Vi-style
 bindkey -v
@@ -24,23 +16,23 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 # also backwards search with <C-r>
 bindkey '^R' history-incremental-search-backward
+bindkey -v      # vi mode
 
 # History
 HISTSIZE=5000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# ------------------------- }}}
-
-# ---------- EXTERNAL ---------- {{{
-
+# External modules
 call ~/.zsh/colors
 call ~/.zsh/completion
 
-# powerline
+# Powerline
 call /usr/share/zsh/site-contrib/powerline.zsh && \
   export VIRTUAL_ENV_DISABLE_PROMPT=true
 
-# ------------------------- }}}
+# Git prompt
+test -e "$(which ghc)" && GIT_PROMPT_EXECUTABLE="haskell"
+source ~/.zsh/git-prompt/zshrc.sh
 
-# vim: ft=zsh et sw=2 sts=2 fdm=marker
+# vim: ft=zsh et sw=2 sts=2

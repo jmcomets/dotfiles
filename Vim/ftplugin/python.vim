@@ -10,14 +10,13 @@ setlocal nosmartindent
 " Set correct folding method
 setlocal foldmethod=indent
 
-" Auto-completion (using jedi-vim now)
-setlocal omnifunc=pythoncomplete#Complete
+" Run the file with python
+nmap <buffer> <F5> :!python %<cr>
 
-" Use :make for syntax checking (using pylint)
-"setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-"setlocal errorformat=%f:%l:\ %m
+" Find python command
 
 " `gf` jumps to the filename under the cursor
+function! s:AddPythonPath()
 python << EOF
 import os
 import sys
@@ -27,16 +26,24 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command(r'set path+=%s' % (p.replace(' ', r'\ ')))
 EOF
+endfunction
 
-" Select a range in visual mode and execute it,
-" otherwise execute entire buffer
-python << EOL
+function! s:AddPython3Path()
+python3 << EOF
+import os
+import sys
 import vim
-def EvaluateCurrentRange():
-    eval(compile('\n'.join(vim.current.range), '', 'exec'), globals())
-EOL
-vmap <buffer> <F5> :python EvaluateCurrentRange()<cr>
-nmap <buffer> <F5> :!python %<cr>
 
-" Add import with <leader>i
-nmap <buffer> <leader>i ggoimport antigravity<esc>viw<C-g>
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command(r'set path+=%s' % (p.replace(' ', r'\ ')))
+EOF
+endfunction
+
+if has('python')
+    call s:AddPythonPath()
+    setlocal omnifunc=pythoncomplete#Complete
+elseif has('python3')
+    call s:AddPython3Path()
+    setlocal omnifunc=python3complete#Complete
+end

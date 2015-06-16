@@ -108,12 +108,12 @@ set wildmode=longest,list
 " Ignore compiled files and backups
 set wildignore=*.o,*~,*.pyc,*.gch
 
-" Virtual edit (awesome)
-set virtualedit=all
+" Virtual edit
+set virtualedit=
+set whichwrap+=<,>,h,l " disabled when virtualedit
 
 " Backspace unindents and joins lines
 set backspace=start,indent,eol
-"set whichwrap+=<,>,h,l " disabled since virtualedit
 
 " Don't notify any errors
 set noerrorbells
@@ -431,7 +431,7 @@ nmap <silent> <leader>gd :Gdiff<cr>
 nmap <silent> <leader>gw :Gwrite<cr>
 nmap <silent> <leader>gl :Glog<cr>
 nmap <silent> <leader>g/ :Ggrep <C-r><C-w><cr>
-nmap <leader>g :Git 
+nmap <leader>g :Git<space>
 set diffopt+=vertical
 
 " Subvert
@@ -439,7 +439,7 @@ set diffopt+=vertical
 "nmap <leader>ss :S/<C-r><C-w>//gc<left><left><left>
 
 " Golden view
-"let g:goldenview__enable_default_mapping = 0
+let g:goldenview__enable_default_mapping = 0
 
 " Expand region
 "vmap v <Plug>(expand_region_expand)
