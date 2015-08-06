@@ -20,14 +20,14 @@
 
 " Basics --------------------------------------------------------- {{{
 
+" Leader is "<space>"
+let mapleader = "\<space>"
+
 " Sets how many lines of history Vim has to remember
 set history=1000
 
 " Reload buffer when its file is changed from the outside
 set autoread
-
-" Mapleader is "," (again)
-let mapleader = ","
 
 " Set UTF8 as standard encoding
 set encoding=utf8
@@ -264,24 +264,6 @@ set splitright
 nnoremap j gj
 nnoremap k gk
 
-" Switch buffers quickly
-nmap <silent> <leader>n :bnext<cr>
-nmap <silent> <leader>N :bprevious<cr>
-
-" Open last (alternative) buffer
-nmap <leader>a <C-^>
-
-" Go to the 80th column
-nmap <bar><bar> 80<bar>
-
-" Move a line of text using ALT+[jk]
-nmap <silent> <M-j> :move .+1<cr>==
-nmap <silent> <M-k> :move .-2<cr>==
-imap <silent> <M-j> <esc>:move .+1<cr>==gi
-imap <silent> <M-k> <esc>:move .-2<cr>==gi
-vmap <silent> <M-j> :move '>+1<cr>gv=gv
-vmap <silent> <M-k> :move '<-2<cr>gv=gv
-
 " Disable search highlighting
 nmap <silent> <leader><cr> :nohlsearch<cr>
 
@@ -406,8 +388,8 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
+"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " NERDTree
 "let NERDTreeChDirMode = 2

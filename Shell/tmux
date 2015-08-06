@@ -7,9 +7,9 @@ setw -g xterm-keys on
 set -g mode-mouse on
 
 # interact nicely with vim
-#unbind C-b
-#set -g prefix C-q
-#unbind C-s
+unbind C-b
+set -g prefix C-Space
+bind Space send-prefix
 
 # act like vim (sort of)
 setw -g mode-keys vi
@@ -21,15 +21,6 @@ bind l select-pane -R
 # splits
 bind-key | split-window -h
 bind-key - split-window
-
-# status bar
-set-option -g status off
-set-option -g status-position top
-set -g status-bg green #colour242
-set -g status-fg black
-
-# pane index starts at 1 (easier to reach)
-#set-window-option -g pane-base-index 1
 
 # use Ctrl-[, space, then y to copy to clipboard (xclip required)
 bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
