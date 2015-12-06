@@ -2,25 +2,6 @@ if [ -x "/usr/bin/dircolors" ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-vim_ins_mode="%{$fg[yellow]%}%B(insert)%b%{$reset_color%}"
-vim_cmd_mode="%{$fg[cyan]%}%B(normal)%b%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-  zle reset-prompt
-}
-zle -N zle-line-finish
-
-# allow funky stuff in prompt
-setopt prompt_subst
-
 # root is red, user is blue
 if [ "$USER" = "root" ]; then
   color="red"
@@ -29,6 +10,5 @@ else
 fi
 PS1="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %B%~%b "
 PS2="%{$fg[red]>%} %{$reset_color%}"
-RPROMPT='${vim_mode} $(git_super_status)'
 
 # vim: ft=zsh et sw=2 sts=2

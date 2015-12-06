@@ -31,8 +31,4 @@ call ~/.zsh/completion
 call /usr/share/zsh/site-contrib/powerline.zsh && \
   export VIRTUAL_ENV_DISABLE_PROMPT=true
 
-# Git prompt
-test -e "$(which ghc)" && GIT_PROMPT_EXECUTABLE="haskell"
-source ~/.zsh/git-prompt/zshrc.sh
-
 # vim: ft=zsh et sw=2 sts=2

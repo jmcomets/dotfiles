@@ -85,9 +85,6 @@
 [submodule "Vim/bundle/rust"]
 	path = Vim/bundle/rust
 	url = https://github.com/wting/rust.vim.git
-[submodule "Shell/zsh/git-prompt"]
-	path = Shell/zsh/git-prompt
-	url = https://github.com/olivierverdier/zsh-git-prompt.git
 [submodule "Vim/bundle/syntastic"]
 	path = Vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
