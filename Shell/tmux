@@ -4,7 +4,10 @@ set -g default-terminal "screen-256color"
 setw -g xterm-keys on
 
 # allow mouse
-set -g mode-mouse on
+#set -g mode-mouse on
+
+set -g status off
+set -g status-position top
 
 # interact nicely with vim
 unbind C-b
