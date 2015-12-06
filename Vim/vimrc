@@ -385,7 +385,7 @@ let g:tex_flavor = "latex"
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<leader><leader>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
 "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
