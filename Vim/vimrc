@@ -390,6 +390,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
 "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
 "let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+nmap <leader>u :CtrlPMRUFiles<cr>
+nmap <leader>j :CtrlPBuffer<cr>
 
 " NERDTree
 "let NERDTreeChDirMode = 2
