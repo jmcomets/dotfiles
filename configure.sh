@@ -27,7 +27,6 @@ setup_link ~/.vim/vimrc ~/.vimrc
 # Shell
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
-#test -e "$(which gconftool)" && gconftool --load $DOTFILES/Shell/gnome-terminal.xml
 
 # Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh
@@ -46,5 +45,10 @@ setup_link $DOTFILES/Shell/githelpers ~/.githelpers
 
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
+
+# Openbox
+setup_link $DOTFILES/Customization/Xresources ~/.Xresources
+setup_link $DOTFILES/Customization/openbox ~/.config/openbox
+setup_link $DOTFILES/Customization/tint2 ~/.config/tint2
 
 # vim: ft=sh et sw=4 sts=4

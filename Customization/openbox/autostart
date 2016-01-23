@@ -1,0 +1,4 @@
+cat $HOME/.fehbg | bash -
+redshift &
+mpd
+tint2 &
