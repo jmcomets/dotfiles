@@ -1,3 +1,5 @@
+!!! URxvt
+
 ! Color scheme
 URxvt*background: black
 URxvt*foreground: white
@@ -43,3 +45,15 @@ URxvt*cursorBlink: true
 URxvt.font:     xft:SourceCodePro:size=11:antialias=true
 URxvt.boldFont: xft:SourceCodePro:bold:size=11:antialias=true
 URxvt.scrollBar: false
+
+!!! Rofi
+
+rofi.color-enabled:                  true
+! Color scheme for normal row
+rofi.color-normal:                   argb:00000000, #ffffff, argb:00000000, #000000, #0060a0
+! Color scheme for urgent row
+rofi.color-urgent:                   argb:00000000, #ffa0a0, argb:00000000, #ffa0a0, #0060a0
+! Color scheme for active row
+rofi.color-active:                   argb:00000000, #a0ffa0, argb:00000000, #a0ffa0, #0060a0
+! Color scheme window
+rofi.color-window:                   argb:00000000, #000000, #ffffff

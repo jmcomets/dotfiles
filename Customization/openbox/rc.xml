@@ -322,13 +322,22 @@
         <command>firefox</command>
       </action>
     </keybind>
-    <keybind key="A-F2">
+    <keybind key="C-A-w">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Focus window</name>
+        </startupnotify>
+        <command>~/.local/bin/rofi -show window</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-r">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Run application</name>
         </startupnotify>
-        <command>gmrun</command>
+        <command>~/.local/bin/rofi -show run</command>
       </action>
     </keybind>
   </keyboard>

@@ -50,5 +50,6 @@ setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
 setup_link $DOTFILES/Customization/Xresources ~/.Xresources
 setup_link $DOTFILES/Customization/openbox ~/.config/openbox
 setup_link $DOTFILES/Customization/tint2 ~/.config/tint2
+setup_link $DOTFILES/Customization/xinitrc ~/.xinitrc
 
 # vim: ft=sh et sw=4 sts=4
