@@ -10,6 +10,14 @@ setlocal nosmartindent
 " Set correct folding method
 setlocal foldmethod=indent
 
+" Autocommands
+augroup python_autocommands
+    autocmd!
+
+    " Strip all spaces before writing
+    autocmd BufWritePre *.py :%substitute/\v\s+$//ge
+augroup END
+
 " Run the file with python
 nmap <buffer> <F5> :!python %<cr>
 

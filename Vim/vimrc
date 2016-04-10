@@ -1,24 +1,8 @@
-" Summary -------------------------------------------------------- {{{
-"
-" Author: Jean-Marie Comets <jean.marie.comets@gmail.com>
-"
-" Version: 2.6 - 25/06/2013
-"
-" Sections:
-"   - Basics
-"   - Vim user interface
-"   - Syntax related
-"   - Text, tab and indent related
-"   - Searching
-"   - Colors and Fonts
-"   - Moving around
-"   - Keymappings
-"   - Autocommands
-"   - Plugin customization
-"
-" ---------------------------------------------------------------- }}}
+" The "m" at the end of Vi
+set nocompatible
 
-" Basics --------------------------------------------------------- {{{
+" Plugin setup
+source $HOME/.vim/plugins.vim
 
 " Leader is "<space>"
 let mapleader = "\<space>"
@@ -40,33 +24,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" The "m" at the end of Vi
-set nocompatible
-
 " Add "$" at end of "change" nouns
 set cpoptions+=$
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guitablabel=%M\ %t
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=m
-    set guioptions-=e
-    set guioptions-=T
-endif
-
 " Remove startup message
 set shortmess+=I
-
-" Start Pathogen plugin to load bundle
-call pathogen#infect("extensions")
-call pathogen#helptags()
-
-" Enable plugins
-filetype plugin indent on
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -123,13 +85,6 @@ set timeoutlen=500
 
 " Hide the mouse pointer while typing
 set mousehide
-
-" Mouse activated only in GUI
-if has('gui_running')
-    set mouse=a
-else
-    set mouse=
-endif
 
 " ---------------------------------------------------------------- }}}
 
@@ -189,8 +144,7 @@ set softtabstop=4
 set tabstop=4
 
 " Invisible characters
-set list listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
+set list listchars=tab:>-,trail:.,extends:>
 
 " Explicit FTW
 set autoindent
@@ -221,24 +175,13 @@ set incsearch
 
 " Colors and Fonts ----------------------------------------------- {{{
 
-" Colorscheme setup
+" Colorscheme should use 256 colors
 set t_Co=256
+" and should be a dark background
 set background=dark
-if has('gui_running')
-    colorscheme solarized
-else
-    colorscheme grb256
-endif
-
-" GUI font
-if has("gui_running")
-    set guifont=Monospace\ 11
-endif
 
 " In terminal, the "escape" also acts as Ctrl-C
-if has("terminfo")
-    let g:CommandTCancelMap = ["<esc>", "<C-c>"]
-endif
+let g:CommandTCancelMap = ["<esc>", "<C-c>"]
 
 " ---------------------------------------------------------------- }}}
 
@@ -293,7 +236,6 @@ nmap gV `[v`]
 
 " Replace current word
 nmap <leader>r :%s/<C-r><C-w>//gc<left><left><left>
-nmap <leader>rr :s/<C-r><C-w>//gc<left><left><left>
 
 " Fast saving
 nmap <silent> <leader>w :write<cr>
@@ -301,145 +243,34 @@ nmap <silent> <leader>w :write<cr>
 " Close current window
 nmap <silent> <leader>q :quit<cr>
 
-" Edit/source vimrc
-"nmap <silent> <leader>ve :edit $MYVIMRC<cr>
-"nmap <silent> <leader>vs :source $MYVIMRC<cr>
-
 " Run "make" (makeprg or compiler)
 nmap <silent> <leader>m :make<cr>
 
-" Cd to current file (if auto, no mapping)
-let s:autocd=0 " boolean indicating if should cd with current file
-if !exists("s:autocd") || s:autocd == 0
-    nmap <silent> <leader>cd :cd %:p:h<cr>
-endif
+" Cd to current file
+nmap <silent> <leader>cd :cd %:p:h<cr>
 
 " In command mode, insert "%:p:h" when typing %% (very useful)
 cnoremap %% <C-r>=expand("%:p:h")."/"<cr>
-
-" Editing a file in the cwd (often used)
-nmap <leader>e :edit %%
-nmap <leader>s :split %%
-nmap <leader>v :vsplit %%
-
-" Newline above in insert mode
-imap <S-cr> <C-o>O
-
-" Surround word with spaces
-"nmap <leader><space> gea<space><esc>ea<space><esc>b
-
-" Why in the world is this not well defined?
-imap ê <C-v>ê
-
-" Sort visual selection (who uses replace mode?)
-"
-" Update: who actually uses this?
-"vmap <silent> R :!sort<cr>
-
-if has("gui_running") && executable("wmctrl")
-    nmap <silent> <F11> :call system("wmctrl -ir "
-                \ . v:windowid . " -b toggle,fullscreen")<cr>
-end
 
 " ---------------------------------------------------------------- }}}
 
 " Autocommands --------------------------------------------------- {{{
 
-if has("autocmd")
-    augroup vimrc_autocommands
-        " Remove all previous autocommands from this group
-        autocmd!
+augroup vimrc_autocommands
+    " Remove all previous autocommands from this group
+    autocmd!
 
-        " Return to last edit position when opening files
-        autocmd BufReadPost *
-                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                    \     execute "normal! g`\"" |
-                    \ endif
+    " Return to last edit position when opening files
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \     execute "normal! g`\"" |
+                \ endif
 
-        " Cd directory when opening files
-        if exists("s:autocd") && s:autocd != 0
-            if exists("+autochdir")
-                set autochdir
-            else
-                autocmd BufEnter *
-                            \ execute "chdir " . escape(expand("%:p:h"), " ")
-            endif
-        endif
-        " Vimrc
-        autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
-
-        " Makefile
-        autocmd FileType make setlocal noexpandtab
-
-        " Python
-        autocmd BufWritePre *.py :%substitute/\v\s+$//ge
-    augroup END
-endif
+    " Vimrc
+    autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
+augroup END
 
 " LaTeX-specification
 let g:tex_flavor = "latex"
-
-" ---------------------------------------------------------------- }}}
-
-" Plugin customization ------------------------------------------- {{{
-
-" CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<leader><leader>'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-nmap <leader>u :CtrlPMRUFiles<cr>
-nmap <leader>j :CtrlPBuffer<cr>
-
-" NERDTree
-"let NERDTreeChDirMode = 2
-"let NERDTreeIgnore = [
-            "\ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
-            "\ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
-            "\ ]
-"let NERDTreeShowBookmarks = 1
-"nmap <silent> <leader>e :NERDTreeToggle<cr>
-
-" UltiSnips
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit = "horizontal"
-
-" Fugitive
-nmap <silent> <leader>gs :Gstatus<cr>
-nmap <silent> <leader>gc :Gcommit<cr>
-nmap <silent> <leader>gd :Gdiff<cr>
-nmap <silent> <leader>gw :Gwrite<cr>
-nmap <silent> <leader>gl :Glog<cr>
-nmap <silent> <leader>g/ :Ggrep <C-r><C-w><cr>
-nmap <leader>g :Git<space>
-set diffopt+=vertical
-
-" Subvert
-"nmap <leader>sa :%S/<C-r><C-w>//gc<left><left><left>
-"nmap <leader>ss :S/<C-r><C-w>//gc<left><left><left>
-
-" Golden view
-let g:goldenview__enable_default_mapping = 0
-
-" Expand region
-"vmap v <Plug>(expand_region_expand)
-"vmap V <Plug>(expand_region_shrink)
-
-" Dispatch
-"nmap <silent> <leader>m :Make<cr>
-
-" Tagbar
-"nmap <silent> <leader>t :Tagbar<cr>
-
-" Jedi
-"let g:jedi#completions_command = '<C-space>'
-"let g:jedi#documentation_command = '<K'>
-"let g:jedi#rename_command = '<leader>jr'
-"let g:jedi#usages_command = '<leader>jn'
-"let g:jedi#goto_definitions_command = '<leader>jd'
-"let g:jedi#goto_assignments_command = '<leader>jg'
 
 " ---------------------------------------------------------------- }}}
