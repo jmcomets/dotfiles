@@ -5,7 +5,7 @@
 # ID 1
 rounded = 0
 border_width = 0
-background_color = #4E9A06 100
+background_color = #000000 100
 border_color = #000000 100
 
 # ID 2
@@ -17,19 +17,26 @@ border_color = #000000 100
 # ID 3
 rounded = 0
 border_width = 0
-background_color = #000000 100
+background_color = #4E9A06 100
+border_color = #000000 100
+
+# ID 4
+rounded = 0
+border_width = 0
+background_color = #B49300 100
 border_color = #000000 100
 
 # Panel
 panel_monitor = all
+panel_items = LTSBEC
 panel_position =  bottom center horizontal
 panel_size = 100% 20
 panel_margin = -2 -1
-panel_padding = 0 0 10
+panel_padding = 0 0 0
 panel_dock = 0
 wm_menu = 1
 panel_layer = normal
-panel_background_id = 3
+panel_background_id = 1
 
 # Taskbar
 taskbar_mode = single_desktop
@@ -45,7 +52,7 @@ task_centered = 0
 task_maximum_size = 150 32
 task_padding = 8 2
 task_background_id = 2
-task_active_background_id = 1
+task_active_background_id = 3
 task_urgent_background_id = 2
 task_iconified_background_id = 0
 
@@ -63,13 +70,21 @@ task_urgent_font_color = #FFFFFF 100
 task_iconified_font_color = #DCDCDC 80
 font_shadow = 0
 
+# Executor
+execp = new
+execp_command = mpc current
+execp_interval = 1
+execp_font = Terminus 9
+execp_font_color = #FFFFFF 100
+execp_padding = 10 6
+execp_background_id = 4
+
 # Clock
 time1_format = %H:%M - %d/%m/%y
 time1_font = Terminus 9
 clock_font_color = #FFFFFF 100
-clock_tooltip = 
 clock_padding = 10 6
-clock_background_id = 1
+clock_background_id = 3
 time1_timezone = 
 time2_timezone = 
 clock_tooltip_timezone = 
@@ -79,5 +94,3 @@ mouse_middle = none
 mouse_right = close
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify
-
-# End of config
