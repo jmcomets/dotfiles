@@ -1,11 +1,72 @@
-" The "m" at the end of Vi
-set nocompatible
-
-" Plugin setup
-source $HOME/.vim/plugins.vim
-
-" Leader is "<space>"
+" Leader
 let mapleader = "\<space>"
+
+" Plugins -------------------------------------------------------- {{{
+
+" Vundle
+set nocompatible
+filetype off
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/extensions')
+
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'idanarye/vim-casetrate'
+Plugin 'kien/ctrlp.vim'
+Plugin 'quanganhdo/grb256'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+
+Plugin 'argtextobj.vim'
+Plugin 'matchit.zip'
+Plugin 'python_match.vim'
+
+" Plugins
+call vundle#end()
+filetype plugin indent on
+
+" CtrlP
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<leader><leader>'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+nmap <leader>u :CtrlPMRUFiles<cr>
+nmap <leader>j :CtrlPBuffer<cr>
+nmap <leader>l :CtrlPLine<cr>
+" extra setup if "ag" command is available
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
+endif
+
+" Ag
+nmap <leader>k :Ag <C-r><C-w><cr>
+
+" NERDTree
+let NERDTreeChDirMode = 2
+let NERDTreeIgnore = [
+            \ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
+            \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
+            \ ]
+let NERDTreeShowBookmarks = 1
+nmap <silent> <leader>e :NERDTreeToggle<cr>
+
+" Dispatch
+nmap <silent> <leader>m :Make<cr>
+
+" ---------------------------------------------------------------- }}}
 
 " Sets how many lines of history Vim has to remember
 set history=1000
@@ -179,6 +240,8 @@ set incsearch
 set t_Co=256
 " and should be a dark background
 set background=dark
+" and is this one
+colorscheme grb256
 
 " In terminal, the "escape" also acts as Ctrl-C
 let g:CommandTCancelMap = ["<esc>", "<C-c>"]
