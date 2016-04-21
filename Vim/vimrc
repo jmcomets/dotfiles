@@ -14,10 +14,13 @@ call vundle#begin('~/.vim/extensions')
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'argtextobj.vim'
+Plugin 'matchit.zip'
+Plugin 'python_match.vim'
+
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'idanarye/vim-casetrate'
 Plugin 'kien/ctrlp.vim'
-Plugin 'quanganhdo/grb256'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
 Plugin 'tpope/vim-abolish'
@@ -29,11 +32,11 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
-Plugin 'argtextobj.vim'
-Plugin 'matchit.zip'
-Plugin 'python_match.vim'
+Plugin 'quanganhdo/grb256'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'rust-lang/rust.vim'
 
-" Plugins
+" Finish setting up plugins
 call vundle#end()
 filetype plugin indent on
 
