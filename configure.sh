@@ -47,9 +47,7 @@ setup_link $DOTFILES/Shell/githelpers ~/.githelpers
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
 
 # Openbox
-setup_link $DOTFILES/Customization/Xresources ~/.Xresources
-setup_link $DOTFILES/Customization/openbox ~/.config/openbox
-setup_link $DOTFILES/Customization/tint2 ~/.config/tint2
-setup_link $DOTFILES/Customization/xinitrc ~/.xinitrc
+setup_link $DOTFILES/Shell/Xresources ~/.Xresources
+setup_link $DOTFILES/Shell/xinitrc ~/.xinitrc
 
 # vim: ft=sh et sw=4 sts=4

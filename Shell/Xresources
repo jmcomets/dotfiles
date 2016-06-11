@@ -31,10 +31,11 @@ URxvt*color15 : #EEEEEC
 
 URxvt*colorUL: #86a2b0
 
-! Enable clickable links
-URxvt.perl-ext-common:  default,matcher
+! Extensions
+URxvt.perl-ext-common:  default,matcher,fullscreen
 URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
+URxvt.keysym.F11:       perl:fullscreen:switch
 
 ! Scrolling options and cursor style
 URxvt*saveLines: 12000
@@ -46,14 +47,5 @@ URxvt.font:     xft:SourceCodePro:size=11:antialias=true
 URxvt.boldFont: xft:SourceCodePro:bold:size=11:antialias=true
 URxvt.scrollBar: false
 
-!!! Rofi
-
-rofi.color-enabled:                  true
-! Color scheme for normal row
-rofi.color-normal:                   argb:00000000, #ffffff, argb:00000000, #000000, #0060a0
-! Color scheme for urgent row
-rofi.color-urgent:                   argb:00000000, #ffa0a0, argb:00000000, #ffa0a0, #0060a0
-! Color scheme for active row
-rofi.color-active:                   argb:00000000, #a0ffa0, argb:00000000, #a0ffa0, #0060a0
-! Color scheme window
-rofi.color-window:                   argb:00000000, #000000, #ffffff
+! Disable ISO ⇬14755 mode
+URxvt*iso14755: false

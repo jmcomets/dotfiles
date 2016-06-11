@@ -1,5 +1,0 @@
-cat $HOME/.fehbg | bash -
-redshift &
-mpd
-tint2 &
-unclutter -idle 3
