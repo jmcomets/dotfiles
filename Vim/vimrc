@@ -1,75 +1,79 @@
-" Leader
-let mapleader = "\<space>"
-
-" Plugins -------------------------------------------------------- {{{
-
-" Vundle
+" The "m" at the end of Vi
 set nocompatible
+
+let s:bundle_dir = $HOME . '/.vim/bundle'
+
+" Plugins
 filetype off
+let &runtimepath .= ',' . s:bundle_dir . '/Vundle.vim'
+call vundle#begin(s:bundle_dir)
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('~/.vim/extensions')
-
-" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'argtextobj.vim'
-Plugin 'matchit.zip'
-Plugin 'python_match.vim'
-
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'idanarye/vim-casetrate'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
-Plugin 'tpope/vim-abolish'
+" obligatory Tim Pope plugins
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-dispatch'
 
-Plugin 'quanganhdo/grb256'
-Plugin 'elixir-lang/vim-elixir'
+" brackets
+Plugin 'tpope/vim-surround'
+Plugin 'kien/rainbow_parentheses.vim'
+"Plugin 'paredit.vim'
+
+" navigation
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'dietsche/vim-lastplace'
+Plugin 'tmhedberg/matchit'
+Plugin 'python_match.vim'
+Plugin 'rking/ag.vim'
+
+" editing
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'argtextobj.vim'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'christoomey/vim-sort-motion'
+Plugin 'idanarye/vim-casetrate'
+Plugin 'junegunn/vim-easy-align'
+
+" current colorscheme
+Plugin 'marciomazza/vim-brogrammer-theme'
+
+" not used often, but better than the default
+Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
+
+" org-mode for Vim
+Plugin 'jceb/vim-orgmode'
+
+" xolox, used for various utilities (:Open, parallel commands)
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-shell'
+
+" C++ plugins
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" JVM plugins
+Plugin 'tpope/vim-classpath'
+
+" Clojure plugins
+Plugin 'guns/vim-clojure-highlight'
+
+" Haskell plugins
+Plugin 'lukerandall/haskellmode-vim'
+
+" Rust plugins
 Plugin 'rust-lang/rust.vim'
 
-" Finish setting up plugins
 call vundle#end()
 filetype plugin indent on
 
-" CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<leader><leader>'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-nmap <leader>u :CtrlPMRUFiles<cr>
-nmap <leader>j :CtrlPBuffer<cr>
-nmap <leader>l :CtrlPLine<cr>
-" extra setup if "ag" command is available
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
-endif
-
-" Ag
-nmap <leader>k :Ag <C-r><C-w><cr>
-
-" NERDTree
-let NERDTreeChDirMode = 2
-let NERDTreeIgnore = [
-            \ '\.o$', '\.gch$', '\~$', '\.pyc$', '\.swp$',
-            \ '\.acn$', '\.aux$', '\.glo$', '\.glsdefs$', '\.ist$', '\.out$', '\.toc$'
-            \ ]
-let NERDTreeShowBookmarks = 1
-nmap <silent> <leader>e :NERDTreeToggle<cr>
-
-" Dispatch
-nmap <silent> <leader>m :Make<cr>
-
-" ---------------------------------------------------------------- }}}
+" Leader is "<space>"
+let mapleader = "\<space>"
 
 " Sets how many lines of history Vim has to remember
 set history=1000
@@ -91,15 +95,26 @@ set noswapfile
 " Add "$" at end of "change" nouns
 set cpoptions+=$
 
+" Set extra options when running in GUI mode
+if has('gui_running')
+    set guitablabel=%M\ %t
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=m
+    set guioptions-=e
+    set guioptions-=T
+endif
+
+" In terminal, the "escape" also acts as Ctrl-C
+let g:CommandTCancelMap = ["<esc>", "<C-c>"]
+
 " Remove startup message
 set shortmess+=I
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
-
-" ---------------------------------------------------------------- }}}
-
-" Vim user interface --------------------------------------------- {{{
 
 " Title is name of current file
 set title
@@ -107,8 +122,9 @@ set title
 " Set amount of lines above the cursor
 set scrolloff=3
 
-" Show line numbers
+" Show line numbers, but relative
 set number
+set relativenumber
 
 " Always show current position
 set ruler
@@ -116,14 +132,21 @@ set ruler
 " Height of the command bar
 set cmdheight=2
 
+" Status line
+set statusline=%t                               " tail of the filename
+set statusline+=\ %m                            " modified flag
+set statusline+=%h                              " help file flag
+set statusline+=%r                              " read only flag
+set statusline+=%y                              " filetype
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}] " file encoding
+set statusline+=[%{&ff}]                        " file format
+set statusline+=%=                              " left/right separator
+set statusline+=%c,                             " cursor column
+set statusline+=%l                              " cursor line
+set statusline+=\ %P                            " percent through file
+
 " Always put a status line in, even if there is only one window
 set laststatus=2
-
-" Status line (if Fugitive, with Git extra)
-silent! call fugitive#statusline()
-set statusline=%F%m\ [%{&ff}]%y%r
-set statusline+=%{exists('*fugitive#statusline')?fugitive#statusline():''}
-set statusline+=[%l,%v][%p%%][\%03.b]
 
 " Turn on the Wild menu
 set wildmenu
@@ -132,7 +155,16 @@ set wildmenu
 set wildmode=longest,list
 
 " Ignore compiled files and backups
-set wildignore=*.o,*~,*.pyc,*.gch
+set wildignore=
+set wildignore+=*~
+set wildignore+=*.o
+set wildignore+=*.class
+set wildignore+=*.pyc
+set wildignore+=*.gch
+set wildignore+=*.obj
+set wildignore+=*.pdb
+set wildignore+=*.lib
+set wildignore+=*.arg
 
 " Virtual edit
 set virtualedit=
@@ -143,16 +175,15 @@ set backspace=start,indent,eol
 
 " Don't notify any errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set timeoutlen=500
 
 " Hide the mouse pointer while typing
 set mousehide
 
-" ---------------------------------------------------------------- }}}
-
-" Syntax related ------------------------------------------------- {{{
+" Mouse activated
+set mouse=a
 
 " Enable syntax highlighting
 syntax enable
@@ -178,23 +209,11 @@ set nofoldenable
 " Again, folding parent levels
 set foldlevel=1
 
-" Tags (go up directories and collect "tags" files)
-set tags=./tags;/
-
 " Default complete function
 set omnifunc=syntaxcomplete#Complete
 
 " Complete menu
 set completeopt=menuone,preview
-
-" Add "/usr/local/include" to path when running Unix
-if has("unix")
-    set path+=/usr/local/include
-endif
-
-" ---------------------------------------------------------------- }}}
-
-" Text, tab and indent related ----------------------------------- {{{
 
 " Use spaces instead of tabs
 set expandtab
@@ -209,15 +228,12 @@ set tabstop=4
 
 " Invisible characters
 set list listchars=tab:>-,trail:.,extends:>
+set showbreak=>\
 
 " Explicit FTW
 set autoindent
 set smartindent
 set wrap
-
-" ---------------------------------------------------------------- }}}
-
-" Searching ------------------------------------------------------ {{{
 
 " Regex magic
 set magic
@@ -228,30 +244,20 @@ set ignorecase
 " Try to be smart about cases
 set smartcase
 
-" Highlight results (but don't show immediately)
+" Highlight results
 set hlsearch
-nohlsearch
 
 " Makes search act like in modern browsers
 set incsearch
+set wrapscan
 
-" ---------------------------------------------------------------- }}}
+" Colorscheme setup
+colorscheme brogrammer
 
-" Colors and Fonts ----------------------------------------------- {{{
-
-" Colorscheme should use 256 colors
-set t_Co=256
-" and should be a dark background
-set background=dark
-" and is this one
-colorscheme grb256
-
-" In terminal, the "escape" also acts as Ctrl-C
-let g:CommandTCancelMap = ["<esc>", "<C-c>"]
-
-" ---------------------------------------------------------------- }}}
-
-" Moving around -------------------------------------------------- {{{
+" GUI font
+if has('gui_running')
+    set guifont=Consolas\ 11
+endif
 
 " A buffer becomes hidden when it is abandoned
 set hidden
@@ -265,25 +271,22 @@ set showtabline=0
 " Split towards the right
 set splitright
 
-" ---------------------------------------------------------------- }}}
-
-" Keymappings ---------------------------------------------------- {{{
-
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
+" new feature
+"nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+"nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Faster <esc>
+"cmap jk <C-c> | cmap kj <C-c>
+"imap jk <C-[> | imap kj <C-[>
 
 " Disable search highlighting
-nmap <silent> <leader><cr> :nohlsearch<cr>
-
-" Search-replace current word
-"nmap <leader>s :%s/\v<<C-r><C-w>>//gI<left><left><left>
+nnoremap <silent> <C-l> <C-l>:nohlsearch<cr>
 
 " Remap Vim 0 to first non-blank character
 nmap 0 ^
-
-" Quick indenting in normal node
-nmap <tab> ==
 
 " Exchange "`" and "'"
 nnoremap ' `
@@ -301,10 +304,10 @@ vmap < <gv
 nmap gV `[v`]
 
 " Replace current word
-nmap <leader>r :%s/<C-r><C-w>//gc<left><left><left>
+nmap <leader>r :%s/\v<<C-r><C-w>>//gc<left><left><left>
 
 " Fast saving
-nmap <silent> <leader>w :write<cr>
+nmap <silent> <leader>w :write<bar>nohlsearch<cr>
 
 " Close current window
 nmap <silent> <leader>q :quit<cr>
@@ -315,28 +318,101 @@ nmap <silent> <leader>m :make<cr>
 " Cd to current file
 nmap <silent> <leader>cd :cd %:p:h<cr>
 
-" In command mode, insert "%:p:h" when typing %% (very useful)
-cnoremap %% <C-r>=expand("%:p:h")."/"<cr>
+" In command mode, insert "%:p" when typing "%%" (very useful)
+cnoremap %% <C-r>=expand("%:p")<cr>
+" and remove last path component if requested
+cnoremap %%<C-w> <C-r>=expand("%:p:h")<cr>/
 
-" ---------------------------------------------------------------- }}}
+" Some shortcuts for command mode navigation
+"cmap <C-a> <Home>
 
-" Autocommands --------------------------------------------------- {{{
+" Newline above in insert mode
+imap <S-cr> <C-o>O
 
-augroup vimrc_autocommands
-    " Remove all previous autocommands from this group
-    autocmd!
+" Replace forward and backward slash
+nmap <leader>\ :s-/-\\-g<bar>nohlsearch<cr>
+nmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>
+vmap <leader>\ :s-/-\\-g<bar>nohlsearch<cr>gv
+vmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>gv
 
-    " Return to last edit position when opening files
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \     execute "normal! g`\"" |
-                \ endif
+" Toggle paste mode
+nmap <silent> cop :set paste!<cr>
 
-    " Vimrc
-    autocmd BufNewFile,BufRead,BufEnter *vimrc setlocal foldmethod=marker
-augroup END
+" Copy to clipboard
+nmap <leader>y "+y
+vmap <leader>y "+y
+
+" Star/Pound the visual selection
+"vmap * "vy/\M<C-r>v<cr>
+"vmap # "vy?\M<C-r>v<cr>
+
+" Toggle the quickfix window
+command! -bang -nargs=? QFixToggle call ToggleQuickfixWindow(<bang>0)
+function! ToggleQuickfixWindow(forced)
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+        unlet g:qfix_win
+    else
+        copen
+        let g:qfix_win = bufnr("$")
+    endif
+endfunction
+" and its mapping
+nmap <silent> <leader>f :QFixToggle<cr>
+
+" Clear the quickfix window
+command! QFixClear call ClearQuickfixWindow()
+function! ClearQuickfixWindow()
+  call setqflist([])
+endfunction
+
+" Add a "file" text object
+onoremap af :<C-u>normal! ggVG<CR><C-o><C-o>
+
+" Open file copied in clipboard
+nmap <silent> <leader>o :edit <C-r>+<cr>
+" Copy current file to clipboard
+nmap <silent> <leader>p :let @+ = expand('%:p')<cr>
+
+" CtrlP
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<leader><leader>'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+nmap <silent> <leader>j :CtrlPBuffer<cr>
+nmap <silent> <leader>l :CtrlPLine<cr>
+nmap <silent> <leader>u :CtrlPMRUFiles<cr>
+
+" Ag
+nmap <leader>k :Ag <C-r><C-w><cr>
+
+" EasyAlign
+vmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" NR
+let g:nrrw_rgn_nomap_nr = 1
+let g:nrrw_rgn_nomap_Nr = 1
+
+" Org
+nnoremap <silent> <leader>n :sp $USERPROFILE/Bundle/org/index.org<cr>
+
+" Casetrate
+" "camel"  => camelCase
+" "pascal" => PascalCase
+" "snake"  => snake_case
+" "upper"  => UPPER_CASE
+" "mixed"  => Mixed_Case
+let g:casetrate_leader = 'gw'
+
+" CPP Enhanced Highlighting
+let g:cpp_class_scope_highlight = 1
+"let g:cpp_experimental_template_highlight = 1
+
+" Nerdtree
+nmap <silent> <leader>s :NERDTreeToggle<cr>
 
 " LaTeX-specification
 let g:tex_flavor = "latex"
-
-" ---------------------------------------------------------------- }}}
