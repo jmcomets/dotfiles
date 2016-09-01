@@ -52,4 +52,12 @@ alias sl="ls"
 alias dc="cd"
 alias vm="mv"
 
+# Don't alias these commands which require urls
+alias wget='noglob wget'
+alias curl='noglob curl'
+alias youtube-dl='noglob youtube-dl'
+
+# Window switching
+test -e "$(which wmctrl)" && alias ff='wmctrl -a Firefox'
+
 # vim: ft=sh et sw=2 sts=2

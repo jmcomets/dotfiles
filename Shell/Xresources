@@ -43,6 +43,9 @@ URxvt*scrollstyle: plain
 URxvt*scrollBar: false
 URxvt*cursorBlink: true
 
+! Better letter space
+URxvt.letterSpace: -1
+
 URxvt.font:     xft:SourceCodePro:size=11:antialias=true
 URxvt.boldFont: xft:SourceCodePro:bold:size=11:antialias=true
 URxvt.scrollBar: false
