@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python
 import sys
 
 import numpy
@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 from matplotlib.patches import Rectangle
 
-data = map(lambda x: [float(e) for e in x.split('\n')[0].split(' ')],
+data = map(lambda line: map(lambda x: float(x), line.strip().split()),
            sys.stdin.readlines())
-d = zip(*data)
+d = list(zip(*data))
 x = numpy.array(d[0])
 y = numpy.array(d[1])
 
