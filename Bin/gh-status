@@ -13,7 +13,7 @@ def _requires_requests(f):
     import requests
     return f
   except ImportError:
-    print '"requests" module required, %s not defined' % f.__name__
+    print('"requests" module required, %s not defined' % f.__name__)
 
 @_requires_requests
 def get_github_status(api_url=None):
@@ -31,6 +31,6 @@ def get_github_status(api_url=None):
   return status['status']
 
 if __name__ == '__main__':
-  print 'Github status is: "%s"' % get_github_status()
+  print('Github status is: "%s"' % get_github_status())
 
 # vim: ft=python et sw=2 sts=2
