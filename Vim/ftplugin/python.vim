@@ -19,7 +19,7 @@ augroup python_autocommands
 augroup END
 
 " Run the file with python
-nmap <buffer> <F5> :!python %<cr>
+nmap <buffer> <leader>t :!python %<cr>
 
 " Find python command
 
