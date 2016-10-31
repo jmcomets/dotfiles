@@ -60,4 +60,7 @@ alias youtube-dl='noglob youtube-dl'
 # Window switching
 test -e "$(which wmctrl)" && alias ff='wmctrl -a Firefox'
 
+# Virtualenv
+alias a='test -e "venv/bin/activate" && source venv/bin/activate && alias d="deactivate && unalias d"'
+
 # vim: ft=sh et sw=2 sts=2
