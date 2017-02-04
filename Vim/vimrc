@@ -20,9 +20,12 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-dispatch'
 
+" window management
+"Plugin 'roman/golden-ratio'
+
 " brackets
 Plugin 'tpope/vim-surround'
-Plugin 'kien/rainbow_parentheses.vim'
+"Plugin 'kien/rainbow_parentheses.vim'
 "Plugin 'paredit.vim'
 
 " navigation
@@ -31,21 +34,24 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'dietsche/vim-lastplace'
 Plugin 'tmhedberg/matchit'
 Plugin 'python_match.vim'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 
 " editing
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'argtextobj.vim'
-Plugin 'chrisbra/NrrwRgn'
+"Plugin 'chrisbra/NrrwRgn'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'idanarye/vim-casetrate'
 Plugin 'junegunn/vim-easy-align'
 
 " current colorscheme
-Plugin 'marciomazza/vim-brogrammer-theme'
+"Plugin 'marciomazza/vim-brogrammer-theme'
+"Plugin 'w0ng/vim-hybrid'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'wombat256.vim'
 
 " not used often, but better than the default
-Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
+"Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
 
 " org-mode for Vim
 Plugin 'jceb/vim-orgmode'
@@ -58,16 +64,20 @@ Plugin 'xolox/vim-shell'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " JVM plugins
-Plugin 'tpope/vim-classpath'
+"Plugin 'tpope/vim-classpath'
 
 " Clojure plugins
-Plugin 'guns/vim-clojure-highlight'
+"Plugin 'guns/vim-clojure-highlight'
 
 " Haskell plugins
-Plugin 'lukerandall/haskellmode-vim'
+"Plugin 'lukerandall/haskellmode-vim'
 
 " Rust plugins
 Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+
+" Python plugins
+"Plugin 'fs111/pydoc.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -249,7 +259,9 @@ set incsearch
 set wrapscan
 
 " Colorscheme setup
-colorscheme brogrammer
+set background=dark
+colorscheme wombat256mod
+hi Normal ctermbg=none
 
 " GUI font
 if has('gui_running')
@@ -278,6 +290,13 @@ nnoremap k gk
 " Faster <esc>
 "cmap jk <C-c> | cmap kj <C-c>
 "imap jk <C-[> | imap kj <C-[>
+
+" Vim console navigation
+cmap <C-j> <down>
+cmap <C-k> <up>
+cmap <C-h> <left>
+cmap <C-l> <right>
+"cmap <C-a> <Home>
 
 " Disable search highlighting
 nnoremap <silent> <C-l> <C-l>:nohlsearch<cr>
@@ -320,9 +339,6 @@ cnoremap %% <C-r>=expand("%:p")<cr>
 " and remove last path component if requested
 cnoremap %%<C-w> <C-r>=expand("%:p:h")<cr>/
 
-" Some shortcuts for command mode navigation
-"cmap <C-a> <Home>
-
 " Newline above in insert mode
 imap <S-cr> <C-o>O
 
@@ -344,27 +360,29 @@ vmap <leader>y "+y
 "vmap # "vy?\M<C-r>v<cr>
 
 " Toggle the quickfix window
-command! -bang -nargs=? QFixToggle call ToggleQuickfixWindow(<bang>0)
-function! ToggleQuickfixWindow(forced)
-    if exists("g:qfix_win") && a:forced == 0
+command! -bang -nargs=? QFixToggle call ToggleQuickfixWindow()
+function! ToggleQuickfixWindow()
+    if exists("g:qfix_win")
         cclose
-        unlet g:qfix_win
     else
         copen
-        let g:qfix_win = bufnr("$")
+        let g:qfix_win = bufnr('$')
     endif
 endfunction
 " and its mapping
 nmap <silent> <leader>f :QFixToggle<cr>
+" and its autocmd
+augroup qfix_toggle_autocommands
+    autocmd!
+
+    autocmd WinLeave * if getbufvar(winbufnr(winnr()), '&buftype') == 'quickfix' && exists('g:qfix_win') | unlet g:qfix_win | endif
+augroup END
 
 " Clear the quickfix window
 command! QFixClear call ClearQuickfixWindow()
 function! ClearQuickfixWindow()
   call setqflist([])
 endfunction
-
-" Add a "file" text object
-onoremap af :<C-u>normal! ggVG<CR><C-o><C-o>
 
 " Open file copied in clipboard
 nmap <silent> <leader>o :edit <C-r>+<cr>
@@ -382,19 +400,23 @@ nmap <silent> <leader>j :CtrlPBuffer<cr>
 nmap <silent> <leader>l :CtrlPLine<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
-" Ag
-nmap <leader>k :Ag <C-r><C-w><cr>
+" Ack
+nmap <leader>k :Ack <C-r><C-w><cr>
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " EasyAlign
 vmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " NR
-let g:nrrw_rgn_nomap_nr = 1
-let g:nrrw_rgn_nomap_Nr = 1
+"let g:nrrw_rgn_nomap_nr = 1
+"let g:nrrw_rgn_nomap_Nr = 1
 
 " Org
 nnoremap <silent> <leader>n :sp ~/Bundle/org/index.org<cr>
+nnoremap <silent> <leader>d :sp ~/Bundle/org/<C-r>=system('printf `date --iso-8601`')<cr>.org<cr>
 
 " Casetrate
 " "camel"  => camelCase
@@ -409,7 +431,13 @@ let g:cpp_class_scope_highlight = 1
 "let g:cpp_experimental_template_highlight = 1
 
 " Nerdtree
-nmap <silent> <leader>s :NERDTreeToggle<cr>
+"nmap <silent> <leader>s :NERDTreeToggle<cr>
 
 " LaTeX-specification
 let g:tex_flavor = "latex"
+
+" Pydoc
+"let g:pydoc_open_cmd = 'vsplit'
+
+" golden-view
+
