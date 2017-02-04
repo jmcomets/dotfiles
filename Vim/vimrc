@@ -1,12 +1,22 @@
 " The "m" at the end of Vi
 set nocompatible
 
-let s:bundle_dir = $HOME . '/.vim/bundle'
+" Windows / UNIX compatibility
+let s:is_windows = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let s:vim_dir = s:is_windows ? $VIM . '/vimfiles' : $HOME . '/.vim'
+
+let $VIMDIR = s:vim_dir
+
+if s:is_windows
+    let $BUNDLE = $USERPROFILE . '/Bundle'
+else
+    let $BUNDLE = $HOME . '/Bundle'
+endif
 
 " Plugins
 filetype off
-let &runtimepath .= ',' . s:bundle_dir . '/Vundle.vim'
-call vundle#begin(s:bundle_dir)
+let &runtimepath .= ',' . s:vim_dir . '/bundle/Vundle.vim'
+call vundle#begin(s:vim_dir . '/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 
@@ -18,7 +28,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-dispatch'
+"Plugin 'tpope/vim-dispatch'
 
 " window management
 "Plugin 'roman/golden-ratio'
@@ -37,7 +47,7 @@ Plugin 'python_match.vim'
 Plugin 'mileszs/ack.vim'
 
 " editing
-Plugin 'AndrewRadev/splitjoin.vim'
+"Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'argtextobj.vim'
 "Plugin 'chrisbra/NrrwRgn'
 Plugin 'christoomey/vim-sort-motion'
@@ -233,6 +243,9 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
+" Round indent to multiple of tabstop/shiftwidth
+set shiftround
+
 " Invisible characters
 set list listchars=tab:>-,trail:.,extends:>
 set showbreak=>\
@@ -265,7 +278,11 @@ hi Normal ctermbg=none
 
 " GUI font
 if has('gui_running')
-    set guifont=Consolas\ 11
+    if s:is_windows
+        set guifont=Consolas:h11:cANSI
+    else
+        set guifont=Consolas\ 11
+    endif
 endif
 
 " A buffer becomes hidden when it is abandoned
@@ -280,6 +297,13 @@ set showtabline=0
 " Split towards the right
 set splitright
 
+" Windows fixes
+if s:is_windows != 0
+    set shellslash
+    set isfname+=\
+    set grepprg=grep\ -n
+endif
+
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
@@ -291,12 +315,11 @@ nnoremap k gk
 "cmap jk <C-c> | cmap kj <C-c>
 "imap jk <C-[> | imap kj <C-[>
 
-" Vim console navigation
+" Console up/down/left/right navigation
 cmap <C-j> <down>
 cmap <C-k> <up>
 cmap <C-h> <left>
 cmap <C-l> <right>
-"cmap <C-a> <Home>
 
 " Disable search highlighting
 nnoremap <silent> <C-l> <C-l>:nohlsearch<cr>
@@ -325,6 +348,15 @@ nmap <leader>r :%s/\v<<C-r><C-w>>//gc<left><left><left>
 " Fast saving
 nmap <silent> <leader>w :write<bar>nohlsearch<cr>
 
+" Close this buffer
+nnoremap <silent> <leader>bd :Bclose!<cr>
+
+" Close all open buffers
+nnoremap <silent> <leader>ba :BcloseAll<cr>
+
+" Only keep this buffer open
+nnoremap <silent> <leader>bo :Bonly<cr>
+
 " Close current window
 nmap <silent> <leader>q :quit<cr>
 
@@ -348,12 +380,22 @@ nmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>
 vmap <leader>\ :s-/-\\-g<bar>nohlsearch<cr>gv
 vmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>gv
 
+" Grep the current word recursively
+if exists(':Ack')
+    nmap <leader>k :Ack <C-r><C-w> <C-r>=expand('%:p:h')<cr><cr>
+else
+    nmap <leader>k :grep -R <C-r><C-w> <C-r>=expand('%:p:h')<cr><cr>
+endif
+
 " Toggle paste mode
 nmap <silent> cop :set paste!<cr>
 
 " Copy to clipboard
 nmap <leader>y "+y
 vmap <leader>y "+y
+
+" Open alternate file
+nnoremap <silent> <leader>a :buffer #<cr>
 
 " Star/Pound the visual selection
 "vmap * "vy/\M<C-r>v<cr>
@@ -384,6 +426,19 @@ function! ClearQuickfixWindow()
   call setqflist([])
 endfunction
 
+let g:hungarian_prefixes = ['ac', 'c', 'px', 'ppv', 'pv', 'sz', 'f', 'd', 'h', 'b']
+
+function! ConvertHungarianNotation() range
+    execute a:firstline . ',' . a:lastline
+                \ . 'substitute/\v([^\w])('
+                \ . join(g:hungarian_prefixes, '|')
+                \ . ')([A-Z])/\1\L\3/gce'
+endfunction
+command! -range ConvertHungarian <line1>,<line2>call ConvertHungarianNotation()
+
+" Add a "file" text object
+onoremap af :<C-u>normal! ggVG<CR><C-o><C-o>
+
 " Open file copied in clipboard
 nmap <silent> <leader>o :edit <C-r>+<cr>
 " Copy current file to clipboard
@@ -402,9 +457,8 @@ nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
 " Ack
 nmap <leader>k :Ack <C-r><C-w><cr>
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
+if executable('ag') | let g:ackprg = 'ag --vimgrep' | endif
+if executable('ripgrep') | let g:ackprg = 'ripgrep --vimgrep' | endif
 
 " EasyAlign
 vmap ga <Plug>(EasyAlign)
@@ -427,10 +481,12 @@ nnoremap <silent> <leader>d :sp ~/Bundle/org/<C-r>=system('printf `date --iso-86
 let g:casetrate_leader = 'gw'
 
 " CPP Enhanced Highlighting
+let g:load_doxygen_syntax = 1
 let g:cpp_class_scope_highlight = 1
 "let g:cpp_experimental_template_highlight = 1
 
 " Nerdtree
+let NERDTreeRespectWildIgnore = 1
 "nmap <silent> <leader>s :NERDTreeToggle<cr>
 
 " LaTeX-specification
