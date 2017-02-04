@@ -54,6 +54,9 @@ call $HOME/.aliases
 # virtualenvwrapper
 #call /usr/local/bin/virtualenvwrapper.sh
 
+# cargo
+add_to_path $HOME/.cargo/bin
+
 # rvm
 add_to_path $HOME/.rvm/bin && call $HOME/.rvm/scripts/rvm
 
