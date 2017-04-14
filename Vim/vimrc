@@ -28,7 +28,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
-"Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 
 " window management
 "Plugin 'roman/golden-ratio'
@@ -381,11 +381,10 @@ vmap <leader>\ :s-/-\\-g<bar>nohlsearch<cr>gv
 vmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>gv
 
 " Grep the current word recursively
-if exists(':Ack')
-    nmap <leader>k :Ack <C-r><C-w> <C-r>=expand('%:p:h')<cr><cr>
-else
-    nmap <leader>k :grep -R <C-r><C-w> <C-r>=expand('%:p:h')<cr><cr>
-endif
+nmap <leader>k :grep <C-r><C-w> <C-r>=expand("%:p:h")<cr><cr>
+
+if executable('ag') | let &grepprg = 'ag --vimgrep' | endif
+if executable('rg') | let &grepprg = 'rg --vimgrep' | endif
 
 " Toggle paste mode
 nmap <silent> cop :set paste!<cr>
@@ -407,7 +406,7 @@ function! ToggleQuickfixWindow()
     if exists("g:qfix_win")
         cclose
     else
-        copen
+        botright copen
         let g:qfix_win = bufnr('$')
     endif
 endfunction
@@ -456,9 +455,12 @@ nmap <silent> <leader>l :CtrlPLine<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
 " Ack
-nmap <leader>k :Ack <C-r><C-w><cr>
-if executable('ag') | let g:ackprg = 'ag --vimgrep' | endif
-if executable('ripgrep') | let g:ackprg = 'ripgrep --vimgrep' | endif
+if exists(':Ack')
+    nmap <leader>k :Ack <C-r><C-w><cr>
+
+    if executable('ag') | let g:ackprg = 'ag --vimgrep' | endif
+    if executable('rg') | let g:ackprg = 'rg --vimgrep' | endif
+endif
 
 " EasyAlign
 vmap ga <Plug>(EasyAlign)
