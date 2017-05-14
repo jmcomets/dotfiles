@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import sys
+import random
+
+def usage():
+    sys.stderr.write('usage: rand_filter.py <N>\n')
+    sys.exit(1)
+
+try:
+    sys.argv.remove('--shuffle')
+except ValueError:
+    shuffle = False
+else:
+    shuffle = True
+
+if len(sys.argv) < 2:
+    usage()
+
+n = sys.argv[1]
+try:
+    n = int(n)
+except ValueError:
+    usage()
+
+def rand_filter(items):
+    for item in items:
+        if random.randint(1, n) == 1:
+            yield item
+
+def clean_lines(lines):
+    for line in lines:
+        if line:
+            yield line.rstrip('\n')
+
+lines = list(rand_filter(clean_lines(sys.stdin.readlines())))
+if shuffle:
+    random.shuffle(lines)
+for line in lines:
+    print(line)
