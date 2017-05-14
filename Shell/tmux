@@ -27,4 +27,4 @@ bind-key | split-window -h
 bind-key - split-window
 
 # use Ctrl-[, space, then y to copy to clipboard (xclip required)
-bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
+#bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
