@@ -27,16 +27,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-surround'
 
 " window management
 "Plugin 'roman/golden-ratio'
-
-" brackets
-Plugin 'tpope/vim-surround'
-"Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'paredit.vim'
 
 " navigation
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -47,7 +42,6 @@ Plugin 'python_match.vim'
 Plugin 'mileszs/ack.vim'
 
 " editing
-"Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'argtextobj.vim'
 "Plugin 'chrisbra/NrrwRgn'
 Plugin 'christoomey/vim-sort-motion'
@@ -61,10 +55,11 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'wombat256.vim'
 
 " not used often, but better than the default
-"Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
+Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
 
 " org-mode for Vim
-Plugin 'jceb/vim-orgmode'
+" Plugin 'tpope/vim-speeddating'
+" Plugin 'jceb/vim-orgmode'
 
 " xolox, used for various utilities (:Open, parallel commands)
 Plugin 'xolox/vim-misc'
@@ -73,21 +68,29 @@ Plugin 'xolox/vim-shell'
 " C++ plugins
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
-" JVM plugins
-"Plugin 'tpope/vim-classpath'
-
-" Clojure plugins
-"Plugin 'guns/vim-clojure-highlight'
-
-" Haskell plugins
-"Plugin 'lukerandall/haskellmode-vim'
-
 " Rust plugins
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 
-" Python plugins
-"Plugin 'fs111/pydoc.vim'
+" neovim-specific plugins
+if has('nvim')
+    Plugin 'Shougo/deoplete.nvim'
+
+    let g:deoplete#enable_at_startup = 1
+
+    "Plugin 'autozimu/LanguageClient-neovim'
+    "Plugin 'Shougo/echodoc.vim' " optional: function signature and inline doc
+
+    "let g:LanguageClient_serverCommands = {
+    "    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    "    \ }
+
+    "let g:LanguageClient_autoStart = 1
+
+    "nmap <silent> <leader>lk :call LanguageClient_textDocument_hover()<cr>
+    "nmap <silent> <leader>ld :call LanguageClient_textDocument_definition()<cr>
+    "nmap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
+endif
 
 call vundle#end()
 filetype plugin indent on
@@ -274,6 +277,8 @@ set wrapscan
 " Colorscheme setup
 set background=dark
 colorscheme wombat256mod
+" set background=light
+" colorscheme default
 hi Normal ctermbg=none
 
 " GUI font
@@ -448,10 +453,11 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader><leader>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+if !has('nvim')
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
 
 nmap <silent> <leader>j :CtrlPBuffer<cr>
-nmap <silent> <leader>l :CtrlPLine<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
 " Ack
@@ -493,9 +499,3 @@ let NERDTreeRespectWildIgnore = 1
 
 " LaTeX-specification
 let g:tex_flavor = "latex"
-
-" Pydoc
-"let g:pydoc_open_cmd = 'vsplit'
-
-" golden-view
-
