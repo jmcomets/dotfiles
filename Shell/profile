@@ -70,8 +70,8 @@ add_to_path $HOME/.local/share/android-sdk/platform-tools
 # heroku
 add_to_path /usr/local/heroku/bin
 
-# nvm
-export NVM_DIR="/home/jmcomets/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# rust
+test -x `which rustc` && \
+  export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
 # vim: ft=sh et sw=2 sts=2

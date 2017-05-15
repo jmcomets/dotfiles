@@ -71,6 +71,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " Rust plugins
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'cespare/vim-toml'
 
 " neovim-specific plugins
 if has('nvim')
@@ -277,9 +278,9 @@ set wrapscan
 " Colorscheme setup
 set background=dark
 colorscheme wombat256mod
+hi Normal ctermbg=none
 " set background=light
 " colorscheme default
-hi Normal ctermbg=none
 
 " GUI font
 if has('gui_running')
@@ -408,21 +409,14 @@ nnoremap <silent> <leader>a :buffer #<cr>
 " Toggle the quickfix window
 command! -bang -nargs=? QFixToggle call ToggleQuickfixWindow()
 function! ToggleQuickfixWindow()
-    if exists("g:qfix_win")
+    if len(filter(range(winnr('$')), "getbufvar(winbufnr(v:val), '&buftype') == 'quickfix'")) > 0
         cclose
     else
         botright copen
-        let g:qfix_win = bufnr('$')
     endif
 endfunction
 " and its mapping
 nmap <silent> <leader>f :QFixToggle<cr>
-" and its autocmd
-augroup qfix_toggle_autocommands
-    autocmd!
-
-    autocmd WinLeave * if getbufvar(winbufnr(winnr()), '&buftype') == 'quickfix' && exists('g:qfix_win') | unlet g:qfix_win | endif
-augroup END
 
 " Clear the quickfix window
 command! QFixClear call ClearQuickfixWindow()
@@ -440,13 +434,19 @@ function! ConvertHungarianNotation() range
 endfunction
 command! -range ConvertHungarian <line1>,<line2>call ConvertHungarianNotation()
 
-" Add a "file" text object
-onoremap af :<C-u>normal! ggVG<CR><C-o><C-o>
-
 " Open file copied in clipboard
 nmap <silent> <leader>o :edit <C-r>+<cr>
 " Copy current file to clipboard
 nmap <silent> <leader>p :let @+ = expand('%:p')<cr>
+
+" Rust
+augroup rust_autocommands
+    autocmd!
+
+    "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+    autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+    autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&"
+augroup END
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlP'
