@@ -49,8 +49,8 @@
     ra = !git r --all
     l = "!. ~/.githelpers && pretty_git_log"
     la = !git l --all
-	rb = rebase
-	cp = cherry-pick
+    rb = rebase
+    cp = cherry-pick
 [merge]
     tool = vimdiff
 [color]
