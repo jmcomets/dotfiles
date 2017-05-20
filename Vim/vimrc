@@ -77,20 +77,8 @@ Plugin 'cespare/vim-toml'
 if has('nvim')
     Plugin 'Shougo/deoplete.nvim'
 
-    let g:deoplete#enable_at_startup = 1
-
-    "Plugin 'autozimu/LanguageClient-neovim'
-    "Plugin 'Shougo/echodoc.vim' " optional: function signature and inline doc
-
-    "let g:LanguageClient_serverCommands = {
-    "    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    "    \ }
-
-    "let g:LanguageClient_autoStart = 1
-
-    "nmap <silent> <leader>lk :call LanguageClient_textDocument_hover()<cr>
-    "nmap <silent> <leader>ld :call LanguageClient_textDocument_definition()<cr>
-    "nmap <silent> <leader>lr :call LanguageClient_textDocument_rename()<cr>
+    Plugin 'autozimu/LanguageClient-neovim'
+    Plugin 'Shougo/echodoc.vim' " optional: function signature and inline doc
 endif
 
 call vundle#end()
@@ -386,9 +374,6 @@ nmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>
 vmap <leader>\ :s-/-\\-g<bar>nohlsearch<cr>gv
 vmap <leader>/ :s-\\-/-g<bar>nohlsearch<cr>gv
 
-" Grep the current word recursively
-nmap <leader>k :grep <C-r><C-w> <C-r>=expand("%:p:h")<cr><cr>
-
 if executable('ag') | let &grepprg = 'ag --vimgrep' | endif
 if executable('rg') | let &grepprg = 'rg --vimgrep' | endif
 
@@ -398,6 +383,11 @@ nmap <silent> cop :set paste!<cr>
 " Copy to clipboard
 nmap <leader>y "+y
 vmap <leader>y "+y
+
+" Open file copied in clipboard
+nmap <silent> <leader>o :edit <C-r>+<cr>
+" Copy current file to clipboard
+nmap <silent> <leader>p :let @+ = expand('%:p')<cr>
 
 " Open alternate file
 nnoremap <silent> <leader>a :buffer #<cr>
@@ -434,36 +424,22 @@ function! ConvertHungarianNotation() range
 endfunction
 command! -range ConvertHungarian <line1>,<line2>call ConvertHungarianNotation()
 
-" Open file copied in clipboard
-nmap <silent> <leader>o :edit <C-r>+<cr>
-" Copy current file to clipboard
-nmap <silent> <leader>p :let @+ = expand('%:p')<cr>
-
-" Rust
-augroup rust_autocommands
-    autocmd!
-
-    "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-    autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-    autocmd BufWrite *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&"
-augroup END
-
 " CtrlP
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader><leader>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-if !has('nvim')
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
 
 nmap <silent> <leader>j :CtrlPBuffer<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
+" 20/05/2017: pymatcher plugin doesn't work on neovim
+if !has('nvim')
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
+
 " Ack
 if exists(':Ack')
-    nmap <leader>k :Ack <C-r><C-w><cr>
-
     if executable('ag') | let g:ackprg = 'ag --vimgrep' | endif
     if executable('rg') | let g:ackprg = 'rg --vimgrep' | endif
 endif
@@ -477,8 +453,8 @@ nmap ga <Plug>(EasyAlign)
 "let g:nrrw_rgn_nomap_Nr = 1
 
 " Org
-nnoremap <silent> <leader>n :sp ~/Bundle/org/index.org<cr>
-nnoremap <silent> <leader>d :sp ~/Bundle/org/<C-r>=system('printf `date --iso-8601`')<cr>.org<cr>
+"nnoremap <silent> <leader>n :sp ~/Bundle/org/index.org<cr>
+"nnoremap <silent> <leader>d :sp ~/Bundle/org/<C-r>=system('printf `date --iso-8601`')<cr>.org<cr>
 
 " Casetrate
 " "camel"  => camelCase
@@ -495,7 +471,18 @@ let g:cpp_class_scope_highlight = 1
 
 " Nerdtree
 let NERDTreeRespectWildIgnore = 1
-"nmap <silent> <leader>s :NERDTreeToggle<cr>
+nmap <silent> <leader>s :NERDTreeToggle<cr>
 
 " LaTeX-specification
 let g:tex_flavor = "latex"
+
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+
+    " LanguageClient
+    let g:LanguageClient_serverCommands = {
+        \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+        \ }
+
+    let g:LanguageClient_autoStart = 1
+endif

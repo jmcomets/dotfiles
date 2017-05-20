@@ -70,8 +70,4 @@ add_to_path $HOME/.local/share/android-sdk/platform-tools
 # heroku
 add_to_path /usr/local/heroku/bin
 
-# rust
-test -x `which rustc` && \
-  export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
-
 # vim: ft=sh et sw=2 sts=2
