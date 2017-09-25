@@ -4,12 +4,6 @@ set -g default-terminal "screen-256color"
 setw -g xterm-keys on
 set -s escape-time 0
 
-# allow mouse
-#set -g mode-mouse on
-
-set -g status off
-set -g status-position top
-
 # interact nicely with vim
 unbind C-b
 set -g prefix C-Space
@@ -22,9 +16,43 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# splits
-bind-key | split-window -h
-bind-key - split-window
-
 # use Ctrl-[, space, then y to copy to clipboard (xclip required)
 #bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
+
+# splits
+bind '"' split-window -c "#{pane_current_path}"
+bind '%' split-window -h -c "#{pane_current_path}"
+
+# panes
+set -g pane-border-fg blue
+set -g pane-active-border-fg white
+
+# the following commented mouse options are equivalent to the "mouse" option
+#set -g mode-mouse on
+#set -g mouse-resize-pane on
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
+
+# default mouse setting
+set -g mouse on
+
+# "m" -> enable mouse
+bind m \
+  set -g mouse on \;\
+  display 'Mouse: ON'
+
+# "M" -> disable mouse
+bind M \
+  set -g mouse off \;\
+  display 'Mouse: OFF'
+
+# status bar
+set -g status on
+set -g status-position top
+set -g status-fg white
+set -g status-bg blue
+set -g status-left ''
+set -g status-right-length 60
+set -g status-right '%a %m-%d %H:%M:%S'
+# refresh every second
+set-option -s status-interval 1

@@ -8,6 +8,7 @@ alias mv="mv -vi"
 alias grep="grep --color=auto"
 alias ls="ls -FX --color=auto"
 alias tmux="TERM=xterm-256color tmux -2"
+alias sp='source ~/.profile'
 
 # Moving around
 alias ..="cd ../"
@@ -63,5 +64,9 @@ test -e "$(which wmctrl)" && alias ff='wmctrl -a Firefox'
 
 # Virtualenv
 alias a='test -e "venv/bin/activate" && source venv/bin/activate && alias d="deactivate && unalias d"'
+
+# Custom aliases
+# TODO: figure out a better way to do this
+swagger-codegen() { java -jar ~/Vendor/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar $* }
 
 # vim: ft=sh et sw=2 sts=2

@@ -46,8 +46,7 @@ setup_link $DOTFILES/Shell/githelpers ~/.githelpers
 # Tmux
 setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
 
-# Openbox
-setup_link $DOTFILES/Shell/Xresources ~/.Xresources
-setup_link $DOTFILES/Shell/xinitrc ~/.xinitrc
+# Neovim
+setup_link $DOTFILES/Vim ~/.config/nvim
 
 # vim: ft=sh et sw=4 sts=4
