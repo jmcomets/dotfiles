@@ -1,7 +1,7 @@
 # basic stuff
 set-option -g default-shell $SHELL
 set -g default-terminal "screen-256color"
-setw -g xterm-keys on
+#setw -g xterm-keys on
 set -s escape-time 0
 
 # interact nicely with vim
@@ -47,12 +47,13 @@ bind M \
   display 'Mouse: OFF'
 
 # status bar
-set -g status on
-set -g status-position top
-set -g status-fg white
-set -g status-bg blue
-set -g status-left ''
-set -g status-right-length 60
-set -g status-right '%a %m-%d %H:%M:%S'
+set -g status off
+#set -g status on
+#set -g status-position top
+#set -g status-fg white
+#set -g status-bg blue
+#set -g status-left ''
+#set -g status-right-length 60
+#set -g status-right '%a %m-%d %H:%M:%S'
 # refresh every second
-set-option -s status-interval 1
+#set-option -s status-interval 1
