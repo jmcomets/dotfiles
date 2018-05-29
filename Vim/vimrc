@@ -15,73 +15,70 @@ endif
 
 " Plugins
 filetype off
-let &runtimepath .= ',' . s:vim_dir . '/bundle/Vundle.vim'
-call vundle#begin(s:vim_dir . '/bundle')
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin(s:vim_dir . '/bundle')
 
 " obligatory Tim Pope plugins
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-rsi'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
 
 " window management
-"Plugin 'roman/golden-ratio'
+"Plug 'roman/golden-ratio'
 
 " navigation
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'dietsche/vim-lastplace'
-Plugin 'tmhedberg/matchit'
-Plugin 'python_match.vim'
-Plugin 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'dietsche/vim-lastplace'
+Plug 'tmhedberg/matchit'
+Plug 'vim-scripts/python_match.vim'
+Plug 'mileszs/ack.vim'
 
 " editing
-Plugin 'argtextobj.vim'
-"Plugin 'chrisbra/NrrwRgn'
-Plugin 'christoomey/vim-sort-motion'
-Plugin 'idanarye/vim-casetrate'
-Plugin 'junegunn/vim-easy-align'
+"Plug 'argtextobj.vim'
+"Plug 'chrisbra/NrrwRgn'
+Plug 'christoomey/vim-sort-motion'
+Plug 'idanarye/vim-casetrate'
+Plug 'junegunn/vim-easy-align'
 
-" current colorscheme
-"Plugin 'marciomazza/vim-brogrammer-theme'
-"Plugin 'w0ng/vim-hybrid'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'wombat256.vim'
+" IDE features
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
+Plug 'w0rp/ale'
+
+" colorschemes
+"Plug 'marciomazza/vim-brogrammer-theme'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/wombat256.vim'
 
 " not used often, but better than the default
-Plugin 'scrooloose/nerdtree', { 'for': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " org-mode for Vim
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'jceb/vim-orgmode'
+" Plug 'tpope/vim-speeddating'
+" Plug 'jceb/vim-orgmode'
 
 " xolox, used for various utilities (:Open, parallel commands)
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-shell'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
+
+" Extra syntaxes
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " C++ plugins
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 
 " Rust plugins
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
-Plugin 'cespare/vim-toml'
+"Plug 'racer-rust/vim-racer', { 'for': 'rust'}
 
-" neovim-specific plugins
-if has('nvim')
-    Plugin 'Shougo/deoplete.nvim'
+call plug#end()
 
-    Plugin 'autozimu/LanguageClient-neovim'
-    Plugin 'Shougo/echodoc.vim' " optional: function signature and inline doc
-endif
-
-call vundle#end()
 filetype plugin indent on
 
 " Leader is "<space>"
@@ -433,11 +430,6 @@ let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
 nmap <silent> <leader>j :CtrlPBuffer<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
-" 20/05/2017: pymatcher plugin doesn't work on neovim
-if !has('nvim')
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
-
 " Ack
 if exists(':Ack')
     if executable('ag') | let g:ackprg = 'ag --vimgrep' | endif
@@ -476,13 +468,5 @@ nmap <silent> <leader>s :NERDTreeToggle<cr>
 " LaTeX-specification
 let g:tex_flavor = "latex"
 
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-
-    " LanguageClient
-    let g:LanguageClient_serverCommands = {
-        \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-        \ }
-
-    let g:LanguageClient_autoStart = 1
-endif
+" ALE
+let g:ale_sign_column_always = 1
