@@ -11,12 +11,13 @@ autoload -U compinit
 compinit
 
 # Vi-style
-bindkey -v
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# bindkey -v
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
 # also backwards search with <C-r>
-bindkey '^R' history-incremental-search-backward
-bindkey -v      # vi mode
+# bindkey '^R' history-incremental-search-backward
+# Emacs-style
+bindkey -e
 
 # History
 HISTSIZE=5000
