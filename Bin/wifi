@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+interface=wlp4s0
+
+if [ -z "$1" ]; then
+    wifi="le lede code"
+else
+    wifi="$1"
+fi
+
+ip link set "$interface" down
+netctl restart "$wifi"
+
+# vim: ft=sh sw=4 sts=4 et
