@@ -31,8 +31,9 @@ Plug 'tpope/vim-surround'
 " window management
 "Plug 'roman/golden-ratio'
 
-" navigation
+" fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'dietsche/vim-lastplace'
 Plug 'tmhedberg/matchit'
@@ -76,6 +77,16 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 
 " Rust plugins
 "Plug 'racer-rust/vim-racer', { 'for': 'rust'}
+
+" Haskell plugins
+"Plug 'Shougo/vimproc.vim'
+"Plug 'eagletmt/ghcmod-vim'
+"Plug 'eagletmt/neco-ghc'
+
+" Clojure plugins
+"Plug 'tpope/vim-classpath'
+"Plug 'tpope/vim-fireplace'
+"Plug 'tpope/vim-salve'
 
 call plug#end()
 
