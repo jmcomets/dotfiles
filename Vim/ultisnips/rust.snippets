@@ -1,0 +1,81 @@
+snippet main "main() (main)"
+fn main() {
+	${VISUAL}${0:${VISUAL/(.*)//}}
+}
+endsnippet
+
+snippet st "struct ... (struct)"
+struct ${1:name} {
+	${0}
+}
+endsnippet
+
+snippet en "enum ... (enum)"
+enum ${1:name} {
+	${0}
+}
+endsnippet
+
+snippet tr "trait ... (trait)"
+trait ${1:name} {
+	${0}
+}
+endsnippet
+
+snippet mod "mod ... (mod)"
+mod ${1:name} {
+	${0}
+}
+endsnippet
+
+snippet def "define a field"
+${1:field}: ${2:T},
+$3
+endsnippet
+
+snippet arg "function arguments" i
+${1:a}: ${2:T}${3:, arg}
+endsnippet
+
+snippet impl "define an impl"
+impl ${1:Type} ${2:for ${3:T}} {
+	$4
+}
+endsnippet
+
+snippet fn "define an function"
+fn ${1:name}(${2:args})${3: -> ${4:ReturnType}} {
+	$5
+}
+endsnippet
+
+snippet let "bind a variable"
+let ${1:var}${3:: ${4:T}} = ${2:expr};
+endsnippet
+
+snippet if "if construct"
+if ${1:condition} {
+	$2
+}
+endsnippet
+
+snippet else "else construct"
+else {
+	$1
+}
+endsnippet
+
+snippet ifelse "if-else construct"
+if ${1:condition} {
+	$2
+} else {
+	$3
+}
+endsnippet
+
+snippet test "unit test"
+#[test]
+fn test_${1:something}() {
+	${2:assert!(${3:true});}
+}
+endsnippet

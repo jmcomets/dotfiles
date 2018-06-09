@@ -33,12 +33,13 @@ Plug 'tpope/vim-surround'
 
 " fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
-
 Plug 'FelikZ/ctrlp-py-matcher'
+
+" navigation
 Plug 'dietsche/vim-lastplace'
 Plug 'tmhedberg/matchit'
 Plug 'vim-scripts/python_match.vim'
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 
 " editing
 "Plug 'argtextobj.vim'
@@ -46,16 +47,19 @@ Plug 'mileszs/ack.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'idanarye/vim-casetrate'
 Plug 'junegunn/vim-easy-align'
+Plug 'zhaocai/GoldenView.Vim'
 
 " IDE features
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
 Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips'
 
 " colorschemes
 "Plug 'marciomazza/vim-brogrammer-theme'
 "Plug 'w0ng/vim-hybrid'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/wombat256.vim'
+Plug 'flazz/vim-colorschemes'
 
 " not used often, but better than the default
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -273,18 +277,21 @@ set incsearch
 set wrapscan
 
 " Colorscheme setup
-set background=dark
-colorscheme wombat256mod
-hi Normal ctermbg=none
-" set background=light
-" colorscheme default
+if has('gui_running')
+    set background=light
+    colorscheme solarized
+else
+    set background=dark
+    colorscheme wombat256mod
+    hi Normal ctermbg=none
+endif
 
 " GUI font
 if has('gui_running')
     if s:is_windows
-        set guifont=Consolas:h11:cANSI
+        set guifont=Consolas:h12:cANSI
     else
-        set guifont=Consolas\ 11
+        set guifont=Consolas\ 12
     endif
 endif
 
@@ -481,3 +488,13 @@ let g:tex_flavor = "latex"
 
 " ALE
 let g:ale_sign_column_always = 1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsSnippetDirectories = [s:vim_dir . '/ultisnips']
+
+" GoldenView
+let g:goldenview__enable_default_mapping = 0
