@@ -171,6 +171,7 @@ set wildignore+=*.obj
 set wildignore+=*.pdb
 set wildignore+=*.lib
 set wildignore+=*.arg
+set wildignore+=target
 
 " Virtual edit
 set virtualedit=
@@ -426,7 +427,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader><leader>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
-
 nmap <silent> <leader>j :CtrlPBuffer<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
 
