@@ -51,7 +51,7 @@ Plug 'zhaocai/GoldenView.Vim'
 
 " IDE features
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 
 " colorschemes
