@@ -10,13 +10,6 @@ colors
 autoload -U compinit
 compinit
 
-# Vi-style
-#bindkey -v
-#bindkey '^[[A' up-line-or-search
-#bindkey '^[[B' down-line-or-search
-# also backwards search with <C-r>
-#bindkey '^R' history-incremental-search-backward
-
 # Emacs-style
 bindkey -e
 
@@ -28,6 +21,7 @@ HISTFILE=~/.zsh_history
 # External modules
 call ~/.zsh/colors
 call ~/.zsh/completion
+call ~/.zsh/keys
 
 # Powerline
 call /usr/share/zsh/site-contrib/powerline.zsh && \
