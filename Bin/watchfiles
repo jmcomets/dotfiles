@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+"""watchfiles: watch for changes on a file hierarchy
+
+usage: watchdir [options] [<filename>...]
+
+options:
+    -s, --silent        Suppress status messages from inotifywait(1)
+"""
+import sys
+import subprocess as sp
+import asyncio
+
+_inotify_events = [
+        'access', # guessed
+        'modify', # guessed
+        'attrib',
+        'close_write',
+        'close_nowrite', # guessed
+        'close',
+        'open',
+        'moved_to', # guessed
+        'moved_from', # guessed
+        'move', # guessed
+        'move_self', # guessed
+        'move_self', # guessed
+        'create',
+        'delete',
+        'delete_self', # guessed
+        'unmount', # guessed
+        ]
+def _generate_event_constants(scope):
+    for event_str in _inotify_events:
+        scope[event_str.upper()] = event_str
+_generate_event_constants(globals())
+
+FILE_MODIFICATION_EVENTS = [CREATE, MODIFY, DELETE, MOVED_TO, MOVED_FROM]
+
+class WatchFilesProtocol(asyncio.SubprocessProtocol):
+    def __init__(self, future):
+        self.future = future
+
+    def pipe_data_received(self, fd, data):
+        data = data.decode("utf-8").rstrip("\r\n") # ignore EOL characters
+        if fd == 1: # stdout
+            path, action, filename = data.split()
+            print(action, os.path.join(path, filename))
+        elif fd == 2: # stderr
+            print(f"[STDERR] {data}", file=sys.stderr)
+        # else:
+        #     print(f"unknown fd: {fd}", file=sys.stderr)
+
+    def connection_lost(self, exception):
+        self.future.set_result(exception) # notifies when the pipe is closed
+
+async def watch_files(loop, files, events=FILE_MODIFICATION_EVENTS, recursive=True):
+    """Main entry point."""
+    if not files:
+        return
+    # Example:
+    #   inotifywait -m -r \
+    #       -e create -e modify -e delete \
+    #       -e moved_to -e moved_from \
+    #       $* | while read path action file; do
+    #           # $file appeared in directory $path via $action
+    #           echo "$action $file"
+    #       done
+    args = ["inotifywait", "-m"]
+    if recursive:
+        args.append("-r")
+    for event in events:
+        args += ["-e", event]
+    args += list(files)
+    future = loop.create_future()
+    protocol_fn = lambda: WatchFilesProtocol(future)
+    await loop.subprocess_exec(protocol_fn, *args, stdout=sp.PIPE, stderr=sp.PIPE)
+    await future
+
+if __name__ == "__main__":
+    import os
+    import docopt
+
+    args = docopt.docopt(__doc__)
+
+    files = args['<filename>']
+
+    # configure event loop for all platforms
+    if os.name == 'nt':
+        loop = asyncio.ProactorEventLoop()
+        asyncio.set_event_loop(loop)
+    else:
+        loop = asyncio.get_event_loop()
+
+    # entry point
+    try:
+        loop.run_until_complete(watch_files(loop, files))
+    except KeyboardInterrupt:
+        pass # ignore
+    finally:
+        loop.close()
