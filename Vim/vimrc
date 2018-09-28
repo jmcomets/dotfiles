@@ -52,7 +52,7 @@ Plug 'zhaocai/GoldenView.Vim'
 " IDE features
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
 "Plug 'w0rp/ale'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " colorschemes
 "Plug 'marciomazza/vim-brogrammer-theme'
@@ -187,6 +187,7 @@ set wildignore+=*.pdb
 set wildignore+=*.lib
 set wildignore+=*.arg
 set wildignore+=target
+set wildignore+=venv
 
 " Virtual edit
 set virtualedit=

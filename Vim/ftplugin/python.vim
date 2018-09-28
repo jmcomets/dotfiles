@@ -20,6 +20,7 @@ augroup END
 
 " Run the file with python
 nmap <buffer> <leader>t :!python %<cr>
+nmap <buffer> <leader>gt :!pytest<cr>
 
 " Find python command
 
