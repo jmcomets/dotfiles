@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+awk '/M$/{print ($0+0)*1024}/G$/{print ($0+0)*1024*1024}/K$/{print $0+0}' $*
+
+# vim: ft=sh
