@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# usage: venv-activate [DIRECTORY]
+#
+# Attempts to find the root of a virtual environment. If found, will source the
+# virtual environment's <venv>/bin/activate script.
+#
+# The search starts in the directory given, or $PWD. If a "venv/" directory is
+# present in the given directory, it will be considered as well.
+
+# First, locate the root of the current virtualenv
+dir="${1:-$PWD}/venv"
+while [ "$dir" != "/" ]; do
+    # Redundant check to limit failglob error messages
+    if [ -d $dir/bin -a -d $dir/lib -a -d $dir/include ]; then
+        # Stop here if this the root of a virtualenv
+        if [ -x $dir/bin/python \
+             -a -e $dir/lib/python*/site.py \
+             -a -e $dir/include/python*/Python.h ]; then
+            break
+        fi
+    fi
+    dir=`dirname $dir`
+done
+
+# Activate
+if [ "$dir" = "/" ]; then
+    echo "Could not activate: no virtual environment found." >&2
+else
+    echo "Sourcing $dir/bin/activate"
+    source $dir/bin/activate
+fi
