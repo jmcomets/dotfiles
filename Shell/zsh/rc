@@ -23,6 +23,12 @@ call ~/.zsh/colors
 call ~/.zsh/completion
 call ~/.zsh/keys
 
+# Bash completion scripts
+autoload -U bashcompinit
+bashcompinit
+
+call ~/.completions/*
+
 # Powerline
 call /usr/share/zsh/site-contrib/powerline.zsh && \
   export VIRTUAL_ENV_DISABLE_PROMPT=true

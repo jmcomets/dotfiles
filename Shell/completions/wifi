@@ -3,6 +3,7 @@ _wifi() {
     local excludes="-not -name '.*' -not -name '*~' -not -name $'*n*' -not -name '*.action' -not -name '*.conf' -not -name '*.service'"
     COMPREPLY=`find -L /etc/netctl -maxdepth 1 -type f $excludes -printf "%f\n" | while read f; do printf "%q\n" "$f"; done`
 }
+
 complete -F _wifi wifi
 
 # vim: ft=sh sw=4 sts=4 et
