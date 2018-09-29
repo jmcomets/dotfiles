@@ -425,11 +425,16 @@ endfunction
 " and its mapping
 nmap <silent> <leader>f :QFixToggle<cr>
 
+
 " Clear the quickfix window
 command! QFixClear call ClearQuickfixWindow()
 function! ClearQuickfixWindow()
   call setqflist([])
 endfunction
+
+" Search for TODO in the current buffer
+nmap <silent> ]j /\v<TODO><cr>
+nmap <silent> [j ?\v<TODO><cr>
 
 let g:hungarian_prefixes = ['ac', 'c', 'px', 'ppv', 'pv', 'sz', 'f', 'd', 'h', 'b']
 
