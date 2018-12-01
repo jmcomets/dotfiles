@@ -27,6 +27,7 @@ setup_link ~/.vim/vimrc ~/.vimrc
 # Shell
 setup_link $DOTFILES/Shell/aliases ~/.aliases
 setup_link $DOTFILES/Shell/profile ~/.profile
+setup_link $DOTFILES/Shell/completions ~/.completions
 
 # Zsh
 setup_link $DOTFILES/Shell/zsh ~/.zsh
