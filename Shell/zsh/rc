@@ -27,7 +27,7 @@ call ~/.zsh/keys
 autoload -U bashcompinit
 bashcompinit
 
-call ~/.completions/*
+test -d ~/.completions && call ~/.completions/*
 
 # Powerline
 call /usr/share/zsh/site-contrib/powerline.zsh && \
