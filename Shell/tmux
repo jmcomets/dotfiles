@@ -48,7 +48,7 @@ bind M \
 
 # status bar only enabled on vps
 set -g status off
-if-shell -b 'test `hostname` = "vps"' "set -g status on"
+if-shell -b 'test `hostname` = "vps374813.ovh.net"' "set -g status on"
 
 # status formatting
 set -g status-position top
