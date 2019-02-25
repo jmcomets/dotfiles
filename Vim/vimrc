@@ -60,6 +60,7 @@ Plug 'zhaocai/GoldenView.Vim'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/wombat256.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
 " not used often, but better than the default
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -283,9 +284,14 @@ if has('gui_running')
     colorscheme solarized
 else
     set background=dark
-    colorscheme wombat256mod
+    set termguicolors
+    let base16colorspace = 256
+    colorscheme base16-default-dark
+    " colorscheme base16-atelier-dune
+    " colorscheme wombat256mod
     hi Normal ctermbg=none
 endif
+
 
 " GUI font
 if has('gui_running')
