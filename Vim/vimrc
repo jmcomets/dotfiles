@@ -25,7 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 
 " window management
@@ -510,3 +510,4 @@ let g:UltiSnipsSnippetDirectories = [s:vim_dir . '/ultisnips']
 
 " GoldenView
 let g:goldenview__enable_default_mapping = 0
+let g:goldenview__enable_at_startup = 0
