@@ -2,6 +2,7 @@
 setlocal omnifunc=omni#cpp#complete#Main
 setlocal foldmethod=syntax
 setlocal path+=/usr/include/c++/4.7/*
+setlocal path+=include
 setlocal completeopt=menuone,menu,longest,preview
 setlocal commentstring=//\ %s
 
