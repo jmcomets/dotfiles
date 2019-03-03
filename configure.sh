@@ -50,4 +50,7 @@ setup_link $DOTFILES/Shell/tmux ~/.tmux.conf
 # Neovim
 setup_link $DOTFILES/Vim ~/.config/nvim
 
+# Base16
+setup_link $DOTFILES/Shell/base16 ~/.config/base16-shell
+
 # vim: ft=sh et sw=4 sts=4
