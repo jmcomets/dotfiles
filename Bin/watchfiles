@@ -40,10 +40,18 @@ class WatchFilesProtocol(asyncio.SubprocessProtocol):
         self.future = future
 
     def pipe_data_received(self, fd, data):
-        data = data.decode("utf-8").rstrip("\r\n") # ignore EOL characters
+        data = data.decode("utf-8")
         if fd == 1: # stdout
-            path, action, filename = data.split()
-            print(action, os.path.join(path, filename))
+            events = set()
+            for line in data.split("\n"):
+                if not line:
+                    continue
+                event = tuple(line.split())
+                if event in events:
+                    continue
+                events.add(event)
+                path, action = event
+                print(action, path)
         elif fd == 2: # stderr
             print(f"[STDERR] {data}", file=sys.stderr)
         # else:
