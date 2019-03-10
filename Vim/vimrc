@@ -278,23 +278,24 @@ set hlsearch
 set incsearch
 set wrapscan
 
-" Use better colors for the terminal when available
+" Configure "termguicolor" (not working?)
+"if !has('gui_running')
+"    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+"    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+"    set termguicolors
+"endif
+
+" Base16 configuration
 if !has('gui_running')
-    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-    set termguicolors
-endif
-
-" Colorscheme
-set background=dark
-if has('gui_running')
-    colorscheme solarized
-else
+    let g:base16_shell_path = $HOME . '/.config/base16-shell/scripts'
     let base16colorspace = 256
-    "colorscheme base16-default-dark
-    colorscheme base16-atelier-dune
 endif
 
+" Colorscheme (base16)
+set background=dark
+let g:base16_colorscheme = 'atelier-dune'
+if &background == "light" | let g:base16_colorscheme .= '-light' | endif
+execute 'colorscheme base16-' . g:base16_colorscheme
 
 " GUI font
 if has('gui_running')
@@ -459,6 +460,7 @@ command! -range ConvertHungarian <line1>,<line2>call ConvertHungarianNotation()
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader><leader>'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['Makefile', 'CMakeLists.txt', 'Cargo.toml']
 let g:ctrlp_extensions = ['tag', 'quickfix', 'line', 'mixed']
 nmap <silent> <leader>j :CtrlPBuffer<cr>
 nmap <silent> <leader>u :CtrlPMRUFiles<cr>
