@@ -278,24 +278,11 @@ set hlsearch
 set incsearch
 set wrapscan
 
-" Configure "termguicolor" (not working?)
-"if !has('gui_running')
-"    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-"    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-"    set termguicolors
-"endif
-
-" Base16 configuration
-if !has('gui_running')
-    let g:base16_shell_path = $HOME . '/.config/base16-shell/scripts'
-    let base16colorspace = 256
-endif
-
 " Colorscheme (base16)
-set background=dark
-let g:base16_colorscheme = 'atelier-dune'
-if &background == "light" | let g:base16_colorscheme .= '-light' | endif
-execute 'colorscheme base16-' . g:base16_colorscheme
+if filereadable($HOME . '/.vimrc_background')
+    let base16colorspace = 256
+    execute 'source ' . $HOME . '/.vimrc_background'
+endif
 
 " GUI font
 if has('gui_running')
