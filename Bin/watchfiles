@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python -u
 """watchfiles: watch for changes on a file hierarchy
 
 usage: watchdir [options] [<filename>...]
@@ -51,11 +51,9 @@ class WatchFilesProtocol(asyncio.SubprocessProtocol):
                     continue
                 events.add(event)
                 path, action = event
-                print(action, path)
+                print(action, path, file=sys.stdout)
         elif fd == 2: # stderr
             print(f"[STDERR] {data}", file=sys.stderr)
-        # else:
-        #     print(f"unknown fd: {fd}", file=sys.stderr)
 
     def connection_lost(self, exception):
         self.future.set_result(exception) # notifies when the pipe is closed
