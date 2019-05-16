@@ -1,61 +1,59 @@
-# basic stuff
-set-option -g default-shell $SHELL
-set -g default-terminal "screen-256color"
-#setw -g xterm-keys on
+# Basic stuff
+set default-shell $SHELL
+set default-terminal "screen-256color"
 set -s escape-time 0
+#setw xterm-keys on
 
-# interact nicely with vim
+# Free Ctrl-b for Vim, use Ctrl-Space instead
 unbind C-b
-set -g prefix C-Space
+set prefix C-Space
 bind Space send-prefix
 
-# act like vim (sort of)
-setw -g mode-keys vi
+# "Space" -> custom command
+#bind Space run "tmux-custom-command"
+
+# Navigate somewhat like Vim
+setw mode-keys vi
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# use Ctrl-[, space, then y to copy to clipboard (xclip required)
-#bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
-
-# splits
+# More accessible split shortcuts
 bind '"' split-window -c "#{pane_current_path}"
 bind '%' split-window -h -c "#{pane_current_path}"
 
-# panes
-set -g pane-border-fg blue
-set -g pane-active-border-fg white
+# Use Ctrl-[, space, then y to copy to clipboard (xclip required)
+#bind -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
 
-# the following commented mouse options are equivalent to the "mouse" option
-#set -g mode-mouse on
-#set -g mouse-resize-pane on
-#set -g mouse-select-pane on
-#set -g mouse-select-window on
+# Display active/inactive panes differently
+set pane-border-fg blue
+set pane-active-border-fg white
 
-# default mouse setting
-set -g mouse on
+# Enable the mouse by default
+set mouse on
 
-# "m" -> enable mouse
-bind m \
-  set -g mouse on \;\
-  display 'Mouse: ON'
-
-# "M" -> disable mouse
+# Disable the mouse with "M"
 bind M \
-  set -g mouse off \;\
+  set mouse off \;\
   display 'Mouse: OFF'
 
-# status bar only enabled on vps
-set -g status off
-if-shell -b 'test `hostname` = "vps374813.ovh.net"' "set -g status on"
+# Re-enable the mouse with "m"
+bind m \
+  set mouse on \;\
+  display 'Mouse: ON'
 
-# status formatting
-set -g status-position top
-set -g status-fg white
-set -g status-bg blue
-set -g status-left ''
-set -g status-right-length 60
-set -g status-right '%a %m-%d %H:%M:%S'
-# refresh every second
-set -g status-interval 1
+# Only display the status bar VPS
+set status off
+if-shell -b 'test `hostname` = "vps374813.ovh.net"' "set status on"
+
+# Tabs are transparent, current is highlighted
+set status-style fg=white,bg=black
+setw window-status-current-style fg=black,bg=white
+
+# Show the status at the top, with a simple time indicator
+set status-position top
+set status-left ''
+set status-right '%a %m-%d %H:%M:%S'
+set status-interval 1
+set status-right-length 60
