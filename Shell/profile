@@ -75,4 +75,7 @@ add_to_path $HOME/.local/share/android-sdk/platform-tools
 # heroku
 add_to_path /usr/local/heroku/bin
 
+# sccache
+export RUSTC_WRAPPER=`which sccache`
+
 # vim: ft=sh et sw=2 sts=2
