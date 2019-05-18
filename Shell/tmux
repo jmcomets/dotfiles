@@ -1,6 +1,6 @@
 # Basic stuff
 set default-shell $SHELL
-set default-terminal "screen-256color"
+set default-terminal "tmux-256color"
 set -s escape-time 0
 #setw xterm-keys on
 
