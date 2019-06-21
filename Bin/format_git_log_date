@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+
+import datetime
+import fileinput
+
+def midnight(now):
+    return datetime.datetime(year=now.year, month=now.month, day=now.day, tzinfo=now.tzinfo)
+
+def previous_monday(now):
+    monday = now - datetime.timedelta(days=now.weekday(), weeks=1)
+    return midnight(monday)
+
+class DateFormatter:
+    def __init__(self, now):
+        self.now = now
+        self.today = midnight(now)
+
+    def format_date(self, date):
+        now = self.now
+        if date >= now:
+            return "the future"
+
+        today = self.today
+        if date >= today:
+            return "today"
+
+        yesterday = today - datetime.timedelta(days=1)
+        if date >= yesterday:
+            return "yesterday"
+
+        this_monday = previous_monday(now)
+        if date >= this_monday:
+            weekday = date.strftime("%A").lower()
+            return f"{weekday}"
+
+        monday_last_week = previous_monday(this_monday)
+        if date >= monday_last_week:
+            weekday = date.strftime("%A").lower()
+            return f"last {weekday}"
+
+def bracketed(s, brackets=("(", ")")):
+    opening, closing = brackets
+    prefix_end = suffix_start = None
+    start = 0
+    while True:
+        i = s.find(opening, start)
+        if i == -1:
+            break
+        if prefix_end is None:
+            prefix_end = i
+
+        j = s.find(closing, i+1)
+        if j == -1:
+            break
+        if j == len(s) - 1:
+            suffix_start = -1
+        else:
+            suffix_start = j + 1
+
+        start = j + 1
+        yield i+1, j
+
+if __name__ == "__main__":
+    now = datetime.datetime.now()
+    date_formatter = DateFormatter(now)
+
+    try:
+        for line in fileinput.input():
+
+            dates = bracketed(line)
+            try:
+                i1, j1 = next(dates)
+                i2, j2 = next(dates)
+            except StopIteration:
+                print(line)
+                continue
+            else:
+                relative_date_str = line[i1:j1]
+                timestamp_date_str = float(line[i2:j2])
+                prefix, suffix = line[:i1-1], line[j2+1:]
+
+            full_date = datetime.datetime.fromtimestamp(timestamp_date_str)
+
+            date_str = date_formatter.format_date(full_date) or relative_date_str
+
+            print(prefix + '(' + date_str + ')' + suffix)
+
+    except KeyboardInterrupt:
+        pass

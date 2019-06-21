@@ -14,12 +14,18 @@
 # break this.
 
 HASH="%C(yellow)%h%Creset"
-RELATIVE_TIME="%Cgreen(%ar)%Creset"
+
+RFC2822_DATE="%aD"
+TIMESTAMP_DATE="%at"
+RELATIVE_DATE="%ar"
+DATE="%Cgreen($RELATIVE_DATE)($TIMESTAMP_DATE)%Creset"
+# DATE="%Cgreen($RELATIVE_DATE)%Creset"
+
 AUTHOR="%C(bold blue)<%an>%Creset"
 REFS="%C(bold red)%d%Creset"
 SUBJECT="%s"
 
-FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
+FORMAT="$HASH}$DATE}$AUTHOR}$REFS $SUBJECT"
 
 ANSI_BLACK='\033[30m'
 ANSI_BLACK_BOLD='\033[0;30;1m'
@@ -39,7 +45,6 @@ ANSI_WHITE='\033[37m'
 ANSI_WHITE_BOLD='\033[0;37;1m'
 ANSI_RESET='\033[0m'
 
-
 show_git_head() {
     pretty_git_log -1
     git show -p --pretty="tformat:"
@@ -47,9 +52,11 @@ show_git_head() {
 
 pretty_git_log() {
     git log --graph --pretty="tformat:${FORMAT}" $* |
-        # Replace (2 years ago) with (2 years)
+        # Custom date formatting -- use with timestamp date output '%at'
+        format_git_log_date |
+        # Replace (2 years ago) with (2 years) -- use with relative date output '%ar'
         sed -Ee 's/(^[^<]*) ago\)/\1)/' |
-        # Replace (2 years, 5 months) with (2 years)
+        # Replace (2 years, 5 months) with (2 years) -- use with relative date output '%ar'
         sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
         # Line columns up based on } delimiter
         column -s '}' -t |
@@ -63,4 +70,3 @@ pretty_git_log() {
             less --quit-if-one-screen --no-init --RAW-CONTROL-CHARS --chop-long-lines
         fi
 }
-
