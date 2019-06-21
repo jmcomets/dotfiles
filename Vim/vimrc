@@ -350,9 +350,16 @@ nnoremap ` '
 "nmap D dd
 nmap Y y$
 
-" Visual block indenting: keep selection after indenting
+" Visual mode indenting: keep selection after indenting
 vmap > >gv
 vmap < <gv
+
+" Visual mode incrementing: better default
+vnoremap g<C-a> <C-a>
+vnoremap <C-a> g<C-a>
+" don't invert decrementing for saner usage
+"vnoremap g<C-x> <C-x>
+"vnoremap <C-x> g<C-x>
 
 " Select pasted text with gV
 nmap gV `[v`]
