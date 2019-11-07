@@ -36,7 +36,7 @@ A [simple vim plugin manager script] is available (command: vwp), but requires [
 Alternatively symlinks can be created in [~/.vim/extensions], pointing to vim plugin directories
 (I put them in [~/.vim/bundle]).
 
-[Pimp My Console]: ../../blob/master/Misc/pimp-my-console.png?raw=true
+[Pimp My Console]: ../../blob/29c2f7e0f546bfcf40e375f4e98bb3e00a75c13c/Misc/pimp-my-console.png?raw=true
 [aliases]: ../../blob/master/Shell/aliases
 [~/.vim/extensions]: ../../blob/master/Vim/extensions
 [~/.vim/bundle]: ../../blob/master/Vim/bundle
