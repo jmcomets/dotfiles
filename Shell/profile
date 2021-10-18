@@ -41,6 +41,9 @@ call()
   fi
 }
 
+# Quiet `which` for usage in dotfile tests
+qwhich() { which "$@" 2> /dev/null; }
+
 # Add bin directories
 add_to_path $HOME/.local/bin
 add_to_path $HOME/bin
@@ -75,6 +78,6 @@ add_to_path $HOME/.local/share/android-sdk/platform-tools
 add_to_path /usr/local/heroku/bin
 
 # sccache
-export RUSTC_WRAPPER=`which sccache`
+test -e "$(qwhich sccache)" && export RUSTC_WRAPPER=`which sccache`
 
 # vim: ft=sh et sw=2 sts=2
