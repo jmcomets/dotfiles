@@ -43,9 +43,11 @@ bind m \
   set -g mouse on \;\
   display 'Mouse: ON'
 
-# Only display the status bar VPS
-set -g status off
-if-shell -b 'test `hostname` = "vps374813.ovh.net"' "set -g status on"
+# Display the status bar
+set -g status on
+
+# Always open new pane from current path
+bind c new-window -c "${pane_current_path}"
 
 # Tabs are transparent, current is highlighted
 set -g status-style fg=white,bg=black
