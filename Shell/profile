@@ -94,7 +94,7 @@ add_to_path $GCLOUD_SDK_PREFIX/bin
 export APPENGINE=$GCLOUD_SDK_PREFIX/bin
 
 # liquibase
-add_to_path /opt/liquibase-3.10.0
+add_to_path /opt/liquibase
 
 # ansible
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
