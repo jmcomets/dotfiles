@@ -2,14 +2,13 @@
     name = Jean-Marie Comets
     email = jean.marie.comets@gmail.com
 [alias]
+    # Shorthands
     st = status
     br = branch
     co = checkout
-    po = push origin
-    pom = push origin master
-
-    # Add/Remove seamlessly
-    a = add --all
+    ll = log --oneline
+    rb = rebase
+    cp = cherry-pick
 
     # Commits
     ci = commit --verbose
@@ -49,8 +48,8 @@
     ra = !git r --all
     l = "!. ~/.githelpers && pretty_git_log"
     la = !git l --all
-    rb = rebase
-    cp = cherry-pick
+
+    # Additions
 [merge]
     tool = vimdiff
 [color]
