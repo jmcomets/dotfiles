@@ -2,17 +2,6 @@ if [ -x "/usr/bin/dircolors" ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Color support
-#
-#colorterm=`echo $COLORTERM`
-#
-#nb_colors_supported=`echoti colors`
-#if [ "$nb_colors_supported" = 256 ]; then
-#  echo "256 colors supported"
-#else
-#  echo "only collorted colors: $nb_colors_supported"
-#fi
-
 # root is red, user is blue
 if [ "$USER" = "root" ]; then
   name_color="red"
@@ -20,10 +9,17 @@ else
   name_color="blue"
 fi
 
-hostname_color=red
-bracket_color=magenta
-
-PS1="%{$fg[$bracket_color]%}[%{$reset_color%}%{$fg[$name_color]%}%n%{$reset_color%}@%U%{$fg[$hostname_color]%}%m%{$reset_color%}%u%{$fg[$bracket_color]%}]%{$reset_color%} %B%~%b %# "
 PS2="%{$fg[$name_color]>%} %{$reset_color%}"
+
+# old prompt
+#hostname_color=red
+#bracket_color=magenta
+#PS1="%{$fg[$bracket_color]%}[%{$reset_color%}%{$fg[$name_color]%}%n%{$reset_color%}@%U%{$fg[$hostname_color]%}%m%{$reset_color%}%u%{$fg[$bracket_color]%}]%{$reset_color%} %B%~%b %# "
+
+# new prompt
+PS1="%{$fg[$name_color]%}%n%{$reset_color%}@%{$fg[yellow]%}%U%{$fg[yellow]%}%m%{$reset_color%}%u %B%~%b %# "
+# Git branch on the right
+RPROMPT='%{$fg[magenta]%}${vcs_info_msg_0_}%{$reset_color%}'
+zstyle ':vcs_info:git:*' formats '(%b)'
 
 # vim: ft=zsh et sw=2 sts=2

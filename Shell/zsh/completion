@@ -44,4 +44,14 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' l
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 
+test -d ~/.completions && call ~/.completions/*
+
+# asdf
+call "$HOME/.asdf/completions/asdf.bash"
+
+# kubectl
+test -e "$(qwhich kubectl)" \
+  && source <(kubectl completion zsh) \
+  && compdef k="kubectl"
+
 # vim: ft=sh et sw=2 sts=2

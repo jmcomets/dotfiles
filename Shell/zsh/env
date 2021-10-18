@@ -1,1 +1,3 @@
 source ~/.profile
+
+# vim: ft=sh et sw=2 sts=2

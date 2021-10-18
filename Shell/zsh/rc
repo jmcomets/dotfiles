@@ -1,6 +1,7 @@
 # Prompt
 autoload -U promptinit
 promptinit
+setopt prompt_subst
 
 # Colors
 autoload -U colors
@@ -9,6 +10,15 @@ colors
 # Completion
 autoload -U compinit
 compinit
+
+# VCS
+autoload -Uz vcs_info
+#precmd_vcs_info() { vcs_info }
+precmd_functions+=( vcs_info )
+
+# Bash completion scripts
+autoload -U bashcompinit
+bashcompinit
 
 # Emacs-style
 bindkey -e
@@ -24,10 +34,9 @@ call ~/.zsh/completion
 #call ~/.zsh/keys
 
 # Bash completion scripts
-autoload -U bashcompinit
-bashcompinit
-
-test -d ~/.completions && call ~/.completions/*
+#autoload -U bashcompinit
+#bashcompinit
+#test -d ~/.completions && call ~/.completions/*
 
 # Powerline
 call /usr/share/zsh/site-contrib/powerline.zsh && \
