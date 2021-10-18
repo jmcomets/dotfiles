@@ -58,17 +58,14 @@ BASE16_SHELL="$HOME/.config/base16-shell"
   [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
   eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-# virtualenvwrapper
-#call /usr/local/bin/virtualenvwrapper.sh
-
 # cargo
 add_to_path $HOME/.cargo/bin
 
+# sccache
+test -e "$(qwhich sccache)" && export RUSTC_WRAPPER=`which sccache`
+
 # rvm
 add_to_path $HOME/.rvm/bin && call $HOME/.rvm/scripts/rvm
-
-# nvm
-export NVM_DIR=$HOME/.nvm && call $NVM_DIR/nvm.sh
 
 # android sdk
 add_to_path $HOME/.local/share/android-sdk/tools
@@ -77,7 +74,35 @@ add_to_path $HOME/.local/share/android-sdk/platform-tools
 # heroku
 add_to_path /usr/local/heroku/bin
 
-# sccache
-test -e "$(qwhich sccache)" && export RUSTC_WRAPPER=`which sccache`
+# nvm
+export NVM_DIR=$HOME/.nvm && call $NVM_DIR/nvm.sh
+
+# node
+add_to_path $HOME/.yarn/bin
+export N_PREFIX=$HOME/.n
+add_to_path $N_PREFIX/bin
+
+# go
+add_to_path $HOME/go-install/bin
+export GOPRIVATE=github.com/lumapps
+export GOPATH=$HOME/.go
+add_to_path $GOPATH/bin
+
+# gcloud
+export GCLOUD_SDK_PREFIX=$HOME/.google-cloud-sdk
+add_to_path $GCLOUD_SDK_PREFIX/bin
+export APPENGINE=$GCLOUD_SDK_PREFIX/bin
+
+# liquibase
+add_to_path /opt/liquibase-3.10.0
+
+# ansible
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
+
+# poetry
+add_to_path $HOME/.poetry/bin
+
+# asdf
+call $HOME/.asdf/asdf.sh
 
 # vim: ft=sh et sw=2 sts=2
