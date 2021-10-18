@@ -24,6 +24,12 @@ alias vi='vim'
 mkcd() { mkdir $1 && cd $1; }
 test -e "$(qwhich ip)" && alias ip='ip -c'
 
+# Note: multiple aliases aren't expanded unless the first one has a trailing space
+alias watch='watch '
+
+# Colored `ip` by default
+test -e "$(which ip)" && alias ip='ip -c'
+
 # Apt
 test -e "$(qwhich apt-get)" && alias sag="sudo apt-get"
 
@@ -38,18 +44,7 @@ alias py3='python3'
 alias ipy='ipython'
 
 # JSON Formatting
-alias jq='python -m json.tool'
-
-# Rust
-test -e "$(qwhich cargo)" && alias cg='cargo'
-test -e "$(qwhich cargo)" && alias cgn='cargo +nightly'
-test -e "$(qwhich rustup)" && alias ru='rustup'
-
-# Vim croquet
-#alias vim='vim -w ~/.vimlog'
-
-# Use hub if it is installed
-#test -e "$(qwhich hub)" && alias git="hub"
+test -e "$(qwhich jq)" || alias jq='python -m json.tool'
 
 # Typos
 alias got="git"
@@ -69,5 +64,10 @@ test -e "$(qwhich wmctrl)" && alias ff='wmctrl -a Firefox'
 
 # Virtualenv
 venv() { source "$HOME/bin/venv-activate"; }
+
+# K8s
+test -e "$(qwhich kubectl)" && alias k="kubectl"
+test -e "$(qwhich kubectx)" && alias kx="kubectx"
+test -e "$(qwhich kubens)" && alias kn="kubens"
 
 # vim: ft=sh et sw=2 sts=2
