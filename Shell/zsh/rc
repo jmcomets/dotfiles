@@ -21,7 +21,7 @@ HISTFILE=~/.zsh_history
 # External modules
 call ~/.zsh/colors
 call ~/.zsh/completion
-call ~/.zsh/keys
+#call ~/.zsh/keys
 
 # Bash completion scripts
 autoload -U bashcompinit
