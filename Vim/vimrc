@@ -76,6 +76,7 @@ Plug 'xolox/vim-shell'
 " Extra syntaxes
 Plug 'rust-lang/rust.vim'
 "Plug 'cespare/vim-toml'
+Plug 'joukevandermaas/vim-ember-hbs'
 
 " C++ plugins
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
@@ -189,6 +190,7 @@ set wildignore+=*.lib
 set wildignore+=*.arg
 set wildignore+=target
 set wildignore+=venv
+set wildignore+=node_modules
 
 " Virtual edit
 set virtualedit=
