@@ -47,7 +47,7 @@ bind m \
 set -g status on
 
 # Always open new pane from current path
-bind c new-window -c "${pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 
 # Tabs are transparent, current is highlighted
 set -g status-style fg=white,bg=black
