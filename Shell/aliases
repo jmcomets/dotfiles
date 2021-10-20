@@ -1,5 +1,8 @@
-# Security
+# Typical usage
 alias df="df -h"
+alias du="du -h"
+
+# Security
 alias rm="rm -vi"
 alias cp="cp -vi"
 alias mv="mv -vi"
